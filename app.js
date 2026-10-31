@@ -310,6 +310,9 @@ function renderMap(fly){
     map.scrollZoom.disable();
     map.addControl(new maplibregl.NavigationControl({showCompass:false}), "top-right");
     map.on("styledata", ()=>{ estiloOk=true; });
+    map.on("load", ()=>map.resize());
+    // o card muda de tamanho (largura da tela, troca de página): o mapa acompanha, senão o desenho e os alfinetes se desencontram
+    if (window.ResizeObserver) new ResizeObserver(()=>map.resize()).observe($("sec-map"));
     map.on("error", ()=>{ if (!estiloOk){ estiloOk=true; map.setStyle(raster(dark()?"dark":"light")); } });
     estiloTimer = setTimeout(()=>{ if (!estiloOk) map.setStyle(raster(t)); }, 7000);
     map.getCanvas().addEventListener("wheel", ev=>{ if (ev.ctrlKey||ev.metaKey){ ev.preventDefault(); map.scrollZoom.enable(); clearTimeout(map._zt); map._zt=setTimeout(()=>map.scrollZoom.disable(),600); } }, {passive:false});
