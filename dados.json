@@ -1,246 +1,2464 @@
 {
- "gerado_em": "2026-10-31T00:10:00-03:00",
- "fonte": "ClickUp · Controle de Viabilidades",
- "viabilidades": [
+ "gerado_em": "2026-10-30T22:20-03:00",
+ "fontes": {
+  "cronogramas": "Snapshot ClickUp de 2026-10-26",
+  "viabilidades": "ClickUp · Controle de Viabilidades",
+  "variacoes": "2026-10-19 → 2026-10-26"
+ },
+ "marco_nome": {
+  "nov001": "Reunião de Arrancada",
+  "inc001": "Fim da Due Diligence",
+  "arq003": "Estudo Preliminar",
+  "arq005": "Anteprojeto",
+  "leg009": "Emissão de Alvará",
+  "leg010": "Registro de Incorporação",
+  "inc002": "Lançamento Comercial",
+  "orcV4": "Orçamento V4",
+  "eng001": "Início de Obra",
+  "eng002": "Término de Obra",
+  "leg011": "Registro de CVCO",
+  "mar001": "Entrega de Chaves",
+  "inc003": "Entrega em Contrato"
+ },
+ "empreendimentos": [
   {
-   "empreendimento": "CORE Evo",
-   "versao": "V3",
-   "obs": ""
+   "nome": "Al Nasser 1",
+   "sigla": "AN1",
+   "cidade": "Curitiba",
+   "incorporadora": "Make It",
+   "ex_nome": "",
+   "lista_id": "901326874097",
+   "lista": "EP | Al Nasser 1",
+   "fase": "EP",
+   "legado": false,
+   "marcos": {
+    "nov001": {
+     "data": "2025-06-17",
+     "ok": 1
+    },
+    "inc001": {
+     "data": "2026-02-06",
+     "ok": 1
+    },
+    "arq003": {
+     "data": "2026-11-26",
+     "ok": 0
+    },
+    "arq005": {
+     "data": "2027-06-05",
+     "ok": 0
+    },
+    "leg009": {
+     "data": "2027-06-01",
+     "ok": 0
+    },
+    "leg010": {
+     "data": "2027-08-02",
+     "ok": 0
+    },
+    "inc002": {
+     "data": "2027-11-15",
+     "ok": 0
+    },
+    "orcV4": {
+     "data": "2027-11-10",
+     "ok": 0
+    },
+    "eng001": {
+     "data": "2028-03-15",
+     "ok": 0
+    },
+    "eng002": {
+     "data": "2030-03-18",
+     "ok": 0
+    },
+    "leg011": {
+     "data": "2030-06-04",
+     "ok": 0
+    },
+    "mar001": {
+     "data": "2030-06-17",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V0",
+     "obs": "",
+     "situacao": "Substituída",
+     "task_id": "86ak61abn",
+     "mes": "2025-09",
+     "vgv_bruto": null,
+     "vgv_liquido": null,
+     "lucro": null,
+     "margem": null,
+     "exposicao": null,
+     "area_construida": null,
+     "unidades": 256.0,
+     "permutas": 0.0,
+     "preco_medio": 379888.9375,
+     "custo_m2": 2339.83
+    },
+    {
+     "versao": "V2",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "86ak61afy",
+     "mes": "2025-09",
+     "vgv_bruto": 97251568.0,
+     "vgv_liquido": 97251568.0,
+     "lucro": 20612262.0,
+     "margem": 0.2119,
+     "exposicao": 10487755.0,
+     "area_construida": 17133.48,
+     "unidades": 256.0,
+     "permutas": 0.0,
+     "preco_medio": 379888.9375,
+     "custo_m2": 2339.83
+    }
+   ],
+   "vigente": "V2",
+   "pos": [
+    -25.4284,
+    -49.2613
+   ]
+  },
+  {
+   "nome": "Al Nasser 2",
+   "sigla": "AN2",
+   "cidade": "Curitiba",
+   "incorporadora": "Make It",
+   "ex_nome": "",
+   "lista_id": "901327104307",
+   "lista": "EP | Al Nasser 2",
+   "fase": "EP",
+   "legado": false,
+   "marcos": {
+    "nov001": {
+     "data": "2025-06-17",
+     "ok": 1
+    },
+    "inc001": {
+     "data": "2026-02-06",
+     "ok": 1
+    },
+    "arq003": {
+     "data": "2026-12-09",
+     "ok": 0
+    },
+    "arq005": {
+     "data": "2027-06-16",
+     "ok": 0
+    },
+    "leg009": {
+     "data": "2027-06-14",
+     "ok": 0
+    },
+    "leg010": {
+     "data": "2027-08-13",
+     "ok": 0
+    },
+    "inc002": {
+     "data": "2028-05-15",
+     "ok": 0
+    },
+    "orcV4": {
+     "data": "2027-11-19",
+     "ok": 0
+    },
+    "eng001": {
+     "data": "2028-09-13",
+     "ok": 0
+    },
+    "eng002": {
+     "data": "2030-09-16",
+     "ok": 0
+    },
+    "leg011": {
+     "data": "2030-12-03",
+     "ok": 0
+    },
+    "mar001": {
+     "data": "2030-12-16",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V0",
+     "obs": "",
+     "situacao": "Substituída",
+     "task_id": "86ak6kqf7",
+     "mes": "2025-09",
+     "vgv_bruto": null,
+     "vgv_liquido": null,
+     "lucro": null,
+     "margem": null,
+     "exposicao": null,
+     "area_construida": null,
+     "unidades": 230.0,
+     "permutas": 0.0,
+     "preco_medio": 374094.7826086957,
+     "custo_m2": 2395.38
+    },
+    {
+     "versao": "V2",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "86ak6krf0",
+     "mes": "2025-09",
+     "vgv_bruto": 86041800.0,
+     "vgv_liquido": 86041800.0,
+     "lucro": 16966490.0,
+     "margem": 0.1972,
+     "exposicao": 9459678.0,
+     "area_construida": 15390.31,
+     "unidades": 230.0,
+     "permutas": 0.0,
+     "preco_medio": 374094.7826086957,
+     "custo_m2": 2395.38
+    }
+   ],
+   "vigente": "V2",
+   "pos": [
+    -25.41624,
+    -49.28657
+   ]
+  },
+  {
+   "nome": "Alba",
+   "sigla": "ALB",
+   "cidade": "Almirante Tamandaré",
+   "incorporadora": "Make It",
+   "ex_nome": "Tanguá",
+   "lista_id": "901305538823",
+   "lista": "ALV | Alba (Tanguá)",
+   "fase": "ALV",
+   "legado": false,
+   "marcos": {
+    "nov001": {
+     "data": "2023-08-02",
+     "ok": 1
+    },
+    "inc001": {
+     "data": "2023-12-14",
+     "ok": 1
+    },
+    "arq003": {
+     "data": "2024-11-29",
+     "ok": 1
+    },
+    "arq005": {
+     "data": "2025-06-30",
+     "ok": 1
+    },
+    "leg009": {
+     "data": "2027-01-14",
+     "ok": 0
+    },
+    "leg010": {
+     "data": "2027-03-22",
+     "ok": 0
+    },
+    "inc002": {
+     "data": "2027-05-15",
+     "ok": 0
+    },
+    "orcV4": {
+     "data": "2027-02-09",
+     "ok": 0
+    },
+    "eng001": {
+     "data": "2027-09-16",
+     "ok": 0
+    },
+    "eng002": {
+     "data": "2029-09-16",
+     "ok": 0
+    },
+    "leg011": {
+     "data": "2029-12-05",
+     "ok": 0
+    },
+    "mar001": {
+     "data": "2029-12-18",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V2",
+     "obs": "",
+     "situacao": "Substituída",
+     "task_id": "86ak6m0ag",
+     "mes": "2025-01",
+     "vgv_bruto": 52640022.0,
+     "vgv_liquido": 45355019.0,
+     "lucro": 9105134.0,
+     "margem": 0.20079999999999998,
+     "exposicao": 5596084.0,
+     "area_construida": 11459.85,
+     "unidades": 224.0,
+     "permutas": 30.0,
+     "preco_medio": 235000.10000000003,
+     "custo_m2": 1948.25
+    },
+    {
+     "versao": "V3",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "86ak6k3nw",
+     "mes": "2025-01",
+     "vgv_bruto": 61600000.0,
+     "vgv_liquido": 53075000.0,
+     "lucro": 11689095.0,
+     "margem": 0.2202,
+     "exposicao": 6159069.0,
+     "area_construida": 11471.5,
+     "unidades": 224.0,
+     "permutas": 30.0,
+     "preco_medio": 275000.0,
+     "custo_m2": 2242.98
+    }
+   ],
+   "vigente": "V3",
+   "pos": [
+    -25.34881,
+    -49.30801
+   ]
+  },
+  {
+   "nome": "Arbo",
+   "sigla": "ARB",
+   "cidade": "Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "Fênix",
+   "lista_id": "1400450000006205",
+   "lista": "OBR | Arbo",
+   "fase": "OBR",
+   "legado": false,
+   "marcos": {
+    "eng002": {
+     "data": "2027-02-12",
+     "ok": 0
+    },
+    "leg011": {
+     "data": "2027-03-18",
+     "ok": 0
+    },
+    "mar001": {
+     "data": "2027-03-27",
+     "ok": 0
+    },
+    "inc003": {
+     "data": "2027-07-31",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V4",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "86ak6m4ae",
+     "mes": "2025-02",
+     "vgv_bruto": 22949000.0,
+     "vgv_liquido": 22949000.0,
+     "lucro": 4647402.0,
+     "margem": 0.2025,
+     "exposicao": 2956344.0,
+     "area_construida": 3899.23,
+     "unidades": 80.0,
+     "permutas": 0.0,
+     "preco_medio": 286862.5,
+     "custo_m2": 2227.34
+    }
+   ],
+   "vigente": "V4",
+   "pos": [
+    -25.4209,
+    -49.17424
+   ]
+  },
+  {
+   "nome": "Arena",
+   "sigla": "ARE",
+   "cidade": "Curitiba",
+   "incorporadora": "Make It",
+   "ex_nome": "",
+   "lista_id": "901327999906",
+   "lista": "EP | Arena",
+   "fase": "EP",
+   "legado": false,
+   "marcos": {
+    "nov001": {
+     "data": "2026-03-16",
+     "ok": 1
+    },
+    "inc001": {
+     "data": "2026-07-06",
+     "ok": 1
+    },
+    "arq003": {
+     "data": "2026-11-25",
+     "ok": 0
+    },
+    "arq005": {
+     "data": "2027-02-18",
+     "ok": 0
+    },
+    "leg009": {
+     "data": "2027-04-29",
+     "ok": 0
+    },
+    "leg010": {
+     "data": "2027-07-12",
+     "ok": 0
+    },
+    "inc002": {
+     "data": "2027-06-15",
+     "ok": 0
+    },
+    "orcV4": {
+     "data": "2027-07-27",
+     "ok": 0
+    },
+    "eng001": {
+     "data": "2027-10-13",
+     "ok": 0
+    },
+    "eng002": {
+     "data": "2029-10-12",
+     "ok": 0
+    },
+    "leg011": {
+     "data": "2029-11-30",
+     "ok": 0
+    },
+    "mar001": {
+     "data": "2030-01-15",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V0",
+     "obs": "",
+     "situacao": "Substituída",
+     "task_id": "86ak6m58d",
+     "mes": "2025-12",
+     "vgv_bruto": 54900000.0,
+     "vgv_liquido": 50700000.0,
+     "lucro": 11729071.0,
+     "margem": 0.23129999999999998,
+     "exposicao": 6605613.0,
+     "area_construida": 8888.38,
+     "unidades": 162.0,
+     "permutas": 12.0,
+     "preco_medio": 338000.0,
+     "custo_m2": 2438.54
+    },
+    {
+     "versao": "V2",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "17tpepch0bw",
+     "mes": "2026-07",
+     "vgv_bruto": 65260034.0,
+     "vgv_liquido": 61420034.0,
+     "lucro": 14014291.0,
+     "margem": 0.22820000000000001,
+     "exposicao": 8428402.0,
+     "area_construida": 10225.83,
+     "unidades": 178.0,
+     "permutas": 12.0,
+     "preco_medio": 370000.2048192771,
+     "custo_m2": 2615.53
+    }
+   ],
+   "vigente": "V2",
+   "pos": [
+    -25.43465,
+    -49.30875
+   ]
+  },
+  {
+   "nome": "Aura",
+   "sigla": "AUR",
+   "cidade": "São José dos Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "Alta Tensão",
+   "lista_id": "901325334354",
+   "lista": "ALV | Aura (Alta Tensão)",
+   "fase": "AP",
+   "legado": false,
+   "marcos": {
+    "nov001": {
+     "data": "2025-11-10",
+     "ok": 1
+    },
+    "inc001": {
+     "data": "2026-02-10",
+     "ok": 1
+    },
+    "arq003": {
+     "data": "2026-05-26",
+     "ok": 1
+    },
+    "arq005": {
+     "data": "2026-11-05",
+     "ok": 0
+    },
+    "leg009": {
+     "data": "2026-12-21",
+     "ok": 0
+    },
+    "leg010": {
+     "data": "2027-02-17",
+     "ok": 0
+    },
+    "inc002": {
+     "data": "2027-03-15",
+     "ok": 0
+    },
+    "orcV4": {
+     "data": "2027-03-09",
+     "ok": 0
+    },
+    "eng001": {
+     "data": "2027-07-13",
+     "ok": 0
+    },
+    "eng002": {
+     "data": "2029-07-13",
+     "ok": 0
+    },
+    "leg011": {
+     "data": "2029-10-01",
+     "ok": 0
+    },
+    "mar001": {
+     "data": "2029-10-15",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V0",
+     "obs": "",
+     "situacao": "Substituída",
+     "task_id": "86ak6md41",
+     "mes": "2025-08",
+     "vgv_bruto": 31320000.0,
+     "vgv_liquido": 26390000.0,
+     "lucro": 5734573.0,
+     "margem": 0.2173,
+     "exposicao": 2924278.0,
+     "area_construida": 5344.92,
+     "unidades": 108.0,
+     "permutas": 17.0,
+     "preco_medio": 290000.0,
+     "custo_m2": 2472.16
+    },
+    {
+     "versao": "V2",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "86ak6mfjq",
+     "mes": "2025-08",
+     "vgv_bruto": 32100000.0,
+     "vgv_liquido": 26700000.0,
+     "lucro": 6110583.0,
+     "margem": 0.2289,
+     "exposicao": 4772140.0,
+     "area_construida": 5056.36,
+     "unidades": 107.0,
+     "permutas": 18.0,
+     "preco_medio": 300000.0,
+     "custo_m2": 2539.21
+    }
+   ],
+   "vigente": "V2",
+   "pos": [
+    -25.54115,
+    -49.19628
+   ]
+  },
+  {
+   "nome": "Bravo",
+   "sigla": "BRA",
+   "cidade": "Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "Forza",
+   "lista_id": "901325179658",
+   "lista": "✅ | Bravo",
+   "fase": "ENT",
+   "legado": true,
+   "marcos": {
+    "eng002": {
+     "data": "2026-07-16",
+     "ok": 1
+    },
+    "leg011": {
+     "data": "2026-07-29",
+     "ok": 1
+    },
+    "mar001": {
+     "data": "2026-08-29",
+     "ok": 1
+    },
+    "inc003": {
+     "data": "2026-08-31",
+     "ok": 1
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V4",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "86ak6mh22",
+     "mes": "2025-02",
+     "vgv_bruto": 31360000.0,
+     "vgv_liquido": 31360000.0,
+     "lucro": 6386402.0,
+     "margem": 0.2036,
+     "exposicao": 7347801.0,
+     "area_construida": 6418.64,
+     "unidades": 128.0,
+     "permutas": 0.0,
+     "preco_medio": 245000.0,
+     "custo_m2": 2057.47
+    }
+   ],
+   "vigente": "V4",
+   "pos": [
+    -25.42731,
+    -49.19716
+   ]
+  },
+  {
+   "nome": "Container",
+   "sigla": "CON",
+   "cidade": "Curitiba",
+   "incorporadora": "Make It",
+   "ex_nome": "",
+   "lista_id": "901328210975",
+   "lista": "DUE | Container",
+   "fase": "DUE",
+   "legado": false,
+   "marcos": {
+    "nov001": {
+     "data": "2026-08-18",
+     "ok": 1
+    },
+    "inc001": {
+     "data": "2026-12-12",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V0",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "86ak6mq90",
+     "mes": "2026-06",
+     "vgv_bruto": 86235000.0,
+     "vgv_liquido": 86235000.0,
+     "lucro": 19531113.0,
+     "margem": 0.22649999999999998,
+     "exposicao": 4579767.0,
+     "area_construida": 13299.54,
+     "unidades": 288.0,
+     "permutas": 0.0,
+     "preco_medio": 299427.0833333333,
+     "custo_m2": 2381.0
+    }
+   ],
+   "vigente": "V0",
+   "pos": [
+    -25.44969,
+    -49.28438
+   ]
+  },
+  {
+   "nome": "Edge",
+   "sigla": "EDG",
+   "cidade": "São José dos Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "Porto Rico",
+   "lista_id": "901305589843",
+   "lista": "LIB | Edge (Porto Rico)",
+   "fase": "LIB",
+   "legado": false,
+   "marcos": {
+    "nov001": {
+     "data": "2024-06-27",
+     "ok": 1
+    },
+    "inc001": {
+     "data": "2024-09-30",
+     "ok": 1
+    },
+    "arq003": {
+     "data": "2025-01-24",
+     "ok": 1
+    },
+    "arq005": {
+     "data": "2026-06-02",
+     "ok": 1
+    },
+    "leg009": {
+     "data": "2026-08-27",
+     "ok": 1
+    },
+    "leg010": {
+     "data": "2026-10-30",
+     "ok": 0
+    },
+    "inc002": {
+     "data": "2026-10-17",
+     "ok": 1
+    },
+    "orcV4": {
+     "data": "2026-09-02",
+     "ok": 1
+    },
+    "eng001": {
+     "data": "2027-04-13",
+     "ok": 0
+    },
+    "eng002": {
+     "data": "2029-08-13",
+     "ok": 0
+    },
+    "leg011": {
+     "data": "2029-10-01",
+     "ok": 0
+    },
+    "mar001": {
+     "data": "2029-11-13",
+     "ok": 0
+    },
+    "inc003": {
+     "data": "2029-10-28",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V0",
+     "obs": "",
+     "situacao": "Substituída",
+     "task_id": "86ak6mr6p",
+     "mes": "2024-02",
+     "vgv_bruto": 100440000.0,
+     "vgv_liquido": 85320000.0,
+     "lucro": 19179815.0,
+     "margem": 0.2248,
+     "exposicao": 5679232.0,
+     "area_construida": 23700.0,
+     "unidades": 372.0,
+     "permutas": 56.0,
+     "preco_medio": 270000.0,
+     "custo_m2": 1800.0
+    },
+    {
+     "versao": "V2",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "86ak6mtb6",
+     "mes": "2024-02",
+     "vgv_bruto": 116640000.0,
+     "vgv_liquido": 101520000.0,
+     "lucro": 23441522.0,
+     "margem": 0.2309,
+     "exposicao": 6992685.0,
+     "area_construida": 26828.44,
+     "unidades": 432.0,
+     "permutas": 56.0,
+     "preco_medio": 270000.0,
+     "custo_m2": 1877.298808735
+    },
+    {
+     "versao": "V4",
+     "obs": "Pendente aprovação diretoria",
+     "situacao": "Pendente aprovação",
+     "task_id": "17tpepcgy93",
+     "mes": "2026-09",
+     "vgv_bruto": 165452267.0,
+     "vgv_liquido": 159460028.0,
+     "lucro": 42910861.0,
+     "margem": 0.2691,
+     "exposicao": 12288063.0,
+     "area_construida": 26814.43,
+     "unidades": 432.0,
+     "permutas": 16.0,
+     "preco_medio": 383317.375,
+     "custo_m2": 2333.98
+    }
+   ],
+   "vigente": "V2",
+   "pos": [
+    -25.52444,
+    -49.17821
+   ]
+  },
+  {
+   "nome": "Essence",
+   "sigla": "ESS",
+   "cidade": "Curitiba",
+   "incorporadora": "Make It",
+   "ex_nome": "Faculdade",
+   "lista_id": "901305651702",
+   "lista": "OBR | Essence",
+   "fase": "OBR",
+   "legado": false,
+   "marcos": {
+    "nov001": {
+     "data": "2023-12-21",
+     "ok": 1
+    },
+    "inc001": {
+     "data": "2024-03-22",
+     "ok": 1
+    },
+    "arq003": {
+     "data": "2025-02-17",
+     "ok": 1
+    },
+    "arq005": {
+     "data": "2025-06-26",
+     "ok": 1
+    },
+    "leg009": {
+     "data": "2025-06-16",
+     "ok": 1
+    },
+    "leg010": {
+     "data": "2025-08-08",
+     "ok": 1
+    },
+    "inc002": {
+     "data": "2025-10-08",
+     "ok": 1
+    },
+    "eng001": {
+     "data": "2026-01-16",
+     "ok": 1
+    },
+    "eng002": {
+     "data": "2028-03-16",
+     "ok": 0
+    },
+    "leg011": {
+     "data": "2028-05-04",
+     "ok": 0
+    },
+    "mar001": {
+     "data": "2028-06-09",
+     "ok": 0
+    },
+    "inc003": {
+     "data": "2028-07-31",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V0",
+     "obs": "",
+     "situacao": "Substituída",
+     "task_id": "86ak6munf",
+     "mes": "2023-06",
+     "vgv_bruto": 73760000.0,
+     "vgv_liquido": 65010000.0,
+     "lucro": 12960323.0,
+     "margem": 0.19940000000000002,
+     "exposicao": 4901314.0,
+     "area_construida": 16106.0,
+     "unidades": 216.0,
+     "permutas": 25.0,
+     "preco_medio": 340366.49214659684,
+     "custo_m2": 2000.0
+    },
+    {
+     "versao": "V2",
+     "obs": "",
+     "situacao": "Substituída",
+     "task_id": "86ak6mvzc",
+     "mes": "2024-10",
+     "vgv_bruto": 89700000.0,
+     "vgv_liquido": 80300000.0,
+     "lucro": 21150274.0,
+     "margem": 0.2634,
+     "exposicao": 8308659.0,
+     "area_construida": 15841.29,
+     "unidades": 256.0,
+     "permutas": 25.0,
+     "preco_medio": 347619.04761904763,
+     "custo_m2": 2080.0
+    },
+    {
+     "versao": "V4",
+     "obs": "Correção 06/26",
+     "situacao": "Vigente",
+     "task_id": "86ak6mw12",
+     "mes": "2025-06",
+     "vgv_bruto": 100004017.0,
+     "vgv_liquido": 100004017.0,
+     "lucro": 24658664.0,
+     "margem": 0.2466,
+     "exposicao": 4684905.0,
+     "area_construida": 15839.18,
+     "unidades": 256.0,
+     "permutas": 0.0,
+     "preco_medio": 390640.69140625,
+     "custo_m2": 1440.51
+    }
+   ],
+   "vigente": "V4",
+   "pos": [
+    -25.41462,
+    -49.30656
+   ]
+  },
+  {
+   "nome": "Flow",
+   "sigla": "FLO",
+   "cidade": "Araucária",
+   "incorporadora": "Make It",
+   "ex_nome": "Matsu II",
+   "lista_id": "901305618860",
+   "lista": "LAN | Flow (Matsu II)",
+   "fase": "LAN",
+   "legado": false,
+   "marcos": {
+    "nov001": {
+     "data": "2024-05-07",
+     "ok": 1
+    },
+    "inc001": {
+     "data": "2024-08-04",
+     "ok": 1
+    },
+    "arq003": {
+     "data": "2024-12-06",
+     "ok": 1
+    },
+    "arq005": {
+     "data": "2025-07-10",
+     "ok": 1
+    },
+    "leg009": {
+     "data": "2026-05-27",
+     "ok": 1
+    },
+    "leg010": {
+     "data": "2026-08-10",
+     "ok": 1
+    },
+    "inc002": {
+     "data": "2027-02-15",
+     "ok": 0
+    },
+    "eng001": {
+     "data": "2027-06-15",
+     "ok": 0
+    },
+    "eng002": {
+     "data": "2029-08-13",
+     "ok": 0
+    },
+    "leg011": {
+     "data": "2029-11-01",
+     "ok": 0
+    },
+    "mar001": {
+     "data": "2029-11-13",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V0",
+     "obs": "",
+     "situacao": "Substituída",
+     "task_id": "17tpepcn9ck",
+     "mes": "2024-02",
+     "vgv_bruto": 44160000.0,
+     "vgv_liquido": 44160000.0,
+     "lucro": 10619448.0,
+     "margem": 0.24050000000000002,
+     "exposicao": 2408053.0,
+     "area_construida": 9539.29,
+     "unidades": 192.0,
+     "permutas": 0.0,
+     "preco_medio": 230000.00250000003,
+     "custo_m2": 1800.0
+    },
+    {
+     "versao": "V2",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "86ak6n447",
+     "mes": "2024-10",
+     "vgv_bruto": 60160015.0,
+     "vgv_liquido": 60160015.0,
+     "lucro": 11973382.0,
+     "margem": 0.19899999999999998,
+     "exposicao": 3331909.0,
+     "area_construida": 13445.78,
+     "unidades": 256.0,
+     "permutas": 0.0,
+     "preco_medio": 235000.0574,
+     "custo_m2": 1919.04
+    },
+    {
+     "versao": "V4",
+     "obs": "Simulação pré-lançamento",
+     "situacao": "Simulação",
+     "task_id": "17tpepcgz8a",
+     "mes": "2026-10",
+     "vgv_bruto": 71680000.0,
+     "vgv_liquido": 71680000.0,
+     "lucro": 14595826.0,
+     "margem": 0.2036,
+     "exposicao": 3194035.0,
+     "area_construida": 13283.2,
+     "unidades": 256.0,
+     "permutas": 0.0,
+     "preco_medio": 280000.0,
+     "custo_m2": 2404.77
+    }
+   ],
+   "vigente": "V2",
+   "pos": [
+    -25.60368,
+    -49.40523
+   ]
+  },
+  {
+   "nome": "Fundação",
+   "sigla": "FUN",
+   "cidade": "Curitiba",
+   "incorporadora": "Make It",
+   "ex_nome": "",
+   "lista_id": "901327965854",
+   "lista": "EP | Fundação",
+   "fase": "EP",
+   "legado": false,
+   "marcos": {
+    "nov001": {
+     "data": "2026-02-10",
+     "ok": 1
+    },
+    "inc001": {
+     "data": "2026-06-18",
+     "ok": 1
+    },
+    "arq003": {
+     "data": "2027-01-05",
+     "ok": 0
+    },
+    "arq005": {
+     "data": "2027-04-05",
+     "ok": 0
+    },
+    "leg009": {
+     "data": "2027-06-25",
+     "ok": 0
+    },
+    "leg010": {
+     "data": "2027-08-30",
+     "ok": 0
+    },
+    "inc002": {
+     "data": "2027-08-15",
+     "ok": 0
+    },
+    "orcV4": {
+     "data": "2027-09-09",
+     "ok": 0
+    },
+    "eng001": {
+     "data": "2027-12-15",
+     "ok": 0
+    },
+    "eng002": {
+     "data": "2029-12-17",
+     "ok": 0
+    },
+    "leg011": {
+     "data": "2030-02-04",
+     "ok": 0
+    },
+    "mar001": {
+     "data": "2030-03-19",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V0",
+     "obs": "",
+     "situacao": "Substituída",
+     "task_id": "86ak6n6vn",
+     "mes": "2026-01",
+     "vgv_bruto": 77258800.0,
+     "vgv_liquido": 77258800.0,
+     "lucro": 20016243.0,
+     "margem": 0.2591,
+     "exposicao": 6583437.0,
+     "area_construida": 10150.06,
+     "unidades": 300.0,
+     "permutas": 0.0,
+     "preco_medio": 257529.33333333334,
+     "custo_m2": 2537.76
+    },
+    {
+     "versao": "V1",
+     "obs": "",
+     "situacao": "Substituída",
+     "task_id": "86ak6n7pt",
+     "mes": "2026-04",
+     "vgv_bruto": 71050000.0,
+     "vgv_liquido": 71050000.0,
+     "lucro": 17890862.0,
+     "margem": 0.2518,
+     "exposicao": 5751754.0,
+     "area_construida": 9136.46,
+     "unidades": 239.0,
+     "permutas": 0.0,
+     "preco_medio": 297280.33472803346,
+     "custo_m2": 2674.14
+    },
+    {
+     "versao": "V2",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "17tpepch0k5",
+     "mes": "2026-06",
+     "vgv_bruto": 70860066.0,
+     "vgv_liquido": 70860066.0,
+     "lucro": 16751941.0,
+     "margem": 0.2364,
+     "exposicao": 6008527.0,
+     "area_construida": 9300.27,
+     "unidades": 239.0,
+     "permutas": 0.0,
+     "preco_medio": 296485.6317991632,
+     "custo_m2": 2683.51
+    }
+   ],
+   "vigente": "V2",
+   "pos": [
+    -25.41123,
+    -49.26789
+   ]
+  },
+  {
+   "nome": "Horizon",
+   "sigla": "HOR",
+   "cidade": "Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "Patrulha",
+   "lista_id": "901308225891",
+   "lista": "LIB | Horizon (Patrulha)",
+   "fase": "LIB",
+   "legado": false,
+   "marcos": {
+    "nov001": {
+     "data": "2024-09-10",
+     "ok": 1
+    },
+    "inc001": {
+     "data": "2024-12-25",
+     "ok": 1
+    },
+    "arq003": {
+     "data": "2025-08-13",
+     "ok": 1
+    },
+    "arq005": {
+     "data": "2026-04-07",
+     "ok": 1
+    },
+    "leg009": {
+     "data": "2026-06-26",
+     "ok": 1
+    },
+    "leg010": {
+     "data": "2026-07-30",
+     "ok": 1
+    },
+    "inc002": {
+     "data": "2026-10-01",
+     "ok": 1
+    },
+    "orcV4": {
+     "data": "2026-09-15",
+     "ok": 1
+    },
+    "eng001": {
+     "data": "2027-01-30",
+     "ok": 0
+    },
+    "eng002": {
+     "data": "2029-01-31",
+     "ok": 0
+    },
+    "leg011": {
+     "data": "2029-04-18",
+     "ok": 0
+    },
+    "mar001": {
+     "data": "2029-05-01",
+     "ok": 0
+    },
+    "inc003": {
+     "data": "2029-05-30",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V0",
+     "obs": "",
+     "situacao": "Substituída",
+     "task_id": "86ak6n978",
+     "mes": "2024-09",
+     "vgv_bruto": 34560000.0,
+     "vgv_liquido": 30720000.0,
+     "lucro": 6720188.0,
+     "margem": 0.2188,
+     "exposicao": 4043356.0,
+     "area_construida": 7511.0,
+     "unidades": 144.0,
+     "permutas": 16.0,
+     "preco_medio": 240000.0,
+     "custo_m2": 1846.0
+    },
+    {
+     "versao": "V2",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "86ak6nd0b",
+     "mes": "2024-09",
+     "vgv_bruto": 41184000.0,
+     "vgv_liquido": 36608000.0,
+     "lucro": 7303816.0,
+     "margem": 0.19949999999999998,
+     "exposicao": 4368549.0,
+     "area_construida": 7703.31,
+     "unidades": 144.0,
+     "permutas": 16.0,
+     "preco_medio": 286000.0,
+     "custo_m2": 2300.0
+    },
+    {
+     "versao": "V4",
+     "obs": "Pendente aprovação diretoria",
+     "situacao": "Pendente aprovação",
+     "task_id": "17tpepcgy5k",
+     "mes": "2026-05",
+     "vgv_bruto": 53890711.0,
+     "vgv_liquido": 47883447.0,
+     "lucro": 13994515.0,
+     "margem": 0.2923,
+     "exposicao": 2947648.0,
+     "area_construida": 7463.35,
+     "unidades": 144.0,
+     "permutas": 16.0,
+     "preco_medio": 374089.4296875,
+     "custo_m2": 2714.53
+    }
+   ],
+   "vigente": "V2",
+   "pos": [
+    -25.4567,
+    -49.21328
+   ]
+  },
+  {
+   "nome": "Lume",
+   "sigla": "LUM",
+   "cidade": "Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "Jardins",
+   "lista_id": "901305541456",
+   "lista": "OBR | Lume",
+   "fase": "OBR",
+   "legado": false,
+   "marcos": {
+    "nov001": {
+     "data": "2023-09-28",
+     "ok": 1
+    },
+    "inc001": {
+     "data": "2023-11-10",
+     "ok": 1
+    },
+    "arq003": {
+     "data": "2024-11-01",
+     "ok": 1
+    },
+    "arq005": {
+     "data": "2024-11-11",
+     "ok": 1
+    },
+    "leg009": {
+     "data": "2024-10-25",
+     "ok": 1
+    },
+    "leg010": {
+     "data": "2025-03-19",
+     "ok": 1
+    },
+    "inc002": {
+     "data": "2025-03-20",
+     "ok": 1
+    },
+    "eng001": {
+     "data": "2025-07-01",
+     "ok": 1
+    },
+    "eng002": {
+     "data": "2027-10-05",
+     "ok": 0
+    },
+    "leg011": {
+     "data": "2027-10-28",
+     "ok": 0
+    },
+    "mar001": {
+     "data": "2027-12-16",
+     "ok": 0
+    },
+    "inc003": {
+     "data": "2028-01-30",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V4",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "86ak6ne78",
+     "mes": "2025-02",
+     "vgv_bruto": 112195999.0,
+     "vgv_liquido": 111900747.0,
+     "lucro": 23998286.0,
+     "margem": 0.2145,
+     "exposicao": 6625038.0,
+     "area_construida": 22408.21,
+     "unidades": 380.0,
+     "permutas": 0.0,
+     "preco_medio": 295252.63,
+     "custo_m2": 1899.81
+    }
+   ],
+   "vigente": "V4",
+   "pos": [
+    -25.45119,
+    -49.16321
+   ]
+  },
+  {
+   "nome": "Now",
+   "sigla": "NOW",
+   "cidade": "Araucária",
+   "incorporadora": "Make It",
+   "ex_nome": "Matsu I",
+   "lista_id": "901305540246",
+   "lista": "LIB | Now (Matsu I)",
+   "fase": "LIB",
+   "legado": false,
+   "marcos": {
+    "nov001": {
+     "data": "2024-05-07",
+     "ok": 1
+    },
+    "inc001": {
+     "data": "2024-08-04",
+     "ok": 1
+    },
+    "arq003": {
+     "data": "2024-12-06",
+     "ok": 1
+    },
+    "arq005": {
+     "data": "2025-06-11",
+     "ok": 1
+    },
+    "leg009": {
+     "data": "2026-04-16",
+     "ok": 1
+    },
+    "leg010": {
+     "data": "2026-07-23",
+     "ok": 1
+    },
+    "inc002": {
+     "data": "2026-07-20",
+     "ok": 1
+    },
+    "eng001": {
+     "data": "2026-10-30",
+     "ok": 0
+    },
+    "eng002": {
+     "data": "2028-10-30",
+     "ok": 0
+    },
+    "leg011": {
+     "data": "2029-01-02",
+     "ok": 0
+    },
+    "mar001": {
+     "data": "2029-02-27",
+     "ok": 0
+    },
+    "inc003": {
+     "data": "2029-03-31",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V0",
+     "obs": "",
+     "situacao": "Substituída",
+     "task_id": "86ak6ng1d",
+     "mes": "2024-02",
+     "vgv_bruto": 33120000.0,
+     "vgv_liquido": 33120000.0,
+     "lucro": 7756838.0,
+     "margem": 0.23420000000000002,
+     "exposicao": 1969287.0,
+     "area_construida": 7263.0,
+     "unidades": 144.0,
+     "permutas": 0.0,
+     "preco_medio": 230000.0,
+     "custo_m2": 1800.0
+    },
+    {
+     "versao": "V2",
+     "obs": "",
+     "situacao": "Substituída",
+     "task_id": "86ak6nhct",
+     "mes": "2024-10",
+     "vgv_bruto": 45120011.0,
+     "vgv_liquido": 45120011.0,
+     "lucro": 9147089.0,
+     "margem": 0.2027,
+     "exposicao": 2689496.0,
+     "area_construida": 10114.74,
+     "unidades": 192.0,
+     "permutas": 0.0,
+     "preco_medio": 235000.05740000002,
+     "custo_m2": 1900.0
+    },
+    {
+     "versao": "V4",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "17tpepcgy0g",
+     "mes": "2026-06",
+     "vgv_bruto": 53756304.0,
+     "vgv_liquido": 53756304.0,
+     "lucro": 10466146.0,
+     "margem": 0.19469999999999998,
+     "exposicao": 4311838.0,
+     "area_construida": 9996.91,
+     "unidades": 192.0,
+     "permutas": 0.0,
+     "preco_medio": 279980.75,
+     "custo_m2": 2459.46
+    }
+   ],
+   "vigente": "V4",
+   "pos": [
+    -25.56331,
+    -49.43095
+   ]
+  },
+  {
+   "nome": "Quadratto",
+   "sigla": "QUA",
+   "cidade": "Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "Leilão",
+   "lista_id": "901327828147",
+   "lista": "ALV | Quadratto (Leilão)",
+   "fase": "AP",
+   "legado": false,
+   "marcos": {
+    "arq003": {
+     "data": "2026-07-16",
+     "ok": 1
+    },
+    "arq005": {
+     "data": "2026-11-19",
+     "ok": 0
+    },
+    "leg009": {
+     "data": "2026-11-30",
+     "ok": 0
+    },
+    "leg010": {
+     "data": "2026-12-23",
+     "ok": 0
+    },
+    "inc002": {
+     "data": "2026-12-15",
+     "ok": 0
+    },
+    "orcV4": {
+     "data": "2026-12-29",
+     "ok": 0
+    },
+    "eng001": {
+     "data": "2027-05-24",
+     "ok": 0
+    },
+    "eng002": {
+     "data": "2029-05-24",
+     "ok": 0
+    },
+    "leg011": {
+     "data": "2029-07-12",
+     "ok": 0
+    },
+    "mar001": {
+     "data": "2029-07-25",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V2",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "86ak6njzc",
+     "mes": "2026-07",
+     "vgv_bruto": 95210000.0,
+     "vgv_liquido": 95210000.0,
+     "lucro": 18805903.0,
+     "margem": 0.1975,
+     "exposicao": 5806679.0,
+     "area_construida": 14429.16,
+     "unidades": 256.0,
+     "permutas": 0.0,
+     "preco_medio": 371914.0625,
+     "custo_m2": 2600.0
+    }
+   ],
+   "vigente": "V2",
+   "pos": [
+    -25.4566,
+    -49.19407
+   ]
+  },
+  {
+   "nome": "Rafitec",
+   "sigla": "RAF",
+   "cidade": "Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "",
+   "lista_id": "1400450000002217",
+   "lista": "EP | Rafitec",
+   "fase": "EP",
+   "legado": false,
+   "marcos": {
+    "nov001": {
+     "data": "2026-09-04",
+     "ok": 1
+    },
+    "inc001": {
+     "data": "2026-09-30",
+     "ok": 1
+    },
+    "arq003": {
+     "data": "2027-01-18",
+     "ok": 0
+    },
+    "arq005": {
+     "data": "2027-06-07",
+     "ok": 0
+    },
+    "leg009": {
+     "data": "2027-08-05",
+     "ok": 0
+    },
+    "leg010": {
+     "data": "2027-11-04",
+     "ok": 0
+    },
+    "inc002": {
+     "data": "2027-12-15",
+     "ok": 0
+    },
+    "eng001": {
+     "data": "2028-04-14",
+     "ok": 0
+    },
+    "eng002": {
+     "data": "2030-04-14",
+     "ok": 0
+    },
+    "leg011": {
+     "data": "2030-06-03",
+     "ok": 0
+    },
+    "mar001": {
+     "data": "2030-06-14",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V0",
+     "obs": "",
+     "situacao": "Substituída",
+     "task_id": "17tpepcp6hd",
+     "mes": "2026-09",
+     "vgv_bruto": 105000000.0,
+     "vgv_liquido": 105000000.0,
+     "lucro": 29314819.0,
+     "margem": 0.2792,
+     "exposicao": 14940994.0,
+     "area_construida": 16670.51,
+     "unidades": 300.0,
+     "permutas": 0.0,
+     "preco_medio": 350000.0,
+     "custo_m2": 2397.47
+    },
+    {
+     "versao": "V2",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "17tpepch0un",
+     "mes": "2026-08",
+     "vgv_bruto": 105000000.0,
+     "vgv_liquido": 105000000.0,
+     "lucro": 23270758.0,
+     "margem": 0.2216,
+     "exposicao": 12113350.0,
+     "area_construida": 16746.97,
+     "unidades": 300.0,
+     "permutas": 0.0,
+     "preco_medio": 350000.0,
+     "custo_m2": 2659.14
+    }
+   ],
+   "vigente": "V2",
+   "pos": [
+    -25.43313,
+    -49.17871
+   ]
+  },
+  {
+   "nome": "Uniq",
+   "sigla": "UNI",
+   "cidade": "Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "Shakespeare",
+   "lista_id": "1400450000001100",
+   "lista": "OBR | Uniq",
+   "fase": "OBR",
+   "legado": false,
+   "marcos": {
+    "eng002": {
+     "data": "2026-11-05",
+     "ok": 0
+    },
+    "leg011": {
+     "data": "2026-12-09",
+     "ok": 0
+    },
+    "mar001": {
+     "data": "2026-12-15",
+     "ok": 0
+    },
+    "inc003": {
+     "data": "2026-12-30",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V4",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "86ak6nn43",
+     "mes": "2023-10",
+     "vgv_bruto": 29026816.0,
+     "vgv_liquido": 23843456.0,
+     "lucro": 3811899.0,
+     "margem": 0.15990000000000001,
+     "exposicao": 1957487.0,
+     "area_construida": 5331.24,
+     "unidades": 112.0,
+     "permutas": 0.0,
+     "preco_medio": 259168.0,
+     "custo_m2": 2400.0
+    }
+   ],
+   "vigente": "V4",
+   "pos": [
+    -25.44365,
+    -49.21648
+   ]
+  },
+  {
+   "nome": "Vert",
+   "sigla": "VER",
+   "cidade": "São José dos Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "Follador",
+   "lista_id": "901322097447",
+   "lista": "ALV | Vert (Follador)",
+   "fase": "AP",
+   "legado": false,
+   "marcos": {
+    "nov001": {
+     "data": "2025-06-05",
+     "ok": 1
+    },
+    "inc001": {
+     "data": "2025-11-04",
+     "ok": 1
+    },
+    "arq003": {
+     "data": "2026-06-23",
+     "ok": 1
+    },
+    "arq005": {
+     "data": "2026-12-01",
+     "ok": 0
+    },
+    "leg009": {
+     "data": "2027-04-22",
+     "ok": 0
+    },
+    "leg010": {
+     "data": "2027-06-30",
+     "ok": 0
+    },
+    "inc002": {
+     "data": "2028-02-15",
+     "ok": 0
+    },
+    "orcV4": {
+     "data": "2027-04-05",
+     "ok": 0
+    },
+    "eng001": {
+     "data": "2028-06-16",
+     "ok": 0
+    },
+    "eng002": {
+     "data": "2030-05-16",
+     "ok": 0
+    },
+    "leg011": {
+     "data": "2030-07-04",
+     "ok": 0
+    },
+    "mar001": {
+     "data": "2030-08-15",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V0",
+     "obs": "",
+     "situacao": "Substituída",
+     "task_id": "86ak6nqc4",
+     "mes": "2025-05",
+     "vgv_bruto": 74240000.0,
+     "vgv_liquido": 69310000.0,
+     "lucro": 15466755.0,
+     "margem": 0.2232,
+     "exposicao": 12555601.0,
+     "area_construida": 13296.0,
+     "unidades": 256.0,
+     "permutas": 17.0,
+     "preco_medio": 290000.0,
+     "custo_m2": 2150.0
+    },
+    {
+     "versao": "V2",
+     "obs": "",
+     "situacao": "Substituída",
+     "task_id": "86ak6nqep",
+     "mes": "2025-10",
+     "vgv_bruto": 79360000.0,
+     "vgv_liquido": 74090000.0,
+     "lucro": 15796228.0,
+     "margem": 0.2132,
+     "exposicao": 10757000.0,
+     "area_construida": 13720.16,
+     "unidades": 256.0,
+     "permutas": 17.0,
+     "preco_medio": 310000.0,
+     "custo_m2": 2326.27
+    },
+    {
+     "versao": "V3",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "86ak6nqjp",
+     "mes": "2026-06",
+     "vgv_bruto": 83200000.0,
+     "vgv_liquido": 77675000.0,
+     "lucro": 17020841.0,
+     "margem": 0.2191,
+     "exposicao": 11392156.0,
+     "area_construida": 13024.57,
+     "unidades": 256.0,
+     "permutas": 17.0,
+     "preco_medio": 325000.0,
+     "custo_m2": 2575.14
+    }
+   ],
+   "vigente": "V3",
+   "pos": [
+    -25.55591,
+    -49.18519
+   ]
+  },
+  {
+   "nome": "Zago",
+   "sigla": "ZAG",
+   "cidade": "São José dos Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "",
+   "lista_id": "901328072536",
+   "lista": "EP | Zago",
+   "fase": "EP",
+   "legado": false,
+   "marcos": {
+    "nov001": {
+     "data": "2026-02-18",
+     "ok": 1
+    },
+    "inc001": {
+     "data": "2026-06-12",
+     "ok": 1
+    },
+    "arq003": {
+     "data": "2026-11-26",
+     "ok": 0
+    },
+    "arq005": {
+     "data": "2027-03-01",
+     "ok": 0
+    },
+    "leg009": {
+     "data": "2027-07-13",
+     "ok": 0
+    },
+    "leg010": {
+     "data": "2027-09-23",
+     "ok": 0
+    },
+    "inc002": {
+     "data": "2027-10-15",
+     "ok": 0
+    },
+    "orcV4": {
+     "data": "2027-08-30",
+     "ok": 0
+    },
+    "eng001": {
+     "data": "2028-02-15",
+     "ok": 0
+    },
+    "eng002": {
+     "data": "2030-01-15",
+     "ok": 0
+    },
+    "leg011": {
+     "data": "2030-03-05",
+     "ok": 0
+    },
+    "mar001": {
+     "data": "2030-04-15",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V0",
+     "obs": "",
+     "situacao": "Substituída",
+     "task_id": "86ak6nyr2",
+     "mes": "2026-02",
+     "vgv_bruto": 52800000.0,
+     "vgv_liquido": 46500000.0,
+     "lucro": 10501643.0,
+     "margem": 0.22579999999999997,
+     "exposicao": 4863426.0,
+     "area_construida": 9162.24,
+     "unidades": 176.0,
+     "permutas": 21.0,
+     "preco_medio": 300000.0,
+     "custo_m2": 2333.11
+    },
+    {
+     "versao": "V2",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "17tpepch0ky",
+     "mes": "2026-04",
+     "vgv_bruto": 66560000.0,
+     "vgv_liquido": 59840000.0,
+     "lucro": 12052748.0,
+     "margem": 0.2014,
+     "exposicao": 7013343.0,
+     "area_construida": 11791.75,
+     "unidades": 208.0,
+     "permutas": 21.0,
+     "preco_medio": 320000.0,
+     "custo_m2": 2490.5
+    }
+   ],
+   "vigente": "V2",
+   "pos": [
+    -25.49873,
+    -49.20797
+   ]
+  },
+  {
+   "nome": "Tuo",
+   "sigla": "TUO",
+   "cidade": "Curitiba",
+   "incorporadora": "Make It",
+   "ex_nome": "",
+   "lista_id": "901307558770",
+   "lista": "✅ | Tuo",
+   "fase": "ENT",
+   "legado": true,
+   "marcos": {
+    "eng002": {
+     "data": "2025-11-28",
+     "ok": 1
+    },
+    "leg011": {
+     "data": "2025-12-19",
+     "ok": 1
+    },
+    "mar001": {
+     "data": "2025-12-13",
+     "ok": 1
+    },
+    "inc003": {
+     "data": "2025-12-30",
+     "ok": 0
+    }
+   },
+   "viabilidades": [],
+   "vigente": null,
+   "pos": [
+    -25.43759,
+    -49.28101
+   ]
+  },
+  {
+   "nome": "La Vita",
+   "sigla": "LAV",
+   "cidade": "Curitiba",
+   "incorporadora": "Make It",
+   "ex_nome": "",
+   "lista_id": "901305333997",
+   "lista": "✅ | La Vita",
+   "fase": "ENT",
+   "legado": true,
+   "marcos": {
+    "eng002": {
+     "data": "2025-02-14",
+     "ok": 1
+    },
+    "leg011": {
+     "data": "2025-03-09",
+     "ok": 1
+    },
+    "mar001": {
+     "data": "2025-02-28",
+     "ok": 1
+    },
+    "inc003": {
+     "data": "2025-02-28",
+     "ok": 0
+    }
+   },
+   "viabilidades": [],
+   "vigente": null,
+   "pos": [
+    -25.42605,
+    -49.25545
+   ]
+  },
+  {
+   "nome": "Guadalupe",
+   "sigla": "GUA",
+   "cidade": "Curitiba",
+   "incorporadora": "Gadens",
+   "ex_nome": "",
+   "lista_id": "1400450000008729",
+   "lista": "EP | Guadalupe",
+   "fase": "DUE",
+   "legado": false,
+   "marcos": {
+    "inc001": {
+     "data": "2026-03-23",
+     "ok": 0
+    },
+    "arq003": {
+     "data": "2027-03-15",
+     "ok": 0
+    },
+    "arq005": {
+     "data": "2027-10-04",
+     "ok": 0
+    },
+    "leg009": {
+     "data": "2027-07-16",
+     "ok": 0
+    },
+    "leg010": {
+     "data": "2027-09-13",
+     "ok": 0
+    },
+    "inc002": {
+     "data": "2027-10-15",
+     "ok": 0
+    },
+    "orcV4": {
+     "data": "2028-05-05",
+     "ok": 0
+    },
+    "eng001": {
+     "data": "2028-04-12",
+     "ok": 0
+    },
+    "eng002": {
+     "data": "2030-04-15",
+     "ok": 0
+    },
+    "leg011": {
+     "data": "2030-05-14",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V0",
+     "obs": "",
+     "situacao": "Substituída",
+     "task_id": "17tpepcp6kt",
+     "mes": "2024-12",
+     "vgv_bruto": 88996655.0,
+     "vgv_liquido": 88996655.0,
+     "lucro": 18392047.0,
+     "margem": 0.20670000000000002,
+     "exposicao": 9678696.0,
+     "area_construida": 10111.23,
+     "unidades": 400.0,
+     "permutas": 0.0,
+     "preco_medio": 220741.6375,
+     "custo_m2": 3500.0
+    },
+    {
+     "versao": "V2",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "17tpepch0re",
+     "mes": "2026-07",
+     "vgv_bruto": 135883240.0,
+     "vgv_liquido": 135883240.0,
+     "lucro": 30764985.0,
+     "margem": 0.22640000000000002,
+     "exposicao": 11015892.0,
+     "area_construida": 13312.02,
+     "unidades": 419.0,
+     "permutas": 0.0,
+     "preco_medio": 324303.6754176611,
+     "custo_m2": 3800.0
+    }
+   ],
+   "vigente": "V2",
+   "pos": [
+    -25.41463,
+    -49.29296
+   ]
+  },
+  {
+   "nome": "CORE Evo",
+   "sigla": "EVO",
+   "cidade": "Curitiba",
+   "incorporadora": "Gadens",
+   "ex_nome": "João Negrão",
+   "lista_id": "901328360960",
+   "lista": "EP | CORE Evo (João Negrão)",
+   "fase": "EP",
+   "legado": false,
+   "marcos": {
+    "inc001": {
+     "data": "2024-11-11",
+     "ok": 1
+    },
+    "arq003": {
+     "data": "2026-11-19",
+     "ok": 0
+    },
+    "arq005": {
+     "data": "2027-05-19",
+     "ok": 0
+    },
+    "leg009": {
+     "data": "2027-01-28",
+     "ok": 0
+    },
+    "leg010": {
+     "data": "2027-03-30",
+     "ok": 0
+    },
+    "inc002": {
+     "data": "2027-03-31",
+     "ok": 0
+    },
+    "orcV4": {
+     "data": "2027-11-30",
+     "ok": 0
+    },
+    "eng001": {
+     "data": "2028-02-03",
+     "ok": 0
+    },
+    "eng002": {
+     "data": "2029-09-27",
+     "ok": 0
+    },
+    "leg011": {
+     "data": "2029-10-26",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V2",
+     "obs": "Simulação para acompanhamento",
+     "situacao": "Simulação",
+     "task_id": "17tpepcgznw",
+     "mes": "2023-08",
+     "vgv_bruto": 113187131.0,
+     "vgv_liquido": 97791756.0,
+     "lucro": 17798835.0,
+     "margem": 0.182,
+     "exposicao": 7265570.0,
+     "area_construida": 13610.16,
+     "unidades": 319.0,
+     "permutas": 47.0,
+     "preco_medio": 340821.8085106383,
+     "custo_m2": 3700.0
+    },
+    {
+     "versao": "V3",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "17tpepcu22n",
+     "mes": "2026-10",
+     "vgv_bruto": 130928520.0,
+     "vgv_liquido": 116995200.0,
+     "lucro": 27211617.0,
+     "margem": 0.23260000000000003,
+     "exposicao": 11855224.0,
+     "area_construida": 13997.75,
+     "unidades": 357.0,
+     "permutas": 47.0,
+     "preco_medio": 360360.0,
+     "custo_m2": 3700.0
+    }
+   ],
+   "vigente": "V3",
+   "pos": [
+    -25.45769,
+    -49.26681
+   ]
+  },
+  {
+   "nome": "Martim Afonso",
+   "sigla": "MAR",
+   "cidade": "Curitiba",
+   "incorporadora": "Gadens",
+   "ex_nome": "",
+   "lista_id": "901327721107",
+   "lista": "EP | Martim Afonso",
+   "fase": "EP",
+   "legado": false,
+   "marcos": {
+    "inc001": {
+     "data": "2026-05-18",
+     "ok": 1
+    },
+    "arq003": {
+     "data": "2027-01-15",
+     "ok": 0
+    },
+    "arq005": {
+     "data": "2027-03-01",
+     "ok": 0
+    },
+    "leg009": {
+     "data": "2027-06-17",
+     "ok": 0
+    },
+    "leg010": {
+     "data": "2027-08-13",
+     "ok": 0
+    },
+    "inc002": {
+     "data": "2027-07-15",
+     "ok": 0
+    },
+    "orcV4": {
+     "data": "2027-11-03",
+     "ok": 0
+    },
+    "eng001": {
+     "data": "2028-01-11",
+     "ok": 0
+    },
+    "eng002": {
+     "data": "2030-01-11",
+     "ok": 0
+    },
+    "leg011": {
+     "data": "2030-02-11",
+     "ok": 0
+    }
+   },
+   "viabilidades": [
+    {
+     "versao": "V2",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "17tpepch0d8",
+     "mes": "2026-07",
+     "vgv_bruto": 51545795.0,
+     "vgv_liquido": 51545795.0,
+     "lucro": 6486484.0,
+     "margem": 0.1258,
+     "exposicao": 25115818.0,
+     "area_construida": 4892.28,
+     "unidades": 116.0,
+     "permutas": 0.0,
+     "preco_medio": 430912.025862069,
+     "custo_m2": 3800.0
+    }
+   ],
+   "vigente": "V2",
+   "pos": [
+    -25.39722,
+    -49.2553
+   ]
+  },
+  {
+   "nome": "Lens Alto da Glória",
+   "sigla": "LAG",
+   "cidade": "Curitiba",
+   "incorporadora": "Gadens",
+   "ex_nome": "",
+   "lista_id": null,
+   "lista": null,
+   "fase": null,
+   "legado": false,
+   "marcos": {},
+   "viabilidades": [
+    {
+     "versao": "V4",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "17tpepcgz0m",
+     "mes": "2026-07",
+     "vgv_bruto": 77556904.0,
+     "vgv_liquido": 77556904.0,
+     "lucro": 13252864.0,
+     "margem": 0.1709,
+     "exposicao": 12183047.0,
+     "area_construida": 8007.51,
+     "unidades": 163.0,
+     "permutas": 0.0,
+     "preco_medio": 459674.0306748466,
+     "custo_m2": 3853.98
+    }
+   ],
+   "vigente": "V4",
+   "pos": [
+    -25.43201,
+    -49.28474
+   ]
+  },
+  {
+   "nome": "Lens Barigui",
+   "sigla": "LBA",
+   "cidade": "Curitiba",
+   "incorporadora": "Gadens",
+   "ex_nome": "",
+   "lista_id": null,
+   "lista": null,
+   "fase": null,
+   "legado": false,
+   "marcos": {},
+   "viabilidades": [
+    {
+     "versao": "V3",
+     "obs": "",
+     "situacao": "Vigente",
+     "task_id": "17tpepcgzdg",
+     "mes": "2026-06",
+     "vgv_bruto": 86981760.0,
+     "vgv_liquido": 69909408.0,
+     "lucro": 14419297.0,
+     "margem": 0.20629999999999998,
+     "exposicao": 11662936.0,
+     "area_construida": 8387.51,
+     "unidades": 176.0,
+     "permutas": 35.2,
+     "preco_medio": 485009.99999999994,
+     "custo_m2": 3700.0
+    }
+   ],
+   "vigente": "V3",
+   "pos": [
+    -25.43601,
+    -49.25699
+   ]
+  }
+ ],
+ "variacoes": [
+  {
+   "empreendimento": "Guadalupe",
+   "sigla": "GUA",
+   "codigo": "inc002",
+   "marco": "Lançamento Comercial",
+   "anterior": "2028-05-30",
+   "atual": "2027-10-15",
+   "dias": -228
   },
   {
    "empreendimento": "Guadalupe",
-   "versao": "V0",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Rafitec",
-   "versao": "V0",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Flow",
-   "versao": "V0",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Rafitec",
-   "versao": "V2",
-   "obs": ""
+   "sigla": "GUA",
+   "codigo": "leg010",
+   "marco": "Registro de Incorporação",
+   "anterior": "2028-05-29",
+   "atual": "2027-09-13",
+   "dias": -259
   },
   {
    "empreendimento": "Guadalupe",
-   "versao": "V2",
-   "obs": ""
+   "sigla": "GUA",
+   "codigo": "leg009",
+   "marco": "Emissão de Alvará",
+   "anterior": "2028-03-31",
+   "atual": "2027-07-16",
+   "dias": -259
   },
   {
-   "empreendimento": "Zago",
-   "versao": "V2",
-   "obs": ""
+   "empreendimento": "Guadalupe",
+   "sigla": "GUA",
+   "codigo": "eng001",
+   "marco": "Início de Obra",
+   "anterior": "2028-02-25",
+   "atual": "2028-04-12",
+   "dias": 47
   },
   {
-   "empreendimento": "Fundação",
-   "versao": "V2",
-   "obs": ""
+   "empreendimento": "Guadalupe",
+   "sigla": "GUA",
+   "codigo": "eng002",
+   "marco": "Término de Obra",
+   "anterior": "2030-11-27",
+   "atual": "2030-04-15",
+   "dias": -226
   },
   {
    "empreendimento": "Martim Afonso",
-   "versao": "V2",
-   "obs": ""
+   "sigla": "MAR",
+   "codigo": "leg009",
+   "marco": "Emissão de Alvará",
+   "anterior": "2027-04-08",
+   "atual": "2027-06-17",
+   "dias": 70
   },
   {
-   "empreendimento": "Arena",
-   "versao": "V2",
-   "obs": ""
+   "empreendimento": "Martim Afonso",
+   "sigla": "MAR",
+   "codigo": "leg010",
+   "marco": "Registro de Incorporação",
+   "anterior": "2027-06-04",
+   "atual": "2027-08-13",
+   "dias": 70
   },
   {
-   "empreendimento": "CORE Evo",
-   "versao": "V2",
-   "obs": "Simulação para acompanhamento"
-  },
-  {
-   "empreendimento": "Lens Barigui",
-   "versao": "V3",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Flow",
-   "versao": "V4",
-   "obs": "Simulação pré-lançamento"
-  },
-  {
-   "empreendimento": "Lens Alto da Glória",
-   "versao": "V4",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Edge",
-   "versao": "V4",
-   "obs": "Pendente aprovação diretoria"
-  },
-  {
-   "empreendimento": "Horizon",
-   "versao": "V4",
-   "obs": "Pendente aprovação diretoria"
-  },
-  {
-   "empreendimento": "Now",
-   "versao": "V4",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Zago",
-   "versao": "V0",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Vert",
-   "versao": "V3",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Vert",
-   "versao": "V2",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Vert",
-   "versao": "V0",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Uniq",
-   "versao": "V4",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Quadratto",
-   "versao": "V2",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Now",
-   "versao": "V2",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Now",
-   "versao": "V0",
-   "obs": ""
+   "empreendimento": "Martim Afonso",
+   "sigla": "MAR",
+   "codigo": "arq003",
+   "marco": "Estudo Preliminar",
+   "anterior": "2026-11-06",
+   "atual": "2027-01-15",
+   "dias": 70
   },
   {
    "empreendimento": "Lume",
-   "versao": "V4",
-   "obs": ""
+   "sigla": "LUM",
+   "codigo": "eng002",
+   "marco": "Término de Obra",
+   "anterior": "2027-08-04",
+   "atual": "2027-10-05",
+   "dias": 62
   },
   {
-   "empreendimento": "Horizon",
-   "versao": "V2",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Horizon",
-   "versao": "V0",
-   "obs": ""
+   "empreendimento": "Lume",
+   "sigla": "LUM",
+   "codigo": "leg011",
+   "marco": "Registro de CVCO",
+   "anterior": "2027-08-27",
+   "atual": "2027-10-28",
+   "dias": 62
   },
   {
    "empreendimento": "Fundação",
-   "versao": "V1",
-   "obs": ""
+   "sigla": "FUN",
+   "codigo": "arq003",
+   "marco": "Estudo Preliminar",
+   "anterior": "2026-12-07",
+   "atual": "2027-01-05",
+   "dias": 29
   },
   {
-   "empreendimento": "Fundação",
-   "versao": "V0",
-   "obs": ""
+   "empreendimento": "Rafitec",
+   "sigla": "RAF",
+   "codigo": "leg011",
+   "marco": "Registro de CVCO",
+   "anterior": "2030-07-02",
+   "atual": "2030-06-03",
+   "dias": -29
   },
   {
-   "empreendimento": "Flow",
-   "versao": "V2",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Essence",
-   "versao": "V4",
-   "obs": "Correção 06/26"
-  },
-  {
-   "empreendimento": "Essence",
-   "versao": "V2",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Essence",
-   "versao": "V0",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Edge",
-   "versao": "V2",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Edge",
-   "versao": "V0",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Container",
-   "versao": "V0",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Bravo",
-   "versao": "V4",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Aura",
-   "versao": "V2",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Aura",
-   "versao": "V0",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Arena",
-   "versao": "V0",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Arbo",
-   "versao": "V4",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Alba",
-   "versao": "V2",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Al Nasser 2",
-   "versao": "V2",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Al Nasser 2",
-   "versao": "V0",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Alba",
-   "versao": "V3",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Al Nasser 1",
-   "versao": "V2",
-   "obs": ""
-  },
-  {
-   "empreendimento": "Al Nasser 1",
-   "versao": "V0",
-   "obs": ""
+   "empreendimento": "Rafitec",
+   "sigla": "RAF",
+   "codigo": "mar001",
+   "marco": "Entrega de Chaves",
+   "anterior": "2030-07-15",
+   "atual": "2030-06-14",
+   "dias": -31
   }
  ]
 }
