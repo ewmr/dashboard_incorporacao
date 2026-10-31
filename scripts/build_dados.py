@@ -28,8 +28,19 @@ EMP = [
  ("Lens Alto da Glória","LAG","Curitiba","Gadens",""),("Lens Barigui","LBA","Curitiba","Gadens",""),
 ]
 LEGADO = {"TUO","LAV"}  # entregues, sem viabilidade na lista
-CENTRO = {"Curitiba":(-25.4284,-49.2733),"Pinhais":(-25.4447,-49.1925),"São José dos Pinhais":(-25.5347,-49.2064),
-          "Araucária":(-25.5928,-49.4103),"Almirante Tamandaré":(-25.3249,-49.3101)}
+# Posição provisória (bairro/rua, estimada a partir dos endereços da antiga BD Geral) até o campo
+# "📍 Endereço do empreendimento" ser preenchido no ClickUp. Com o campo preenchido, vale a coordenada do ClickUp.
+COORD = {
+ "Essence":[-25.4720,-49.2380],"Alba":[-25.3230,-49.3080],"Now":[-25.5720,-49.4020],"Flow":[-25.5726,-49.4012],
+ "Bravo":[-25.4380,-49.1880],"Tuo":[-25.4095,-49.1460],"La Vita":[-25.4110,-49.1490],"Arbo":[-25.4100,-49.1470],
+ "Edge":[-25.5290,-49.1880],"Uniq":[-25.4405,-49.1900],"Lume":[-25.4000,-49.2100],"Horizon":[-25.4385,-49.1885],
+ "Vert":[-25.5310,-49.2010],"Al Nasser 1":[-25.4010,-49.2360],"Al Nasser 2":[-25.4020,-49.2370],"Aura":[-25.5350,-49.2050],
+ "Quadratto":[-25.4448,-49.1930],"Zago":[-25.5330,-49.2030],"Fundação":[-25.4620,-49.2660],"Arena":[-25.4590,-49.2280],
+ "Container":[-25.5240,-49.2560],"Rafitec":[-25.4300,-49.1700],
+ "Guadalupe":[-25.4370,-49.2780],"CORE Evo":[-25.4390,-49.2680],"Martim Afonso":[-25.4270,-49.2900],
+ "Lens Alto da Glória":[-25.4195,-49.2620],"Lens Barigui":[-25.4290,-49.3050],
+}
+ENDERECO = {}   # nome -> {"lat":..,"lng":..,"endereco":".."} lido do campo de localização do ClickUp
 MARCO_NOME = {"nov001":"Reunião de Arrancada","inc001":"Fim da Due Diligence","arq003":"Estudo Preliminar",
   "arq005":"Anteprojeto","leg009":"Emissão de Alvará","leg010":"Registro de Incorporação","inc002":"Lançamento Comercial",
   "orcV4":"Orçamento V4","eng001":"Início de Obra","eng002":"Término de Obra","leg011":"Registro de CVCO",
@@ -61,22 +72,17 @@ def mes(db):
     except Exception: return None
 
 viab = {}
-by = {}
-for r in rows: by.setdefault(r["emp"],[]).append(r)
-for emp, rs in by.items():
-    ok=[r for r in rs if not r["obs"].startswith(("Simulação","Pendente"))]
-    top=max(ok,key=lambda r:order[r["ver"]]) if ok else None
-    for r in rs:
-        sit = "Simulação" if r["obs"].startswith("Simulação") else "Pendente aprovação" if r["obs"].startswith("Pendente") else ("Vigente" if r is top else "Substituída")
-        vazio = r["task_id"] in ("86ak6kqf7","86ak61abn")  # V0 Al Nasser aguardando valores corretos
-        viab.setdefault(emp,[]).append({
-            "versao": r["ver"], "obs": r["obs"], "situacao": sit, "task_id": r["task_id"],
-            "mes": mes(r["data_base"]),
-            "vgv_bruto": None if vazio else r["vgv_b"], "vgv_liquido": None if vazio else r["vgv_l"],
-            "lucro": None if vazio else r["lucro"], "margem": None if vazio else r["margem"],
-            "exposicao": None if vazio else r["expo"], "area_construida": None if vazio else r["area"],
-            "unidades": r["unidades"], "permutas": r["permutas"], "preco_medio": r["preco"], "custo_m2": r["custo"],
-        })
+for r in rows:
+    vazio = r["task_id"] in ("86ak6kqf7","86ak61abn")  # V0 Al Nasser aguardando valores corretos
+    sit = "Simulação" if r["obs"].startswith("Simulação") else "Pendente aprovação" if r["obs"].startswith("Pendente") else ""
+    viab.setdefault(r["emp"],[]).append({
+        "versao": r["ver"], "obs": r["obs"], "situacao": sit, "task_id": r["task_id"],
+        "mes": mes(r["data_base"]),
+        "vgv_bruto": None if vazio else r["vgv_b"], "vgv_liquido": None if vazio else r["vgv_l"],
+        "lucro": None if vazio else r["lucro"], "margem": None if vazio else r["margem"],
+        "exposicao": None if vazio else r["expo"], "area_construida": None if vazio else r["area"],
+        "unidades": r["unidades"], "permutas": r["permutas"], "preco_medio": r["preco"], "custo_m2": r["custo"],
+    })
 for v in viab.values(): v.sort(key=lambda x: order[x["versao"]])
 
 out_emp = []
@@ -85,19 +91,15 @@ for i,(nome,s,cid,inc,ex) in enumerate(EMP):
     marcos = {c: {"data": d[s][0], "ok": d[s][1]} for c,d in m.M.items() if s in d}
     f = fase(s, lst[1] if lst else None)
     vs = viab.get(nome, [])
-    vig = next((x for x in vs if x["situacao"]=="Vigente"), None)
-    lat,lng = CENTRO[cid]
-    # posição aproximada: centro da cidade + deslocamento determinístico (endereço exato entra depois)
-    ang = (i*137.5) % 360; rad = 0.012 + (i%5)*0.006
-    import math
-    pos = [round(lat + rad*math.sin(math.radians(ang)),5), round(lng + rad*math.cos(math.radians(ang)),5)]
+    loc = ENDERECO.get(nome)
+    pos = [loc["lat"],loc["lng"]] if loc else COORD.get(nome)
     out_emp.append({
         "nome": nome, "sigla": s, "cidade": cid, "incorporadora": inc, "ex_nome": ex,
         "lista_id": lst[0] if lst else None, "lista": lst[1] if lst else None,
         "fase": f, "legado": s in LEGADO or f=="ENT",
         "marcos": marcos, "viabilidades": vs,
-        "vigente": vig["versao"] if vig else None,
-        "pos": pos,
+        "pos": pos, "pos_fonte": "clickup" if loc else "aproximada",
+        "endereco": loc["endereco"] if loc else None,
     })
 
 variacoes = []
@@ -109,13 +111,11 @@ for s,c,a,n in m.VARIACOES:
 
 dados = {
   "gerado_em": dt.datetime.now(dt.timezone(dt.timedelta(hours=-3))).isoformat(timespec="minutes"),
-  "fontes": {"cronogramas": f"Snapshot ClickUp de {m.SNAP}", "viabilidades": "ClickUp · Controle de Viabilidades",
+  "fontes": {"cronogramas": f"Snapshot ClickUp de {m.SNAP}", "viabilidades": "ClickUp · lista Controle de Viabilidades",
              "variacoes": f"{m.SNAP_ANT} → {m.SNAP}"},
   "marco_nome": MARCO_NOME,
   "empreendimentos": out_emp,
   "variacoes": variacoes,
 }
 json.dump(dados, open("/home/claude/dashboard_incorporacao/dados.json","w"), ensure_ascii=False, indent=1)
-for e in out_emp:
-    vig = next((v for v in e["viabilidades"] if v["situacao"]=="Vigente"), None)
-    print(f'{e["nome"]:20} {e["incorporadora"]:8} {str(e["fase"]):5} vig={e["vigente"]} vgv={vig and vig["vgv_bruto"]} lanc={e["marcos"].get("inc002")}')
+print(len(out_emp), "empreendimentos")

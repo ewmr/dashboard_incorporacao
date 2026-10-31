@@ -2,158 +2,165 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Dashboard Incorporação · Make It e Gadens</title>
 <link rel="stylesheet" href="vendor/leaflet/leaflet.css">
 <link rel="stylesheet" href="app.css">
 </head>
 <body>
-<div class="app">
-  <aside class="side" id="side">
+<header class="bar">
+  <div class="wrap bar-in">
     <div class="brand">
-      <span class="mark" aria-hidden="true"></span>
-      <div><h1>Incorporação</h1><span class="co" id="brandCo">Make It + Gadens</span></div>
+      <svg class="mark" viewBox="-14 -14 516 481" role="img" aria-label="Gestão de Projetos">
+        <defs>
+          <path id="pmL" d="M 256.59375 202.605469 L 188.5 202.605469 C 188.5 166.027344 219.039062 136.265625 256.578125 136.265625 L 371.667969 136.269531 L 335.035156 171.960938 L 377.617188 213.453125 L 487.039062 106.828125 L 377.617188 0.203125 L 335.035156 41.695312 L 371.875 77.589844 L 256.578125 77.589844 C 185.835938 77.589844 128.285156 133.671875 128.285156 202.605469 L 128.296875 202.605469 C 57.554688 202.605469 0 258.6875 0 327.621094 L 0 452.71875 L 60.214844 452.71875 L 60.214844 327.621094 C 60.214844 291.042969 90.757812 261.285156 128.296875 261.285156 L 256.59375 261.285156 C 294.132812 261.285156 324.671875 291.042969 324.671875 327.621094 C 324.671875 364.203125 294.132812 393.960938 256.59375 393.960938 C 219.050781 393.960938 188.511719 364.203125 188.511719 327.621094 L 188.511719 287.058594 L 128.296875 287.058594 L 128.296875 327.621094 C 128.296875 396.558594 185.847656 452.640625 256.59375 452.640625 C 327.335938 452.640625 384.886719 396.558594 384.886719 327.621094 C 384.886719 258.6875 327.335938 202.605469 256.59375 202.605469"/>
+          <linearGradient id="pmFill" x1="0" y1="0" x2=".35" y2="1"><stop offset="0" style="stop-color:color-mix(in srgb,var(--accent) 52%,#fff)"/><stop offset=".48" style="stop-color:var(--accent)"/><stop offset="1" style="stop-color:color-mix(in srgb,var(--accent) 72%,#000)"/></linearGradient>
+          <linearGradient id="pmGloss" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".42" stop-color="#fff" stop-opacity=".08"/><stop offset=".43" stop-color="#fff" stop-opacity="0"/></linearGradient>
+          <linearGradient id="pmRim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".6" stop-color="#fff" stop-opacity=".25"/><stop offset="1" stop-color="#fff" stop-opacity=".5"/></linearGradient>
+          <clipPath id="pmClip"><use href="#pmL"/></clipPath>
+        </defs>
+        <use href="#pmL" fill="url(#pmFill)"/>
+        <use href="#pmL" fill="url(#pmGloss)"/>
+        <g clip-path="url(#pmClip)"><use href="#pmL" fill="none" stroke="url(#pmRim)" stroke-width="16"/></g>
+      </svg>
+      <div class="brand-t"><b>Incorporação</b><span id="coName">Make It + Gadens</span></div>
     </div>
-    <nav id="nav">
-      <a href="#one-page" data-p="one-page"><span class="ic">◐</span>One Page Report</a>
-      <a href="#cronograma" data-p="cronograma"><span class="ic">▤</span>Cronograma</a>
-      <a href="#analise" data-p="analise"><span class="ic">⚑</span>Análise de Cronogramas</a>
-      <a href="#viabilidade" data-p="viabilidade"><span class="ic">$</span>Indicadores de Viabilidade</a>
-      <a href="#metas" data-p="metas"><span class="ic">◎</span>Indicadores e Metas</a>
-    </nav>
-    <div class="side-foot">
-      <div class="stamp" id="stamp">Carregando dados…</div>
+    <div class="tools">
+      <div class="seg" role="radiogroup" aria-label="Incorporadora" id="incSeg">
+        <button role="radio" data-inc="all" aria-checked="true">Consolidado</button>
+        <button role="radio" data-inc="Make It" aria-checked="false"><span class="co-logo" data-co="makeit">Make It</span></button>
+        <button role="radio" data-inc="Gadens" aria-checked="false"><span class="co-logo" data-co="gadens">Gadens</span></button>
+      </div>
+      <button class="btn" id="filterBtn" aria-haspopup="dialog">
+        <svg class="ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M6 10h8M8.5 15h3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <span class="lbl">Filtros</span><span class="badge" id="filterCount" hidden></span></button>
+      <button class="btn icon" id="dataBtn" aria-haspopup="dialog" aria-label="Sobre os dados e pendências">
+        <svg class="ico" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 9v4.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="10" cy="6.3" r="1.1" fill="currentColor"/></svg>
+        <span class="dot" id="pendDot" hidden></span></button>
     </div>
-  </aside>
+  </div>
+  <div class="wrap chips" id="activeChips" hidden></div>
+</header>
 
-  <main>
-    <header class="ctx">
-      <button class="menu" id="menuBtn" aria-label="Abrir menu">☰</button>
-      <h2 id="pageTitle">One Page Report</h2>
-      <div class="ctx-tools">
-        <div class="seg" role="radiogroup" aria-label="Incorporadora" id="incSeg">
-          <button role="radio" data-inc="all" aria-checked="true">Consolidado</button>
-          <button role="radio" data-inc="Make It" aria-checked="false">Make It</button>
-          <button role="radio" data-inc="Gadens" aria-checked="false">Gadens</button>
-        </div>
-        <button class="btn" id="filterBtn">Filtros <span class="badge" id="filterCount" hidden></span></button>
+<main class="wrap" id="main">
+  <!-- ONE PAGE REPORT -->
+  <section class="page" data-page="resumo">
+    <div class="ttl"><h1>One Page Report</h1><span class="stamp" id="stamp"></span></div>
+
+    <div class="kpis" id="kpis"></div>
+    <div class="card kpi-detail" id="kpiDetail" hidden></div>
+
+    <div class="grid g-2">
+      <div class="card">
+        <div class="ch"><h3>Trajetória de lançamentos</h3><span class="hint">clique num ano para filtrar</span></div>
+        <p class="sub">VGV bruto por ano de Lançamento Comercial. Cheio = lançado · hachurado = previsto.</p>
+        <div class="chart" id="traj"></div>
+        <p class="foot" id="trajFoot"></p>
       </div>
-    </header>
-    <div class="chips" id="activeChips" hidden></div>
-
-    <!-- ONE PAGE REPORT -->
-    <section class="page" data-page="one-page">
-      <div class="panel">
-        <div class="ph"><h3>Escala da carteira ativa</h3><span class="ph-note">VGV bruto da viabilidade vigente · clique num cartão para ver a composição</span></div>
-        <div class="kpis" id="kpis"></div>
-        <div class="kpi-detail" id="kpiDetail" hidden></div>
+      <div class="card">
+        <div class="ch"><h3>Distribuição por fase</h3><span class="hint">clique numa fase para filtrar</span></div>
+        <p class="sub">Barra = VGV bruto · número = empreendimentos.</p>
+        <div id="funnel"></div>
       </div>
+    </div>
 
-      <div class="row2">
-        <div class="panel">
-          <div class="ph"><h3>Trajetória de lançamentos</h3><span class="immune" hidden>não afetado por filtros</span></div>
-          <p class="sub">VGV lançado por ano, pela data de Lançamento Comercial no cronograma. Cheio = lançado; claro com hachura = previsto.</p>
-          <div class="chart" id="traj"></div>
-          <p class="foot" id="trajFoot"></p>
+    <div class="card">
+      <div class="ch"><h3>Saúde financeira</h3>
+        <button class="link" id="howBtn">Como a margem projetada é calculada</button></div>
+      <div class="health">
+        <div class="h-left">
+          <div class="hks" id="healthKpis"></div>
+          <div class="box">
+            <h4 class="mini">Margem projetada dos lançamentos × meta</h4>
+            <p class="sub">média ponderada pelo VGV líquido · clique num ano para filtrar</p>
+            <div class="chart" id="metaYears"></div>
+          </div>
         </div>
-        <div class="panel">
-          <div class="ph"><h3>Distribuição por fase</h3><span class="immune" hidden>não afetado por filtros</span></div>
-          <p class="sub">Largura = VGV · número = empreendimentos. Clique numa fase para filtrar a escala e o mapa.</p>
-          <div id="funnel"></div>
-          <div id="funnelList"></div>
-        </div>
-      </div>
-
-      <div class="panel">
-        <div class="ph"><h3>Saúde financeira</h3><span class="immune" hidden>não afetado por filtros</span></div>
-        <div class="health">
-          <div class="health-kpis" id="healthKpis"></div>
+        <div>
+          <h4 class="mini">Margem líquida por empreendimento</h4>
+          <div class="leg" id="marginLeg"></div>
           <div class="chart" id="margins"></div>
         </div>
       </div>
+    </div>
 
-      <div class="panel">
-        <div class="ph"><h3>Mapa da carteira</h3><span class="ph-note">cor = fase · tamanho = VGV · posição aproximada por cidade</span></div>
+    <div class="grid g-map">
+      <div class="card">
+        <div class="ch"><h3>Mapa da carteira</h3><span class="hint">cor = fase · tamanho = VGV</span></div>
         <div class="mapbox">
           <div id="map"></div>
-          <div class="map-side" id="mapSide"><p class="muted">Clique num empreendimento no mapa para ver o resumo.</p></div>
+          <div class="map-card" id="mapCard" hidden></div>
         </div>
-        <div class="legend" id="mapLegend"></div>
+        <div class="leg" id="mapLegend"></div>
       </div>
+      <div class="card">
+        <div class="ch"><h3>Marcos que mudaram</h3><span class="hint" id="attnNote"></span></div>
+        <div id="attn"></div>
+      </div>
+    </div>
+  </section>
 
-      <div class="panel">
-        <div class="ph"><h3>Atenção</h3><span class="ph-note" id="attnNote"></span></div>
-        <div class="attn" id="attn"></div>
-      </div>
+  <!-- CRONOGRAMA -->
+  <section class="page" data-page="cronograma" hidden>
+    <div class="ttl"><h1>Cronograma</h1></div>
+    <div class="card soon"><h3>Em construção</h3><p>Portfólio Macro em Gantt, Régua de Lançamentos (cor por cidade, com a data da V4 e do Registro de Incorporação no hover), Agenda de marcos dos próximos 90 dias e régua individual por empreendimento.</p></div>
+    <div class="card"><div class="ch"><h3>Próximos lançamentos</h3><span class="hint">prévia com os dados atuais</span></div><div id="launchList"></div></div>
+  </section>
 
-      <div class="navcards" id="navcards"></div>
-    </section>
+  <!-- ANÁLISE -->
+  <section class="page" data-page="analise" hidden>
+    <div class="ttl"><h1>Análise de Cronogramas</h1></div>
+    <div class="card reg">
+      <div><h3>Registro de Desvios</h3><p>O registro dos atrasos da reunião semanal acontece no app do Registro de Desvios, que abre numa aba nova (precisa de conta Claude com o ClickUp conectado). O que for registrado lá aparece aqui na atualização seguinte.</p></div>
+      <a class="btn primary" href="https://claude.ai/artifact/K1xeNHfYBN74VQAXnCFyDD" target="_blank" rel="noopener">Abrir o Registro de Desvios ↗</a>
+    </div>
+    <div class="card"><div class="ch"><h3>Marcos que mudaram na semana</h3><span class="hint" id="varNote"></span></div><div id="varTable"></div></div>
+  </section>
 
-    <!-- CRONOGRAMA -->
-    <section class="page" data-page="cronograma" hidden>
-      <div class="panel soon">
-        <h3>Cronograma</h3>
-        <p>Próxima página a ser montada, com os painéis que você já aprovou: Portfólio Macro em Gantt, Régua de Lançamentos (cor por cidade, com a data da V4 e do Registro de Incorporação no hover), Agenda de marcos dos próximos 90 dias e régua individual por empreendimento.</p>
-      </div>
-      <div class="panel">
-        <div class="ph"><h3>Próximos lançamentos</h3><span class="ph-note">prévia com os dados atuais</span></div>
-        <div id="launchList"></div>
-      </div>
-    </section>
+  <!-- VIABILIDADE -->
+  <section class="page" data-page="viabilidade" hidden>
+    <div class="ttl"><h1>Indicadores de Viabilidade</h1></div>
+    <div class="card soon"><h3>Em construção</h3><p>A página validada (comparativo entre fases, detalhamento por versão e evolução da margem) entra aqui, lendo a lista Controle de Viabilidades do ClickUp. Abaixo, a base que já está ligada.</p></div>
+    <div class="card"><div class="ch"><h3>Viabilidades vigentes</h3><span class="hint">ClickUp · Controle de Viabilidades</span></div><div class="tbl-wrap" id="viabTable"></div></div>
+  </section>
 
-    <!-- ANÁLISE DE CRONOGRAMAS -->
-    <section class="page" data-page="analise" hidden>
-      <div class="panel reg">
-        <div>
-          <h3>Registro de Desvios</h3>
-          <p>O registro dos atrasos da reunião semanal acontece no app do Registro de Desvios, que abre numa aba nova (precisa de conta Claude com o ClickUp conectado). Os registros feitos lá aparecem aqui na atualização seguinte.</p>
-        </div>
-        <a class="btn primary" href="https://claude.ai/artifact/K1xeNHfYBN74VQAXnCFyDD" target="_blank" rel="noopener">Abrir o Registro de Desvios ↗</a>
-      </div>
-      <div class="panel">
-        <div class="ph"><h3>Marcos que mudaram na semana</h3><span class="ph-note" id="varNote"></span></div>
-        <div id="varTable"></div>
-      </div>
-      <div class="panel soon">
-        <h3>Em construção</h3>
-        <p>A página completa terá a tabela de pacotes de atividades com a comparação com a semana anterior, os registros de atraso com motivos e setores responsáveis, e os indicadores de causa, tudo na mesma tela.</p>
-      </div>
-    </section>
+  <!-- METAS -->
+  <section class="page" data-page="metas" hidden>
+    <div class="ttl"><h1>Indicadores e Metas</h1></div>
+    <div class="card soon"><h3>Em construção</h3><p>Página reservada para as metas de Incorporação. Vamos definir os indicadores juntos antes de montar.</p></div>
+  </section>
+</main>
 
-    <!-- VIABILIDADE -->
-    <section class="page" data-page="viabilidade" hidden>
-      <div class="panel soon">
-        <h3>Indicadores de Viabilidade</h3>
-        <p>A página validada (comparativo entre fases, detalhamento por versão e evolução da margem) entra aqui repaginada, lendo a lista Controle de Viabilidades do ClickUp. Abaixo, a base que já está ligada.</p>
-      </div>
-      <div class="panel">
-        <div class="ph"><h3>Viabilidades vigentes</h3><span class="ph-note">fonte: ClickUp · Controle de Viabilidades</span></div>
-        <div class="tbl-wrap" id="viabTable"></div>
-      </div>
-    </section>
+<nav class="tabbar" id="tabbar" aria-label="Páginas">
+  <a href="#resumo" data-p="resumo"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></svg><span>Resumo</span></a>
+  <a href="#cronograma" data-p="cronograma"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>Cronograma</span></a>
+  <a href="#analise" data-p="analise"><svg viewBox="0 0 24 24"><path d="M4 19.5h16M6.5 16l4-5 3.5 3 4.5-6.5"/></svg><span>Análise</span></a>
+  <a href="#viabilidade" data-p="viabilidade"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M14.8 9.2c-.5-1-1.6-1.6-2.8-1.6-1.6 0-2.8.9-2.8 2.2 0 3 5.6 1.6 5.6 4.5 0 1.3-1.2 2.2-2.8 2.2-1.3 0-2.4-.6-2.9-1.7M12 6v1.6M12 16.4V18"/></svg><span>Viabilidade</span></a>
+  <a href="#metas" data-p="metas"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.8"/><circle cx="12" cy="12" r="1.3"/></svg><span>Metas</span></a>
+</nav>
 
-    <!-- METAS -->
-    <section class="page" data-page="metas" hidden>
-      <div class="panel soon">
-        <h3>Indicadores e Metas</h3>
-        <p>Página reservada para as novas metas de Incorporação, organizadas em estratégico, tático e operacional. Vamos definir os indicadores juntos antes de montar.</p>
-      </div>
-    </section>
-  </main>
-</div>
-
-<div class="drawer-bg" id="drawerBg" hidden></div>
-<aside class="drawer" id="drawer" hidden aria-label="Filtros">
-  <div class="dh"><h3>Filtros</h3><button class="btn" id="drawerClose">Fechar</button></div>
-  <p class="muted">Afetam a escala e o mapa. Trajetória, distribuição por fase e saúde financeira mostram sempre a carteira inteira.</p>
-  <div class="fg"><label>Cidade</label><div class="chipset" id="fCidade"></div></div>
-  <div class="fg"><label>Ano de lançamento</label><div class="chipset" id="fAno"></div></div>
-  <div class="fg"><label>Fase</label><div class="chipset" id="fFase"></div></div>
-  <button class="btn" id="clearFilters">Limpar filtros</button>
+<!-- folhas modais -->
+<div class="scrim" id="scrim" hidden></div>
+<aside class="sheet side" id="drawer" hidden aria-label="Filtros" role="dialog">
+  <div class="sh-h"><h2>Filtros</h2><button class="btn icon" data-close aria-label="Fechar">✕</button></div>
+  <div class="sh-b">
+    <p class="muted small">Valem para todos os painéis. Também dá para filtrar clicando direto nos gráficos.</p>
+    <div class="fg"><label>Cidade</label><div class="chipset" id="fCidade"></div></div>
+    <div class="fg"><label>Ano de lançamento</label><div class="chipset" id="fAno"></div></div>
+    <div class="fg"><label>Fase</label><div class="chipset" id="fFase"></div></div>
+    <button class="btn" id="clearFilters">Limpar filtros</button>
+  </div>
 </aside>
+<section class="sheet center" id="dataSheet" hidden role="dialog" aria-labelledby="dsT">
+  <div class="sh-h"><h2 id="dsT">Sobre os dados</h2><button class="btn icon" data-close aria-label="Fechar">✕</button></div>
+  <div class="sh-b" id="dataBody"></div>
+</section>
+<section class="sheet center wide" id="howSheet" hidden role="dialog" aria-labelledby="hsT">
+  <div class="sh-h"><h2 id="hsT">Margem projetada no lançamento</h2><button class="btn icon" data-close aria-label="Fechar">✕</button></div>
+  <div class="sh-b" id="howBody"></div>
+</section>
 
 <div class="tip" id="tip" hidden></div>
-
 <script src="vendor/leaflet/leaflet.js"></script>
 <script src="app.js"></script>
 </body>

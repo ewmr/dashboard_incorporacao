@@ -1,8 +1,8 @@
 {
- "gerado_em": "2026-10-30T22:41-03:00",
+ "gerado_em": "2026-10-30T23:02-03:00",
  "fontes": {
   "cronogramas": "Snapshot ClickUp de 2026-10-26",
-  "viabilidades": "ClickUp · Controle de Viabilidades",
+  "viabilidades": "ClickUp · lista Controle de Viabilidades",
   "variacoes": "2026-10-19 → 2026-10-26"
  },
  "marco_nome": {
@@ -85,7 +85,7 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "Substituída",
+     "situacao": "",
      "task_id": "86ak61abn",
      "mes": "2025-09",
      "vgv_bruto": null,
@@ -102,7 +102,7 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "86ak61afy",
      "mes": "2025-09",
      "vgv_bruto": 97251568.0,
@@ -117,11 +117,12 @@
      "custo_m2": 2339.83
     }
    ],
-   "vigente": "V2",
    "pos": [
-    -25.4284,
-    -49.2613
-   ]
+    -25.401,
+    -49.236
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Al Nasser 2",
@@ -187,7 +188,7 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "Substituída",
+     "situacao": "",
      "task_id": "86ak6kqf7",
      "mes": "2025-09",
      "vgv_bruto": null,
@@ -204,7 +205,7 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "86ak6krf0",
      "mes": "2025-09",
      "vgv_bruto": 86041800.0,
@@ -219,11 +220,12 @@
      "custo_m2": 2395.38
     }
    ],
-   "vigente": "V2",
    "pos": [
-    -25.41624,
-    -49.28657
-   ]
+    -25.402,
+    -49.237
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Alba",
@@ -289,7 +291,7 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "Substituída",
+     "situacao": "",
      "task_id": "86ak6m0ag",
      "mes": "2025-01",
      "vgv_bruto": 52640022.0,
@@ -306,7 +308,7 @@
     {
      "versao": "V3",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "86ak6k3nw",
      "mes": "2025-01",
      "vgv_bruto": 61600000.0,
@@ -321,11 +323,12 @@
      "custo_m2": 2242.98
     }
    ],
-   "vigente": "V3",
    "pos": [
-    -25.34881,
-    -49.30801
-   ]
+    -25.323,
+    -49.308
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Arbo",
@@ -383,7 +386,7 @@
     {
      "versao": "V4",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "86ak6m4ae",
      "mes": "2025-02",
      "vgv_bruto": 22949000.0,
@@ -398,11 +401,12 @@
      "custo_m2": 2227.34
     }
    ],
-   "vigente": "V4",
    "pos": [
-    -25.4209,
-    -49.17424
-   ]
+    -25.41,
+    -49.147
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Arena",
@@ -468,7 +472,7 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "Substituída",
+     "situacao": "",
      "task_id": "86ak6m58d",
      "mes": "2025-12",
      "vgv_bruto": 54900000.0,
@@ -485,7 +489,7 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "17tpepch0bw",
      "mes": "2026-07",
      "vgv_bruto": 65260034.0,
@@ -500,11 +504,12 @@
      "custo_m2": 2615.53
     }
    ],
-   "vigente": "V2",
    "pos": [
-    -25.43465,
-    -49.30875
-   ]
+    -25.459,
+    -49.228
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Aura",
@@ -570,7 +575,7 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "Substituída",
+     "situacao": "",
      "task_id": "86ak6md41",
      "mes": "2025-08",
      "vgv_bruto": 31320000.0,
@@ -587,7 +592,7 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "86ak6mfjq",
      "mes": "2025-08",
      "vgv_bruto": 32100000.0,
@@ -602,11 +607,12 @@
      "custo_m2": 2539.21
     }
    ],
-   "vigente": "V2",
    "pos": [
-    -25.54115,
-    -49.19628
-   ]
+    -25.535,
+    -49.205
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Bravo",
@@ -640,7 +646,7 @@
     {
      "versao": "V4",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "86ak6mh22",
      "mes": "2025-02",
      "vgv_bruto": 31360000.0,
@@ -655,11 +661,12 @@
      "custo_m2": 2057.47
     }
    ],
-   "vigente": "V4",
    "pos": [
-    -25.42731,
-    -49.19716
-   ]
+    -25.438,
+    -49.188
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Container",
@@ -685,7 +692,7 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "86ak6mq90",
      "mes": "2026-06",
      "vgv_bruto": 86235000.0,
@@ -700,11 +707,12 @@
      "custo_m2": 2381.0
     }
    ],
-   "vigente": "V0",
    "pos": [
-    -25.44969,
-    -49.28438
-   ]
+    -25.524,
+    -49.256
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Edge",
@@ -774,7 +782,7 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "Substituída",
+     "situacao": "",
      "task_id": "86ak6mr6p",
      "mes": "2024-02",
      "vgv_bruto": 100440000.0,
@@ -791,7 +799,7 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "86ak6mtb6",
      "mes": "2024-02",
      "vgv_bruto": 116640000.0,
@@ -823,11 +831,12 @@
      "custo_m2": 2333.98
     }
    ],
-   "vigente": "V2",
    "pos": [
-    -25.52444,
-    -49.17821
-   ]
+    -25.529,
+    -49.188
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Essence",
@@ -893,7 +902,7 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "Substituída",
+     "situacao": "",
      "task_id": "86ak6munf",
      "mes": "2023-06",
      "vgv_bruto": 73760000.0,
@@ -910,7 +919,7 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "Substituída",
+     "situacao": "",
      "task_id": "86ak6mvzc",
      "mes": "2024-10",
      "vgv_bruto": 89700000.0,
@@ -927,7 +936,7 @@
     {
      "versao": "V4",
      "obs": "Correção 06/26",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "86ak6mw12",
      "mes": "2025-06",
      "vgv_bruto": 100004017.0,
@@ -942,11 +951,12 @@
      "custo_m2": 1440.51
     }
    ],
-   "vigente": "V4",
    "pos": [
-    -25.41462,
-    -49.30656
-   ]
+    -25.472,
+    -49.238
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Flow",
@@ -1008,7 +1018,7 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "Substituída",
+     "situacao": "",
      "task_id": "17tpepcn9ck",
      "mes": "2024-02",
      "vgv_bruto": 44160000.0,
@@ -1025,7 +1035,7 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "86ak6n447",
      "mes": "2024-10",
      "vgv_bruto": 60160015.0,
@@ -1057,11 +1067,12 @@
      "custo_m2": 2404.77
     }
    ],
-   "vigente": "V2",
    "pos": [
-    -25.60368,
-    -49.40523
-   ]
+    -25.5726,
+    -49.4012
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Fundação",
@@ -1127,7 +1138,7 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "Substituída",
+     "situacao": "",
      "task_id": "86ak6n6vn",
      "mes": "2026-01",
      "vgv_bruto": 77258800.0,
@@ -1144,7 +1155,7 @@
     {
      "versao": "V1",
      "obs": "",
-     "situacao": "Substituída",
+     "situacao": "",
      "task_id": "86ak6n7pt",
      "mes": "2026-04",
      "vgv_bruto": 71050000.0,
@@ -1161,7 +1172,7 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "17tpepch0k5",
      "mes": "2026-06",
      "vgv_bruto": 70860066.0,
@@ -1176,11 +1187,12 @@
      "custo_m2": 2683.51
     }
    ],
-   "vigente": "V2",
    "pos": [
-    -25.41123,
-    -49.26789
-   ]
+    -25.462,
+    -49.266
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Horizon",
@@ -1250,7 +1262,7 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "Substituída",
+     "situacao": "",
      "task_id": "86ak6n978",
      "mes": "2024-09",
      "vgv_bruto": 34560000.0,
@@ -1267,7 +1279,7 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "86ak6nd0b",
      "mes": "2024-09",
      "vgv_bruto": 41184000.0,
@@ -1299,11 +1311,12 @@
      "custo_m2": 2714.53
     }
    ],
-   "vigente": "V2",
    "pos": [
-    -25.4567,
-    -49.21328
-   ]
+    -25.4385,
+    -49.1885
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Lume",
@@ -1369,7 +1382,7 @@
     {
      "versao": "V4",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "86ak6ne78",
      "mes": "2025-02",
      "vgv_bruto": 112195999.0,
@@ -1384,11 +1397,12 @@
      "custo_m2": 1899.81
     }
    ],
-   "vigente": "V4",
    "pos": [
-    -25.45119,
-    -49.16321
-   ]
+    -25.4,
+    -49.21
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Now",
@@ -1454,7 +1468,7 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "Substituída",
+     "situacao": "",
      "task_id": "86ak6ng1d",
      "mes": "2024-02",
      "vgv_bruto": 33120000.0,
@@ -1471,7 +1485,7 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "Substituída",
+     "situacao": "",
      "task_id": "86ak6nhct",
      "mes": "2024-10",
      "vgv_bruto": 45120011.0,
@@ -1488,7 +1502,7 @@
     {
      "versao": "V4",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "17tpepcgy0g",
      "mes": "2026-06",
      "vgv_bruto": 53756304.0,
@@ -1503,11 +1517,12 @@
      "custo_m2": 2459.46
     }
    ],
-   "vigente": "V4",
    "pos": [
-    -25.56331,
-    -49.43095
-   ]
+    -25.572,
+    -49.402
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Quadratto",
@@ -1565,7 +1580,7 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "86ak6njzc",
      "mes": "2026-07",
      "vgv_bruto": 95210000.0,
@@ -1580,11 +1595,12 @@
      "custo_m2": 2600.0
     }
    ],
-   "vigente": "V2",
    "pos": [
-    -25.4566,
-    -49.19407
-   ]
+    -25.4448,
+    -49.193
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Rafitec",
@@ -1646,7 +1662,7 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "Substituída",
+     "situacao": "",
      "task_id": "17tpepcp6hd",
      "mes": "2026-09",
      "vgv_bruto": 105000000.0,
@@ -1663,7 +1679,7 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "17tpepch0un",
      "mes": "2026-08",
      "vgv_bruto": 105000000.0,
@@ -1678,11 +1694,12 @@
      "custo_m2": 2659.14
     }
    ],
-   "vigente": "V2",
    "pos": [
-    -25.43313,
-    -49.17871
-   ]
+    -25.43,
+    -49.17
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Uniq",
@@ -1740,7 +1757,7 @@
     {
      "versao": "V4",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "86ak6nn43",
      "mes": "2023-10",
      "vgv_bruto": 29026816.0,
@@ -1755,11 +1772,12 @@
      "custo_m2": 2400.0
     }
    ],
-   "vigente": "V4",
    "pos": [
-    -25.44365,
-    -49.21648
-   ]
+    -25.4405,
+    -49.19
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Vert",
@@ -1825,7 +1843,7 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "Substituída",
+     "situacao": "",
      "task_id": "86ak6nqc4",
      "mes": "2025-05",
      "vgv_bruto": 74240000.0,
@@ -1842,7 +1860,7 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "Substituída",
+     "situacao": "",
      "task_id": "86ak6nqep",
      "mes": "2025-10",
      "vgv_bruto": 79360000.0,
@@ -1859,7 +1877,7 @@
     {
      "versao": "V3",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "86ak6nqjp",
      "mes": "2026-06",
      "vgv_bruto": 83200000.0,
@@ -1874,11 +1892,12 @@
      "custo_m2": 2575.14
     }
    ],
-   "vigente": "V3",
    "pos": [
-    -25.55591,
-    -49.18519
-   ]
+    -25.531,
+    -49.201
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Zago",
@@ -1944,7 +1963,7 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "Substituída",
+     "situacao": "",
      "task_id": "86ak6nyr2",
      "mes": "2026-02",
      "vgv_bruto": 52800000.0,
@@ -1961,7 +1980,7 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "17tpepch0ky",
      "mes": "2026-04",
      "vgv_bruto": 66560000.0,
@@ -1976,11 +1995,12 @@
      "custo_m2": 2490.5
     }
    ],
-   "vigente": "V2",
    "pos": [
-    -25.49873,
-    -49.20797
-   ]
+    -25.533,
+    -49.203
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Tuo",
@@ -2011,11 +2031,12 @@
     }
    },
    "viabilidades": [],
-   "vigente": null,
    "pos": [
-    -25.43759,
-    -49.28101
-   ]
+    -25.4095,
+    -49.146
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "La Vita",
@@ -2046,11 +2067,12 @@
     }
    },
    "viabilidades": [],
-   "vigente": null,
    "pos": [
-    -25.42605,
-    -49.25545
-   ]
+    -25.411,
+    -49.149
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Guadalupe",
@@ -2108,7 +2130,7 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "Substituída",
+     "situacao": "",
      "task_id": "17tpepcp6kt",
      "mes": "2024-12",
      "vgv_bruto": 88996655.0,
@@ -2125,7 +2147,7 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "17tpepch0re",
      "mes": "2026-07",
      "vgv_bruto": 135883240.0,
@@ -2140,11 +2162,12 @@
      "custo_m2": 3800.0
     }
    ],
-   "vigente": "V2",
    "pos": [
-    -25.41463,
-    -49.29296
-   ]
+    -25.437,
+    -49.278
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "CORE Evo",
@@ -2219,7 +2242,7 @@
     {
      "versao": "V3",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "17tpepcu22n",
      "mes": "2026-10",
      "vgv_bruto": 130928520.0,
@@ -2234,11 +2257,12 @@
      "custo_m2": 3700.0
     }
    ],
-   "vigente": "V3",
    "pos": [
-    -25.45769,
-    -49.26681
-   ]
+    -25.439,
+    -49.268
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Martim Afonso",
@@ -2296,7 +2320,7 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "17tpepch0d8",
      "mes": "2026-07",
      "vgv_bruto": 51545795.0,
@@ -2311,11 +2335,12 @@
      "custo_m2": 3800.0
     }
    ],
-   "vigente": "V2",
    "pos": [
-    -25.39722,
-    -49.2553
-   ]
+    -25.427,
+    -49.29
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Lens Alto da Glória",
@@ -2332,7 +2357,7 @@
     {
      "versao": "V4",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "17tpepcgz0m",
      "mes": "2026-07",
      "vgv_bruto": 77556904.0,
@@ -2347,11 +2372,12 @@
      "custo_m2": 3853.98
     }
    ],
-   "vigente": "V4",
    "pos": [
-    -25.43201,
-    -49.28474
-   ]
+    -25.4195,
+    -49.262
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   },
   {
    "nome": "Lens Barigui",
@@ -2368,7 +2394,7 @@
     {
      "versao": "V3",
      "obs": "",
-     "situacao": "Vigente",
+     "situacao": "",
      "task_id": "17tpepcgzdg",
      "mes": "2026-06",
      "vgv_bruto": 86981760.0,
@@ -2383,11 +2409,12 @@
      "custo_m2": 3700.0
     }
    ],
-   "vigente": "V3",
    "pos": [
-    -25.43601,
-    -49.25699
-   ]
+    -25.429,
+    -49.305
+   ],
+   "pos_fonte": "aproximada",
+   "endereco": null
   }
  ],
  "variacoes": [
