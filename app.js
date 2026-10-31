@@ -27,8 +27,8 @@ const LINHAS = [
 ];
 const TATICA = {DUE:"Due Diligence",EP:"Estudo Preliminar",AP:"Anteprojeto",ALV:"Aprovação / Alvará",LAN:"Liberação p/ Lançamento",LIB:"Liberação para Obra",OBR:"Em obra",ENT:"Entrega"};
 const estrategica = f => !f ? "SEM" : f==="DUE" ? "DUE" : ["EP","AP","ALV","LAN"].includes(f) ? "DEV" : f;
-const PAGES = ["resumo","cronograma","analise","viabilidade","metas"];
-const PNOME = {resumo:"Resumo",cronograma:"Cronograma",analise:"Análise de Cronogramas",viabilidade:"Indicadores de Viabilidade",metas:"Indicadores e Metas"};
+const PAGES = ["resumo","mapa","cronograma","analise","viabilidade","metas"];
+const PNOME = {resumo:"Resumo",mapa:"Mapa da carteira",cronograma:"Cronograma",analise:"Análise de Cronogramas",viabilidade:"Indicadores de Viabilidade",metas:"Indicadores e Metas"};
 const VERS = ["V0","V1","V2","V3","V4"];
 const VNOME = {V0:"Compra",V1:"Due Diligence (projeto)",V2:"Due Diligence",V3:"Atualização",V4:"Lançamento"};
 const METAS = {2027:0.20, 2028:0.21, 2029:0.22};
@@ -36,6 +36,11 @@ const MIN_AMOSTRA = 2;
 const INCS = [["all","Consolidado"],["Make It","Make It"],["Gadens","Gadens"]];
 
 const CHANGELOG = [
+  {v:"0.5", d:"2026-10-31", itens:[
+    "Mapa próprio de Curitiba e região (OpenStreetMap), guardado no próprio site, com estilo no padrão do Mapas da Apple: ruas, bairros, parques e referências, sem lojas.",
+    "Página de mapa em tela cheia com lista e busca; ao abrir um empreendimento, o mapa voa para a visão 3D e mostra a ficha com endereço, números e marcos.",
+    "Coordenadas exatas pelo número (Google) para todos os empreendimentos, inclusive Gadens; alfinetes não saem mais do lugar ao mover o mapa.",
+  ]},
   {v:"0.4", d:"2026-10-31", itens:[
     "Nova identidade: fundo em degradê na cor da incorporadora, barras em vidro líquido e modo escuro.",
     "Navegação na barra superior: ícones que mostram o nome e uma prévia da página ao passar o mouse.",
@@ -53,8 +58,8 @@ const CHANGELOG = [
   {v:"0.1", d:"2026-10-26", itens:["Primeira versão publicada no GitHub Pages e embutida no ClickUp, substituindo o Power BI."]},
 ];
 
-const S = {inc:"all", cidades:new Set(), anos:new Set(), fases:new Set(), linhas:new Set(), group:"fase", sel:null, saudeOpen:false, setTab:"dados"};
-let D = null, AJ = null, map = null, mapReady = false, markers = [];
+const S = {mapSel:null, inc:"all", cidades:new Set(), anos:new Set(), fases:new Set(), linhas:new Set(), group:"fase", sel:null, saudeOpen:false, setTab:"dados"};
+let D = null, AJ = null;
 
 /* ---------- formatação ---------- */
 const nf = (v,d=0) => v==null||isNaN(v) ? "—" : v.toLocaleString("pt-BR",{minimumFractionDigits:d,maximumFractionDigits:d});
@@ -287,66 +292,84 @@ function renderDonut(){
     b.innerHTML=`<i style="background:${grupoCor(x.id)}"></i>${esc(grupoNome(x.id))} <b>${x.n}</b>`; b.onclick=()=>toggle(set,x.id); lg.appendChild(b); });
 }
 
-/* ---------- Mapa (MapLibre + OpenFreeMap, sem chave) ---------- */
-const ESTILO = {
-  light:"https://tiles.openfreemap.org/styles/liberty",
-  dark:"https://tiles.openfreemap.org/styles/dark",
-};
-const raster = t => ({version:8,sources:{r:{type:"raster",tileSize:256,attribution:"© OpenStreetMap · © CARTO",
-  tiles:["a","b","c"].map(s=>`https://${s}.basemaps.cartocdn.com/${t==="dark"?"dark_all":"rastertiles/voyager"}/{z}/{x}/{y}@2x.png`)}},layers:[{id:"r",type:"raster",source:"r"}]});
-let estiloOk = false, estiloTimer = null;
-function aplicaEstilo(){
-  if (!map) return;
-  const t = dark()?"dark":"light"; estiloOk=false;
-  map.setStyle(ESTILO[t]);
-  clearTimeout(estiloTimer);
-  estiloTimer = setTimeout(()=>{ if (!estiloOk && !map.isStyleLoaded()) map.setStyle(raster(t)); }, 9000);   // só se o OpenFreeMap não responder, usa o CARTO
-}
-function renderMap(fly){
-  if (typeof maplibregl === "undefined"){ $("map").innerHTML="<p class='muted' style='padding:16px'>Não foi possível carregar o mapa.</p>"; return; }
-  if (!map){
-    const t = dark()?"dark":"light";
-    map = new maplibregl.Map({container:"map", style:ESTILO[t], center:[-49.24,-25.47], zoom:10.4, attributionControl:{compact:true}, dragRotate:false, pitchWithRotate:false});
-    map.scrollZoom.disable();
-    map.addControl(new maplibregl.NavigationControl({showCompass:false}), "top-right");
-    map.on("style.load", ()=>{ estiloOk=true; });
-    map.on("load", ()=>map.resize());
-    // o card muda de tamanho (largura da tela, troca de página): o mapa acompanha, senão o desenho e os alfinetes se desencontram
-    if (window.ResizeObserver) new ResizeObserver(()=>map.resize()).observe($("sec-map"));
-    estiloTimer = setTimeout(()=>{ if (!estiloOk && !map.isStyleLoaded()) map.setStyle(raster(t)); }, 9000);
-    map.getCanvas().addEventListener("wheel", ev=>{ if (ev.ctrlKey||ev.metaKey){ ev.preventDefault(); map.scrollZoom.enable(); clearTimeout(map._zt); map._zt=setTimeout(()=>map.scrollZoom.disable(),600); } }, {passive:false});
-  }
-  markers.forEach(m=>m.remove()); markers=[];
+/* ---------- Mapa (mapa próprio: mapa.js) ---------- */
+let mini = null, full = null, mapBusca = "";
+const tema = () => dark()?"dark":"light";
+const dicaPino = (e, ev) => { if (!e) return hideTip(); showTip(`<b>${esc(e.nome)}</b> · ${esc(grupoNome(grupoDe(e)))}<div class="muted">${esc(e.endereco||e.cidade)}</div>`, ev); };
+function renderMap(){
+  if (typeof maplibregl === "undefined" || typeof MP === "undefined"){ $("map").innerHTML="<p class='muted' style='padding:16px'>Não foi possível carregar o mapa.</p>"; return; }
   const Ls = filtrados().filter(e=>e.pos);
-  Ls.forEach(e=>{
-    // o elemento do marcador fica sem estilo (o MapLibre posiciona ele); o desenho do alfinete vai dentro
-    const el = document.createElement("div"); el.className = "pinw";
-    el.innerHTML = `<div class="pin${S.sel===e.nome?" sel":""}" style="--c:${corDe(e)}"><span class="sh"></span><span class="nd"></span><span class="hd"></span></div>`;
-    el.addEventListener("mousemove", ev=>showTip(`<b>${esc(e.nome)}</b> · ${esc(grupoNome(grupoDe(e)))}<div class="muted">${esc(e.endereco||e.cidade)}</div>`, ev));
-    el.addEventListener("mouseleave", hideTip);
-    el.addEventListener("click", ev=>{ ev.stopPropagation(); hideTip(); S.sel=e.nome; renderMap(true); renderSaude(); });
-    markers.push(new maplibregl.Marker({element:el, anchor:"bottom"}).setLngLat([e.pos[1],e.pos[0]]).addTo(map));
-  });
-  const card = $("mapCard"), e = S.sel && Ls.find(x=>x.nome===S.sel);
-  if (e){
-    const v=vig(e), p=proj(e), cor=corDe(e);
-    card.innerHTML = `<button class="ib x" id="mcClose" aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-      <span class="tagc" style="--c:${cor}">${esc(grupoNome(grupoDe(e)))}</span>
-      <h4>${esc(e.nome)}</h4><div class="addr">${esc(e.endereco||e.cidade)}</div>
-      <dl><dt>Incorporadora</dt><dd>${esc(e.incorporadora)}</dd><dt>Fase</dt><dd>${esc(TATICA[e.fase]||"Sem cronograma")}</dd><dt>Linha</dt><dd>${esc(linhaInfo(linhaDe(e)).curto)}</dd>
-      <dt>VGV bruto</dt><dd>${brl(v?.vgv_bruto)}</dd><dt>Unidades</dt><dd>${nf(v?.unidades)}</dd><dt>Margem líquida</dt><dd>${pct(v?.margem)}</dd>
-      ${p&&p.aj?`<dt>Projetada no lançamento</dt><dd>${pct(p.m)}</dd>`:""}<dt>Viabilidade</dt><dd>${v?v.versao+" – "+VNOME[v.versao]:"—"}</dd>
-      <dt>Lançamento</dt><dd>${lanc(e)?(lanc(e).ok?"lançado ":"previsto ")+my(lanc(e).data):"—"}</dd><dt>Entrega</dt><dd>${e.marcos.mar001?my(e.marcos.mar001.data):"—"}</dd></dl>
-      <button class="pillbtn" id="mcCity">${S.cidades.has(e.cidade)?"Tirar filtro de ":"Filtrar "}${esc(e.cidade)}</button>`;
-    card.hidden=false;
-    $("mcClose").onclick=()=>{ S.sel=null; renderMap(); renderSaude(); };
-    $("mcCity").onclick=()=>toggle(S.cidades, e.cidade);
-    if (fly) map.flyTo({center:[e.pos[1],e.pos[0]], zoom:Math.max(map.getZoom(),13.5), duration:700});
-  } else card.hidden=true;
-  if (!fly && !e && Ls.length){
-    const b = new maplibregl.LngLatBounds(); Ls.forEach(x=>b.extend([x.pos[1],x.pos[0]]));
-    setTimeout(()=>{ map.resize(); map.fitBounds(b,{padding:{top:60,bottom:50,left:60,right:60}, maxZoom:13.5, duration:600}); }, 60);
+  if (!mini){
+    mini = MP.novo($("map"), {tema:tema()});
+    mini.on("click", ()=>irPara("mapa"));
+    mini.once("load", ()=>MP.enquadra(mini, filtrados().filter(e=>e.pos), 60));
   }
+  MP.alfinetes(mini, Ls, {cor:corDe, dica:dicaPino, aoClicar:e=>{ hideTip(); abreNoMapa(e); }});
+  if (mini.loaded()) MP.enquadra(mini, Ls, 60);
+  if (full) renderMapaPagina();
+}
+function abreNoMapa(e){ S.mapSel = e ? e.sigla : null; irPara("mapa"); }
+function selMapa(e, voar=true){
+  S.mapSel = e ? e.sigla : null;
+  history.replaceState(null, "", "#mapa"+(e?":"+e.sigla:""));
+  if (e && voar && full){ MP.voa3d(full, e.pos); $("b3d").setAttribute("aria-pressed","true"); }
+  renderMapaPagina();
+}
+function iniciaMapaPagina(){
+  if (full) { full.resize(); return; }
+  const el = $("mapaFull"); el.dataset.wheel = "livre";
+  full = MP.novo(el, {tema:tema(), controles:true});
+  full.scrollZoom.enable();
+  full.once("load", ()=>{ const e = D.empreendimentos.find(x=>x.sigla===S.mapSel); if (e) MP.voa3d(full, e.pos); else MP.enquadra(full, filtrados().filter(x=>x.pos), {top:90,bottom:70,left:400,right:80}); });
+  $("b3d").onclick = ()=>{ MP.aplica3d(full, !full._3d); $("b3d").setAttribute("aria-pressed", String(full._3d)); renderMapaPagina(); };
+  $("bZin").onclick = ()=>full.zoomIn(); $("bZout").onclick = ()=>full.zoomOut();
+  $("bNorte").onclick = ()=>{ full.easeTo({bearing:0, pitch:0, duration:700}); MP.aplica3d(full, false, false); $("b3d").setAttribute("aria-pressed","false"); };
+  $("bTodos").onclick = ()=>{ selMapa(null,false); MP.aplica3d(full,false,false); $("b3d").setAttribute("aria-pressed","false"); full.easeTo({pitch:0,bearing:0,duration:0}); MP.enquadra(full, filtrados().filter(x=>x.pos), {top:90,bottom:70,left:400,right:80}); };
+  full.on("pitchend", ()=>$("b3d").setAttribute("aria-pressed", String(full._3d)));
+  renderMapaPagina();
+}
+const bairroDe = e => { const m=(e.endereco||"").match(/-\s*([^,]+),\s*[^,]+-\s*PR/) || (e.endereco||"").match(/,\s*\d+\s*[-,]\s*([^,]+),/); return m ? m[1].trim() : ""; };
+function renderMapaPagina(){
+  if (!full) return;
+  const Ls = filtrados().filter(e=>e.pos), sel = D.empreendimentos.find(x=>x.sigla===S.mapSel);
+  MP.alfinetes(full, Ls, {cor:corDe, sel:sel?.nome, dica:dicaPino, aoClicar:e=>{ hideTip(); selMapa(e); }});
+  const side = $("mside");
+  if (sel){
+    const v=vig(sel), p=proj(sel), cor=corDe(sel), q=encodeURIComponent(sel.nome+" "+(sel.endereco||""));
+    const marcos = Object.entries(sel.marcos).map(([c,m])=>({c, n:D.marco_nome[c]||c, ...m})).sort((a,b)=>a.data.localeCompare(b.data));
+    side.innerHTML = `<div class="ficha">
+      <button class="f-back" id="fBack"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>Empreendimentos</button>
+      <div><span class="tagc" style="--c:${cor}">${esc(grupoNome(grupoDe(sel)))}</span></div>
+      <h2>${esc(sel.nome)}</h2>
+      <div class="f-end"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-5.8-6.5-11a6.5 6.5 0 0 1 13 0c0 5.2-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg><span>${esc(sel.endereco||sel.cidade)}${sel.pos_fonte!=="clickup"?" · posição aproximada":""}</span></div>
+      <div class="f-acts">
+        <button id="fVista" class="${full._3d?"on":""}"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg>${full._3d?"Visão 3D":"Ver em 3D"}</button>
+        <a href="https://maps.apple.com/?ll=${sel.pos[0]},${sel.pos[1]}&q=${encodeURIComponent(sel.nome)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9 4.5 3.5 6.6v13l5.5-2.1 6 2.1 5.5-2.1v-13L15 6.6z"/></svg>Mapas</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=${sel.pos[0]},${sel.pos[1]}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 2.5 14.4 0 17M12 3.5c-2.5 2.6-2.5 14.4 0 17"/></svg>Google</a>
+        <button id="fCopia"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="11" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg>Copiar</button>
+      </div>
+      <div class="f-kpi"><div><span>VGV bruto</span><b>${brl(v?.vgv_bruto)}</b></div><div><span>Unidades</span><b>${nf(v?.unidades)}</b></div>
+        <div><span>Margem líquida</span><b>${pct(v?.margem,1)}</b></div><div><span>Projetada no lançamento</span><b>${p?pct(p.m,1):"—"}</b></div></div>
+      <dl class="f-dl"><div><dt>Incorporadora</dt><dd>${esc(sel.incorporadora)}</dd></div><div><dt>Linha de produto</dt><dd>${esc(linhaInfo(linhaDe(sel)).curto)}</dd></div>
+        <div><dt>Fase</dt><dd>${esc(TATICA[sel.fase]||"Sem cronograma")}</dd></div><div><dt>Cidade</dt><dd>${esc(sel.cidade)}${bairroDe(sel)?" · "+esc(bairroDe(sel)):""}</dd></div>
+        <div><dt>Viabilidade vigente</dt><dd>${v?v.versao+" – "+VNOME[v.versao]+(v.mes?" · "+v.mes.slice(5)+"/"+v.mes.slice(0,4):""):"—"}</dd></div>
+        ${sel.ex_nome?`<div><dt>Nome antigo</dt><dd>${esc(sel.ex_nome)}</dd></div>`:""}</dl>
+      ${marcos.length?`<div class="f-h">Marcos do cronograma</div><ul class="f-tl">${marcos.map(m=>`<li class="${m.ok?"ok":""}"><i></i><span>${esc(m.n)}</span><span>${dmy(m.data)}</span></li>`).join("")}</ul>`:""}
+    </div>`;
+    $("fBack").onclick = ()=>{ selMapa(null,false); MP.aplica3d(full,false); $("b3d").setAttribute("aria-pressed","false"); MP.enquadra(full, Ls, {top:90,bottom:70,left:400,right:80}); };
+    $("fVista").onclick = ()=>{ if (full._3d){ MP.aplica3d(full,false); } else MP.voa3d(full, sel.pos); $("b3d").setAttribute("aria-pressed", String(full._3d)); renderMapaPagina(); };
+    $("fCopia").onclick = ()=>{ try{ navigator.clipboard.writeText(sel.endereco||""); $("fCopia").lastChild.textContent="Copiado"; }catch(e){} };
+    return;
+  }
+  const q = mapBusca.trim().toLowerCase();
+  const its = Ls.filter(e=>!q || (e.nome+" "+(e.endereco||"")+" "+e.cidade+" "+(e.ex_nome||"")).toLowerCase().includes(q));
+  const grupos = grupoOrdem().map(id=>({id, its:its.filter(e=>grupoDe(e)===id).sort((a,b)=>a.nome.localeCompare(b.nome,"pt-BR"))})).filter(g=>g.its.length);
+  side.innerHTML = `<div class="ms-h"><h2>Empreendimentos <span>${its.length}</span></h2>
+      <label class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><input id="mBusca" type="search" placeholder="Buscar por nome, rua ou bairro" value="${esc(mapBusca)}"></label></div>
+    <div class="ms-b">${grupos.map(g=>`<div class="ms-g"><span class="mac" style="--c:${grupoCor(g.id)}"></span>${esc(grupoNome(g.id))} · ${g.its.length}</div>${g.its.map(e=>`<button class="ms-r" data-s="${e.sigla}" style="--c:${corDe(e)}"><span class="dot"></span><b>${esc(e.nome)}</b><span class="v">${brl(vig(e)?.vgv_bruto)}</span><span class="s">${esc(bairroDe(e)||e.cidade)} · ${esc(TATICA[e.fase]||"Sem cronograma")}</span></button>`).join("")}`).join("") || "<p class='muted' style='padding:12px'>Nenhum empreendimento encontrado.</p>"}</div>`;
+  const inp = $("mBusca"); inp.oninput = ()=>{ mapBusca = inp.value; const pos=inp.selectionStart; renderMapaPagina(); const n=$("mBusca"); n.focus(); n.setSelectionRange(pos,pos); };
+  side.querySelectorAll(".ms-r").forEach(b=>{ const e=D.empreendimentos.find(x=>x.sigla===b.dataset.s);
+    b.onclick = ()=>selMapa(e); });
 }
 
 /* ---------- Saúde financeira (seção recolhível) ---------- */
@@ -424,8 +447,8 @@ function chartDumbbell(L){
     s+=`<rect class="hit" data-i="${i}" x="0" y="${y-rowH/2}" width="${W}" height="${rowH}" fill="transparent"/>`; });
   box.innerHTML=s+"</svg>";
   box.querySelectorAll(".hit").forEach(r=>{ const e=its[r.dataset.i], v=vig(e), p=proj(e), meta=METAS[anoLanc(e)];
-    bindTip(r, `<b>${esc(e.nome)}</b> · ${v.versao} – ${VNOME[v.versao]}${v.obs?` <span class="muted">(${esc(v.obs)})</span>`:""}<table><tr><td>Margem vigente</td><td class="n">${pct(v.margem)}</td></tr><tr><td>Projetada no lançamento</td><td class="n">${pct(p.m)}${p.aj?` (${pp(p.aj)})`:""}</td></tr><tr><td>Meta ${anoLanc(e)??""}</td><td class="n">${meta?pct(meta,0):"sem meta"}</td></tr><tr><td>Lucro líquido</td><td class="n">${brl(v.lucro)}</td></tr><tr><td>Lançamento</td><td class="n">${lanc(e)?(lanc(e).ok?"lançado ":"previsto ")+my(lanc(e).data):"sem data"}</td></tr></table><div class="muted">${esc(p.motivo)} · clique para ver no mapa</div>`);
-    r.onclick=()=>{ hideTip(); S.sel=e.nome; renderMap(true); renderSaude(); $("sec-map").scrollIntoView({behavior:"smooth",block:"center"}); }; });
+    bindTip(r, `<b>${esc(e.nome)}</b> · ${v.versao} – ${VNOME[v.versao]}${v.obs?` <span class="muted">(${esc(v.obs)})</span>`:""}<table><tr><td>Margem vigente</td><td class="n">${pct(v.margem)}</td></tr><tr><td>Projetada no lançamento</td><td class="n">${pct(p.m)}${p.aj?` (${pp(p.aj)})`:""}</td></tr><tr><td>Meta ${anoLanc(e)??""}</td><td class="n">${meta?pct(meta,0):"sem meta"}</td></tr><tr><td>Lucro líquido</td><td class="n">${brl(v.lucro)}</td></tr><tr><td>Lançamento</td><td class="n">${lanc(e)?(lanc(e).ok?"lançado ":"previsto ")+my(lanc(e).data):"sem data"}</td></tr></table><div class="muted">${esc(p.motivo)} · clique para abrir no mapa</div>`);
+    r.onclick=()=>{ hideTip(); abreNoMapa(e); }; });
 }
 function abreHow(){
   const bloco = inc => `<div class="box"><h4><span class="mac" style="--c:${coCor(inc)}"></span>${inc}</h4><div class="tbl-wrap"><table class="t" style="min-width:560px"><thead><tr><th>De → para</th><th class="n">Casos</th><th class="n">Ajuste (mediana)</th><th>Casos usados (margem V4 − margem da versão)</th></tr></thead><tbody>${VERS.slice(0,4).filter(v=>!(inc==="Gadens"&&v==="V1")).map(v=>{ const x=AJ[inc][v];
@@ -461,6 +484,7 @@ function renderMarcos(){
    BARRA SUPERIOR: navegação, filtros, incorporadora
    ========================================================= */
 const SECOES = {
+  mapa:[["cid:Curitiba","Curitiba"],["cid:Pinhais","Pinhais"],["cid:São José dos Pinhais","São José dos Pinhais"],["cid:Araucária","Araucária"],["cid:Almirante Tamandaré","Almirante Tamandaré"]],
   resumo:[["sec-kpis","Indicadores"],["sec-traj","Trajetória de lançamentos"],["sec-dist","Distribuição"],["sec-map","Mapa da carteira"],["sec-saude","Saúde financeira"],["sec-marcos","Marcos alterados"]],
   cronograma:[["sec-lanc","Próximos lançamentos"],[null,"Portfólio Macro (Gantt)"],[null,"Régua de lançamentos"],[null,"Agenda de 90 dias"]],
   analise:[["sec-reg","Registro de Desvios"],["sec-var","Marcos alterados"],[null,"Motivos de atraso"]],
@@ -491,6 +515,10 @@ function miniPrev(p){
     const its=L.filter(e=>vig(e)&&vig(e).margem!=null), X=v=>W*(v-.10)/(.32-.10);
     svg = `<line x1="${X(.20)}" x2="${X(.20)}" y1="6" y2="${H-14}" stroke="var(--label)" stroke-dasharray="3 3"/><text x="${X(.20)}" y="${H-2}" text-anchor="middle">20%</text><text x="0" y="${H-2}">10%</text><text x="${W}" y="${H-2}" text-anchor="end">32%</text>`+its.map((e,i)=>`<circle cx="${X(vig(e).margem)}" cy="${14+(i%5)*14}" r="5" fill="${corDe(e)}" stroke="var(--card-solid)" stroke-width="1.5"/>`).join("");
     const d=dadosSaude(); big=pct(d.media,1); lab="margem líquida média"; foot=`<span>cada ponto é um empreendimento</span><span>${its.length} viabilidades</span>`;
+  } else if (p==="mapa"){
+    const cs=[...new Set(L.map(e=>e.cidade))].map(c=>({c,n:L.filter(e=>e.cidade===c).length})).sort((a,b)=>b.n-a.n), max=Math.max(...cs.map(x=>x.n),1), rh=H/Math.max(cs.length,1);
+    svg = cs.map((x,i)=>`<text x="0" y="${i*rh+rh/2+3}">${esc(x.c)}</text><rect x="130" y="${i*rh+rh/2-5}" width="${(W-160)*x.n/max}" height="10" rx="5" fill="var(--accent)"/><text x="${136+(W-160)*x.n/max}" y="${i*rh+rh/2+3}" style="fill:var(--label);font-weight:600">${x.n}</text>`).join("");
+    big=nf(L.filter(e=>e.pos).length); lab="empreendimentos no mapa"; foot=`<span>por cidade · clique numa cidade para ir até ela</span><span>visão 3D ao abrir um empreendimento</span>`;
   } else {
     const LA=filtrados().filter(ativa).filter(e=>vig(e)&&vig(e).margem!=null&&lanc(e)), ks=[2027,2028,2029], step=W/3, bw=40, top=.3, Yv=v=>H-14-(H-28)*v/top;
     const m=k=>{ const its=LA.filter(e=>anoLanc(e)===k), w=its.reduce((a,e)=>a+(vig(e).vgv_liquido||0),0); return w?its.reduce((a,e)=>a+proj(e).m*(vig(e).vgv_liquido||0),0)/w:null; };
@@ -566,7 +594,7 @@ function renderSettings(){
   if (S.setTab==="dados") $("setBody").innerHTML = `
     <div class="box"><h4><span class="mac" style="--c:#FF5F57"></span>Atualização</h4><p>Dados gerados em ${g.toLocaleDateString("pt-BR")} às ${g.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"})}. Cronogramas: ${esc(D.fontes.cronogramas.replace(/(\d{4})-(\d{2})-(\d{2})/,"$3/$2/$1"))}.</p></div>
     <div class="box"><h4><span class="mac" style="--c:#FEBC2E"></span>Cronogramas e fases</h4><ul><li>Marcos lidos dos cronogramas do ClickUp pelo campo “Código tarefa” (listas privadas e “(cópia)” ficam de fora).</li><li>A fase de cada empreendimento sai do marco mais avançado concluído, não do nome da lista.</li><li>A comparação semanal usa o histórico salvo toda segunda-feira.</li></ul></div>
-    <div class="box"><h4><span class="mac" style="--c:#28C840"></span>Viabilidades, linha de produto e endereço</h4><ul><li>Lista Controle de Viabilidades do ClickUp, com os valores das DREs.</li><li>A vigente é a versão mais avançada cadastrada na lista, mesmo pendente de aprovação.</li><li>Linha de produto e endereço vêm dos campos “Linha Produto” e “📍 Endereço do empreendimento”.</li><li>Margem projetada: veja “Como é calculada” na Saúde financeira.</li></ul></div>`;
+    <div class="box"><h4><span class="mac" style="--c:#28C840"></span>Viabilidades, linha de produto e endereço</h4><ul><li>Lista Controle de Viabilidades do ClickUp, com os valores das DREs.</li><li>A vigente é a versão mais avançada cadastrada na lista, mesmo pendente de aprovação.</li><li>Linha de produto e endereço vêm dos campos “Linha Produto” e “📍 Endereço do empreendimento”.</li><li>Mapa: recorte próprio do OpenStreetMap de Curitiba e região, gerado por uma rotina do GitHub e guardado no site.</li><li>Margem projetada: veja “Como é calculada” na Saúde financeira.</li></ul></div>`;
   else if (S.setTab==="pend") $("setBody").innerHTML = p.length ? p.map((x,i)=>`<div class="box"><h4><span class="mac" style="--c:${["#FF5F57","#FEBC2E","#28C840","#5E9EFF","#BF5AF2","#8E8E93"][i%6]}"></span>${esc(x.t)}<span class="muted" style="margin-left:auto;font-weight:500">${x.xs.length}</span></h4><p class="muted">${esc(x.xs.join(", "))}</p></div>`).join("") : "<p class='muted'>Nenhuma pendência.</p>";
   else $("setBody").innerHTML = `<div class="log">${CHANGELOG.map(c=>`<div><div class="v">Versão ${c.v}<span>${dmy(c.d)}</span></div><ul>${c.itens.map(i=>`<li>${esc(i)}</li>`).join("")}</ul></div>`).join("")}</div>`;
 }
@@ -594,16 +622,21 @@ function renderViab(){
    ========================================================= */
 let paginaAtual = "resumo";
 function route(){
-  const h = location.hash.slice(1), p = PAGES.includes(h) ? h : "resumo"; paginaAtual = p;
+  const h = location.hash.slice(1), [pg, sig] = h.split(":"), p = PAGES.includes(pg) ? pg : "resumo"; paginaAtual = p;
+  if (p==="mapa" && sig) S.mapSel = decodeURIComponent(sig);
   document.querySelectorAll(".page").forEach(s=>s.hidden = s.dataset.page!==p);
   document.querySelectorAll("#nav .ni").forEach(a=>{ a.classList.toggle("on", a.dataset.p===p); a.toggleAttribute("aria-current", a.dataset.p===p); });
-  if (p==="resumo" && map) setTimeout(()=>map.resize(),60);
+  document.documentElement.classList.toggle("no-scroll", p==="mapa");
+  if (p==="mapa"){ setTimeout(()=>{ iniciaMapaPagina(); const e=D.empreendimentos.find(x=>x.sigla===S.mapSel); renderMapaPagina(); if (e && full.loaded()) MP.voa3d(full, e.pos); }, 30); }
+  if (p==="resumo" && mini) setTimeout(()=>mini.resize(),60);
 }
 function irPara(p, sec){
-  if (location.hash.slice(1)!==p) location.hash = p; else route();
+  const alvo = p==="mapa" && S.mapSel ? "mapa:"+S.mapSel : p;
+  if (location.hash.slice(1)!==alvo) location.hash = alvo; else route();
   fechaPops();
+  if (sec && sec.startsWith("cid:")){ const c=sec.slice(4); S.mapSel=null; setTimeout(()=>{ if (full) MP.enquadra(full, D.empreendimentos.filter(e=>e.pos&&e.cidade===c&&porInc(e)), {top:90,bottom:70,left:400,right:80}); renderMapaPagina(); }, 120); return; }
   if (sec){ if (sec==="sec-saude" && !S.saudeOpen){ S.saudeOpen=true; renderSaude(); } setTimeout(()=>{ const el=$(sec); if (el) window.scrollTo({top:el.getBoundingClientRect().top+scrollY-84, behavior:"smooth"}); },80); }
-  else window.scrollTo({top:0, behavior:"smooth"});
+  else if (p!=="mapa") window.scrollTo({top:0, behavior:"smooth"});
 }
 function renderAll(){
   document.documentElement.dataset.inc = S.inc;
@@ -634,7 +667,7 @@ function init(){
   $("saudeToggle").onclick = ()=>{ S.saudeOpen=!S.saudeOpen; renderSaude(); };
   $("setBtn").onclick = ()=>{ renderSettings(); abreFolha("setSheet"); };
   $("setTabs").querySelectorAll("button").forEach(b=>b.onclick=()=>{ S.setTab=b.dataset.t; renderSettings(); });
-  $("themeBtn").onclick = ()=>{ const t = dark()?"light":"dark"; document.documentElement.dataset.theme=t; try{ localStorage.setItem("dash-tema",t); }catch(e){} aplicaEstilo(); renderAll(); };
+  $("themeBtn").onclick = ()=>{ const t = dark()?"light":"dark"; document.documentElement.dataset.theme=t; try{ localStorage.setItem("dash-tema",t); }catch(e){} if (mini) MP.tema(mini, tema()); if (full) MP.tema(full, tema()); renderAll(); };
   $("scrim").onclick = ()=>abreFolha(null);
   document.querySelectorAll("[data-close]").forEach(b=>b.onclick=()=>abreFolha(null));
   document.addEventListener("mouseover", ev=>{ const n=ev.target.closest("[data-tip]"); if (n){ n.onmousemove = e=>showTip(esc(n.dataset.tip), e); n.onmouseleave = hideTip; } });

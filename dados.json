@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-31T04:47-03:00",
+ "gerado_em": "2026-10-31T17:50-03:00",
  "fontes": {
   "cronogramas": "Snapshot ClickUp de 2026-10-26",
   "viabilidades": "ClickUp · lista Controle de Viabilidades",
@@ -2186,11 +2186,11 @@
     }
    ],
    "pos": [
-    -25.437,
-    -49.278
+    -25.4335002,
+    -49.265213
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "R. João Negrão, 486 - Centro, Curitiba - PR, 80010-200"
   },
   {
    "nome": "CORE Evo",
@@ -2282,11 +2282,11 @@
     }
    ],
    "pos": [
-    -25.439,
-    -49.268
+    -25.4357511,
+    -49.2643965
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "R. João Negrão, 740 - Centro, Curitiba - PR, 80010-200"
   },
   {
    "nome": "Martim Afonso",
@@ -2361,11 +2361,11 @@
     }
    ],
    "pos": [
-    -25.427,
-    -49.29
+    -25.4369585,
+    -49.3058986
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "R. Martim Afonso, 2955 - Campina do Siqueira, Curitiba - PR, 80730-030"
   },
   {
    "nome": "Lens Alto da Glória",
@@ -2399,11 +2399,11 @@
     }
    ],
    "pos": [
-    -25.4195,
-    -49.262
+    -25.4290514,
+    -49.2604248
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "R. Gen. Carneiro, 756 - Centro, Curitiba - PR, 80060-150"
   },
   {
    "nome": "Lens Barigui",
@@ -2437,11 +2437,11 @@
     }
    ],
    "pos": [
-    -25.429,
-    -49.305
+    -25.4323799,
+    -49.3009102
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "R. Padre Agostinho, 2277 - Bigorrilho, Curitiba - PR, 80710-000"
   }
  ],
  "variacoes": [

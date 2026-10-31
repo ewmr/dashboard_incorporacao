@@ -7,7 +7,7 @@
 <script>/* tema antes de pintar, para não piscar */try{var t=localStorage.getItem("dash-tema");document.documentElement.dataset.theme=t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){document.documentElement.dataset.theme="light"}</script>
 <style>:where(svg){max-width:100%}:where(.top,.bot) :where(svg){width:22px;height:22px}</style>
 <link rel="stylesheet" href="vendor/maplibre/maplibre-gl.css?v=4.7.1">
-<link rel="stylesheet" href="app.css?v=0.4.4">
+<link rel="stylesheet" href="app.css?v=0.5.1">
 </head>
 <body>
 <!-- fundo: degradê desfocado na cor da incorporadora -->
@@ -17,6 +17,7 @@
 <header class="top" id="top">
   <nav class="glass navpill" id="nav" aria-label="Páginas">
     <a class="ni" href="#resumo" data-p="resumo"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></svg><span class="nl">Resumo</span></a>
+    <a class="ni" href="#mapa" data-p="mapa"><svg viewBox="0 0 24 24"><path d="M9 4.5 3.5 6.6v13l5.5-2.1 6 2.1 5.5-2.1v-13L15 6.6z"/><path d="M9 4.5v13M15 6.6v13"/></svg><span class="nl">Mapa</span></a>
     <a class="ni" href="#cronograma" data-p="cronograma"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="nl">Cronograma</span></a>
     <a class="ni" href="#analise" data-p="analise"><svg viewBox="0 0 24 24"><path d="M4 19.5h16M6.5 16l4-5 3.5 3 4.5-6.5"/></svg><span class="nl">Análise</span></a>
     <a class="ni" href="#viabilidade" data-p="viabilidade"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M14.8 9.2c-.5-1-1.6-1.6-2.8-1.6-1.6 0-2.8.9-2.8 2.2 0 3 5.6 1.6 5.6 4.5 0 1.3-1.2 2.2-2.8 2.2-1.3 0-2.4-.6-2.9-1.7M12 6v1.6M12 16.4V18"/></svg><span class="nl">Viabilidade</span></a>
@@ -62,7 +63,7 @@
 
     <article class="card mapcard" id="sec-map">
       <div id="map"></div>
-      <div class="glass mapinfo" id="mapCard" hidden></div>
+      <a class="glass mapopen" href="#mapa" id="mapOpen"><svg viewBox="0 0 24 24"><path d="M14 4h6v6M10 20H4v-6M20 4l-6.5 6.5M4 20l6.5-6.5"/></svg>Abrir mapa</a>
     </article>
 
     <article class="card saude" id="sec-saude">
@@ -79,6 +80,18 @@
         <a class="pillbtn" href="#analise" data-sec="sec-var">Ver motivos na Análise de Cronogramas <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></a></div>
       <div class="marcos" id="attn"></div>
     </article>
+  </section>
+
+  <!-- MAPA (tela cheia) -->
+  <section class="page mapa-page" data-page="mapa" hidden>
+    <div id="mapaFull"></div>
+    <aside class="glass mside" id="mside"></aside>
+    <div class="mctl">
+      <button class="glass mbtn t3d" id="b3d" aria-pressed="false" data-tip="Alternar visão 3D">3D</button>
+      <div class="glass mgrp"><button id="bZin" aria-label="Aproximar">+</button><button id="bZout" aria-label="Afastar">−</button></div>
+      <button class="glass mbtn" id="bNorte" data-tip="Voltar o norte para cima e a visão de cima" aria-label="Norte"><svg viewBox="0 0 24 24"><path d="M12 3l4 9h-8z" fill="#FF453A" stroke="none"/><path d="M12 21l-4-9h8z" fill="currentColor" stroke="none" opacity=".35"/></svg></button>
+      <button class="glass mbtn" id="bTodos" data-tip="Mostrar todos os empreendimentos" aria-label="Enquadrar todos"><svg viewBox="0 0 24 24"><path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5"/></svg></button>
+    </div>
   </section>
 
   <!-- CRONOGRAMA -->
@@ -139,6 +152,8 @@
 
 <div class="tip" id="tip" hidden></div>
 <script src="vendor/maplibre/maplibre-gl.js?v=4.7.1"></script>
-<script src="app.js?v=0.4.4"></script>
+<script src="vendor/maplibre/pmtiles.js?v=4.5.0"></script>
+<script src="mapa.js?v=0.5.1"></script>
+<script src="app.js?v=0.5.1"></script>
 </body>
 </html>

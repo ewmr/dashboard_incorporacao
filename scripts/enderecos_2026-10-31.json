@@ -129,5 +129,30 @@
 "lat": -25.4316274,
 "lng": -49.203417,
 "endereco": "R. Paulo Kissula, 922 - Capão da Imbuia, Curitiba - PR, 82810-530"
+},
+"CORE Evo": {
+"lat": -25.4357511,
+"lng": -49.2643965,
+"endereco": "R. João Negrão, 740 - Centro, Curitiba - PR, 80010-200"
+},
+"Guadalupe": {
+"lat": -25.4335002,
+"lng": -49.265213,
+"endereco": "R. João Negrão, 486 - Centro, Curitiba - PR, 80010-200"
+},
+"Martim Afonso": {
+"lat": -25.4369585,
+"lng": -49.3058986,
+"endereco": "R. Martim Afonso, 2955 - Campina do Siqueira, Curitiba - PR, 80730-030"
+},
+"Lens Alto da Glória": {
+"lat": -25.4290514,
+"lng": -49.2604248,
+"endereco": "R. Gen. Carneiro, 756 - Centro, Curitiba - PR, 80060-150"
+},
+"Lens Barigui": {
+"lat": -25.4323799,
+"lng": -49.3009102,
+"endereco": "R. Padre Agostinho, 2277 - Bigorrilho, Curitiba - PR, 80710-000"
 }
 }
