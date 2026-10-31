@@ -300,7 +300,7 @@ function aplicaEstilo(){
   const t = dark()?"dark":"light"; estiloOk=false;
   map.setStyle(ESTILO[t]);
   clearTimeout(estiloTimer);
-  estiloTimer = setTimeout(()=>{ if (!estiloOk) map.setStyle(raster(t)); }, 7000);   // se o OpenFreeMap não responder, usa o CARTO
+  estiloTimer = setTimeout(()=>{ if (!estiloOk && !map.isStyleLoaded()) map.setStyle(raster(t)); }, 9000);   // só se o OpenFreeMap não responder, usa o CARTO
 }
 function renderMap(fly){
   if (typeof maplibregl === "undefined"){ $("map").innerHTML="<p class='muted' style='padding:16px'>Não foi possível carregar o mapa.</p>"; return; }
@@ -309,12 +309,11 @@ function renderMap(fly){
     map = new maplibregl.Map({container:"map", style:ESTILO[t], center:[-49.24,-25.47], zoom:10.4, attributionControl:{compact:true}, dragRotate:false, pitchWithRotate:false});
     map.scrollZoom.disable();
     map.addControl(new maplibregl.NavigationControl({showCompass:false}), "top-right");
-    map.on("styledata", ()=>{ estiloOk=true; });
+    map.on("style.load", ()=>{ estiloOk=true; });
     map.on("load", ()=>map.resize());
     // o card muda de tamanho (largura da tela, troca de página): o mapa acompanha, senão o desenho e os alfinetes se desencontram
     if (window.ResizeObserver) new ResizeObserver(()=>map.resize()).observe($("sec-map"));
-    map.on("error", ()=>{ if (!estiloOk){ estiloOk=true; map.setStyle(raster(dark()?"dark":"light")); } });
-    estiloTimer = setTimeout(()=>{ if (!estiloOk) map.setStyle(raster(t)); }, 7000);
+    estiloTimer = setTimeout(()=>{ if (!estiloOk && !map.isStyleLoaded()) map.setStyle(raster(t)); }, 9000);
     map.getCanvas().addEventListener("wheel", ev=>{ if (ev.ctrlKey||ev.metaKey){ ev.preventDefault(); map.scrollZoom.enable(); clearTimeout(map._zt); map._zt=setTimeout(()=>map.scrollZoom.disable(),600); } }, {passive:false});
   }
   markers.forEach(m=>m.remove()); markers=[];
