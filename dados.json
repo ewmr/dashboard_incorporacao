@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-30T22:20-03:00",
+ "gerado_em": "2026-10-30T22:41-03:00",
  "fontes": {
   "cronogramas": "Snapshot ClickUp de 2026-10-26",
   "viabilidades": "ClickUp · Controle de Viabilidades",
@@ -338,6 +338,30 @@
    "fase": "OBR",
    "legado": false,
    "marcos": {
+    "nov001": {
+     "data": "2024-03-06",
+     "ok": 1
+    },
+    "inc001": {
+     "data": "2024-03-21",
+     "ok": 1
+    },
+    "leg009": {
+     "data": "2024-12-10",
+     "ok": 1
+    },
+    "leg010": {
+     "data": "2025-01-07",
+     "ok": 1
+    },
+    "inc002": {
+     "data": "2025-01-25",
+     "ok": 1
+    },
+    "eng001": {
+     "data": "2025-04-01",
+     "ok": 1
+    },
     "eng002": {
      "data": "2027-02-12",
      "ok": 0
@@ -1671,6 +1695,30 @@
    "fase": "OBR",
    "legado": false,
    "marcos": {
+    "nov001": {
+     "data": "2023-08-16",
+     "ok": 1
+    },
+    "inc001": {
+     "data": "2023-12-01",
+     "ok": 1
+    },
+    "leg009": {
+     "data": "2024-06-28",
+     "ok": 1
+    },
+    "leg010": {
+     "data": "2024-07-31",
+     "ok": 1
+    },
+    "inc002": {
+     "data": "2024-08-20",
+     "ok": 1
+    },
+    "eng001": {
+     "data": "2024-12-02",
+     "ok": 1
+    },
     "eng002": {
      "data": "2026-11-05",
      "ok": 0

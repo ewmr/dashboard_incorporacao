@@ -99,3 +99,12 @@ VARIACOES = [
   ("FUN","arq003","2026-12-07","2027-01-05"),
   ("RAF","leg011","2030-07-02","2030-06-03"), ("RAF","mar001","2030-07-15","2030-06-14"),
 ]
+
+# Marcos criados em 30/10/2026 em OBR | Arbo e OBR | Uniq (fonte: PLAN_Painel_de_Controle_de_Prazos v07, aba 1)
+_NOVOS = {
+ "ARB": {"nov001":"2024-03-06","inc001":"2024-03-21","leg009":"2024-12-10","leg010":"2025-01-07","inc002":"2025-01-25","eng001":"2025-04-01"},
+ "UNI": {"nov001":"2023-08-16","inc001":"2023-12-01","leg009":"2024-06-28","leg010":"2024-07-31","inc002":"2024-08-20","eng001":"2024-12-02"},
+}
+for _s, _d in _NOVOS.items():
+    for _c, _dt in _d.items():
+        M.setdefault(_c, {})[_s] = (_dt, 1)
