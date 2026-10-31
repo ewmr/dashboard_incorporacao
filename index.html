@@ -4,164 +4,140 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Dashboard Incorporação · Make It e Gadens</title>
-<link rel="stylesheet" href="vendor/leaflet/leaflet.css">
+<script>/* tema antes de pintar, para não piscar */try{var t=localStorage.getItem("dash-tema");document.documentElement.dataset.theme=t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){document.documentElement.dataset.theme="light"}</script>
+<link rel="stylesheet" href="vendor/maplibre/maplibre-gl.css">
 <link rel="stylesheet" href="app.css">
 </head>
 <body>
-<header class="bar">
-  <div class="wrap bar-in">
-    <div class="brand">
-      <svg class="mark" viewBox="-14 -14 516 481" role="img" aria-label="Gestão de Projetos">
-        <defs>
-          <path id="pmL" d="M 256.59375 202.605469 L 188.5 202.605469 C 188.5 166.027344 219.039062 136.265625 256.578125 136.265625 L 371.667969 136.269531 L 335.035156 171.960938 L 377.617188 213.453125 L 487.039062 106.828125 L 377.617188 0.203125 L 335.035156 41.695312 L 371.875 77.589844 L 256.578125 77.589844 C 185.835938 77.589844 128.285156 133.671875 128.285156 202.605469 L 128.296875 202.605469 C 57.554688 202.605469 0 258.6875 0 327.621094 L 0 452.71875 L 60.214844 452.71875 L 60.214844 327.621094 C 60.214844 291.042969 90.757812 261.285156 128.296875 261.285156 L 256.59375 261.285156 C 294.132812 261.285156 324.671875 291.042969 324.671875 327.621094 C 324.671875 364.203125 294.132812 393.960938 256.59375 393.960938 C 219.050781 393.960938 188.511719 364.203125 188.511719 327.621094 L 188.511719 287.058594 L 128.296875 287.058594 L 128.296875 327.621094 C 128.296875 396.558594 185.847656 452.640625 256.59375 452.640625 C 327.335938 452.640625 384.886719 396.558594 384.886719 327.621094 C 384.886719 258.6875 327.335938 202.605469 256.59375 202.605469"/>
-          <linearGradient id="pmFill" x1="0" y1="0" x2=".35" y2="1"><stop offset="0" style="stop-color:color-mix(in srgb,var(--accent) 52%,#fff)"/><stop offset=".48" style="stop-color:var(--accent)"/><stop offset="1" style="stop-color:color-mix(in srgb,var(--accent) 72%,#000)"/></linearGradient>
-          <linearGradient id="pmGloss" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".55"/><stop offset=".42" stop-color="#fff" stop-opacity=".08"/><stop offset=".43" stop-color="#fff" stop-opacity="0"/></linearGradient>
-          <linearGradient id="pmRim" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".95"/><stop offset=".6" stop-color="#fff" stop-opacity=".25"/><stop offset="1" stop-color="#fff" stop-opacity=".5"/></linearGradient>
-          <clipPath id="pmClip"><use href="#pmL"/></clipPath>
-        </defs>
-        <use href="#pmL" fill="url(#pmFill)"/>
-        <use href="#pmL" fill="url(#pmGloss)"/>
-        <g clip-path="url(#pmClip)"><use href="#pmL" fill="none" stroke="url(#pmRim)" stroke-width="16"/></g>
-      </svg>
-      <div class="brand-t"><b>Incorporação</b><span id="coName">Make It + Gadens</span></div>
-    </div>
-    <div class="tools">
-      <div class="seg" role="radiogroup" aria-label="Incorporadora" id="incSeg">
-        <button role="radio" data-inc="all" aria-checked="true">Consolidado</button>
-        <button role="radio" data-inc="Make It" aria-checked="false"><span class="co-logo" data-co="makeit">Make It</span></button>
-        <button role="radio" data-inc="Gadens" aria-checked="false"><span class="co-logo" data-co="gadens">Gadens</span></button>
-      </div>
-      <button class="btn" id="filterBtn" aria-haspopup="dialog">
-        <svg class="ico" viewBox="0 0 20 20" aria-hidden="true"><path d="M3 5h14M6 10h8M8.5 15h3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-        <span class="lbl">Filtros</span><span class="badge" id="filterCount" hidden></span></button>
-      <button class="btn icon" id="dataBtn" aria-haspopup="dialog" aria-label="Sobre os dados e pendências">
-        <svg class="ico" viewBox="0 0 20 20" aria-hidden="true"><circle cx="10" cy="10" r="7.2" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M10 9v4.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="10" cy="6.3" r="1.1" fill="currentColor"/></svg>
-        <span class="dot" id="pendDot" hidden></span></button>
-    </div>
-  </div>
-  <div class="wrap chips" id="activeChips" hidden></div>
+<!-- fundo: degradê desfocado na cor da incorporadora -->
+<div class="bg" aria-hidden="true"><i class="b1"></i><i class="b2"></i><i class="b3"></i></div>
+
+<!-- barra superior -->
+<header class="top" id="top">
+  <nav class="glass navpill" id="nav" aria-label="Páginas">
+    <a class="ni" href="#resumo" data-p="resumo"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></svg><span class="nl">Resumo</span></a>
+    <a class="ni" href="#cronograma" data-p="cronograma"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span class="nl">Cronograma</span></a>
+    <a class="ni" href="#analise" data-p="analise"><svg viewBox="0 0 24 24"><path d="M4 19.5h16M6.5 16l4-5 3.5 3 4.5-6.5"/></svg><span class="nl">Análise</span></a>
+    <a class="ni" href="#viabilidade" data-p="viabilidade"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M14.8 9.2c-.5-1-1.6-1.6-2.8-1.6-1.6 0-2.8.9-2.8 2.2 0 3 5.6 1.6 5.6 4.5 0 1.3-1.2 2.2-2.8 2.2-1.3 0-2.4-.6-2.9-1.7M12 6v1.6M12 16.4V18"/></svg><span class="nl">Viabilidade</span></a>
+    <a class="ni" href="#metas" data-p="metas"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.8"/><circle cx="12" cy="12" r="1.3"/></svg><span class="nl">Metas</span></a>
+  </nav>
+  <button class="glass circ" id="filterBtn" aria-label="Filtros" aria-haspopup="true">
+    <svg viewBox="0 0 24 24"><path d="M4 6.5h16M7 12h10M10 17.5h4"/></svg>
+    <span class="fbadge" id="filterCount" hidden></span>
+  </button>
+  <button class="glass squircle" id="coSwitch" aria-label="Incorporadora: Consolidado" aria-haspopup="true" data-pos="0">
+    <span class="dots"><i></i><i></i><i></i></span>
+    <span class="knob">
+      <span class="kf k0"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2.4" fill="#FF9100"/><rect x="13" y="13" width="8" height="8" rx="2.4" fill="#2C86DC"/><rect x="13" y="3" width="8" height="8" rx="2.4" fill="currentColor" opacity=".28"/><rect x="3" y="13" width="8" height="8" rx="2.4" fill="currentColor" opacity=".28"/></svg></span>
+      <span class="kf k1"><svg viewBox="0 0 230.8 230.8" aria-hidden="true"><path fill="#fff" d="M108.6 178.3H63.9V81.6h44.7zM167.9 178.3h-44.6V51.8h44.6z"/></svg></span>
+      <span class="kf k2"><svg viewBox="-14 -14 140.4 136.4" aria-hidden="true"><path fill="#fff" d="M54.5 0v108.4C24.6 108.4.3 84.1.3 54.2S24.6 0 54.5 0z"/><path fill="#fff" d="M63.1 59.1h49.3v49.3z"/><path fill="#F0A06A" d="M112.4 0v50.3C84.6 50.3 62 27.8 62 0z"/></svg></span>
+    </span>
+  </button>
+
+  <div class="glass pop" id="navPop" hidden><div class="np-l" id="npList"></div><div class="np-r" id="npPrev"></div></div>
+  <div class="glass pop" id="filterPop" hidden></div>
+  <div class="glass pop" id="coPop" hidden></div>
 </header>
 
-<main class="wrap" id="main">
-  <!-- ONE PAGE REPORT -->
+<main id="main">
+  <!-- RESUMO / ONE PAGE REPORT -->
   <section class="page" data-page="resumo">
-    <div class="ttl"><h1>One Page Report</h1><span class="stamp" id="stamp"></span></div>
+    <div class="grid kpis" id="sec-kpis"></div>
 
-    <div class="kpis" id="kpis"></div>
-    <div class="card kpi-detail" id="kpiDetail" hidden></div>
-
-    <div class="grid g-2">
-      <div class="card">
-        <div class="ch"><h3>Trajetória de lançamentos</h3><span class="hint">clique num ano para filtrar</span></div>
-        <p class="sub">VGV bruto por ano de Lançamento Comercial. Cheio = lançado · hachurado = previsto.</p>
+    <div class="grid g-traj">
+      <article class="card" id="sec-traj">
+        <div class="ch"><div><h3>Trajetória de lançamentos</h3><p class="cap" id="trajCap"></p></div>
+          <button class="ib info" id="trajInfo" aria-label="Sobre este gráfico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.6"/><path d="M12 11v5.2"/><circle cx="12" cy="7.8" r=".9" fill="currentColor" stroke="none"/></svg></button></div>
+        <div class="big"><b id="trajBig"></b><span id="trajBigS"></span></div>
+        <div class="leg" id="trajLeg"></div>
         <div class="chart" id="traj"></div>
-        <p class="foot" id="trajFoot"></p>
-      </div>
-      <div class="card">
-        <div class="ch"><h3>Distribuição por fase</h3><span class="hint">clique numa fase para filtrar</span></div>
-        <p class="sub">Barra = VGV bruto · número = empreendimentos.</p>
-        <div id="funnel"></div>
-      </div>
+      </article>
+      <article class="card" id="sec-dist">
+        <div class="ch"><div><h3 id="distTitle">Distribuição por fase</h3><p class="cap">fatia = nº de empreendimentos · altura = VGV</p></div></div>
+        <div class="chart donut" id="donut"></div>
+        <div class="dleg" id="donutLeg"></div>
+      </article>
     </div>
 
-    <div class="card">
-      <div class="ch"><h3>Saúde financeira</h3>
-        <button class="link" id="howBtn">Como a margem projetada é calculada</button></div>
-      <div class="health">
-        <div class="h-left">
-          <div class="hks" id="healthKpis"></div>
-          <div class="box">
-            <h4 class="mini">Margem projetada dos lançamentos × meta</h4>
-            <p class="sub">média ponderada pelo VGV líquido · clique num ano para filtrar</p>
-            <div class="chart" id="metaYears"></div>
-          </div>
-        </div>
-        <div>
-          <h4 class="mini">Margem líquida por empreendimento</h4>
-          <div class="leg" id="marginLeg"></div>
-          <div class="chart" id="margins"></div>
-        </div>
-      </div>
-    </div>
+    <article class="card mapcard" id="sec-map">
+      <div id="map"></div>
+      <div class="glass mapinfo" id="mapCard" hidden></div>
+    </article>
 
-    <div class="grid g-map">
-      <div class="card">
-        <div class="ch"><h3>Mapa da carteira</h3><span class="hint">cor = fase · tamanho = VGV</span></div>
-        <div class="mapbox">
-          <div id="map"></div>
-          <div class="map-card" id="mapCard" hidden></div>
-        </div>
-        <div class="leg" id="mapLegend"></div>
-      </div>
-      <div class="card">
-        <div class="ch"><h3>Marcos que mudaram</h3><span class="hint" id="attnNote"></span></div>
-        <div id="attn"></div>
-      </div>
-    </div>
+    <article class="card saude" id="sec-saude">
+      <button class="sh-toggle" id="saudeToggle" aria-expanded="false" aria-controls="saudeBody">
+        <span class="st-ic"><svg viewBox="0 0 24 24"><path d="M3.5 12h4l2.5-6 4 12 2.5-6h4"/></svg></span>
+        <span class="st-t"><b>Saúde financeira</b><span class="cap" id="saudeSum"></span></span>
+        <span class="chev"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></svg></span>
+      </button>
+      <div class="saude-b" id="saudeBody" hidden></div>
+    </article>
+
+    <article class="card" id="sec-marcos">
+      <div class="ch"><div><h3>Marcos alterados na semana</h3><p class="cap" id="attnNote"></p></div>
+        <a class="pillbtn" href="#analise" data-sec="sec-var">Ver motivos na Análise de Cronogramas <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6"/></svg></a></div>
+      <div class="marcos" id="attn"></div>
+    </article>
   </section>
 
   <!-- CRONOGRAMA -->
   <section class="page" data-page="cronograma" hidden>
-    <div class="ttl"><h1>Cronograma</h1></div>
-    <div class="card soon"><h3>Em construção</h3><p>Portfólio Macro em Gantt, Régua de Lançamentos (cor por cidade, com a data da V4 e do Registro de Incorporação no hover), Agenda de marcos dos próximos 90 dias e régua individual por empreendimento.</p></div>
-    <div class="card"><div class="ch"><h3>Próximos lançamentos</h3><span class="hint">prévia com os dados atuais</span></div><div id="launchList"></div></div>
+    <h1 class="pt">Cronograma</h1>
+    <article class="card soon"><h3>Em construção</h3><p>Portfólio Macro em Gantt, Régua de Lançamentos (cor por cidade, com a data da V4 e do Registro de Incorporação no hover), Agenda de marcos dos próximos 90 dias e régua individual por empreendimento.</p></article>
+    <article class="card" id="sec-lanc"><div class="ch"><div><h3>Próximos lançamentos</h3><p class="cap">prévia com os dados atuais</p></div></div><div id="launchList"></div></article>
   </section>
 
   <!-- ANÁLISE -->
   <section class="page" data-page="analise" hidden>
-    <div class="ttl"><h1>Análise de Cronogramas</h1></div>
-    <div class="card reg">
+    <h1 class="pt">Análise de Cronogramas</h1>
+    <article class="card reg" id="sec-reg">
       <div><h3>Registro de Desvios</h3><p>O registro dos atrasos da reunião semanal acontece no app do Registro de Desvios, que abre numa aba nova (precisa de conta Claude com o ClickUp conectado). O que for registrado lá aparece aqui na atualização seguinte.</p></div>
-      <a class="btn primary" href="https://claude.ai/artifact/K1xeNHfYBN74VQAXnCFyDD" target="_blank" rel="noopener">Abrir o Registro de Desvios ↗</a>
-    </div>
-    <div class="card"><div class="ch"><h3>Marcos que mudaram na semana</h3><span class="hint" id="varNote"></span></div><div id="varTable"></div></div>
+      <a class="pillbtn solid" href="https://claude.ai/artifact/K1xeNHfYBN74VQAXnCFyDD" target="_blank" rel="noopener">Abrir o Registro de Desvios ↗</a>
+    </article>
+    <article class="card" id="sec-var"><div class="ch"><div><h3>Marcos que mudaram na semana</h3><p class="cap" id="varNote"></p></div></div><div id="varTable"></div>
+      <p class="cap" style="margin-top:10px">Os motivos de cada alteração entram aqui assim que a página for construída, lendo os registros do Registro de Desvios.</p></article>
   </section>
 
   <!-- VIABILIDADE -->
   <section class="page" data-page="viabilidade" hidden>
-    <div class="ttl"><h1>Indicadores de Viabilidade</h1></div>
-    <div class="card soon"><h3>Em construção</h3><p>A página validada (comparativo entre fases, detalhamento por versão e evolução da margem) entra aqui, lendo a lista Controle de Viabilidades do ClickUp. Abaixo, a base que já está ligada.</p></div>
-    <div class="card"><div class="ch"><h3>Viabilidades vigentes</h3><span class="hint">ClickUp · Controle de Viabilidades</span></div><div class="tbl-wrap" id="viabTable"></div></div>
+    <h1 class="pt">Indicadores de Viabilidade</h1>
+    <article class="card soon"><h3>Em construção</h3><p>A página validada (comparativo entre fases, detalhamento por versão e evolução da margem) entra aqui, lendo a lista Controle de Viabilidades do ClickUp. Abaixo, a base que já está ligada.</p></article>
+    <article class="card" id="sec-viab"><div class="ch"><div><h3>Viabilidades vigentes</h3><p class="cap">ClickUp · Controle de Viabilidades</p></div></div><div class="tbl-wrap" id="viabTable"></div></article>
   </section>
 
   <!-- METAS -->
   <section class="page" data-page="metas" hidden>
-    <div class="ttl"><h1>Indicadores e Metas</h1></div>
-    <div class="card soon"><h3>Em construção</h3><p>Página reservada para as metas de Incorporação. Vamos definir os indicadores juntos antes de montar.</p></div>
+    <h1 class="pt">Indicadores e Metas</h1>
+    <article class="card soon"><h3>Em construção</h3><p>Página reservada para as metas de Incorporação. Vamos definir os indicadores juntos antes de montar.</p></article>
   </section>
 </main>
 
-<nav class="tabbar" id="tabbar" aria-label="Páginas">
-  <a href="#resumo" data-p="resumo"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="7" height="7" rx="2"/><rect x="13.5" y="3.5" width="7" height="7" rx="2"/><rect x="3.5" y="13.5" width="7" height="7" rx="2"/><rect x="13.5" y="13.5" width="7" height="7" rx="2"/></svg><span>Resumo</span></a>
-  <a href="#cronograma" data-p="cronograma"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg><span>Cronograma</span></a>
-  <a href="#analise" data-p="analise"><svg viewBox="0 0 24 24"><path d="M4 19.5h16M6.5 16l4-5 3.5 3 4.5-6.5"/></svg><span>Análise</span></a>
-  <a href="#viabilidade" data-p="viabilidade"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M14.8 9.2c-.5-1-1.6-1.6-2.8-1.6-1.6 0-2.8.9-2.8 2.2 0 3 5.6 1.6 5.6 4.5 0 1.3-1.2 2.2-2.8 2.2-1.3 0-2.4-.6-2.9-1.7M12 6v1.6M12 16.4V18"/></svg><span>Viabilidade</span></a>
-  <a href="#metas" data-p="metas"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.8"/><circle cx="12" cy="12" r="1.3"/></svg><span>Metas</span></a>
-</nav>
-
-<!-- folhas modais -->
-<div class="scrim" id="scrim" hidden></div>
-<aside class="sheet side" id="drawer" hidden aria-label="Filtros" role="dialog">
-  <div class="sh-h"><h2>Filtros</h2><button class="btn icon" data-close aria-label="Fechar">✕</button></div>
-  <div class="sh-b">
-    <p class="muted small">Valem para todos os painéis. Também dá para filtrar clicando direto nos gráficos.</p>
-    <div class="fg"><label>Cidade</label><div class="chipset" id="fCidade"></div></div>
-    <div class="fg"><label>Ano de lançamento</label><div class="chipset" id="fAno"></div></div>
-    <div class="fg"><label>Fase</label><div class="chipset" id="fFase"></div></div>
-    <button class="btn" id="clearFilters">Limpar filtros</button>
+<!-- barra inferior -->
+<footer class="bot glass" id="bot">
+  <div class="bot-l">
+    <svg class="dgp" viewBox="-14 -14 516 481" aria-hidden="true"><path fill="currentColor" d="M 256.59375 202.605469 L 188.5 202.605469 C 188.5 166.027344 219.039062 136.265625 256.578125 136.265625 L 371.667969 136.269531 L 335.035156 171.960938 L 377.617188 213.453125 L 487.039062 106.828125 L 377.617188 0.203125 L 335.035156 41.695312 L 371.875 77.589844 L 256.578125 77.589844 C 185.835938 77.589844 128.285156 133.671875 128.285156 202.605469 L 128.296875 202.605469 C 57.554688 202.605469 0 258.6875 0 327.621094 L 0 452.71875 L 60.214844 452.71875 L 60.214844 327.621094 C 60.214844 291.042969 90.757812 261.285156 128.296875 261.285156 L 256.59375 261.285156 C 294.132812 261.285156 324.671875 291.042969 324.671875 327.621094 C 324.671875 364.203125 294.132812 393.960938 256.59375 393.960938 C 219.050781 393.960938 188.511719 364.203125 188.511719 327.621094 L 188.511719 287.058594 L 128.296875 287.058594 L 128.296875 327.621094 C 128.296875 396.558594 185.847656 452.640625 256.59375 452.640625 C 327.335938 452.640625 384.886719 396.558594 384.886719 327.621094 C 384.886719 258.6875 327.335938 202.605469 256.59375 202.605469"/></svg>
+    <span>Gestão de Projetos de Incorporação</span>
   </div>
-</aside>
-<section class="sheet center" id="dataSheet" hidden role="dialog" aria-labelledby="dsT">
-  <div class="sh-h"><h2 id="dsT">Sobre os dados</h2><button class="btn icon" data-close aria-label="Fechar">✕</button></div>
-  <div class="sh-b" id="dataBody"></div>
+  <div class="bot-r">
+    <button class="ib" id="setBtn" data-tip="Dados, pendências e histórico de versões" aria-label="Configurações"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 14.5a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5v.2a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1h-.2a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3h0a1.6 1.6 0 0 0 1-1.5v-.2a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8v0a1.6 1.6 0 0 0 1.5 1h.2a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg><span class="pdot" id="pendDot" hidden></span></button>
+    <button class="ib" id="themeBtn" aria-label="Alternar modo claro e escuro"><svg class="moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg><svg class="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4L6 18M18 6l1.4-1.4"/></svg></button>
+    <span class="ib stamp" id="stamp" tabindex="0" aria-label="Data da última atualização"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4.5v4h-4"/><path d="M12 8v4.2l2.6 1.6"/></svg></span>
+  </div>
+</footer>
+
+<!-- folhas -->
+<div class="scrim" id="scrim" hidden></div>
+<section class="glass sheet" id="setSheet" hidden role="dialog" aria-label="Configurações">
+  <div class="sh-h"><div class="seg" id="setTabs" role="tablist"><button role="tab" data-t="dados" aria-selected="true">Origem dos dados</button><button role="tab" data-t="pend" aria-selected="false">Pendências</button><button role="tab" data-t="log" aria-selected="false">Histórico de versões</button></div><button class="ib" data-close aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="sh-b" id="setBody"></div>
 </section>
-<section class="sheet center wide" id="howSheet" hidden role="dialog" aria-labelledby="hsT">
-  <div class="sh-h"><h2 id="hsT">Margem projetada no lançamento</h2><button class="btn icon" data-close aria-label="Fechar">✕</button></div>
-  <div class="sh-b" id="howBody"></div>
+<section class="glass sheet wide" id="expSheet" hidden role="dialog" aria-labelledby="expT">
+  <div class="sh-h"><h2 id="expT"></h2><button class="ib" data-close aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="sh-b" id="expBody"></div>
 </section>
 
 <div class="tip" id="tip" hidden></div>
-<script src="vendor/leaflet/leaflet.js"></script>
+<script src="vendor/maplibre/maplibre-gl.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

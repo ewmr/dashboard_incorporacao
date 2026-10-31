@@ -27,7 +27,13 @@ EMP = [
  ("Martim Afonso","MAR","Curitiba","Gadens",""),
  ("Lens Alto da Glória","LAG","Curitiba","Gadens",""),("Lens Barigui","LBA","Curitiba","Gadens",""),
 ]
-LEGADO = {"TUO","LAV"}  # entregues, sem viabilidade na lista
+LEGADO = {"TUO","LAV"}
+# campo "Linha Produto" da lista Controle de Viabilidades (31/10/2026)
+LINHA = {**{n:"Make It Básico" for n in ["Uniq","Bravo","Now","Flow","Alba","Container","Zago","Aura","Tuo","La Vita"]},
+         **{n:"Make It Intermediário" for n in ["Lume","Edge","Quadratto","Rafitec","Horizon","Vert"]},
+         **{n:"Make It Plus" for n in ["Essence","Arena","Al Nasser 1","Al Nasser 2"]}, "Fundação":"Make It Smart",
+         "CORE Evo":"Gadens CORE","Guadalupe":"Gadens Outros","Martim Afonso":"Aguardando Definição",
+         "Lens Alto da Glória":"Gadens Lens","Lens Barigui":"Gadens Lens","Arbo":"Aguardando Definição"}  # entregues, sem viabilidade na lista
 # Posição provisória (bairro/rua, estimada a partir dos endereços da antiga BD Geral) até o campo
 # "📍 Endereço do empreendimento" ser preenchido no ClickUp. Com o campo preenchido, vale a coordenada do ClickUp.
 COORD = {
@@ -94,7 +100,7 @@ for i,(nome,s,cid,inc,ex) in enumerate(EMP):
     loc = ENDERECO.get(nome)
     pos = [loc["lat"],loc["lng"]] if loc else COORD.get(nome)
     out_emp.append({
-        "nome": nome, "sigla": s, "cidade": cid, "incorporadora": inc, "ex_nome": ex,
+        "nome": nome, "sigla": s, "linha": LINHA.get(nome), "cidade": cid, "incorporadora": inc, "ex_nome": ex,
         "lista_id": lst[0] if lst else None, "lista": lst[1] if lst else None,
         "fase": f, "legado": s in LEGADO or f=="ENT",
         "marcos": marcos, "viabilidades": vs,

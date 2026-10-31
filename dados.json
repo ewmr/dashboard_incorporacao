@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-31T03:02-03:00",
+ "gerado_em": "2026-10-31T04:05-03:00",
  "fontes": {
   "cronogramas": "Snapshot ClickUp de 2026-10-26",
   "viabilidades": "ClickUp · lista Controle de Viabilidades",
@@ -24,6 +24,7 @@
   {
    "nome": "Al Nasser 1",
    "sigla": "AN1",
+   "linha": "Make It Plus",
    "cidade": "Curitiba",
    "incorporadora": "Make It",
    "ex_nome": "",
@@ -127,6 +128,7 @@
   {
    "nome": "Al Nasser 2",
    "sigla": "AN2",
+   "linha": "Make It Plus",
    "cidade": "Curitiba",
    "incorporadora": "Make It",
    "ex_nome": "",
@@ -230,6 +232,7 @@
   {
    "nome": "Alba",
    "sigla": "ALB",
+   "linha": "Make It Básico",
    "cidade": "Almirante Tamandaré",
    "incorporadora": "Make It",
    "ex_nome": "Tanguá",
@@ -333,6 +336,7 @@
   {
    "nome": "Arbo",
    "sigla": "ARB",
+   "linha": "Aguardando Definição",
    "cidade": "Pinhais",
    "incorporadora": "Make It",
    "ex_nome": "Fênix",
@@ -411,6 +415,7 @@
   {
    "nome": "Arena",
    "sigla": "ARE",
+   "linha": "Make It Plus",
    "cidade": "Curitiba",
    "incorporadora": "Make It",
    "ex_nome": "",
@@ -514,6 +519,7 @@
   {
    "nome": "Aura",
    "sigla": "AUR",
+   "linha": "Make It Básico",
    "cidade": "São José dos Pinhais",
    "incorporadora": "Make It",
    "ex_nome": "Alta Tensão",
@@ -617,6 +623,7 @@
   {
    "nome": "Bravo",
    "sigla": "BRA",
+   "linha": "Make It Básico",
    "cidade": "Pinhais",
    "incorporadora": "Make It",
    "ex_nome": "Forza",
@@ -671,6 +678,7 @@
   {
    "nome": "Container",
    "sigla": "CON",
+   "linha": "Make It Básico",
    "cidade": "Curitiba",
    "incorporadora": "Make It",
    "ex_nome": "",
@@ -717,6 +725,7 @@
   {
    "nome": "Edge",
    "sigla": "EDG",
+   "linha": "Make It Intermediário",
    "cidade": "São José dos Pinhais",
    "incorporadora": "Make It",
    "ex_nome": "Porto Rico",
@@ -841,6 +850,7 @@
   {
    "nome": "Essence",
    "sigla": "ESS",
+   "linha": "Make It Plus",
    "cidade": "Curitiba",
    "incorporadora": "Make It",
    "ex_nome": "Faculdade",
@@ -961,6 +971,7 @@
   {
    "nome": "Flow",
    "sigla": "FLO",
+   "linha": "Make It Básico",
    "cidade": "Araucária",
    "incorporadora": "Make It",
    "ex_nome": "Matsu II",
@@ -1077,6 +1088,7 @@
   {
    "nome": "Fundação",
    "sigla": "FUN",
+   "linha": "Make It Smart",
    "cidade": "Curitiba",
    "incorporadora": "Make It",
    "ex_nome": "",
@@ -1197,6 +1209,7 @@
   {
    "nome": "Horizon",
    "sigla": "HOR",
+   "linha": "Make It Intermediário",
    "cidade": "Pinhais",
    "incorporadora": "Make It",
    "ex_nome": "Patrulha",
@@ -1321,6 +1334,7 @@
   {
    "nome": "Lume",
    "sigla": "LUM",
+   "linha": "Make It Intermediário",
    "cidade": "Pinhais",
    "incorporadora": "Make It",
    "ex_nome": "Jardins",
@@ -1407,6 +1421,7 @@
   {
    "nome": "Now",
    "sigla": "NOW",
+   "linha": "Make It Básico",
    "cidade": "Araucária",
    "incorporadora": "Make It",
    "ex_nome": "Matsu I",
@@ -1527,6 +1542,7 @@
   {
    "nome": "Quadratto",
    "sigla": "QUA",
+   "linha": "Make It Intermediário",
    "cidade": "Pinhais",
    "incorporadora": "Make It",
    "ex_nome": "Leilão",
@@ -1605,6 +1621,7 @@
   {
    "nome": "Rafitec",
    "sigla": "RAF",
+   "linha": "Make It Intermediário",
    "cidade": "Pinhais",
    "incorporadora": "Make It",
    "ex_nome": "",
@@ -1704,6 +1721,7 @@
   {
    "nome": "Uniq",
    "sigla": "UNI",
+   "linha": "Make It Básico",
    "cidade": "Pinhais",
    "incorporadora": "Make It",
    "ex_nome": "Shakespeare",
@@ -1782,6 +1800,7 @@
   {
    "nome": "Vert",
    "sigla": "VER",
+   "linha": "Make It Intermediário",
    "cidade": "São José dos Pinhais",
    "incorporadora": "Make It",
    "ex_nome": "Follador",
@@ -1902,6 +1921,7 @@
   {
    "nome": "Zago",
    "sigla": "ZAG",
+   "linha": "Make It Básico",
    "cidade": "São José dos Pinhais",
    "incorporadora": "Make It",
    "ex_nome": "",
@@ -2005,6 +2025,7 @@
   {
    "nome": "Tuo",
    "sigla": "TUO",
+   "linha": "Make It Básico",
    "cidade": "Curitiba",
    "incorporadora": "Make It",
    "ex_nome": "",
@@ -2041,6 +2062,7 @@
   {
    "nome": "La Vita",
    "sigla": "LAV",
+   "linha": "Make It Básico",
    "cidade": "Curitiba",
    "incorporadora": "Make It",
    "ex_nome": "",
@@ -2077,6 +2099,7 @@
   {
    "nome": "Guadalupe",
    "sigla": "GUA",
+   "linha": "Gadens Outros",
    "cidade": "Curitiba",
    "incorporadora": "Gadens",
    "ex_nome": "",
@@ -2172,6 +2195,7 @@
   {
    "nome": "CORE Evo",
    "sigla": "EVO",
+   "linha": "Gadens CORE",
    "cidade": "Curitiba",
    "incorporadora": "Gadens",
    "ex_nome": "João Negrão",
@@ -2267,6 +2291,7 @@
   {
    "nome": "Martim Afonso",
    "sigla": "MAR",
+   "linha": "Aguardando Definição",
    "cidade": "Curitiba",
    "incorporadora": "Gadens",
    "ex_nome": "",
@@ -2345,6 +2370,7 @@
   {
    "nome": "Lens Alto da Glória",
    "sigla": "LAG",
+   "linha": "Gadens Lens",
    "cidade": "Curitiba",
    "incorporadora": "Gadens",
    "ex_nome": "",
@@ -2382,6 +2408,7 @@
   {
    "nome": "Lens Barigui",
    "sigla": "LBA",
+   "linha": "Gadens Lens",
    "cidade": "Curitiba",
    "incorporadora": "Gadens",
    "ex_nome": "",
