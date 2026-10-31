@@ -1,0 +1,20 @@
+name: Mapa-base (Curitiba e região)
+on:
+  push:
+    paths: [".github/workflows/mapa.yml", "mapa/build.sh"]
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  gerar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: bash mapa/build.sh
+      - name: Publica o arquivo no repositório
+        run: |
+          git config user.name "mapa-bot"
+          git config user.email "mapa-bot@users.noreply.github.com"
+          git add mapa/curitiba.pmtiles mapa/fonts mapa/info.json
+          git commit -m "Mapa-base gerado: $(jq -r .fonte mapa/info.json), $(jq -r .tamanho_mb mapa/info.json) MB" || echo "sem mudanças"
+          git pull --rebase && git push
