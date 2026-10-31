@@ -319,9 +319,9 @@ function renderMap(fly){
   markers.forEach(m=>m.remove()); markers=[];
   const Ls = filtrados().filter(e=>e.pos);
   Ls.forEach(e=>{
-    const el = document.createElement("div");
-    el.className = "pin"+(S.sel===e.nome?" sel":""); el.style.setProperty("--c", corDe(e));
-    el.innerHTML = '<span class="sh"></span><span class="nd"></span><span class="hd"></span>';
+    // o elemento do marcador fica sem estilo (o MapLibre posiciona ele); o desenho do alfinete vai dentro
+    const el = document.createElement("div"); el.className = "pinw";
+    el.innerHTML = `<div class="pin${S.sel===e.nome?" sel":""}" style="--c:${corDe(e)}"><span class="sh"></span><span class="nd"></span><span class="hd"></span></div>`;
     el.addEventListener("mousemove", ev=>showTip(`<b>${esc(e.nome)}</b> · ${esc(grupoNome(grupoDe(e)))}<div class="muted">${esc(e.endereco||e.cidade)}</div>`, ev));
     el.addEventListener("mouseleave", hideTip);
     el.addEventListener("click", ev=>{ ev.stopPropagation(); hideTip(); S.sel=e.nome; renderMap(true); renderSaude(); });
