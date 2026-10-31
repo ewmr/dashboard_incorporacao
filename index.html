@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Dashboard Incorporação · Make It e Gadens</title>
 <script>/* tema antes de pintar, para não piscar */try{var t=localStorage.getItem("dash-tema");document.documentElement.dataset.theme=t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){document.documentElement.dataset.theme="light"}</script>
-<style>svg{max-width:100%}.top svg,.bot svg,.ib svg{width:22px;height:22px}</style>
+<style>:where(svg){max-width:100%}:where(.top,.bot) :where(svg){width:22px;height:22px}</style>
 <link rel="stylesheet" href="vendor/maplibre/maplibre-gl.css?v=4.7.1">
 <link rel="stylesheet" href="app.css?v=0.4.1">
 </head>
