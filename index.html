@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Teste GitHub Pages — Dashboard</title>
+<style>
+:root{
+  color-scheme:light;
+  --accent:#FF9100; --accent-ink:#fff; --accent-tint:color-mix(in srgb,var(--accent) 14%,transparent);
+  --win:#fff; --card:#F4F4F6; --label:#1c1c1e; --label-2:rgba(60,60,67,.62); --label-3:rgba(60,60,67,.34);
+  --sep:rgba(60,60,67,.16); --fill:rgba(120,120,128,.12); --fill-2:rgba(120,120,128,.2); --stripe:rgba(0,0,0,.032);
+  --red:#FF3B30; --red-ink:#d70015; --red-tint:rgba(255,59,48,.12);
+  --green:#34C759; --green-ink:#248a3d; --green-tint:rgba(52,199,89,.14);
+  --yellow-ink:#a05a00; --yellow-tint:rgba(255,204,0,.2); --blue-tint:rgba(0,122,255,.10);
+  --font:-apple-system,BlinkMacSystemFont,"SF Pro Text","SF Pro Display","Helvetica Neue","Segoe UI",Roboto,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{-webkit-font-smoothing:antialiased}
+body{margin:0;font-family:var(--font);font-size:14px;line-height:1.45;background:var(--win);color:var(--label)}
+main{max-width:980px;margin:0 auto;padding:22px 22px 60px}
+.brand{display:flex;gap:10px;align-items:center;margin-bottom:4px}
+.dot{width:12px;height:12px;border-radius:50%;background:var(--accent);box-shadow:0 2px 8px color-mix(in srgb,var(--accent) 50%,transparent)}
+h1{font-size:2rem;font-weight:700;letter-spacing:-.022em;margin:6px 0 2px}
+.sub{color:var(--label-2);margin:0 0 18px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+.card{background:var(--card);border-radius:14px;padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.card.wide{grid-column:1/-1}
+.card h2{font-size:1rem;font-weight:600;margin:0;letter-spacing:-.01em;display:flex;align-items:center;gap:8px}
+.n{width:22px;height:22px;border-radius:50%;background:var(--win);display:inline-grid;place-items:center;font-size:.75rem;font-weight:700;color:var(--label-2)}
+.hint{color:var(--label-2);font-size:.84rem;margin:0}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;padding:4px 10px;border-radius:999px;width:max-content;max-width:100%}
+.pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.ok{background:var(--green-tint);color:var(--green-ink)}.bad{background:var(--red-tint);color:var(--red-ink)}.warn{background:var(--yellow-tint);color:var(--yellow-ink)}.mute{background:var(--fill);color:var(--label-2)}
+.big{font-size:1.6rem;font-weight:700;letter-spacing:-.02em;font-variant-numeric:tabular-nums;line-height:1.1}
+.vers{display:flex;gap:6px;flex-wrap:wrap}
+.vers span{background:var(--win);border-radius:10px;padding:6px 10px;font-size:.82rem}
+.vers b{font-variant-numeric:tabular-nums}
+button{font:inherit;cursor:pointer;border:0;border-radius:999px;padding:7px 15px;background:var(--fill);color:var(--label);font-weight:500;font-size:.88rem}
+button:hover:not(:disabled){background:var(--fill-2)}
+button:disabled{opacity:.4;cursor:not-allowed}
+button.pri{background:var(--accent);color:var(--accent-ink);font-weight:600;box-shadow:0 4px 14px color-mix(in srgb,var(--accent) 35%,transparent)}
+input,select,textarea{font:inherit;font-size:.9rem;border:0;border-radius:11px;padding:8px 11px;background:var(--win);color:var(--label);width:100%;box-shadow:inset 0 0 0 .5px rgba(0,0,0,.08)}
+label{font-size:.76rem;font-weight:500;color:var(--label-2);display:block;margin:0 0 4px 2px}
+.form{display:grid;grid-template-columns:220px 1fr auto;gap:10px;align-items:end}
+@media(max-width:760px){.form{grid-template-columns:1fr}}
+.row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+table{width:100%;border-collapse:separate;border-spacing:0;font-size:13px}
+th{font-size:11px;font-weight:500;color:var(--label-2);text-align:left;padding:5px 8px;border-bottom:1px solid var(--sep)}
+td{padding:5px 8px}
+tbody tr:nth-child(odd) td{background:var(--stripe)}
+a{color:var(--accent);font-weight:600;text-decoration:none}
+.btn-link{display:inline-block;background:var(--accent);color:#fff;border-radius:999px;padding:8px 16px;width:max-content;box-shadow:0 4px 14px color-mix(in srgb,var(--accent) 35%,transparent)}
+.msg{font-size:.84rem;padding:9px 12px;border-radius:11px}
+.msg.ok{background:var(--green-tint);color:var(--label)}.msg.bad{background:var(--red-tint);color:var(--label)}.msg.warn{background:var(--yellow-tint);color:var(--label)}.msg.info{background:var(--blue-tint);color:var(--label)}
+ol.check{margin:0;padding-left:20px;line-height:1.7}
+.scroll{max-height:240px;overflow:auto;border-radius:10px;background:var(--win)}
+</style>
+</head>
+<body>
+<main>
+  <div class="brand"><span class="dot"></span><span class="hint">Dashboard Incorporação · página de teste</span></div>
+  <h1>Teste de conectividade</h1>
+  <p class="sub">Página de teste hospedada no GitHub Pages: deve aparecer embutida no ClickUp, para qualquer pessoa, sem conta Claude.</p>
+
+  <div class="grid">
+    <section class="card wide">
+      <h2><span class="n">1</span>Dados do arquivo diário</h2>
+      <span id="data-pill" class="pill mute">Carregando…</span>
+      <div id="data-big" class="big"></div>
+      <div id="data-vers" class="vers"></div>
+      <p id="data-text" class="hint"></p>
+    </section>
+    <section class="card wide">
+      <h2><span class="n">2</span>Registro de Desvios</h2>
+      <p class="hint">O registro acontece no app do Claude, numa aba nova. Quem não tem conta Claude continua vendo os dados aqui.</p>
+      <a class="btn-link" href="https://claude.ai/artifact/EscSZiLqAoFL4yeLLVG7MA" target="_blank" rel="noopener">Abrir o app de registro ↗</a>
+    </section>
+  </div>
+</main>
+
+<script>
+const LIST_ID = "1400450000013454";
+const SERVER = "ClickUp";
+const $ = id => document.getElementById(id);
+const fmt = ts => new Date(ts).toLocaleString("pt-BR",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit"});
+function pill(el, cls, txt){ el.className = "pill " + cls; el.textContent = txt; }
+function msg(el, cls, txt){ el.innerHTML = ""; if(!txt) return; const d=document.createElement("div"); d.className="msg "+cls; d.textContent=txt; el.appendChild(d); }
+
+let empreendimentos = [];
+
+/* 2 — arquivo de dados (funciona para qualquer pessoa) */
+fetch("dados.json", {cache:"no-store"}).then(r => { if(!r.ok) throw new Error("HTTP "+r.status); return r.json(); }).then(d => {
+  pill($("data-pill"), "ok", "Arquivo lido com sucesso");
+  $("data-big").textContent = d.viabilidades.length + " viabilidades";
+  const c = {};
+  d.viabilidades.forEach(v => c[v.versao] = (c[v.versao]||0) + 1);
+  $("data-vers").innerHTML = "";
+  ["V0","V1","V2","V3","V4"].forEach(k => { const s=document.createElement("span"); s.innerHTML = k + " · <b></b>"; s.querySelector("b").textContent = c[k]||0; $("data-vers").appendChild(s); });
+  $("data-text").textContent = "Fonte: " + d.fonte + " · arquivo gerado em " + fmt(d.gerado_em) + ". No dashboard real, a tarefa diária substitui este arquivo.";
+}).catch(e => {
+  pill($("data-pill"), "bad", "Não consegui ler o arquivo");
+  $("data-text").textContent = "Erro: " + e.message;
+});
+
+function fillSelect(){
+  const s = $("emp"); s.innerHTML = "";
+  empreendimentos.forEach(n => { const o=document.createElement("option"); o.value=n; o.textContent=n; s.appendChild(o); });
+}
+
+</script>
+</body>
+</html>
