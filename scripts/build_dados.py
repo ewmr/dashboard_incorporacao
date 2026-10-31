@@ -40,7 +40,7 @@ COORD = {
  "Guadalupe":[-25.4370,-49.2780],"CORE Evo":[-25.4390,-49.2680],"Martim Afonso":[-25.4270,-49.2900],
  "Lens Alto da Glória":[-25.4195,-49.2620],"Lens Barigui":[-25.4290,-49.3050],
 }
-ENDERECO = {}   # nome -> {"lat":..,"lng":..,"endereco":".."} lido do campo de localização do ClickUp
+ENDERECO = json.load(open("/home/claude/dre/geo.json"))   # nome -> {lat,lng,endereco}: espelho do campo "📍 Endereço do empreendimento" (31/10/2026)
 MARCO_NOME = {"nov001":"Reunião de Arrancada","inc001":"Fim da Due Diligence","arq003":"Estudo Preliminar",
   "arq005":"Anteprojeto","leg009":"Emissão de Alvará","leg010":"Registro de Incorporação","inc002":"Lançamento Comercial",
   "orcV4":"Orçamento V4","eng001":"Início de Obra","eng002":"Término de Obra","leg011":"Registro de CVCO",

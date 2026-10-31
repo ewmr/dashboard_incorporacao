@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-30T23:02-03:00",
+ "gerado_em": "2026-10-31T03:02-03:00",
  "fontes": {
   "cronogramas": "Snapshot ClickUp de 2026-10-26",
   "viabilidades": "ClickUp · lista Controle de Viabilidades",
@@ -118,11 +118,11 @@
     }
    ],
    "pos": [
-    -25.401,
-    -49.236
+    -25.387101,
+    -49.226225
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "Rua Miguel Jorge Nasser, 432, Bacacheri, Curitiba - PR, 82620-140"
   },
   {
    "nome": "Al Nasser 2",
@@ -221,11 +221,11 @@
     }
    ],
    "pos": [
-    -25.402,
-    -49.237
+    -25.387101,
+    -49.226225
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "Rua Miguel Jorge Nasser, 432, Bacacheri, Curitiba - PR, 82620-140"
   },
   {
    "nome": "Alba",
@@ -324,11 +324,11 @@
     }
    ],
    "pos": [
-    -25.323,
-    -49.308
+    -25.380204,
+    -49.306548
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "Rua Professor Alberto Krause, 891, Tanguá, Almirante Tamandaré - PR, 83508-500"
   },
   {
    "nome": "Arbo",
@@ -402,11 +402,11 @@
     }
    ],
    "pos": [
-    -25.41,
-    -49.147
+    -25.44225,
+    -49.171789
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "R. Clóvis Beviláqua, 636 - Vargem Grande, Pinhais - PR, 83321-110"
   },
   {
    "nome": "Arena",
@@ -505,11 +505,11 @@
     }
    ],
    "pos": [
-    -25.459,
-    -49.228
+    -25.474985,
+    -49.314046
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "Rua Antônio Barbosa Ferraz Júnior, 362, Portão, Curitiba - PR, 81320"
   },
   {
    "nome": "Aura",
@@ -608,11 +608,11 @@
     }
    ],
    "pos": [
-    -25.535,
-    -49.205
+    -25.494355,
+    -49.181322
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "Rua Dolovico Pissaia, 500, Parque da Fonte, São José dos Pinhais"
   },
   {
    "nome": "Bravo",
@@ -662,11 +662,11 @@
     }
    ],
    "pos": [
-    -25.438,
-    -49.188
+    -25.43715,
+    -49.153483
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "R. Ver. Antônio Romeu Simoni, 473 - Jardim Amélia, Pinhais - PR, 83330-210"
   },
   {
    "nome": "Container",
@@ -708,11 +708,11 @@
     }
    ],
    "pos": [
-    -25.524,
-    -49.256
+    -25.560114,
+    -49.288498
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "R. Bôrtolo Pelanda, 724 - Umbará, Curitiba"
   },
   {
    "nome": "Edge",
@@ -832,11 +832,11 @@
     }
    ],
    "pos": [
-    -25.529,
-    -49.188
+    -25.514972,
+    -49.199258
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "R. Porto Rico, 198 - Boneca do Iguaçu, São José dos Pinhais - PR, 83040-320"
   },
   {
    "nome": "Essence",
@@ -952,11 +952,11 @@
     }
    ],
    "pos": [
-    -25.472,
-    -49.238
+    -25.4955,
+    -49.303201
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "R. Affife Mansur,688 - Novo Mundo, Curitiba - PR, 81050-180"
   },
   {
    "nome": "Flow",
@@ -1068,11 +1068,11 @@
     }
    ],
    "pos": [
-    -25.5726,
-    -49.4012
+    -25.549132,
+    -49.401519
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "Rua Shigemi Seima, 41 - Capela Velha, Araucária"
   },
   {
    "nome": "Fundação",
@@ -1188,11 +1188,11 @@
     }
    ],
    "pos": [
-    -25.462,
-    -49.266
+    -25.455039,
+    -49.261148
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "Rua Doutor Carvalho Chaves, 427, Parolin, Curitiba - PR, 80220-010"
   },
   {
    "nome": "Horizon",
@@ -1312,11 +1312,11 @@
     }
    ],
    "pos": [
-    -25.4385,
-    -49.1885
+    -25.433284,
+    -49.155294
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "R. Aristides Evangelista, 546 - Jardim Amélia, Pinhais, PR - 83330-235"
   },
   {
    "nome": "Lume",
@@ -1398,11 +1398,11 @@
     }
    ],
    "pos": [
-    -25.4,
-    -49.21
+    -25.399351,
+    -49.192669
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "R Tibúrcio G. de Oliveira, 304, Atuba, Pinhais - PR, 83326-195"
   },
   {
    "nome": "Now",
@@ -1518,11 +1518,11 @@
     }
    ],
    "pos": [
-    -25.572,
-    -49.402
+    -25.549132,
+    -49.401519
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "Rua Shigemi Seima, 60 - Capela Velha, Araucária"
   },
   {
    "nome": "Quadratto",
@@ -1596,11 +1596,11 @@
     }
    ],
    "pos": [
-    -25.4448,
-    -49.193
+    -25.428413,
+    -49.189781
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "Rua Salgado Filho, 2760, Centro, Pinhais - PR, 83320-332"
   },
   {
    "nome": "Rafitec",
@@ -1695,11 +1695,11 @@
     }
    ],
    "pos": [
-    -25.43,
-    -49.17
+    -25.415158,
+    -49.180706
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "Av. Jacob Macanhan, 1919 - Emiliano Perneta, Pinhais - PR, 83325-390"
   },
   {
    "nome": "Uniq",
@@ -1773,11 +1773,11 @@
     }
    ],
    "pos": [
-    -25.4405,
-    -49.19
+    -25.43222,
+    -49.156648
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "R. Romeu Píres, 570 - Jardim Amélia, Pinhais - PR, 83330-220"
   },
   {
    "nome": "Vert",
@@ -1893,11 +1893,11 @@
     }
    ],
    "pos": [
-    -25.531,
-    -49.201
+    -25.560952,
+    -49.214047
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "Avenida Rui Barbosa, 11139, Santo Antônio, São José dos Pinhais - PR, 83025-010"
   },
   {
    "nome": "Zago",
@@ -1996,11 +1996,11 @@
     }
    ],
    "pos": [
-    -25.533,
-    -49.203
+    -25.555429,
+    -49.193819
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "Rua Quirino Zagonel, 951, Itália, São José dos Pinhais - PR, 83020-250"
   },
   {
    "nome": "Tuo",
@@ -2032,11 +2032,11 @@
    },
    "viabilidades": [],
    "pos": [
-    -25.4095,
-    -49.146
+    -25.443993,
+    -49.171597
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "R. Aluísio de Azevedo, 807 - Vargem Grande, Pinhais - PR, 83321-270"
   },
   {
    "nome": "La Vita",
@@ -2068,11 +2068,11 @@
    },
    "viabilidades": [],
    "pos": [
-    -25.411,
-    -49.149
+    -25.441136,
+    -49.168788
    ],
-   "pos_fonte": "aproximada",
-   "endereco": null
+   "pos_fonte": "clickup",
+   "endereco": "R. Rui Barbosa, 306 - Vargem Grande, Pinhais - PR, 83321-240"
   },
   {
    "nome": "Guadalupe",
