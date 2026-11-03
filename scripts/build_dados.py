@@ -22,7 +22,7 @@ EMP = [
  ("Now","NOW","Araucária","Make It","Matsu I"),("Quadratto","QUA","Pinhais","Make It","Leilão"),
  ("Rafitec","RAF","Pinhais","Make It",""),("Uniq","UNI","Pinhais","Make It","Shakespeare"),
  ("Vert","VER","São José dos Pinhais","Make It","Follador"),("Zago","ZAG","São José dos Pinhais","Make It",""),
- ("Tuo","TUO","Curitiba","Make It",""),("La Vita","LAV","Curitiba","Make It",""),
+ ("Tuo","TUO","Pinhais","Make It",""),("La Vita","LAV","Pinhais","Make It",""),
  ("Guadalupe","GUA","Curitiba","Gadens",""),("CORE Evo","EVO","Curitiba","Gadens","João Negrão"),
  ("Martim Afonso","MAR","Curitiba","Gadens",""),
  ("Lens Alto da Glória","LAG","Curitiba","Gadens",""),("Lens Barigui","LBA","Curitiba","Gadens",""),
@@ -79,7 +79,7 @@ def mes(db):
 
 viab = {}
 for r in rows:
-    vazio = r["task_id"] in ("86ak6kqf7","86ak61abn")  # V0 Al Nasser aguardando valores corretos
+    vazio = False  # V0 Al Nasser corrigidas com as DREs de compra (31/10/2026)
     sit = "Simulação" if r["obs"].startswith("Simulação") else "Pendente aprovação" if r["obs"].startswith("Pendente") else ""
     viab.setdefault(r["emp"],[]).append({
         "versao": r["ver"], "obs": r["obs"], "situacao": sit, "task_id": r["task_id"],

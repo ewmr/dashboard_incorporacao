@@ -5,13 +5,22 @@
    As cores dos empreendimentos seguem o agrupamento escolhido: fase do projeto ou linha de produto. */
 
 /* ---------- dicionários ---------- */
+// cores das fases: as mesmas da apresentação mensal do comitê
 const FASES = [
-  {id:"DUE", nome:"Due Diligence", v:"--f-due"},
-  {id:"DEV", nome:"Desenvolvimento p/ Lançamento", v:"--f-dev"},
-  {id:"LIB", nome:"Liberação para Obra", v:"--f-lib"},
-  {id:"OBR", nome:"Desenvolvimento de Obra", v:"--f-obr"},
-  {id:"ENT", nome:"Entrega", v:"--f-ent"},
-  {id:"SEM", nome:"Sem cronograma", v:"--f-none"},
+  {id:"DUE", nome:"Due Diligence", curto:"Due", v:"--f-due"},
+  {id:"DEV", nome:"Desenvolvimento p/ Lançamento", curto:"Des. Lanç.", v:"--f-dev"},
+  {id:"LIB", nome:"Liberação para Obra", curto:"Lib. Obra", v:"--f-lib"},
+  {id:"OBR", nome:"Desenvolvimento de Obra", curto:"Obra", v:"--f-obr"},
+  {id:"ENT", nome:"Entrega", curto:"Entrega", v:"--f-ent"},
+  {id:"ETG", nome:"Entregue", curto:"Entregue", v:"--f-etg"},
+  {id:"SEM", nome:"Sem cronograma", curto:"Sem cronograma", v:"--f-none"},
+];
+const CIDADES = [
+  {id:"Curitiba", l:"#5E5CE6", d:"#7D7AFF"},
+  {id:"Pinhais", l:"#14A3B8", d:"#38BCD0"},
+  {id:"São José dos Pinhais", l:"#E8543F", d:"#F06A56"},
+  {id:"Araucária", l:"#A2733F", d:"#C08F57"},
+  {id:"Almirante Tamandaré", l:"#B04FD8", d:"#C772EA"},
 ];
 // paleta validada (ordem = ordem de exibição; daltonismo ok com rótulos visíveis)
 const LINHAS = [
@@ -36,6 +45,15 @@ const MIN_AMOSTRA = 2;
 const INCS = [["all","Consolidado"],["Make It","Make It"],["Gadens","Gadens"]];
 
 const CHANGELOG = [
+  {v:"0.6", d:"2026-11-03", itens:[
+    "Mapa no padrão do Mapas da Apple: barra lateral com grupos recolhíveis, ícones com o símbolo da incorporadora, botões de tipo de mapa (padrão ou satélite), 3D, zoom, enquadrar e bússola, e escala.",
+    "Ao abrir um empreendimento, o mapa voa para o 3D e gira devagar em volta dele; ao voltar para todos, volta em 2D, com o norte para cima e todos enquadrados.",
+    "Cores das fases iguais às da apresentação do comitê; fase “Entregue” para quem já passou da data de entrega e opção de ver só os ativos ou todos.",
+    "Novo painel de filtros: colorir por fase, linha de produto ou cidade, ordenar por nome ou data de lançamento, fases em blocos e listas para linha, cidade e ano. O painel não fecha mais ao escolher.",
+    "Interruptor da incorporadora no modelo do slide; Consolidado em #45416d. Fundo mais suave, números com fonte arredondada e interface mais enxuta.",
+    "Barra inferior com zoom da interface e links úteis (BI Explorer, BI Engenharia, Viabil, CV Make It e CV Gadens).",
+    "La Vita e Tuo corrigidos para Pinhais; viabilidades do Al Nasser 1 e 2 (V0) e V4 do La Vita e do Tuo.",
+  ]},
   {v:"0.5", d:"2026-10-31", itens:[
     "Mapa próprio de Curitiba e região (OpenStreetMap), guardado no próprio site, com estilo no padrão do Mapas da Apple: ruas, bairros, parques e referências, sem lojas.",
     "Página de mapa em tela cheia com lista e busca; ao abrir um empreendimento, o mapa voa para a visão 3D e mostra a ficha com endereço, números e marcos.",
@@ -58,7 +76,7 @@ const CHANGELOG = [
   {v:"0.1", d:"2026-10-26", itens:["Primeira versão publicada no GitHub Pages e embutida no ClickUp, substituindo o Power BI."]},
 ];
 
-const S = {mapSel:null, inc:"all", cidades:new Set(), anos:new Set(), fases:new Set(), linhas:new Set(), group:"fase", sel:null, saudeOpen:false, setTab:"dados"};
+const S = {mapSel:null, inc:"all", cidades:new Set(), anos:new Set(), fases:new Set(), linhas:new Set(), group:"fase", ordem:"alfa", ativos:true, dd:null, mgFech:new Set(), sel:null, saudeOpen:false, setTab:"dados"};
 let D = null, AJ = null;
 
 /* ---------- formatação ---------- */
@@ -83,10 +101,12 @@ const linhaInfo = id => LINHAS.find(l=>l.id===id) || LINHAS[LINHAS.length-1];
 const linhaCor = id => { const l=linhaInfo(id); return dark()?l.d:l.l; };
 const coCor = inc => css(inc==="Gadens" ? "--gd" : "--mk");
 const linhaDe = e => e.linha || "Aguardando Definição";
-const grupoDe = e => S.group==="fase" ? estrategica(e.fase) : linhaDe(e);
-const grupoNome = id => S.group==="fase" ? (FASES.find(f=>f.id===id)?.nome||id) : linhaInfo(id).curto;
-const grupoCor = id => S.group==="fase" ? faseCor(id) : linhaCor(id);
-const grupoOrdem = () => S.group==="fase" ? FASES.map(f=>f.id) : LINHAS.map(l=>l.id);
+const cidadeCor = id => { const c=CIDADES.find(x=>x.id===id); return c ? (dark()?c.d:c.l) : "#8E8E93"; };
+const grupoDe = e => S.group==="fase" ? faseDe(e) : S.group==="cidade" ? e.cidade : linhaDe(e);
+const grupoNome = id => S.group==="fase" ? (FASES.find(f=>f.id===id)?.nome||id) : S.group==="cidade" ? id : linhaInfo(id).curto;
+const grupoCor = id => S.group==="fase" ? faseCor(id) : S.group==="cidade" ? cidadeCor(id) : linhaCor(id);
+const grupoOrdem = () => S.group==="fase" ? FASES.map(f=>f.id) : S.group==="cidade" ? [...CIDADES.map(c=>c.id), ...new Set(D.empreendimentos.map(e=>e.cidade).filter(c=>!CIDADES.some(x=>x.id===c)))] : LINHAS.map(l=>l.id);
+const grupoRotulo = () => ({fase:"fase do projeto", linha:"linha de produto", cidade:"cidade"})[S.group];
 const corDe = e => grupoCor(grupoDe(e));
 
 /* ---------- dados derivados ---------- */
@@ -94,20 +114,27 @@ const vig = e => e._vig;
 const lanc = e => e.marcos.inc002 || null;
 const anoLanc = e => lanc(e) ? +lanc(e).data.slice(0,4) : null;
 const anoKey = e => String(anoLanc(e) ?? "Sem data");
-const ativa = e => !e.legado;
+const HOJE = () => (D.gerado_em||"").slice(0,10) || new Date().toISOString().slice(0,10);
+// Entregue: fase de entrega com a Entrega de Chaves concluída ou com a data já passada
+const entregue = e => { const m=e.marcos.mar001; return e.legado && (!m || m.ok || m.data<=HOJE()) || (estrategica(e.fase)==="ENT" && !!m && (m.ok || m.data<=HOJE())); };
+const faseDe = e => entregue(e) ? "ETG" : estrategica(e.fase);
+const faseNome = e => faseDe(e)==="ETG" ? "Entregue" : TATICA[e.fase] || "Sem cronograma";
+const ativa = e => faseDe(e)!=="ETG";
+const ordena = L => L.slice().sort(S.ordem==="lanc" ? (a,b)=>(lanc(a)?.data||"9999").localeCompare(lanc(b)?.data||"9999")||a.nome.localeCompare(b.nome,"pt-BR") : (a,b)=>a.nome.localeCompare(b.nome,"pt-BR"));
 const porInc = e => S.inc==="all" || e.incorporadora===S.inc;
 const ANO = () => +(D.gerado_em||"").slice(0,4) || new Date().getFullYear();
 function filtrados(ignora){
   return D.empreendimentos.filter(e => porInc(e) &&
     (ignora==="cidade" || !S.cidades.size || S.cidades.has(e.cidade)) &&
     (ignora==="ano" || !S.anos.size || S.anos.has(anoKey(e))) &&
-    (ignora==="fase" || !S.fases.size || S.fases.has(estrategica(e.fase))) &&
+    (ignora==="ativos" || !S.ativos || ativa(e)) &&
+    (ignora==="fase" || !S.fases.size || S.fases.has(faseDe(e))) &&
     (ignora==="linha" || !S.linhas.size || S.linhas.has(linhaDe(e))));
 }
 const nFiltros = () => S.cidades.size+S.anos.size+S.fases.size+S.linhas.size;
 const toggle = (set,v) => { set.has(v) ? set.delete(v) : set.add(v); S.sel=null; renderAll(); };
-const grupoSet = () => S.group==="fase" ? S.fases : S.linhas;
-const grupoDim = () => S.group==="fase" ? "fase" : "linha";
+const grupoSet = () => S.group==="fase" ? S.fases : S.group==="cidade" ? S.cidades : S.linhas;
+const grupoDim = () => S.group==="fase" ? "fase" : S.group==="cidade" ? "cidade" : "linha";
 
 function prepara(){
   const ord = v => VERS.indexOf(v.versao);
@@ -174,7 +201,7 @@ function renderKpis(){
     {id:"vgv", k:"VGV da carteira", v:brl(sum(e=>vig(e)?.vgv_bruto)), f:e=>vig(e)?.vgv_bruto, fmt:brl,
      ins:`${ic.up}<b>${brl(lancAno.reduce((a,e)=>a+(vig(e)?.vgv_bruto||0),0))}</b> lançado em ${Y}`},
     {id:"uh", k:"Unidades", v:nf(sum(e=>vig(e)?.unidades)), f:e=>vig(e)?.unidades, fmt:v=>nf(v)+" UH",
-     ins:`${ic.hammer}<b>${nf(L.filter(e=>estrategica(e.fase)==="OBR").reduce((a,e)=>a+(vig(e)?.unidades||0),0))}</b> UH em obra`},
+     ins:`${ic.hammer}<b>${nf(L.filter(e=>faseDe(e)==="OBR").reduce((a,e)=>a+(vig(e)?.unidades||0),0))}</b> UH em obra`},
     {id:"emp", k:"Empreendimentos", v:nf(L.length), f:()=>1, fmt:v=>nf(v),
      ins:`${ic.cal}<b>${prox12.length}</b> lançam nos próximos 12 meses`},
     {id:"area", k:"Área construída", v:nf(sum(e=>vig(e)?.area_construida))+" m²", f:e=>vig(e)?.area_construida, fmt:v=>nf(v)+" m²",
@@ -198,13 +225,13 @@ function abreKpi(c){
   const L = filtrados().filter(ativa);
   const grupos = grupoOrdem().map(id=>({id, its:L.filter(e=>grupoDe(e)===id).sort((a,b)=>(c.f(b)||0)-(c.f(a)||0))})).filter(g=>g.its.length);
   const tot = L.reduce((a,e)=>a+(c.f(e)||0),0)||1;
-  const ent = filtrados().filter(e=>e.legado);
+  const ent = filtrados("ativos").filter(e=>!ativa(e));
   $("expT").innerHTML = `${c.k} <span class="muted" style="font-weight:500;font-size:.9rem">${c.v}</span>`;
-  $("expBody").innerHTML = `<p class="muted small">Agrupado por ${S.group==="fase"?"fase do projeto":"linha de produto"} · viabilidade vigente de cada empreendimento${nFiltros()||S.inc!=="all"?" · com os filtros atuais":""}.</p>
+  $("expBody").innerHTML = `<p class="muted small">Agrupado por ${grupoRotulo()} · viabilidade vigente de cada empreendimento${nFiltros()||S.inc!=="all"?" · com os filtros atuais":""}.</p>
     <div class="grp">${grupos.map(g=>{ const gt=g.its.reduce((a,e)=>a+(c.f(e)||0),0); const cor=grupoCor(g.id);
       return `<div class="box"><h4><span class="mac" style="--c:${cor}"></span>${esc(grupoNome(g.id))}<span class="muted" style="margin-left:auto;font-weight:500">${c.id==="emp"?nf(g.its.length):c.fmt(gt)} · ${nf(gt/tot*100,0)}%</span></h4>
-      ${g.its.map(e=>`<div class="row" style="--c:${cor}"><span>${esc(e.nome)} <span class="muted small">· ${esc(TATICA[e.fase]||"Sem cronograma")}</span></span><span class="v">${c.id==="emp"?esc(e.cidade):c.fmt(c.f(e))}</span>${c.id==="emp"?"":`<span class="br"><i style="width:${(c.f(e)||0)/Math.max(...g.its.map(x=>c.f(x)||0),1)*100}%"></i></span>`}</div>`).join("")}</div>`; }).join("")}
-    ${ent.length?`<div class="box"><h4><span class="mac" style="--c:${faseCor("ENT")}"></span>Entregues<span class="muted" style="margin-left:auto;font-weight:500">${ent.length}</span></h4>${ent.map(e=>`<div class="row"><span>${esc(e.nome)}</span><span class="v muted">entregue</span></div>`).join("")}</div>`:""}</div>`;
+      ${g.its.map(e=>`<div class="row" style="--c:${cor}"><span>${esc(e.nome)} <span class="muted small">· ${esc(faseNome(e))}</span></span><span class="v">${c.id==="emp"?esc(e.cidade):c.fmt(c.f(e))}</span>${c.id==="emp"?"":`<span class="br"><i style="width:${(c.f(e)||0)/Math.max(...g.its.map(x=>c.f(x)||0),1)*100}%"></i></span>`}</div>`).join("")}</div>`; }).join("")}
+    ${ent.length?`<div class="box"><h4><span class="mac" style="--c:${faseCor("ETG")}"></span>Entregues<span class="muted" style="margin-left:auto;font-weight:500">${ent.length}</span></h4>${ent.map(e=>`<div class="row"><span>${esc(e.nome)}</span><span class="v muted">entregue</span></div>`).join("")}</div>`:""}</div>`;
   abreFolha("expSheet");
 }
 
@@ -231,7 +258,7 @@ function renderTraj(){
   const W = Math.max(320, box.clientWidth||600), H = W<560 ? 220 : 290, ml = 4, mr = 46, mt = 10, mb = 26, iw = W-ml-mr, ih = H-mt-mb;
   const tot = c => c.mk[0]+c.mk[1]+c.gd[0]+c.gd[1];
   const maxV = Math.max(...cel.map(tot), 1), st = niceStep(maxV, 3), top = Math.ceil(maxV/st)*st, Yp = v => mt+ih-ih*v/top;
-  const step = iw/60, bw = Math.max(3, Math.min(10, step*.58));
+  const step = iw/60, bw = Math.max(4, Math.min(16, step*.84));
   let s = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="VGV lançado por mês">`;
   // destaque suave do ano atual (meio)
   s += `<rect x="${ml+24*step}" y="${mt}" width="${12*step}" height="${ih}" fill="var(--fill)" opacity=".55" rx="6"/>`;
@@ -264,7 +291,7 @@ function renderTraj(){
 /* ---------- Distribuição: rosca com raio variável ---------- */
 function renderDonut(){
   const L = filtrados(grupoDim()).filter(ativa);
-  $("distTitle").textContent = S.group==="fase" ? "Distribuição por fase" : "Distribuição por linha de produto";
+  $("distTitle").textContent = "Distribuição por "+({fase:"fase",linha:"linha de produto",cidade:"cidade"})[S.group];
   const g = grupoOrdem().map(id=>{ const its=L.filter(e=>grupoDe(e)===id); return {id, its, n:its.length, vgv:its.reduce((a,e)=>a+(vig(e)?.vgv_bruto||0),0)}; }).filter(x=>x.n);
   const box = $("donut"), set = grupoSet();
   if (!g.length){ box.innerHTML="<p class='muted'>Nenhum empreendimento nos filtros atuais.</p>"; $("donutLeg").innerHTML=""; return; }
@@ -284,7 +311,7 @@ function renderDonut(){
   box.innerHTML = s;
   box.querySelectorAll(".hit").forEach(p=>{
     const x=g[p.dataset.i];
-    bindTip(p, `<b>${esc(grupoNome(x.id))}</b> · ${x.n} ${x.n===1?"empreendimento":"empreendimentos"} · ${brl(x.vgv)}<table>${x.its.slice().sort((a,b)=>(vig(b)?.vgv_bruto||0)-(vig(a)?.vgv_bruto||0)).map(e=>`<tr><td>${esc(e.nome)}</td><td class="muted">${esc(S.group==="fase"?TATICA[e.fase]||"—":(FASES.find(f=>f.id===estrategica(e.fase))||{}).nome)}</td><td class="n">${brl(vig(e)?.vgv_bruto)}</td></tr>`).join("")}</table><div class="muted">clique para filtrar</div>`);
+    bindTip(p, `<b>${esc(grupoNome(x.id))}</b> · ${x.n} ${x.n===1?"empreendimento":"empreendimentos"} · ${brl(x.vgv)}<table>${x.its.slice().sort((a,b)=>(vig(b)?.vgv_bruto||0)-(vig(a)?.vgv_bruto||0)).map(e=>`<tr><td>${esc(e.nome)}</td><td class="muted">${esc(S.group==="fase"?faseNome(e):(FASES.find(f=>f.id===faseDe(e))||{}).nome)}</td><td class="n">${brl(vig(e)?.vgv_bruto)}</td></tr>`).join("")}</table><div class="muted">clique para filtrar</div>`);
     p.onclick = ()=>{ hideTip(); toggle(set, x.id); };
   });
   const lg = $("donutLeg"); lg.innerHTML="";
@@ -295,6 +322,11 @@ function renderDonut(){
 /* ---------- Mapa (mapa próprio: mapa.js) ---------- */
 let mini = null, full = null, mapBusca = "";
 const tema = () => dark()?"dark":"light";
+const UIZ = () => +getComputedStyle(document.documentElement).getPropertyValue("--ui") || 1;
+const estreito = () => innerWidth<=720;
+// área útil do mapa: desconta a barra superior, a barra lateral, os botões da direita e a barra inferior
+const PAD = () => { const u=UIZ(); return estreito() ? {top:70*u, bottom:innerHeight*.44+36+20, left:30, right:64*u} : {top:72*u+16, bottom:36+36, left:340*u+44, right:64*u+24}; };
+const coNome = e => `<em>${esc(e.incorporadora)}</em>`;
 const dicaPino = (e, ev) => { if (!e) return hideTip(); showTip(`<b>${esc(e.nome)}</b> · ${esc(grupoNome(grupoDe(e)))}<div class="muted">${esc(e.endereco||e.cidade)}</div>`, ev); };
 function renderMap(){
   if (typeof maplibregl === "undefined" || typeof MP === "undefined"){ $("map").innerHTML="<p class='muted' style='padding:16px'>Não foi possível carregar o mapa.</p>"; return; }
@@ -302,17 +334,24 @@ function renderMap(){
   if (!mini){
     mini = MP.novo($("map"), {tema:tema()});
     mini.on("click", ()=>irPara("mapa"));
-    mini.once("load", ()=>MP.enquadra(mini, filtrados().filter(e=>e.pos), 60));
+    mini.once("load", ()=>MP.enquadra(mini, filtrados().filter(e=>e.pos), 50));
   }
   MP.alfinetes(mini, Ls, {cor:corDe, dica:dicaPino, aoClicar:e=>{ hideTip(); abreNoMapa(e); }});
-  if (mini.loaded()) MP.enquadra(mini, Ls, 60);
+  if (mini.loaded()) MP.enquadra(mini, Ls, 50);
   if (full) renderMapaPagina();
 }
 function abreNoMapa(e){ S.mapSel = e ? e.sigla : null; irPara("mapa"); }
+function marca3d(){ if (!full) return; $("b3d").setAttribute("aria-pressed", String(full._3d)); const b=$("fVista"); if (b){ b.classList.toggle("on", full._3d); b.lastChild.textContent = full._3d?"3D":"2D"; } }
+function voltaTodos(animar=true){
+  if (!full) return;
+  MP.enquadra(full, filtrados().filter(x=>x.pos), PAD(), {animar, plano:true});
+  marca3d();
+}
 function selMapa(e, voar=true){
   S.mapSel = e ? e.sigla : null;
   history.replaceState(null, "", "#mapa"+(e?":"+e.sigla:""));
-  if (e && voar && full){ MP.voa3d(full, e.pos); $("b3d").setAttribute("aria-pressed","true"); }
+  if (e && voar && full){ MP.voa3d(full, e.pos); marca3d(); }
+  if (!e) voltaTodos();
   renderMapaPagina();
 }
 function iniciaMapaPagina(){
@@ -320,56 +359,71 @@ function iniciaMapaPagina(){
   const el = $("mapaFull"); el.dataset.wheel = "livre";
   full = MP.novo(el, {tema:tema(), controles:true});
   full.scrollZoom.enable();
-  full.once("load", ()=>{ const e = D.empreendimentos.find(x=>x.sigla===S.mapSel); if (e) MP.voa3d(full, e.pos); else MP.enquadra(full, filtrados().filter(x=>x.pos), {top:90,bottom:70,left:400,right:80}); });
-  $("b3d").onclick = ()=>{ MP.aplica3d(full, !full._3d); $("b3d").setAttribute("aria-pressed", String(full._3d)); renderMapaPagina(); };
+  full.addControl(new maplibregl.ScaleControl({maxWidth:90, unit:"metric"}), "top-left");
+  full.once("load", ()=>{ const e = D.empreendimentos.find(x=>x.sigla===S.mapSel); if (e) MP.voa3d(full, e.pos); else voltaTodos(false); marca3d(); });
+  $("b3d").onclick = ()=>{ if (full._orb) MP.orbita(full,false); MP.aplica3d(full, !full._3d); marca3d(); renderMapaPagina(); };
+  $("bTipo").onclick = ()=>{ MP.satelite(full, !full._sat); $("bTipo").setAttribute("aria-pressed", String(full._sat)); };
   $("bZin").onclick = ()=>full.zoomIn(); $("bZout").onclick = ()=>full.zoomOut();
-  $("bNorte").onclick = ()=>{ full.easeTo({bearing:0, pitch:0, duration:700}); MP.aplica3d(full, false, false); $("b3d").setAttribute("aria-pressed","false"); };
-  $("bTodos").onclick = ()=>{ selMapa(null,false); MP.aplica3d(full,false,false); $("b3d").setAttribute("aria-pressed","false"); full.easeTo({pitch:0,bearing:0,duration:0}); MP.enquadra(full, filtrados().filter(x=>x.pos), {top:90,bottom:70,left:400,right:80}); };
-  full.on("pitchend", ()=>$("b3d").setAttribute("aria-pressed", String(full._3d)));
+  $("bNorte").onclick = ()=>{ if (full._orb) MP.orbita(full,false); full.easeTo({bearing:0, duration:700}); };
+  $("bTodos").onclick = ()=>{ if (S.mapSel) selMapa(null,false); else voltaTodos(); };
+  const ag = $("agulha"); full.on("rotate", ()=>{ ag.style.transform = `rotate(${-full.getBearing()}deg)`; });
+  full.on("pitchend", marca3d);
+  full.on("orbita", ()=>{ const b=$("fGira"); if (b){ b.classList.toggle("on", full._orb); b.lastChild.textContent = full._orb?"Girando":"Girar"; } });
   renderMapaPagina();
 }
 const bairroDe = e => { const m=(e.endereco||"").match(/-\s*([^,]+),\s*[^,]+-\s*PR/) || (e.endereco||"").match(/,\s*\d+\s*[-,]\s*([^,]+),/); return m ? m[1].trim() : ""; };
+const local = e => esc(e.cidade)+(bairroDe(e)?" - "+esc(bairroDe(e)):"");
+const urlLista = e => e.lista_id ? `https://app.clickup.com/9013344143/v/li/${e.lista_id}` : null;
 function renderMapaPagina(){
   if (!full) return;
   const Ls = filtrados().filter(e=>e.pos), sel = D.empreendimentos.find(x=>x.sigla===S.mapSel);
   MP.alfinetes(full, Ls, {cor:corDe, sel:sel?.nome, dica:dicaPino, aoClicar:e=>{ hideTip(); selMapa(e); }});
   const side = $("mside");
   if (sel){
-    const v=vig(sel), p=proj(sel), cor=corDe(sel), q=encodeURIComponent(sel.nome+" "+(sel.endereco||""));
+    const v=vig(sel), p=proj(sel), cor=corDe(sel);
     const marcos = Object.entries(sel.marcos).map(([c,m])=>({c, n:D.marco_nome[c]||c, ...m})).sort((a,b)=>a.data.localeCompare(b.data));
-    side.innerHTML = `<div class="ficha">
+    side.innerHTML = `<div class="ficha" style="--co:${coCor(sel.incorporadora)}">
       <button class="f-back" id="fBack"><svg viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6"/></svg>Empreendimentos</button>
+      <div class="f-hd">${MP.icone(sel.incorporadora, cor)}<div><h2>${esc(sel.nome)}</h2><div class="f-sub">${coNome(sel)} · ${local(sel)}</div></div></div>
       <div><span class="tagc" style="--c:${cor}">${esc(grupoNome(grupoDe(sel)))}</span></div>
-      <h2>${esc(sel.nome)}</h2>
       <div class="f-end"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-5.8-6.5-11a6.5 6.5 0 0 1 13 0c0 5.2-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg><span>${esc(sel.endereco||sel.cidade)}${sel.pos_fonte!=="clickup"?" · posição aproximada":""}</span></div>
       <div class="f-acts">
-        <button id="fVista" class="${full._3d?"on":""}"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg>${full._3d?"Visão 3D":"Ver em 3D"}</button>
+        <button id="fVista" class="${full._3d?"on":""}"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg>${full._3d?"3D":"2D"}</button>
+        <button id="fGira" class="${full._orb?"on":""}"><svg viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4.5v4h-4"/></svg>${full._orb?"Girando":"Girar"}</button>
         <a href="https://maps.apple.com/?ll=${sel.pos[0]},${sel.pos[1]}&q=${encodeURIComponent(sel.nome)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M9 4.5 3.5 6.6v13l5.5-2.1 6 2.1 5.5-2.1v-13L15 6.6z"/></svg>Mapas</a>
         <a href="https://www.google.com/maps/search/?api=1&query=${sel.pos[0]},${sel.pos[1]}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 2.5 14.4 0 17M12 3.5c-2.5 2.6-2.5 14.4 0 17"/></svg>Google</a>
         <button id="fCopia"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="11" height="12" rx="2.5"/><path d="M5 15V6.5A2.5 2.5 0 0 1 7.5 4H15"/></svg>Copiar</button>
       </div>
       <div class="f-kpi"><div><span>VGV bruto</span><b>${brl(v?.vgv_bruto)}</b></div><div><span>Unidades</span><b>${nf(v?.unidades)}</b></div>
         <div><span>Margem líquida</span><b>${pct(v?.margem,1)}</b></div><div><span>Projetada no lançamento</span><b>${p?pct(p.m,1):"—"}</b></div></div>
-      <dl class="f-dl"><div><dt>Incorporadora</dt><dd>${esc(sel.incorporadora)}</dd></div><div><dt>Linha de produto</dt><dd>${esc(linhaInfo(linhaDe(sel)).curto)}</dd></div>
-        <div><dt>Fase</dt><dd>${esc(TATICA[sel.fase]||"Sem cronograma")}</dd></div><div><dt>Cidade</dt><dd>${esc(sel.cidade)}${bairroDe(sel)?" · "+esc(bairroDe(sel)):""}</dd></div>
+      <dl class="f-dl"><div><dt>Linha de produto</dt><dd>${esc(linhaInfo(linhaDe(sel)).curto)}</dd></div>
+        <div><dt>Fase</dt><dd>${esc(faseNome(sel))}</dd></div>
         <div><dt>Viabilidade vigente</dt><dd>${v?v.versao+" – "+VNOME[v.versao]+(v.mes?" · "+v.mes.slice(5)+"/"+v.mes.slice(0,4):""):"—"}</dd></div>
-        ${sel.ex_nome?`<div><dt>Nome antigo</dt><dd>${esc(sel.ex_nome)}</dd></div>`:""}</dl>
+        ${sel.ex_nome?`<div><dt>Nome antigo</dt><dd>${esc(sel.ex_nome)}</dd></div>`:""}
+        ${urlLista(sel)?`<div><dt>Cronograma</dt><dd><a href="${urlLista(sel)}" target="_blank" rel="noopener">Abrir no ClickUp ↗</a></dd></div>`:""}</dl>
       ${marcos.length?`<div class="f-h">Marcos do cronograma</div><ul class="f-tl">${marcos.map(m=>`<li class="${m.ok?"ok":""}"><i></i><span>${esc(m.n)}</span><span>${dmy(m.data)}</span></li>`).join("")}</ul>`:""}
     </div>`;
-    $("fBack").onclick = ()=>{ selMapa(null,false); MP.aplica3d(full,false); $("b3d").setAttribute("aria-pressed","false"); MP.enquadra(full, Ls, {top:90,bottom:70,left:400,right:80}); };
-    $("fVista").onclick = ()=>{ if (full._3d){ MP.aplica3d(full,false); } else MP.voa3d(full, sel.pos); $("b3d").setAttribute("aria-pressed", String(full._3d)); renderMapaPagina(); };
+    $("fBack").onclick = ()=>selMapa(null,false);
+    $("fVista").onclick = ()=>{ if (full._3d){ if (full._orb) MP.orbita(full,false); MP.aplica3d(full,false); } else MP.voa3d(full, sel.pos, {orbitar:false}); marca3d(); renderMapaPagina(); };
+    $("fGira").onclick = ()=>{ if (full._orb) MP.orbita(full,false); else if (full._3d) MP.orbita(full,true); else MP.voa3d(full, sel.pos); marca3d(); };
     $("fCopia").onclick = ()=>{ try{ navigator.clipboard.writeText(sel.endereco||""); $("fCopia").lastChild.textContent="Copiado"; }catch(e){} };
     return;
   }
   const q = mapBusca.trim().toLowerCase();
   const its = Ls.filter(e=>!q || (e.nome+" "+(e.endereco||"")+" "+e.cidade+" "+(e.ex_nome||"")).toLowerCase().includes(q));
-  const grupos = grupoOrdem().map(id=>({id, its:its.filter(e=>grupoDe(e)===id).sort((a,b)=>a.nome.localeCompare(b.nome,"pt-BR"))})).filter(g=>g.its.length);
+  const grupos = grupoOrdem().map(id=>({id, its:ordena(its.filter(e=>grupoDe(e)===id))})).filter(g=>g.its.length);
+  const chev = '<svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>', seta = '<svg viewBox="0 0 24 24"><path d="M8 16L16 8M9.5 8H16v6.5"/></svg>';
   side.innerHTML = `<div class="ms-h"><h2>Empreendimentos <span>${its.length}</span></h2>
       <label class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><input id="mBusca" type="search" placeholder="Buscar por nome, rua ou bairro" value="${esc(mapBusca)}"></label></div>
-    <div class="ms-b">${grupos.map(g=>`<div class="ms-g"><span class="mac" style="--c:${grupoCor(g.id)}"></span>${esc(grupoNome(g.id))} · ${g.its.length}</div>${g.its.map(e=>`<button class="ms-r" data-s="${e.sigla}" style="--c:${corDe(e)}"><span class="dot"></span><b>${esc(e.nome)}</b><span class="v">${brl(vig(e)?.vgv_bruto)}</span><span class="s">${esc(bairroDe(e)||e.cidade)} · ${esc(TATICA[e.fase]||"Sem cronograma")}</span></button>`).join("")}`).join("") || "<p class='muted' style='padding:12px'>Nenhum empreendimento encontrado.</p>"}</div>`;
+    <div class="ms-b">${grupos.map(g=>{ const ab=!S.mgFech.has(S.group+":"+g.id), vg=g.its.reduce((a,e)=>a+(vig(e)?.vgv_bruto||0),0);
+      return `<button class="mg-h" data-g="${esc(g.id)}" aria-expanded="${ab}" style="--c:${grupoCor(g.id)}"><span class="cv">${chev}</span><b>${esc(S.group==="fase"?({DEV:"Des. p/ Lançamento",LIB:"Liberação p/ Obra",OBR:"Em obra"})[g.id]||grupoNome(g.id):grupoNome(g.id))}</b><span class="n">${g.its.length} Emp.</span><span class="vg">${vg?brl(vg)+" VGV":""}</span></button>
+      ${ab?`<div class="mg-c">${g.its.map(e=>`<div class="ms-r" role="button" tabindex="0" data-s="${e.sigla}" style="--co:${coCor(e.incorporadora)}">${MP.icone(e.incorporadora, corDe(e))}<b>${esc(e.nome)}</b>${urlLista(e)?`<a class="go" href="${urlLista(e)}" target="_blank" rel="noopener" data-tip="Abrir o cronograma no ClickUp" aria-label="Abrir o cronograma de ${esc(e.nome)} no ClickUp">${seta}</a>`:`<span class="go" style="opacity:.35">${seta}</span>`}<span class="s">${coNome(e)} · ${local(e)}</span></div>`).join("")}</div>`:""}`; }).join("") || "<p class='muted' style='padding:12px'>Nenhum empreendimento encontrado.</p>"}</div>`;
   const inp = $("mBusca"); inp.oninput = ()=>{ mapBusca = inp.value; const pos=inp.selectionStart; renderMapaPagina(); const n=$("mBusca"); n.focus(); n.setSelectionRange(pos,pos); };
+  side.querySelectorAll(".mg-h").forEach(b=>b.onclick=()=>{ const k=S.group+":"+b.dataset.g; S.mgFech.has(k)?S.mgFech.delete(k):S.mgFech.add(k); renderMapaPagina(); });
   side.querySelectorAll(".ms-r").forEach(b=>{ const e=D.empreendimentos.find(x=>x.sigla===b.dataset.s);
-    b.onclick = ()=>selMapa(e); });
+    b.onclick = ev=>{ if (ev.target.closest("a")) return; selMapa(e); };
+    b.onkeydown = ev=>{ if (ev.key==="Enter") selMapa(e); };
+  });
 }
 
 /* ---------- Saúde financeira (seção recolhível) ---------- */
@@ -392,7 +446,7 @@ function renderSaude(){
     <div class="tile"><span class="k">Lucro líquido projetado</span><b>${brl(d.lucro)}</b><span class="s">soma das viabilidades vigentes</span></div>
     <div class="tile"><span class="k">Soma das exposições máximas</span><b>${brl(d.expo)}</b><span class="s">teto teórico: os picos não coincidem</span></div>
     <div class="tile w2"><div class="th"><h4>Margem projetada dos lançamentos × meta</h4><button class="link" id="howBtn">Como é calculada</button></div><p class="cap">média ponderada pelo VGV líquido · clique num ano para filtrar</p><div class="chart" id="metaYears"></div></div>
-    <div class="tile w2"><div class="th"><h4>Margem média por ${S.group==="fase"?"fase":"linha de produto"}</h4></div><p class="cap">vigente → projetada no lançamento</p><div class="chart" id="margGrp"></div></div>
+    <div class="tile w2"><div class="th"><h4>Margem média por ${({fase:"fase",linha:"linha de produto",cidade:"cidade"})[S.group]}</h4></div><p class="cap">vigente → projetada no lançamento</p><div class="chart" id="margGrp"></div></div>
     <div class="tile w4"><div class="th"><h4>Margem por empreendimento</h4><div class="leg" style="margin:0"><span><svg width="12" height="12"><circle cx="6" cy="6" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>vigente</span><span><svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="currentColor"/></svg>projetada no lançamento</span><span><svg width="4" height="12"><rect width="2" height="12" fill="currentColor"/></svg>meta do ano de lançamento</span></div></div><div class="chart" id="dumbbell"></div></div>`;
   $("howBtn").onclick = abreHow;
   chartAnos(); chartGrupo(d.L); chartDumbbell(d.L);
@@ -532,29 +586,47 @@ function renderNavPop(p){
   $("npPrev").innerHTML = miniPrev(p);
 }
 function renderFilterPop(){
-  const base = D.empreendimentos.filter(porInc);
-  const chips = (vals, set, cor, nome=v=>v) => `<div class="chips">${vals.map(v=>`<button aria-pressed="${set.has(v)}" data-v="${esc(v)}" style="--c:${cor?cor(v):"var(--label-3)"}">${cor?"<i></i>":""}${esc(nome(v))}</button>`).join("")}</div>`;
-  const fases = FASES.map(f=>f.id).filter(id=>base.some(e=>estrategica(e.fase)===id));
-  const linhas = LINHAS.map(l=>l.id).filter(id=>base.some(e=>linhaDe(e)===id));
-  $("filterPop").innerHTML = `
-    <div class="fg"><span class="lb">Colorir e agrupar por</span><div class="seg" id="grpSeg"><button data-g="fase" aria-checked="${S.group==="fase"}">Fase do projeto</button><button data-g="linha" aria-checked="${S.group==="linha"}">Linha de produto</button></div></div>
-    <div class="fg" data-set="fases"><span class="lb">Fase</span>${chips(fases,S.fases,faseCor,id=>FASES.find(f=>f.id===id).nome)}</div>
-    <div class="fg" data-set="linhas"><span class="lb">Linha de produto</span>${chips(linhas,S.linhas,linhaCor,id=>linhaInfo(id).curto)}</div>
-    <div class="fg" data-set="cidades"><span class="lb">Cidade</span>${chips([...new Set(base.map(e=>e.cidade))].sort(),S.cidades)}</div>
-    <div class="fg" data-set="anos"><span class="lb">Ano de lançamento</span>${chips([...new Set(base.map(anoKey))].sort(),S.anos)}</div>
-    <div class="f-foot"><span class="cap">${nFiltros()?`${nFiltros()} ${nFiltros()===1?"filtro ativo":"filtros ativos"} · ${filtrados().filter(ativa).length} empreendimentos`:"Sem filtros · valem para todos os painéis"}</span><button class="pillbtn" id="clearF">Limpar</button></div>`;
-  $("filterPop").querySelectorAll(".fg[data-set] .chips button").forEach(b=>b.onclick=()=>toggle(S[b.closest(".fg").dataset.set], b.dataset.v));
-  $("filterPop").querySelectorAll("#grpSeg button").forEach(b=>b.onclick=()=>{ S.group=b.dataset.g; renderAll(); });
-  $("clearF").onclick=()=>{ S.cidades.clear(); S.anos.clear(); S.fases.clear(); S.linhas.clear(); S.sel=null; renderAll(); };
-  const n=nFiltros(), fc=$("filterCount"); fc.hidden=!n; fc.textContent=n;
+  const base = D.empreendimentos.filter(porInc).filter(e=>!S.ativos || ativa(e));
+  const fases = FASES.filter(f=>f.id!=="SEM");
+  const temSem = base.some(e=>faseDe(e)==="SEM");
+  const lista = (k, vals, set, cor, nome=v=>v) => {
+    const sel = [...set], aberto = S.dd===k;
+    const txt = sel.length ? `<b>${esc(sel.map(nome).join(", "))}</b>` : "Selecionar...";
+    return `<div class="frow"><span>${({linhas:"Linha de produto",cidades:"Cidade",anos:"Ano de Lançamento"})[k]}</span>
+      <button class="dd" data-dd="${k}" aria-expanded="${aberto}"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>${txt}</button>
+      ${aberto?`<div class="ddl" data-set="${k}">${vals.map(v=>`<button aria-pressed="${set.has(v)}" data-v="${esc(v)}" style="${cor?`--c:${cor(v)}`:""}">${cor?"<i></i>":""}${esc(nome(v))}</button>`).join("")}</div>`:""}</div>`;
+  };
+  const seg = (id, val, ops) => `<div class="seg full" id="${id}">${ops.map(([v,t])=>`<button data-v="${v}" aria-checked="${val===v}">${t}</button>`).join("")}</div>`;
+  const n = nFiltros() + (S.ativos?0:1);
+  $("filterPop").innerHTML = `<div class="fp">
+    <div><span class="lb">Colorir e agrupar por</span>${seg("grpSeg", S.group, [["fase","Fase do projeto"],["linha","Linha de produto"],["cidade","Cidade"]])}</div>
+    <div><span class="lb">Ordenar por</span>${seg("ordSeg", S.ordem, [["alfa","Alfabético"],["lanc","Data Lançamento"]])}</div>
+    <div><span class="lb">Fase</span><div class="ftiles${S.fases.size&&[...S.fases].some(f=>f!=="SEM")?" algum":""}">${fases.map(f=>`<button data-f="${f.id}" aria-pressed="${S.fases.has(f.id)}" style="--c:${faseCor(f.id)}" ${S.ativos&&f.id==="ETG"?'disabled title="Desligue “Somente empreendimentos ativos” para ver os entregues"':""}>${esc(f.curto)}</button>`).join("")}</div></div>
+    ${temSem||S.fases.has("SEM")?`<button class="fsem" data-f="SEM" aria-pressed="${S.fases.has("SEM")}">Sem cronograma disponível</button>`:""}
+    ${lista("linhas", LINHAS.map(l=>l.id).filter(id=>base.some(e=>linhaDe(e)===id)), S.linhas, linhaCor, id=>linhaInfo(id).curto)}
+    ${lista("cidades", grupoOrdemCid(base), S.cidades, cidadeCor)}
+    ${lista("anos", [...new Set(base.map(anoKey))].sort(), S.anos)}
+    <div class="frow"><span>Somente empreendimentos ativos</span><button class="sw" id="swAtivos" role="switch" aria-checked="${S.ativos}" aria-label="Somente empreendimentos ativos"></button></div>
+    <button class="fclear" id="clearF" ${n?"":"disabled"}>Limpar filtros</button>
+    <div class="fcount">${filtrados().length} empreendimentos${S.ativos?" ativos":""}${nFiltros()?` · ${nFiltros()} ${nFiltros()===1?"filtro":"filtros"}`:""}</div></div>`;
+  const P = $("filterPop");
+  P.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>toggle(S.fases, b.dataset.f));
+  P.querySelectorAll(".ddl button").forEach(b=>b.onclick=()=>toggle(S[b.closest(".ddl").dataset.set], b.dataset.v));
+  P.querySelectorAll(".dd").forEach(b=>b.onclick=()=>{ S.dd = S.dd===b.dataset.dd ? null : b.dataset.dd; renderFilterPop(); });
+  P.querySelectorAll("#grpSeg button").forEach(b=>b.onclick=()=>{ S.group=b.dataset.v; renderAll(); });
+  P.querySelectorAll("#ordSeg button").forEach(b=>b.onclick=()=>{ S.ordem=b.dataset.v; renderAll(); });
+  $("swAtivos").onclick=()=>{ S.ativos=!S.ativos; if (S.ativos) S.fases.delete("ETG"); S.sel=null; renderAll(); };
+  $("clearF").onclick=()=>{ S.cidades.clear(); S.anos.clear(); S.fases.clear(); S.linhas.clear(); S.ativos=true; S.dd=null; S.sel=null; renderAll(); };
+  const fc=$("filterCount"); fc.hidden=!n; fc.textContent=n;
 }
+const grupoOrdemCid = base => { const cs=[...new Set(base.map(e=>e.cidade))]; return [...CIDADES.map(c=>c.id).filter(c=>cs.includes(c)), ...cs.filter(c=>!CIDADES.some(x=>x.id===c)).sort()]; };
 const ICO_CO = {
-  all:`<svg viewBox="0 0 24 24"><rect x="3" y="3" width="8" height="8" rx="2.4" fill="#FF9100"/><rect x="13" y="13" width="8" height="8" rx="2.4" fill="#2C86DC"/><rect x="13" y="3" width="8" height="8" rx="2.4" fill="currentColor" opacity=".28"/><rect x="3" y="13" width="8" height="8" rx="2.4" fill="currentColor" opacity=".28"/></svg>`,
+  all:`<svg viewBox="0 0 24 24"><circle cx="8" cy="12" r="5.5" fill="#FF9100"/><circle cx="16" cy="12" r="5.5" fill="#0060AF" stroke="#45416d" stroke-width="1.2"/></svg>`,
   "Make It":`<svg viewBox="0 0 230.8 230.8"><path fill="#fff" d="M108.6 178.3H63.9V81.6h44.7zM167.9 178.3h-44.6V51.8h44.6z"/></svg>`,
   Gadens:`<svg viewBox="-14 -14 140.4 136.4"><path fill="#fff" d="M54.5 0v108.4C24.6 108.4.3 84.1.3 54.2S24.6 0 54.5 0z"/><path fill="#fff" d="M63.1 59.1h49.3v49.3z"/><path fill="#F0A06A" d="M112.4 0v50.3C84.6 50.3 62 27.8 62 0z"/></svg>`,
 };
 function renderCoPop(){
-  $("coPop").innerHTML = INCS.map(([id,n])=>`<button class="co-opt" role="menuitemradio" aria-checked="${S.inc===id}" data-inc="${id}"><span class="ci" style="background:${id==="all"?"var(--fill)":coCor(id)}">${ICO_CO[id]}</span>${n}<span class="ck">✓</span></button>`).join("");
+  $("coPop").innerHTML = INCS.map(([id,n])=>`<button class="co-opt" role="menuitemradio" aria-checked="${S.inc===id}" data-inc="${id}"><span class="ci" style="background:${id==="all"?"#45416d":id==="Gadens"?"#0060AF":"#FF9100"}">${ICO_CO[id]}</span>${n}<span class="ck">✓</span></button>`).join("");
   $("coPop").querySelectorAll(".co-opt").forEach(b=>b.onclick=()=>setInc(b.dataset.inc));
 }
 function setInc(inc){
@@ -564,7 +636,7 @@ function setInc(inc){
   renderAll();
 }
 /* abre ao passar o mouse; fecha com um pequeno atraso para dar tempo de entrar no bloco */
-const pops = ["navPop","filterPop","coPop"];
+const pops = ["navPop","filterPop","coPop","linkPop"];
 function fechaPops(exceto){ pops.forEach(id=>{ if (id!==exceto) $(id).hidden=true; }); document.querySelectorAll(".ni.hov").forEach(n=>n.classList.remove("hov")); }
 function hoverPop(gatilhos, popId, aoAbrir){
   let t; const pop=$(popId);
@@ -593,7 +665,8 @@ function renderSettings(){
   const g = new Date(D.gerado_em), p = pendencias();
   if (S.setTab==="dados") $("setBody").innerHTML = `
     <div class="box"><h4><span class="mac" style="--c:#FF5F57"></span>Atualização</h4><p>Dados gerados em ${g.toLocaleDateString("pt-BR")} às ${g.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"})}. Cronogramas: ${esc(D.fontes.cronogramas.replace(/(\d{4})-(\d{2})-(\d{2})/,"$3/$2/$1"))}.</p></div>
-    <div class="box"><h4><span class="mac" style="--c:#FEBC2E"></span>Cronogramas e fases</h4><ul><li>Marcos lidos dos cronogramas do ClickUp pelo campo “Código tarefa” (listas privadas e “(cópia)” ficam de fora).</li><li>A fase de cada empreendimento sai do marco mais avançado concluído, não do nome da lista.</li><li>A comparação semanal usa o histórico salvo toda segunda-feira.</li></ul></div>
+    <div class="box"><h4><span class="mac" style="--c:#5E9EFF"></span>Alcance da base</h4><p>${(()=>{ const L=D.empreendimentos.filter(e=>lanc(e)).sort((a,b)=>lanc(a).data.localeCompare(lanc(b).data)); const o=L[0]; return o ? `A base só tem informações de lançamento a partir de <b>${o.marcos.inc002.data.slice(0,4)}</b> (o mais antigo é o ${esc(o.nome)}, lançado em ${my(o.marcos.inc002.data)}). Empreendimentos lançados antes disso, como La Vita e Tuo, não têm a data de lançamento no ClickUp e não aparecem na trajetória.` : "A base ainda não tem datas de lançamento."; })()}</p></div>
+    <div class="box"><h4><span class="mac" style="--c:#FEBC2E"></span>Cronogramas e fases</h4><ul><li>Marcos lidos dos cronogramas do ClickUp pelo campo “Código tarefa” (listas privadas e “(cópia)” ficam de fora).</li><li>A fase de cada empreendimento sai do marco mais avançado concluído, não do nome da lista. “Entregue” é quem já passou da data de Entrega de Chaves.</li><li>Por padrão só aparecem os empreendimentos ativos; nos filtros dá para ver todos, inclusive os entregues.</li><li>A comparação semanal usa o histórico salvo toda segunda-feira.</li></ul></div>
     <div class="box"><h4><span class="mac" style="--c:#28C840"></span>Viabilidades, linha de produto e endereço</h4><ul><li>Lista Controle de Viabilidades do ClickUp, com os valores das DREs.</li><li>A vigente é a versão mais avançada cadastrada na lista, mesmo pendente de aprovação.</li><li>Linha de produto e endereço vêm dos campos “Linha Produto” e “📍 Endereço do empreendimento”.</li><li>Mapa: recorte próprio do OpenStreetMap de Curitiba e região, gerado por uma rotina do GitHub e guardado no site.</li><li>Margem projetada: veja “Como é calculada” na Saúde financeira.</li></ul></div>`;
   else if (S.setTab==="pend") $("setBody").innerHTML = p.length ? p.map((x,i)=>`<div class="box"><h4><span class="mac" style="--c:${["#FF5F57","#FEBC2E","#28C840","#5E9EFF","#BF5AF2","#8E8E93"][i%6]}"></span>${esc(x.t)}<span class="muted" style="margin-left:auto;font-weight:500">${x.xs.length}</span></h4><p class="muted">${esc(x.xs.join(", "))}</p></div>`).join("") : "<p class='muted'>Nenhuma pendência.</p>";
   else $("setBody").innerHTML = `<div class="log">${CHANGELOG.map(c=>`<div><div class="v">Versão ${c.v}<span>${dmy(c.d)}</span></div><ul>${c.itens.map(i=>`<li>${esc(i)}</li>`).join("")}</ul></div>`).join("")}</div>`;
@@ -605,7 +678,7 @@ function abreFolha(id){ ["setSheet","expSheet"].forEach(s=>$(s).hidden = s!==id)
    ========================================================= */
 function renderLaunches(){
   const its = filtrados().filter(e=>lanc(e)&&!lanc(e).ok).sort((a,b)=>lanc(a).data.localeCompare(lanc(b).data));
-  $("launchList").innerHTML = `<div class="tbl-wrap"><table class="t"><thead><tr><th>Empreendimento</th><th>Cidade</th><th>Fase</th><th>Registro de Incorporação</th><th>Orçamento V4</th><th>Lançamento previsto</th><th class="n">VGV bruto</th></tr></thead><tbody>${its.map(e=>`<tr><td><span class="tagc" style="--c:${corDe(e)}">${esc(e.nome)}</span></td><td>${esc(e.cidade)}</td><td>${esc(TATICA[e.fase]||"—")}</td><td>${e.marcos.leg010?dmy(e.marcos.leg010.data):"—"}</td><td>${e.marcos.orcV4?dmy(e.marcos.orcV4.data):"—"}</td><td><b>${dmy(lanc(e).data)}</b></td><td class="n">${brl(vig(e)?.vgv_bruto)}</td></tr>`).join("")}</tbody></table></div>`;
+  $("launchList").innerHTML = `<div class="tbl-wrap"><table class="t"><thead><tr><th>Empreendimento</th><th>Cidade</th><th>Fase</th><th>Registro de Incorporação</th><th>Orçamento V4</th><th>Lançamento previsto</th><th class="n">VGV bruto</th></tr></thead><tbody>${its.map(e=>`<tr><td><span class="tagc" style="--c:${corDe(e)}">${esc(e.nome)}</span></td><td>${esc(e.cidade)}</td><td>${esc(faseNome(e))}</td><td>${e.marcos.leg010?dmy(e.marcos.leg010.data):"—"}</td><td>${e.marcos.orcV4?dmy(e.marcos.orcV4.data):"—"}</td><td><b>${dmy(lanc(e).data)}</b></td><td class="n">${brl(vig(e)?.vgv_bruto)}</td></tr>`).join("")}</tbody></table></div>`;
 }
 function renderVariacoes(){
   $("varNote").textContent = D.fontes.variacoes.split(" → ").map(dmy).join(" → ");
@@ -627,14 +700,14 @@ function route(){
   document.querySelectorAll(".page").forEach(s=>s.hidden = s.dataset.page!==p);
   document.querySelectorAll("#nav .ni").forEach(a=>{ a.classList.toggle("on", a.dataset.p===p); a.toggleAttribute("aria-current", a.dataset.p===p); });
   document.documentElement.classList.toggle("no-scroll", p==="mapa");
-  if (p==="mapa"){ setTimeout(()=>{ iniciaMapaPagina(); const e=D.empreendimentos.find(x=>x.sigla===S.mapSel); renderMapaPagina(); if (e && full.loaded()) MP.voa3d(full, e.pos); }, 30); }
+  if (p==="mapa"){ setTimeout(()=>{ iniciaMapaPagina(); const e=D.empreendimentos.find(x=>x.sigla===S.mapSel); renderMapaPagina(); if (e && full.loaded()) MP.voa3d(full, e.pos); marca3d(); }, 30); }
   if (p==="resumo" && mini) setTimeout(()=>mini.resize(),60);
 }
 function irPara(p, sec){
   const alvo = p==="mapa" && S.mapSel ? "mapa:"+S.mapSel : p;
   if (location.hash.slice(1)!==alvo) location.hash = alvo; else route();
   fechaPops();
-  if (sec && sec.startsWith("cid:")){ const c=sec.slice(4); S.mapSel=null; setTimeout(()=>{ if (full) MP.enquadra(full, D.empreendimentos.filter(e=>e.pos&&e.cidade===c&&porInc(e)), {top:90,bottom:70,left:400,right:80}); renderMapaPagina(); }, 120); return; }
+  if (sec && sec.startsWith("cid:")){ const c=sec.slice(4); S.mapSel=null; history.replaceState(null,"","#mapa"); setTimeout(()=>{ if (full) MP.enquadra(full, filtrados().filter(e=>e.pos&&e.cidade===c), PAD(), {animar:true, plano:true}); renderMapaPagina(); }, 120); return; }
   if (sec){ if (sec==="sec-saude" && !S.saudeOpen){ S.saudeOpen=true; renderSaude(); } setTimeout(()=>{ const el=$(sec); if (el) window.scrollTo({top:el.getBoundingClientRect().top+scrollY-84, behavior:"smooth"}); },80); }
   else if (p!=="mapa") window.scrollTo({top:0, behavior:"smooth"});
 }
@@ -660,9 +733,15 @@ function init(){
   $("navPop").addEventListener("click", ev=>{ const a=ev.target.closest("a[data-sec]"); if (!a) return; ev.preventDefault(); irPara(a.getAttribute("href").slice(1), a.dataset.sec); });
   const touch = matchMedia("(hover: none)").matches;
   if (!touch){ hoverPop([$("filterBtn")], "filterPop"); hoverPop([$("coSwitch")], "coPop", renderCoPop); }
-  $("filterBtn").onclick = ()=>{ const p=$("filterPop"); const v=p.hidden; fechaPops(); p.hidden=!v; };
+  $("filterBtn").onclick = ()=>{ const p=$("filterPop"); if (!p.hidden && touch){ p.hidden=true; return; } fechaPops("filterPop"); p.hidden=false; };
   $("coSwitch").onclick = ()=>{ const i=(INCS.findIndex(x=>x[0]===S.inc)+1)%3; setInc(INCS[i][0]); };
-  document.addEventListener("click", ev=>{ if (!ev.target.closest(".top")) fechaPops(); });
+  // um clique dentro do painel recria o conteúdo: o alvo some do documento, e isso não pode fechar o painel
+  document.addEventListener("click", ev=>{ if (!ev.target.isConnected || ev.target.closest(".top,#linkPop,#linkBtn")) return; fechaPops(); });
+  $("linkBtn").onclick = ev=>{ const p=$("linkPop"), v=p.hidden; fechaPops(); p.hidden=!v; };
+  const ZS=[.8,.9,1,1.1,1.2,1.3];
+  const zoomUI = d=>{ const i=Math.max(0,Math.min(ZS.length-1, ZS.indexOf(UIZ())+d)), z=ZS[i<0?2:i]; document.documentElement.style.setProperty("--ui", z); try{ localStorage.setItem("dash-zoom", z); }catch(e){}
+    $("uiPct").textContent=Math.round(z*100)+"%"; renderTraj(); renderSaude(); if (mini) mini.resize(); if (full){ full.resize(); if (!S.mapSel) voltaTodos(false); } };
+  $("uiMenos").onclick=()=>zoomUI(-1); $("uiMais").onclick=()=>zoomUI(1); $("uiPct").textContent=Math.round(UIZ()*100)+"%";
   document.querySelector('#sec-marcos .pillbtn').addEventListener("click", ev=>{ ev.preventDefault(); irPara("analise","sec-var"); });
   $("saudeToggle").onclick = ()=>{ S.saudeOpen=!S.saudeOpen; renderSaude(); };
   $("setBtn").onclick = ()=>{ renderSettings(); abreFolha("setSheet"); };

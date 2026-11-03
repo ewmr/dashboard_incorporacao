@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-10-31T17:50-03:00",
+ "gerado_em": "2026-11-03T17:43-03:00",
  "fontes": {
   "cronogramas": "Snapshot ClickUp de 2026-10-26",
   "viabilidades": "ClickUp · lista Controle de Viabilidades",
@@ -88,17 +88,17 @@
      "obs": "",
      "situacao": "",
      "task_id": "86ak61abn",
-     "mes": "2025-09",
-     "vgv_bruto": null,
-     "vgv_liquido": null,
-     "lucro": null,
-     "margem": null,
-     "exposicao": null,
-     "area_construida": null,
-     "unidades": 256.0,
-     "permutas": 0.0,
-     "preco_medio": 379888.9375,
-     "custo_m2": 2339.83
+     "mes": "2025-03",
+     "vgv_bruto": 93520224.0,
+     "vgv_liquido": 93520224.0,
+     "lucro": 16601992.0,
+     "margem": 0.1775,
+     "exposicao": 9759749.0,
+     "area_construida": 17753.58,
+     "unidades": 238.0,
+     "permutas": 0,
+     "preco_medio": 392942.1176470588,
+     "custo_m2": 2265.91
     },
     {
      "versao": "V2",
@@ -192,17 +192,17 @@
      "obs": "",
      "situacao": "",
      "task_id": "86ak6kqf7",
-     "mes": "2025-09",
-     "vgv_bruto": null,
-     "vgv_liquido": null,
-     "lucro": null,
-     "margem": null,
-     "exposicao": null,
-     "area_construida": null,
-     "unidades": 230.0,
-     "permutas": 0.0,
-     "preco_medio": 374094.7826086957,
-     "custo_m2": 2395.38
+     "mes": "2025-03",
+     "vgv_bruto": 74520170.0,
+     "vgv_liquido": 74520170.0,
+     "lucro": 10976397.0,
+     "margem": 0.14730000000000001,
+     "exposicao": 7787719.0,
+     "area_construida": 13828.23,
+     "unidades": 199.0,
+     "permutas": 0,
+     "preco_medio": 374473.216080402,
+     "custo_m2": 2463.27
     },
     {
      "versao": "V2",
@@ -2026,7 +2026,7 @@
    "nome": "Tuo",
    "sigla": "TUO",
    "linha": "Make It Básico",
-   "cidade": "Curitiba",
+   "cidade": "Pinhais",
    "incorporadora": "Make It",
    "ex_nome": "",
    "lista_id": "901307558770",
@@ -2051,7 +2051,25 @@
      "ok": 0
     }
    },
-   "viabilidades": [],
+   "viabilidades": [
+    {
+     "versao": "V4",
+     "obs": "",
+     "situacao": "",
+     "task_id": "17tpepcuzf3",
+     "mes": "2022-05",
+     "vgv_bruto": 48880000.0,
+     "vgv_liquido": 48880000.0,
+     "lucro": 10527549.0,
+     "margem": 0.21539999999999998,
+     "exposicao": 3437809.0,
+     "area_construida": 10401.63,
+     "unidades": 208.0,
+     "permutas": 0,
+     "preco_medio": 235000.0,
+     "custo_m2": 1675.75
+    }
+   ],
    "pos": [
     -25.4425723,
     -49.1753849
@@ -2063,7 +2081,7 @@
    "nome": "La Vita",
    "sigla": "LAV",
    "linha": "Make It Básico",
-   "cidade": "Curitiba",
+   "cidade": "Pinhais",
    "incorporadora": "Make It",
    "ex_nome": "",
    "lista_id": "901305333997",
@@ -2088,7 +2106,25 @@
      "ok": 0
     }
    },
-   "viabilidades": [],
+   "viabilidades": [
+    {
+     "versao": "V4",
+     "obs": "",
+     "situacao": "",
+     "task_id": "17tpepcuzf2",
+     "mes": "2022-06",
+     "vgv_bruto": 22143092.0,
+     "vgv_liquido": 19144548.0,
+     "lucro": 3848927.0,
+     "margem": 0.201,
+     "exposicao": 1550491.0,
+     "area_construida": 4859.26,
+     "unidades": 96.0,
+     "permutas": 13,
+     "preco_medio": 230657.21,
+     "custo_m2": 1822.68
+    }
+   ],
    "pos": [
     -25.4497453,
     -49.1729818
