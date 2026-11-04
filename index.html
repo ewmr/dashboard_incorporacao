@@ -9,7 +9,7 @@
 <style>:where(svg){max-width:100%}:where(.top,.bot) :where(svg){width:22px;height:22px}</style>
 <link rel="stylesheet" href="vendor/maplibre/maplibre-gl.css?v=4.7.1">
 <link rel="preload" href="vendor/fonts/nunito-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="app.css?v=0.6.0">
+<link rel="stylesheet" href="app.css?v=0.7.0">
 </head>
 <body>
 <!-- fundo: degradê desfocado na cor da incorporadora -->
@@ -114,9 +114,11 @@
 
   <!-- VIABILIDADE -->
   <section class="page" data-page="viabilidade" hidden>
-    <h1 class="pt">Indicadores de Viabilidade</h1>
-    <article class="card soon"><h3>Em construção</h3><p>A página validada (comparativo entre fases, detalhamento por versão e evolução da margem) entra aqui, lendo a lista Controle de Viabilidades do ClickUp. Abaixo, a base que já está ligada.</p></article>
-    <article class="card" id="sec-viab"><div class="ch"><div><h3>Viabilidades vigentes</h3><p class="cap">ClickUp · Controle de Viabilidades</p></div></div><div class="tbl-wrap" id="viabTable"></div></article>
+    <div class="vb">
+      <aside class="card vb-side" id="vbSide"></aside>
+      <div class="vb-main" id="vbMain"></div>
+    </div>
+    <article class="card" id="sec-viab"><div class="ch"><div><h3>Viabilidades vigentes</h3><p class="cap">todas as viabilidades vigentes nos filtros atuais · clique numa linha para abrir</p></div></div><div class="tbl-wrap" id="viabTable"></div></article>
   </section>
 
   <!-- METAS -->
@@ -163,7 +165,7 @@
 <div class="tip" id="tip" hidden></div>
 <script src="vendor/maplibre/maplibre-gl.js?v=4.7.1"></script>
 <script src="vendor/maplibre/pmtiles.js?v=4.5.0"></script>
-<script src="mapa.js?v=0.6.0"></script>
-<script src="app.js?v=0.6.0"></script>
+<script src="mapa.js?v=0.7.0"></script>
+<script src="app.js?v=0.7.0"></script>
 </body>
 </html>

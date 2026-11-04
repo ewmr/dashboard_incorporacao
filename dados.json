@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-03T17:43-03:00",
+ "gerado_em": "2026-11-04T11:10-03:00",
  "fontes": {
   "cronogramas": "Snapshot ClickUp de 2026-10-26",
   "viabilidades": "ClickUp · lista Controle de Viabilidades",
@@ -18,7 +18,11 @@
   "eng002": "Término de Obra",
   "leg011": "Registro de CVCO",
   "mar001": "Entrega de Chaves",
-  "inc003": "Entrega em Contrato"
+  "inc003": "Entrega em Contrato",
+  "nov002": "Escritura Assinada",
+  "leg008": "Protocolo de Alvará",
+  "cef003": "Contrato PJ",
+  "cef004": "Demanda Mínima"
  },
  "empreendimentos": [
   {
@@ -632,6 +636,26 @@
    "fase": "ENT",
    "legado": true,
    "marcos": {
+    "nov001": {
+     "data": "2022-09-01",
+     "ok": 1
+    },
+    "leg009": {
+     "data": "2024-02-02",
+     "ok": 1
+    },
+    "leg010": {
+     "data": "2024-03-01",
+     "ok": 1
+    },
+    "inc002": {
+     "data": "2024-04-08",
+     "ok": 1
+    },
+    "eng001": {
+     "data": "2024-09-01",
+     "ok": 1
+    },
     "eng002": {
      "data": "2026-07-16",
      "ok": 1
@@ -646,6 +670,22 @@
     },
     "inc003": {
      "data": "2026-08-31",
+     "ok": 1
+    },
+    "cef003": {
+     "data": "2024-06-07",
+     "ok": 1
+    },
+    "nov002": {
+     "data": "2022-12-01",
+     "ok": 1
+    },
+    "leg008": {
+     "data": "2023-05-16",
+     "ok": 1
+    },
+    "cef004": {
+     "data": "2024-07-20",
      "ok": 1
     }
    },
@@ -2034,6 +2074,26 @@
    "fase": "ENT",
    "legado": true,
    "marcos": {
+    "nov001": {
+     "data": "2022-05-01",
+     "ok": 1
+    },
+    "leg009": {
+     "data": "2023-08-11",
+     "ok": 1
+    },
+    "leg010": {
+     "data": "2023-09-01",
+     "ok": 1
+    },
+    "inc002": {
+     "data": "2023-10-26",
+     "ok": 1
+    },
+    "eng001": {
+     "data": "2024-03-04",
+     "ok": 1
+    },
     "eng002": {
      "data": "2025-11-28",
      "ok": 1
@@ -2049,6 +2109,22 @@
     "inc003": {
      "data": "2025-12-30",
      "ok": 0
+    },
+    "cef003": {
+     "data": "2024-01-10",
+     "ok": 1
+    },
+    "nov002": {
+     "data": "2022-05-01",
+     "ok": 1
+    },
+    "leg008": {
+     "data": "2022-11-30",
+     "ok": 1
+    },
+    "cef004": {
+     "data": "2024-02-23",
+     "ok": 1
     }
    },
    "viabilidades": [
@@ -2089,6 +2165,26 @@
    "fase": "ENT",
    "legado": true,
    "marcos": {
+    "nov001": {
+     "data": "2020-12-01",
+     "ok": 1
+    },
+    "leg009": {
+     "data": "2022-11-07",
+     "ok": 1
+    },
+    "leg010": {
+     "data": "2022-12-08",
+     "ok": 1
+    },
+    "inc002": {
+     "data": "2022-12-15",
+     "ok": 1
+    },
+    "eng001": {
+     "data": "2023-06-09",
+     "ok": 1
+    },
     "eng002": {
      "data": "2025-02-14",
      "ok": 1
@@ -2104,6 +2200,10 @@
     "inc003": {
      "data": "2025-02-28",
      "ok": 0
+    },
+    "cef003": {
+     "data": "2023-05-30",
+     "ok": 1
     }
    },
    "viabilidades": [
@@ -2478,6 +2578,196 @@
    ],
    "pos_fonte": "clickup",
    "endereco": "R. Padre Agostinho, 2277 - Bigorrilho, Curitiba - PR, 80710-000"
+  },
+  {
+   "nome": "Ares Juvevê",
+   "sigla": "ARS",
+   "linha": "Gadens Outros",
+   "cidade": "Curitiba",
+   "incorporadora": "Gadens",
+   "ex_nome": "",
+   "lista_id": null,
+   "lista": null,
+   "fase": null,
+   "legado": false,
+   "marcos": {},
+   "viabilidades": [
+    {
+     "versao": "V4",
+     "obs": "",
+     "situacao": "",
+     "task_id": "17tpepcvmt0",
+     "mes": "2026-06",
+     "vgv_bruto": 47668635.0,
+     "vgv_liquido": 44403660.0,
+     "lucro": 12528032.0,
+     "margem": 0.2821,
+     "exposicao": 5756594.0,
+     "area_construida": 7524.46,
+     "unidades": 73.0,
+     "permutas": 5.0,
+     "preco_medio": 652995,
+     "custo_m2": 2617.0
+    }
+   ],
+   "pos": [
+    -25.4177013,
+    -49.2538417
+   ],
+   "pos_fonte": "clickup",
+   "endereco": "R. Alm. Tamandaré, 1712 - Juvevê, Curitiba - PR, 80040-110"
+  },
+  {
+   "nome": "Morá",
+   "sigla": "MOR",
+   "linha": "Gadens Outros",
+   "cidade": "Curitiba",
+   "incorporadora": "Gadens",
+   "ex_nome": "",
+   "lista_id": null,
+   "lista": null,
+   "fase": null,
+   "legado": false,
+   "marcos": {},
+   "viabilidades": [
+    {
+     "versao": "V4",
+     "obs": "",
+     "situacao": "",
+     "task_id": "17tpepcvmqu",
+     "mes": "2026-06",
+     "vgv_bruto": 75263772.0,
+     "vgv_liquido": 61653103.0,
+     "lucro": 9200304.0,
+     "margem": 0.1492,
+     "exposicao": 5871724.0,
+     "area_construida": 11340.56,
+     "unidades": 240.0,
+     "permutas": 55.0,
+     "preco_medio": 303349.25,
+     "custo_m2": 2874.43
+    }
+   ],
+   "pos": [
+    -25.4342993,
+    -49.2677559
+   ],
+   "pos_fonte": "clickup",
+   "endereco": "R. André de Barros, 513 - Centro, Curitiba - PR, 80010-080"
+  },
+  {
+   "nome": "CORE Faivre",
+   "sigla": "CFV",
+   "linha": "Gadens CORE",
+   "cidade": "Curitiba",
+   "incorporadora": "Gadens",
+   "ex_nome": "",
+   "lista_id": null,
+   "lista": null,
+   "fase": null,
+   "legado": false,
+   "marcos": {},
+   "viabilidades": [
+    {
+     "versao": "V4",
+     "obs": "",
+     "situacao": "",
+     "task_id": "17tpepcvmqk",
+     "mes": "2026-09",
+     "vgv_bruto": 67316700.0,
+     "vgv_liquido": 58003250.0,
+     "lucro": 10687388.0,
+     "margem": 0.1843,
+     "exposicao": 4558249.0,
+     "area_construida": 8678.31,
+     "unidades": 238.0,
+     "permutas": 38.0,
+     "preco_medio": 274650,
+     "custo_m2": 3200.0
+    }
+   ],
+   "pos": [
+    -25.4326781,
+    -49.2595769
+   ],
+   "pos_fonte": "clickup",
+   "endereco": "R. Dr. Faivre, 1098 - Centro, Curitiba - PR, 80060-140"
+  },
+  {
+   "nome": "CORE Palacio",
+   "sigla": "CPL",
+   "linha": "Gadens CORE",
+   "cidade": "Curitiba",
+   "incorporadora": "Gadens",
+   "ex_nome": "",
+   "lista_id": null,
+   "lista": null,
+   "fase": null,
+   "legado": false,
+   "marcos": {},
+   "viabilidades": [
+    {
+     "versao": "V4",
+     "obs": "",
+     "situacao": "",
+     "task_id": "17tpepcvmpv",
+     "mes": "2026-06",
+     "vgv_bruto": 168106103.0,
+     "vgv_liquido": 168106103.0,
+     "lucro": 38331877.0,
+     "margem": 0.228,
+     "exposicao": 8221772.0,
+     "area_construida": 18241.95,
+     "unidades": 479.0,
+     "permutas": 0.0,
+     "preco_medio": 350952.2,
+     "custo_m2": 3309.13
+    }
+   ],
+   "pos": [
+    -25.4343232,
+    -49.2682051
+   ],
+   "pos_fonte": "clickup",
+   "endereco": "R. André de Barros, 485 - Centro, Curitiba - PR, 80010-080"
+  },
+  {
+   "nome": "CORE Silva Jardim",
+   "sigla": "CSJ",
+   "linha": "Gadens CORE",
+   "cidade": "Curitiba",
+   "incorporadora": "Gadens",
+   "ex_nome": "",
+   "lista_id": null,
+   "lista": null,
+   "fase": null,
+   "legado": false,
+   "marcos": {},
+   "viabilidades": [
+    {
+     "versao": "V4",
+     "obs": "",
+     "situacao": "",
+     "task_id": "17tpepcvmpd",
+     "mes": "2026-06",
+     "vgv_bruto": 83080090.0,
+     "vgv_liquido": 77017760.0,
+     "lucro": 14768019.0,
+     "margem": 0.1917,
+     "exposicao": 16259898.0,
+     "area_construida": 9058.06,
+     "unidades": 241.0,
+     "permutas": 21.0,
+     "preco_medio": 342490,
+     "custo_m2": 3799.91
+    }
+   ],
+   "pos": [
+    -25.4407366,
+    -49.2713291
+   ],
+   "pos_fonte": "clickup",
+   "endereco": "Av. Silva Jardim, 1074 - Rebouças, Curitiba - PR, 82590-300"
   }
  ],
  "variacoes": [

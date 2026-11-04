@@ -26,6 +26,8 @@ EMP = [
  ("Guadalupe","GUA","Curitiba","Gadens",""),("CORE Evo","EVO","Curitiba","Gadens","João Negrão"),
  ("Martim Afonso","MAR","Curitiba","Gadens",""),
  ("Lens Alto da Glória","LAG","Curitiba","Gadens",""),("Lens Barigui","LBA","Curitiba","Gadens",""),
+ ("Ares Juvevê","ARS","Curitiba","Gadens",""),("Morá","MOR","Curitiba","Gadens",""),("CORE Faivre","CFV","Curitiba","Gadens",""),
+ ("CORE Palacio","CPL","Curitiba","Gadens",""),("CORE Silva Jardim","CSJ","Curitiba","Gadens",""),
 ]
 LEGADO = {"TUO","LAV"}
 # campo "Linha Produto" da lista Controle de Viabilidades (31/10/2026)
@@ -33,7 +35,8 @@ LINHA = {**{n:"Make It Básico" for n in ["Uniq","Bravo","Now","Flow","Alba","Co
          **{n:"Make It Intermediário" for n in ["Lume","Edge","Quadratto","Rafitec","Horizon","Vert"]},
          **{n:"Make It Plus" for n in ["Essence","Arena","Al Nasser 1","Al Nasser 2"]}, "Fundação":"Make It Smart",
          "CORE Evo":"Gadens CORE","Guadalupe":"Gadens Outros","Martim Afonso":"Aguardando Definição",
-         "Lens Alto da Glória":"Gadens Lens","Lens Barigui":"Gadens Lens","Arbo":"Aguardando Definição"}  # entregues, sem viabilidade na lista
+         "Lens Alto da Glória":"Gadens Lens","Lens Barigui":"Gadens Lens",
+         "Ares Juvevê":"Gadens Outros","Morá":"Gadens Outros","CORE Faivre":"Gadens CORE","CORE Palacio":"Gadens CORE","CORE Silva Jardim":"Gadens CORE","Arbo":"Aguardando Definição"}  # entregues, sem viabilidade na lista
 # Posição provisória (bairro/rua, estimada a partir dos endereços da antiga BD Geral) até o campo
 # "📍 Endereço do empreendimento" ser preenchido no ClickUp. Com o campo preenchido, vale a coordenada do ClickUp.
 COORD = {
@@ -46,11 +49,17 @@ COORD = {
  "Guadalupe":[-25.4370,-49.2780],"CORE Evo":[-25.4390,-49.2680],"Martim Afonso":[-25.4270,-49.2900],
  "Lens Alto da Glória":[-25.4195,-49.2620],"Lens Barigui":[-25.4290,-49.3050],
 }
+# marcos históricos criados no ClickUp em 04/11/2026 a partir da planilha do Painel de Controle de Prazos (cronogramas de entrega)
+EXTRA = {"LAV":{"nov001":"2020-12-01","leg009":"2022-11-07","leg010":"2022-12-08","inc002":"2022-12-15","cef003":"2023-05-30","eng001":"2023-06-09"},
+ "TUO":{"nov001":"2022-05-01","nov002":"2022-05-01","leg008":"2022-11-30","leg009":"2023-08-11","leg010":"2023-09-01","inc002":"2023-10-26","cef003":"2024-01-10","cef004":"2024-02-23","eng001":"2024-03-04"},
+ "BRA":{"nov001":"2022-09-01","nov002":"2022-12-01","leg008":"2023-05-16","leg009":"2024-02-02","leg010":"2024-03-01","inc002":"2024-04-08","cef003":"2024-06-07","cef004":"2024-07-20","eng001":"2024-09-01"}}
+for sg,cs in EXTRA.items():
+    for c,d in cs.items(): m.M.setdefault(c,{}).setdefault(sg,(d,1))
 ENDERECO = json.load(open("/home/claude/dre/geo.json"))   # nome -> {lat,lng,endereco}: espelho do campo "📍 Endereço do empreendimento" (31/10/2026)
 MARCO_NOME = {"nov001":"Reunião de Arrancada","inc001":"Fim da Due Diligence","arq003":"Estudo Preliminar",
   "arq005":"Anteprojeto","leg009":"Emissão de Alvará","leg010":"Registro de Incorporação","inc002":"Lançamento Comercial",
   "orcV4":"Orçamento V4","eng001":"Início de Obra","eng002":"Término de Obra","leg011":"Registro de CVCO",
-  "mar001":"Entrega de Chaves","inc003":"Entrega em Contrato"}
+  "mar001":"Entrega de Chaves","inc003":"Entrega em Contrato","nov002":"Escritura Assinada","leg008":"Protocolo de Alvará","cef003":"Contrato PJ","cef004":"Demanda Mínima"}
 
 def fase(s, lista):
     g = lambda c: m.M.get(c, {}).get(s)

@@ -40,11 +40,29 @@ const PAGES = ["resumo","mapa","cronograma","analise","viabilidade","metas"];
 const PNOME = {resumo:"Resumo",mapa:"Mapa da carteira",cronograma:"Cronograma",analise:"Análise de Cronogramas",viabilidade:"Indicadores de Viabilidade",metas:"Indicadores e Metas"};
 const VERS = ["V0","V1","V2","V3","V4"];
 const VNOME = {V0:"Compra",V1:"Due Diligence (projeto)",V2:"Due Diligence",V3:"Atualização",V4:"Lançamento"};
-const METAS = {2027:0.20, 2028:0.21, 2029:0.22};
+// metas por ano de lançamento: VGV e margem líquida por incorporadora (nov/2026)
+const METAS = {
+  2026:{"Make It":{vgv:300e6, m:.20}, Gadens:{vgv:200e6, m:.18}},
+  2027:{"Make It":{vgv:400e6, m:.20}, Gadens:{vgv:200e6, m:.18}},
+  2028:{"Make It":{vgv:500e6, m:.21}, Gadens:{vgv:200e6, m:.18}},
+  2029:{"Make It":{vgv:600e6, m:.22}, Gadens:{vgv:200e6, m:.18}},
+};
+// meta de margem do ano para a incorporadora (no consolidado, média das duas ponderada pela meta de VGV)
+const metaM = (ano, inc=S.inc) => { const t=METAS[ano]; if (!t) return null; if (inc!=="all") return t[inc]?.m ?? null;
+  const ks=Object.values(t), w=ks.reduce((a,x)=>a+x.vgv,0); return w ? ks.reduce((a,x)=>a+x.m*x.vgv,0)/w : null; };
+const metaV = (ano, inc=S.inc) => { const t=METAS[ano]; if (!t) return null; return inc==="all" ? Object.values(t).reduce((a,x)=>a+x.vgv,0) : t[inc]?.vgv ?? null; };
 const MIN_AMOSTRA = 2;
 const INCS = [["all","Consolidado"],["Make It","Make It"],["Gadens","Gadens"]];
 
 const CHANGELOG = [
+  {v:"0.7", d:"2026-11-04", itens:[
+    "Página de Indicadores de Viabilidade no ar, na estrutura validada: comparativo entre fases (segue a fase selecionada), detalhamento por fase e evolução de VGV e margem, com lista lateral de empreendimentos.",
+    "Saúde financeira: VGV e lucro líquido por ano de lançamento, com a meta de VGV de cada incorporadora; sai a soma das exposições máximas.",
+    "Metas atualizadas por incorporadora: VGV e margem de 2026 a 2029 (Make It 300/400/500/600 mi e 20/20/21/22%; Gadens 200 mi e 18%).",
+    "Mapa da página inicial com zoom pela rolagem, arraste e cartão do empreendimento ao clicar. Nomes dos empreendimentos sempre visíveis ao lado dos ícones.",
+    "Barra superior: os nomes das páginas continuam aparecendo enquanto o quadro de prévia estiver aberto. “Somente empreendimentos ativos” vem desligado.",
+    "Viabilidades novas da Gadens (Ares Juvevê, Morá, CORE Faivre, CORE Palacio e CORE Silva Jardim) e marcos históricos de La Vita, Tuo e Bravo.",
+  ]},
   {v:"0.6", d:"2026-11-03", itens:[
     "Mapa no padrão do Mapas da Apple: barra lateral com grupos recolhíveis, ícones com o símbolo da incorporadora, botões de tipo de mapa (padrão ou satélite), 3D, zoom, enquadrar e bússola, e escala.",
     "Ao abrir um empreendimento, o mapa voa para o 3D e gira devagar em volta dele; ao voltar para todos, volta em 2D, com o norte para cima e todos enquadrados.",
@@ -76,7 +94,7 @@ const CHANGELOG = [
   {v:"0.1", d:"2026-10-26", itens:["Primeira versão publicada no GitHub Pages e embutida no ClickUp, substituindo o Power BI."]},
 ];
 
-const S = {mapSel:null, inc:"all", cidades:new Set(), anos:new Set(), fases:new Set(), linhas:new Set(), group:"fase", ordem:"alfa", ativos:true, dd:null, mgFech:new Set(), sel:null, saudeOpen:false, setTab:"dados"};
+const S = {mapSel:null, inc:"all", cidades:new Set(), anos:new Set(), fases:new Set(), linhas:new Set(), group:"fase", ordem:"alfa", ativos:false, dd:null, mgFech:new Set(), sel:null, saudeOpen:false, setTab:"dados"};
 let D = null, AJ = null;
 
 /* ---------- formatação ---------- */
@@ -251,7 +269,8 @@ function renderTraj(){
   const doAno = base.filter(e=>anoLanc(e)===anoSel), tOk = doAno.filter(e=>lanc(e).ok).reduce((a,e)=>a+vig(e).vgv_bruto,0), tPr = doAno.filter(e=>!lanc(e).ok).reduce((a,e)=>a+vig(e).vgv_bruto,0);
   $("trajCap").textContent = `VGV bruto por mês de Lançamento Comercial · ${Y-2} a ${Y+2}`;
   $("trajBig").textContent = brl(tOk+tPr);
-  $("trajBigS").textContent = `em ${anoSel}${tOk&&tPr?` · ${brl(tOk)} lançado e ${brl(tPr)} previsto`:tOk?" · lançado":tPr?" · previsto":""}`;
+  const mv = metaV(anoSel);
+  $("trajBigS").textContent = `em ${anoSel}${tOk&&tPr?` · ${brl(tOk)} lançado e ${brl(tPr)} previsto`:tOk?" · lançado":tPr?" · previsto":""}${mv?` · meta ${brl(mv)} (${nf((tOk+tPr)/mv*100,0)}%)`:""}`;
   const incs = S.inc==="all" ? ["Make It","Gadens"] : [S.inc];
   $("trajLeg").innerHTML = incs.map(i=>`<span><i style="background:${coCor(i)}"></i>${i}</span>`).join("") + `<span><i class="lt" style="background:${coCor(incs[0])}"></i>claro = previsto</span>`;
   const box = $("traj");
@@ -332,13 +351,33 @@ function renderMap(){
   if (typeof maplibregl === "undefined" || typeof MP === "undefined"){ $("map").innerHTML="<p class='muted' style='padding:16px'>Não foi possível carregar o mapa.</p>"; return; }
   const Ls = filtrados().filter(e=>e.pos);
   if (!mini){
+    $("map").dataset.wheel = "livre";
     mini = MP.novo($("map"), {tema:tema()});
-    mini.on("click", ()=>irPara("mapa"));
+    mini.scrollZoom.enable();
+    mini.on("click", ()=>fechaCartao());
     mini.once("load", ()=>MP.enquadra(mini, filtrados().filter(e=>e.pos), 50));
   }
-  MP.alfinetes(mini, Ls, {cor:corDe, dica:dicaPino, aoClicar:e=>{ hideTip(); abreNoMapa(e); }});
-  if (mini.loaded()) MP.enquadra(mini, Ls, 50);
+  MP.alfinetes(mini, Ls, {cor:corDe, sel:miniSel, dica:(e,ev)=>{ if (e && e.nome===miniSel) return hideTip(); dicaPino(e,ev); }, aoClicar:e=>{ hideTip(); abreCartao(e); }});
+  const chave = Ls.map(e=>e.sigla).join(",");
+  if (mini.loaded() && chave!==mini._chave) MP.enquadra(mini, Ls, 50, {animar:true});
+  mini._chave = chave;
   if (full) renderMapaPagina();
+}
+// cartão do empreendimento dentro do mapa da página inicial
+let miniSel = null, cartao = null;
+function fechaCartao(){ if (cartao){ cartao.remove(); cartao=null; } if (miniSel){ miniSel=null; renderMap(); } }
+function abreCartao(e){
+  if (cartao) cartao.remove();
+  miniSel = e.nome; renderMap();
+  const v=vig(e), el=document.createElement("div");
+  el.innerHTML = `<div class="mc-h">${MP.icone(e.incorporadora, corDe(e))}<div><b>${esc(e.nome)}</b><span><em style="color:${coCor(e.incorporadora)}">${esc(e.incorporadora)}</em> · ${local(e)}</span></div><button class="mc-x" aria-label="Fechar">×</button></div>
+    <div class="mc-k"><div><span>VGV</span><b>${brl(v?.vgv_bruto)}</b></div><div><span>Margem</span><b>${pct(v?.margem,1)}</b></div><div><span>Fase</span><b>${esc(faseNome(e))}</b></div></div>
+    <div class="mc-a"><button data-a="mapa">Abrir no mapa</button><button data-a="viab">Ver viabilidade</button></div>`;
+  el.querySelector(".mc-x").onclick = ev=>{ ev.stopPropagation(); fechaCartao(); };
+  el.querySelector('[data-a="mapa"]').onclick = ()=>{ fechaCartao(); abreNoMapa(e); };
+  el.querySelector('[data-a="viab"]').onclick = ()=>{ fechaCartao(); abreViab(e); };
+  cartao = new maplibregl.Popup({closeButton:false, closeOnClick:false, offset:[0,-30], maxWidth:"290px", className:"mcard"}).setLngLat([e.pos[1],e.pos[0]]).setDOMContent(el).addTo(mini);
+  mini.easeTo({center:[e.pos[1],e.pos[0]], offset:[0,60], duration:500});
 }
 function abreNoMapa(e){ S.mapSel = e ? e.sigla : null; irPara("mapa"); }
 function marca3d(){ if (!full) return; $("b3d").setAttribute("aria-pressed", String(full._3d)); const b=$("fVista"); if (b){ b.classList.toggle("on", full._3d); b.lastChild.textContent = full._3d?"3D":"2D"; } }
@@ -362,7 +401,7 @@ function iniciaMapaPagina(){
   full.addControl(new maplibregl.ScaleControl({maxWidth:90, unit:"metric"}), "top-left");
   full.once("load", ()=>{ const e = D.empreendimentos.find(x=>x.sigla===S.mapSel); if (e) MP.voa3d(full, e.pos); else voltaTodos(false); marca3d(); });
   $("b3d").onclick = ()=>{ if (full._orb) MP.orbita(full,false); MP.aplica3d(full, !full._3d); marca3d(); renderMapaPagina(); };
-  $("bTipo").onclick = ()=>{ MP.satelite(full, !full._sat); $("bTipo").setAttribute("aria-pressed", String(full._sat)); };
+  $("bTipo").onclick = ()=>{ MP.satelite(full, !full._sat); $("bTipo").setAttribute("aria-pressed", String(full._sat)); document.querySelector(".mapa-page").classList.toggle("sat", full._sat); };
   $("bZin").onclick = ()=>full.zoomIn(); $("bZout").onclick = ()=>full.zoomOut();
   $("bNorte").onclick = ()=>{ if (full._orb) MP.orbita(full,false); full.easeTo({bearing:0, duration:700}); };
   $("bTodos").onclick = ()=>{ if (S.mapSel) selMapa(null,false); else voltaTodos(); };
@@ -398,12 +437,13 @@ function renderMapaPagina(){
         <div><span>Margem líquida</span><b>${pct(v?.margem,1)}</b></div><div><span>Projetada no lançamento</span><b>${p?pct(p.m,1):"—"}</b></div></div>
       <dl class="f-dl"><div><dt>Linha de produto</dt><dd>${esc(linhaInfo(linhaDe(sel)).curto)}</dd></div>
         <div><dt>Fase</dt><dd>${esc(faseNome(sel))}</dd></div>
-        <div><dt>Viabilidade vigente</dt><dd>${v?v.versao+" – "+VNOME[v.versao]+(v.mes?" · "+v.mes.slice(5)+"/"+v.mes.slice(0,4):""):"—"}</dd></div>
+        <div><dt>Viabilidade vigente</dt><dd>${v?`<a href="#viabilidade:${sel.sigla}" id="fViab">${v.versao+" – "+VNOME[v.versao]+(v.mes?" · "+v.mes.slice(5)+"/"+v.mes.slice(0,4):"")} ↗</a>`:"—"}</dd></div>
         ${sel.ex_nome?`<div><dt>Nome antigo</dt><dd>${esc(sel.ex_nome)}</dd></div>`:""}
         ${urlLista(sel)?`<div><dt>Cronograma</dt><dd><a href="${urlLista(sel)}" target="_blank" rel="noopener">Abrir no ClickUp ↗</a></dd></div>`:""}</dl>
       ${marcos.length?`<div class="f-h">Marcos do cronograma</div><ul class="f-tl">${marcos.map(m=>`<li class="${m.ok?"ok":""}"><i></i><span>${esc(m.n)}</span><span>${dmy(m.data)}</span></li>`).join("")}</ul>`:""}
     </div>`;
     $("fBack").onclick = ()=>selMapa(null,false);
+    if ($("fViab")) $("fViab").onclick = ev=>{ ev.preventDefault(); abreViab(sel); };
     $("fVista").onclick = ()=>{ if (full._3d){ if (full._orb) MP.orbita(full,false); MP.aplica3d(full,false); } else MP.voa3d(full, sel.pos, {orbitar:false}); marca3d(); renderMapaPagina(); };
     $("fGira").onclick = ()=>{ if (full._orb) MP.orbita(full,false); else if (full._3d) MP.orbita(full,true); else MP.voa3d(full, sel.pos); marca3d(); };
     $("fCopia").onclick = ()=>{ try{ navigator.clipboard.writeText(sel.endereco||""); $("fCopia").lastChild.textContent="Copiado"; }catch(e){} };
@@ -443,13 +483,36 @@ function renderSaude(){
   body.innerHTML = `
     <div class="tile"><span class="k">Margem líquida média</span><b>${pct(d.media)}</b><span class="s">vigentes · ponderada pelo VGV líquido</span></div>
     <div class="tile"><span class="k">Margem projetada no lançamento</span><b>${pct(d.projetada)}</b><span class="s">${d.P.length} a lançar · ${pp(d.delta)} vs. a vigente</span></div>
-    <div class="tile"><span class="k">Lucro líquido projetado</span><b>${brl(d.lucro)}</b><span class="s">soma das viabilidades vigentes</span></div>
-    <div class="tile"><span class="k">Soma das exposições máximas</span><b>${brl(d.expo)}</b><span class="s">teto teórico: os picos não coincidem</span></div>
+    <div class="tile w2"><span class="k">Lucro líquido projetado</span><b>${brl(d.lucro)}</b><span class="s">soma das viabilidades vigentes · por ano de lançamento abaixo</span></div>
+    <div class="tile w4"><div class="th"><h4>VGV e lucro líquido por ano de lançamento</h4><div class="leg" id="lucroLeg" style="margin:0"></div></div><p class="cap">barra clara = VGV bruto · barra cheia = lucro líquido da viabilidade vigente · traço = meta de VGV · clique num ano para filtrar</p><div class="chart" id="lucroAnos"></div></div>
     <div class="tile w2"><div class="th"><h4>Margem projetada dos lançamentos × meta</h4><button class="link" id="howBtn">Como é calculada</button></div><p class="cap">média ponderada pelo VGV líquido · clique num ano para filtrar</p><div class="chart" id="metaYears"></div></div>
     <div class="tile w2"><div class="th"><h4>Margem média por ${({fase:"fase",linha:"linha de produto",cidade:"cidade"})[S.group]}</h4></div><p class="cap">vigente → projetada no lançamento</p><div class="chart" id="margGrp"></div></div>
     <div class="tile w4"><div class="th"><h4>Margem por empreendimento</h4><div class="leg" style="margin:0"><span><svg width="12" height="12"><circle cx="6" cy="6" r="4" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>vigente</span><span><svg width="12" height="12"><circle cx="6" cy="6" r="5" fill="currentColor"/></svg>projetada no lançamento</span><span><svg width="4" height="12"><rect width="2" height="12" fill="currentColor"/></svg>meta do ano de lançamento</span></div></div><div class="chart" id="dumbbell"></div></div>`;
   $("howBtn").onclick = abreHow;
-  chartAnos(); chartGrupo(d.L); chartDumbbell(d.L);
+  chartLucro(); chartAnos(); chartGrupo(d.L); chartDumbbell(d.L);
+}
+function chartLucro(){
+  const box=$("lucroAnos"); if (!box) return;
+  const Y=ANO(), anos=[Y-2,Y-1,Y,Y+1,Y+2,Y+3], incs=S.inc==="all"?["Make It","Gadens"]:[S.inc];
+  const LA = filtrados("ano").filter(e=>vig(e)&&lanc(e));
+  const cel = anos.map(a=>incs.map(i=>{ const its=LA.filter(e=>e.incorporadora===i&&anoLanc(e)===a); return {i, its, vgv:its.reduce((s,e)=>s+(vig(e).vgv_bruto||0),0), lucro:its.reduce((s,e)=>s+(vig(e).lucro||0),0), meta:(METAS[a]||{})[i]?.vgv||null}; }));
+  $("lucroLeg").innerHTML = incs.map(i=>`<span><i style="background:${coCor(i)}"></i>${i}</span>`).join("");
+  const W=Math.max(320,box.clientWidth||900), H=230, mt=26, mb=24, mr=46, iw=W-mr, ih=H-mt-mb;
+  const maxV=Math.max(...cel.flat().map(c=>Math.max(c.vgv,c.meta||0)),1), st=niceStep(maxV,3), top=Math.ceil(maxV/st)*st, Yp=v=>mt+ih-ih*v/top;
+  const step=iw/anos.length, gw=Math.min(46, step*.36), gap=6, grpW=incs.length*gw+(incs.length-1)*gap;
+  let s=`<svg viewBox="0 0 ${W} ${H}">`;
+  for (let v=0; v<=top+1; v+=st) s+=`<line x1="0" x2="${iw}" y1="${Yp(v)}" y2="${Yp(v)}" stroke="var(--grid)"/><text x="${iw+6}" y="${Yp(v)+3.5}">${v?mi(v):"0"}</text>`;
+  anos.forEach((a,k)=>{ const x0=k*step+(step-grpW)/2, dim=S.anos.size&&!S.anos.has(String(a));
+    s+=`<g class="${dim?"dim":""}">`;
+    cel[k].forEach((c,j)=>{ const x=x0+j*(gw+gap), cor=coCor(c.i);
+      if (c.vgv) s+=`<path d="${barTop(x,Yp(c.vgv),gw,mt+ih-Yp(c.vgv),5)}" fill="${cor}" opacity=".28"/>`;
+      if (c.lucro) s+=`<path d="${barTop(x+5,Yp(c.lucro),gw-10,mt+ih-Yp(c.lucro),4)}" fill="${cor}"/><text class="val" x="${x+gw/2}" y="${Yp(c.vgv)-6}" text-anchor="middle" style="font-size:10px">${mi(c.lucro)}</text>`;
+      if (c.meta) s+=`<rect x="${x-3}" y="${Yp(c.meta)-1}" width="${gw+6}" height="2.4" rx="1.2" fill="var(--label)" opacity=".8"/>`; });
+    s+=`<text x="${k*step+step/2}" y="${H-6}" text-anchor="middle" ${a===Y||S.anos.has(String(a))?'style="fill:var(--label);font-weight:700"':""}>${a}</text></g><rect class="hit" data-k="${k}" x="${k*step}" y="0" width="${step}" height="${H}" fill="transparent"/>`; });
+  box.innerHTML=s+"</svg>";
+  box.querySelectorAll(".hit").forEach(r=>{ const k=+r.dataset.k, a=anos[k];
+    bindTip(r, `<b>Lançamentos ${a}</b><table>${cel[k].map(c=>`<tr><td><span class="tagc" style="--c:${coCor(c.i)}">${c.i}</span></td><td class="n">VGV ${brl(c.vgv)}</td><td class="n">lucro ${brl(c.lucro)}</td><td class="n">${c.vgv?"margem "+pct(c.lucro/(c.its.reduce((s,e)=>s+(vig(e).vgv_liquido||0),0)||1),1):""}</td></tr><tr><td></td><td class="n muted">${c.meta?"meta "+brl(c.meta)+" ("+nf(c.vgv/c.meta*100,0)+"%)":"sem meta"}</td><td colspan="2" class="muted">${esc(c.its.map(e=>e.nome).join(", "))}</td></tr>`).join("")}</table><div class="muted">clique para filtrar ${a}</div>`);
+    r.onclick=()=>{ hideTip(); toggle(S.anos, String(a)); }; });
 }
 function chartAnos(){
   const LA = filtrados("ano").filter(ativa).filter(e=>vig(e)&&vig(e).margem!=null&&lanc(e));
@@ -459,13 +522,13 @@ function chartAnos(){
   const W=Math.max(280,box.clientWidth||420), H=200, mt=22, mb=22, mr=36, iw=W-mr, ih=H-mt-mb, step=iw/ks.length, bw=Math.min(40,step*.46), top=.30, Y=v=>mt+ih-ih*Math.max(0,v)/top;
   let s=`<svg viewBox="0 0 ${W} ${H}">`;
   [0,.1,.2,.3].forEach(v=> s+=`<line x1="0" x2="${iw}" y1="${Y(v)}" y2="${Y(v)}" stroke="var(--grid)"/><text x="${iw+6}" y="${Y(v)+3.5}">${nf(v*100,0)}%</text>`);
-  ks.forEach((k,i)=>{ const a=anos[k], m=a.v?a.m/a.v:0, x=step*i+(step-bw)/2, meta=METAS[k], dim=S.anos.size&&!S.anos.has(String(k)), abaixo=meta&&m<meta;
+  ks.forEach((k,i)=>{ const a=anos[k], m=a.v?a.m/a.v:0, x=step*i+(step-bw)/2, meta=metaM(k), dim=S.anos.size&&!S.anos.has(String(k)), abaixo=meta&&m<meta;
     s+=`<g class="${dim?"dim":""}"><path d="${barTop(x,Y(m),bw,mt+ih-Y(m),5)}" fill="var(--accent)"/>`;
     if (meta) s+=`<rect x="${x-6}" y="${Y(meta)-1}" width="${bw+12}" height="2.4" rx="1.2" fill="var(--label)"/>`;
     s+=`<text class="val" x="${x+bw/2}" y="${Math.min(Y(m),meta?Y(meta):1e9)-7}" text-anchor="middle">${nf(m*100,1)}%${abaixo?" ▼":""}</text><text x="${x+bw/2}" y="${H-6}" text-anchor="middle" ${S.anos.has(String(k))?'style="fill:var(--label);font-weight:700"':""}>${k}</text></g>`;
     s+=`<rect class="hit" data-k="${k}" x="${step*i}" y="0" width="${step}" height="${H}" fill="transparent"/>`; });
   box.innerHTML = s+"</svg>";
-  box.querySelectorAll(".hit").forEach(r=>{ const k=+r.dataset.k, a=anos[k], m=a.v?a.m/a.v:null, meta=METAS[k];
+  box.querySelectorAll(".hit").forEach(r=>{ const k=+r.dataset.k, a=anos[k], m=a.v?a.m/a.v:null, meta=metaM(k);
     bindTip(r, `<b>Lançamentos ${k}</b> · projetada ${pct(m)}${meta?` · meta ${pct(meta,0)} (${pp(m-meta)})`:" · sem meta definida"}<table>${a.its.slice().sort((x,y)=>proj(y).m-proj(x).m).map(e=>`<tr><td><span class="tagc" style="--c:${corDe(e)}">${esc(e.nome)}</span></td><td class="muted">${vig(e).versao}</td><td class="n">${pct(proj(e).m,1)}</td></tr>`).join("")}</table><div class="muted">▼ abaixo da meta · traço = meta</div>`);
     r.onclick=()=>{ hideTip(); toggle(S.anos, String(k)); }; });
 }
@@ -490,7 +553,7 @@ function chartDumbbell(L){
   const X=v=>ml+iw*(v-lo)/(hi-lo);
   let s=`<svg viewBox="0 0 ${W} ${H}">`;
   for (let v=Math.ceil(lo*20)/20; v<=hi+1e-9; v+=.05) s+=`<line x1="${X(v)}" x2="${X(v)}" y1="${mt-4}" y2="${H}" stroke="var(--grid)"/><text x="${X(v)}" y="${mt-8}" text-anchor="middle">${nf(v*100,0)}%</text>`;
-  its.forEach((e,i)=>{ const v=vig(e), p=proj(e), y=mt+i*rowH+rowH/2, cor=corDe(e), meta=METAS[anoLanc(e)], sel=S.sel===e.nome;
+  its.forEach((e,i)=>{ const v=vig(e), p=proj(e), y=mt+i*rowH+rowH/2, cor=corDe(e), meta=metaM(anoLanc(e), e.incorporadora), sel=S.sel===e.nome;
     if (i%2===0) s+=`<rect x="0" y="${y-rowH/2}" width="${W}" height="${rowH}" fill="var(--fill)" opacity=".35" rx="6"/>`;
     s+=`<text x="${ml-10}" y="${y+4}" text-anchor="end" ${sel?'style="fill:var(--label);font-weight:700"':""}>${esc(e.nome)}</text>`;
     if (meta) s+=`<rect x="${X(meta)-1}" y="${y-8}" width="2" height="16" rx="1" fill="var(--label)" opacity=".75"/>`;
@@ -500,7 +563,7 @@ function chartDumbbell(L){
     s+=`<text class="val" x="${W-mr+10}" y="${y+4}">${nf(p.m*100,1)}%${p.aj?` <tspan style="font-weight:400;fill:var(--label-2)">(${p.aj>0?"+":"−"}${nf(Math.abs(p.aj*100),1)})</tspan>`:""}</text>`;
     s+=`<rect class="hit" data-i="${i}" x="0" y="${y-rowH/2}" width="${W}" height="${rowH}" fill="transparent"/>`; });
   box.innerHTML=s+"</svg>";
-  box.querySelectorAll(".hit").forEach(r=>{ const e=its[r.dataset.i], v=vig(e), p=proj(e), meta=METAS[anoLanc(e)];
+  box.querySelectorAll(".hit").forEach(r=>{ const e=its[r.dataset.i], v=vig(e), p=proj(e), meta=metaM(anoLanc(e), e.incorporadora);
     bindTip(r, `<b>${esc(e.nome)}</b> · ${v.versao} – ${VNOME[v.versao]}${v.obs?` <span class="muted">(${esc(v.obs)})</span>`:""}<table><tr><td>Margem vigente</td><td class="n">${pct(v.margem)}</td></tr><tr><td>Projetada no lançamento</td><td class="n">${pct(p.m)}${p.aj?` (${pp(p.aj)})`:""}</td></tr><tr><td>Meta ${anoLanc(e)??""}</td><td class="n">${meta?pct(meta,0):"sem meta"}</td></tr><tr><td>Lucro líquido</td><td class="n">${brl(v.lucro)}</td></tr><tr><td>Lançamento</td><td class="n">${lanc(e)?(lanc(e).ok?"lançado ":"previsto ")+my(lanc(e).data):"sem data"}</td></tr></table><div class="muted">${esc(p.motivo)} · clique para abrir no mapa</div>`);
     r.onclick=()=>{ hideTip(); abreNoMapa(e); }; });
 }
@@ -518,10 +581,10 @@ function abreHow(){
       <li>Make It e Gadens são calculadas separadamente.</li>
       <li>O ajuste só entra com pelo menos ${MIN_AMOSTRA} casos; antes disso, a projetada fica igual à vigente.</li>
       <li>Quem já tem V4, ou já lançou, entra com a própria margem da V4.</li></ol>
-    <p>Por ano de lançamento, a projetada é a média ponderada pelo VGV líquido, comparada com a meta: 2027 20%, 2028 21%, 2029 22%. O cálculo é refeito a cada atualização.</p>
+    <p>Por ano de lançamento, a projetada é a média ponderada pelo VGV líquido, comparada com a meta de margem de cada incorporadora: Make It 20% em 2026 e 2027, 21% em 2028 e 22% em 2029; Gadens 18% em todos os anos. No consolidado, a meta é a média das duas ponderada pela meta de VGV. O cálculo é refeito a cada atualização.</p>
     ${bloco("Make It")}${bloco("Gadens")}
     <div class="box"><h4>Empreendimentos a lançar</h4><div class="tbl-wrap"><table class="t" style="min-width:620px"><thead><tr><th>Empreendimento</th><th>Lançamento</th><th>Vigente</th><th class="n">Margem vigente</th><th class="n">Ajuste</th><th class="n">Projetada</th><th class="n">Meta</th></tr></thead><tbody>
-    ${L.map(e=>{const v=vig(e),p=proj(e),m=METAS[anoLanc(e)];return `<tr><td>${esc(e.nome)}</td><td>${lanc(e)?my(lanc(e).data):"sem data"}</td><td>${v.versao}</td><td class="n">${pct(v.margem)}</td><td class="n">${p.aj?pp(p.aj):"—"}</td><td class="n"><b>${pct(p.m)}</b></td><td class="n">${m?pct(m,0):"—"}</td></tr>`}).join("")}</tbody></table></div></div>`;
+    ${L.map(e=>{const v=vig(e),p=proj(e),m=metaM(anoLanc(e), e.incorporadora);return `<tr><td>${esc(e.nome)}</td><td>${lanc(e)?my(lanc(e).data):"sem data"}</td><td>${v.versao}</td><td class="n">${pct(v.margem)}</td><td class="n">${p.aj?pp(p.aj):"—"}</td><td class="n"><b>${pct(p.m)}</b></td><td class="n">${m?pct(m,0):"—"}</td></tr>`}).join("")}</tbody></table></div></div>`;
   abreFolha("expSheet");
 }
 
@@ -542,7 +605,7 @@ const SECOES = {
   resumo:[["sec-kpis","Indicadores"],["sec-traj","Trajetória de lançamentos"],["sec-dist","Distribuição"],["sec-map","Mapa da carteira"],["sec-saude","Saúde financeira"],["sec-marcos","Marcos alterados"]],
   cronograma:[["sec-lanc","Próximos lançamentos"],[null,"Portfólio Macro (Gantt)"],[null,"Régua de lançamentos"],[null,"Agenda de 90 dias"]],
   analise:[["sec-reg","Registro de Desvios"],["sec-var","Marcos alterados"],[null,"Motivos de atraso"]],
-  viabilidade:[["sec-viab","Viabilidades vigentes"],[null,"Evolução por versão"]],
+  viabilidade:[["sec-viab-cmp","Comparativo entre fases"],["sec-viab-det","Detalhamento por fase"],["sec-viab-evo","Evolução por fase"],["sec-viab","Viabilidades vigentes"]],
   metas:[[null,"Metas de Incorporação"]],
 };
 function miniPrev(p){
@@ -576,8 +639,8 @@ function miniPrev(p){
   } else {
     const LA=filtrados().filter(ativa).filter(e=>vig(e)&&vig(e).margem!=null&&lanc(e)), ks=[2027,2028,2029], step=W/3, bw=40, top=.3, Yv=v=>H-14-(H-28)*v/top;
     const m=k=>{ const its=LA.filter(e=>anoLanc(e)===k), w=its.reduce((a,e)=>a+(vig(e).vgv_liquido||0),0); return w?its.reduce((a,e)=>a+proj(e).m*(vig(e).vgv_liquido||0),0)/w:null; };
-    svg = ks.map((k,i)=>{ const v=m(k)||0, x=i*step+(step-bw)/2; return `<rect x="${x}" y="${Yv(v)}" width="${bw}" height="${H-14-Yv(v)}" rx="5" fill="var(--accent)"/><rect x="${x-6}" y="${Yv(METAS[k])-1}" width="${bw+12}" height="2.4" rx="1.2" fill="var(--label)"/><text x="${i*step+step/2}" y="${H-2}" text-anchor="middle">${k}</text>`; }).join("");
-    big=pct(m(2027),1); lab="margem projetada 2027 (meta 20%)"; foot=`<span>projetada × meta por ano</span><span>em construção</span>`;
+    svg = ks.map((k,i)=>{ const v=m(k)||0, x=i*step+(step-bw)/2; return `<rect x="${x}" y="${Yv(v)}" width="${bw}" height="${H-14-Yv(v)}" rx="5" fill="var(--accent)"/><rect x="${x-6}" y="${Yv(metaM(k)||0)-1}" width="${bw+12}" height="2.4" rx="1.2" fill="var(--label)"/><text x="${i*step+step/2}" y="${H-2}" text-anchor="middle">${k}</text>`; }).join("");
+    big=pct(m(2027),1); lab=`margem projetada 2027 (meta ${pct(metaM(2027),1)})`; foot=`<span>projetada × meta por ano</span><span>em construção</span>`;
   }
   return `<div class="pv"><div class="pv-h"><b>${big}</b><span>${lab}</span></div><svg viewBox="0 0 ${W} ${H}">${svg}</svg></div><div class="foot">${foot}</div>`;
 }
@@ -597,7 +660,7 @@ function renderFilterPop(){
       ${aberto?`<div class="ddl" data-set="${k}">${vals.map(v=>`<button aria-pressed="${set.has(v)}" data-v="${esc(v)}" style="${cor?`--c:${cor(v)}`:""}">${cor?"<i></i>":""}${esc(nome(v))}</button>`).join("")}</div>`:""}</div>`;
   };
   const seg = (id, val, ops) => `<div class="seg full" id="${id}">${ops.map(([v,t])=>`<button data-v="${v}" aria-checked="${val===v}">${t}</button>`).join("")}</div>`;
-  const n = nFiltros() + (S.ativos?0:1);
+  const n = nFiltros() + (S.ativos?1:0);
   $("filterPop").innerHTML = `<div class="fp">
     <div><span class="lb">Colorir e agrupar por</span>${seg("grpSeg", S.group, [["fase","Fase do projeto"],["linha","Linha de produto"],["cidade","Cidade"]])}</div>
     <div><span class="lb">Ordenar por</span>${seg("ordSeg", S.ordem, [["alfa","Alfabético"],["lanc","Data Lançamento"]])}</div>
@@ -616,7 +679,7 @@ function renderFilterPop(){
   P.querySelectorAll("#grpSeg button").forEach(b=>b.onclick=()=>{ S.group=b.dataset.v; renderAll(); });
   P.querySelectorAll("#ordSeg button").forEach(b=>b.onclick=()=>{ S.ordem=b.dataset.v; renderAll(); });
   $("swAtivos").onclick=()=>{ S.ativos=!S.ativos; if (S.ativos) S.fases.delete("ETG"); S.sel=null; renderAll(); };
-  $("clearF").onclick=()=>{ S.cidades.clear(); S.anos.clear(); S.fases.clear(); S.linhas.clear(); S.ativos=true; S.dd=null; S.sel=null; renderAll(); };
+  $("clearF").onclick=()=>{ S.cidades.clear(); S.anos.clear(); S.fases.clear(); S.linhas.clear(); S.ativos=false; S.dd=null; S.sel=null; renderAll(); };
   const fc=$("filterCount"); fc.hidden=!n; fc.textContent=n;
 }
 const grupoOrdemCid = base => { const cs=[...new Set(base.map(e=>e.cidade))]; return [...CIDADES.map(c=>c.id).filter(c=>cs.includes(c)), ...cs.filter(c=>!CIDADES.some(x=>x.id===c)).sort()]; };
@@ -685,9 +748,127 @@ function renderVariacoes(){
   const ok = new Set(filtrados().map(e=>e.sigla)), vs = D.variacoes.filter(v=>ok.has(v.sigla));
   $("varTable").innerHTML = `<div class="tbl-wrap"><table class="t"><thead><tr><th>Empreendimento</th><th>Marco</th><th>Data anterior</th><th>Data atual</th><th class="n">Variação</th></tr></thead><tbody>${vs.map(v=>`<tr><td>${esc(v.empreendimento)}</td><td>${esc(v.marco)}</td><td>${dmy(v.anterior)}</td><td>${dmy(v.atual)}</td><td class="n d ${v.dias>0?"late":"early"}" style="font-weight:700">${v.dias>0?"▲ +":"▼ "}${v.dias} dias</td></tr>`).join("")}</tbody></table></div>`;
 }
+/* =========================================================
+   INDICADORES DE VIABILIDADE (estrutura validada em jul/2026)
+   comparativo entre fases (segue a fase selecionada) → detalhamento por fase → evolução por fase
+   ========================================================= */
+const VNOME_C = {V0:"Compra",V1:"Due Diligence (projeto)",V2:"Due Diligence",V3:"Atualização",V4:"Lançamento"};
+let vbBusca = "";
+const temValor = v => v && (v.vgv_bruto!=null || v.margem!=null);
+// versão: a mais recente (data-base) entre as cadastradas com valores
+const versao = (e, ver) => { const xs=e.viabilidades.filter(v=>v.versao===ver && temValor(v)); return xs.length ? xs.reduce((a,b)=>(b.mes||"")>(a.mes||"")?b:a) : null; };
+const idadeM = mes => { if (!mes) return null; const [a,m]=mes.split("-").map(Number), h=HOJE(); return (+h.slice(0,4)-a)*12 + (+h.slice(5,7)-m); };
+const mesTxt = mes => mes ? mes.slice(5)+"/"+mes.slice(0,4) : "—";
+const idadeTxt = mes => { const n=idadeM(mes); return n==null ? "" : n<=0 ? "este mês" : n===1 ? "1 mês" : n+" meses"; };
+// etapas do pipeline: Gadens não tem V1; antes da vigente, as sem dado somem; depois dela, ficam como "aguardando"
+function etapas(e){
+  const vg = vig(e), iv = vg ? VERS.indexOf(vg.versao) : -1;
+  return VERS.filter(v=>!(e.incorporadora==="Gadens" && v==="V1")).map((v,_)=>{ const d=versao(e,v), i=VERS.indexOf(v);
+    return d ? {v, st:"ok", d} : i>iv ? {v, st:"wait"} : {v, st:"na"}; }).filter(x=>x.st!=="na");
+}
+const custoObra = d => d && d.custo_m2!=null && d.area_construida!=null ? d.custo_m2*d.area_construida : null;
+const efic = d => d && d.area_privativa && d.area_construida ? d.area_privativa/d.area_construida : null;
+function abreViab(e){ S.vbSel = e.sigla; S.vbVer = null; irPara("viabilidade"); }
+
+function delta(x, tipo){
+  if (x==null || isNaN(x)) return `<span class="dl flat">—</span>`;
+  const c = x>1e-4?"up":x<-1e-4?"down":"flat", sy = x>1e-4?"▲":x<-1e-4?"▼":"–";
+  return `<span class="dl ${c}">${sy} ${tipo==="pp" ? nf(Math.abs(x*100),2)+" p.p." : nf(Math.abs(x*100),1)+"%"}</span>`;
+}
+function cardCmp(e, de, para){
+  const a=versao(e,de), b=versao(e,para), r=(x,y)=>x&&y?(y-x)/Math.abs(x):null;
+  return `<div class="cmp"><div class="cmp-h"><b>${de}</b> <span>${VNOME_C[de]}</span><i>→</i><b>${para}</b> <span>${VNOME_C[para]}</span></div>
+    <div class="cmp-g">
+      <div><span class="k">VGV bruto</span><b>${brl(b.vgv_bruto)}</b>${delta(r(a.vgv_bruto,b.vgv_bruto))}<small>era ${brl(a.vgv_bruto)}</small></div>
+      <div><span class="k">Margem líquida</span><b>${pct(b.margem)}</b>${delta(a.margem!=null&&b.margem!=null?b.margem-a.margem:null,"pp")}<small>era ${pct(a.margem)}</small></div>
+      <div><span class="k">Lucro líquido</span><b>${brl(b.lucro)}</b>${delta(r(a.lucro,b.lucro))}<small>era ${brl(a.lucro)}</small></div>
+    </div></div>`;
+}
+function chartEvo(e, box){
+  const et = etapas(e), cor = coCor(e.incorporadora), corM = dark()?"#30D158":"#1E9E48";
+  const W=Math.max(320,box.clientWidth||700), H=240, ml=54, mr=54, mt=22, mb=30, iw=W-ml-mr, ih=H-mt-mb;
+  const ok = et.filter(x=>x.st==="ok");
+  if (!ok.length){ box.innerHTML="<p class='muted'>Sem viabilidades com valores.</p>"; return; }
+  const vg = ok.map(x=>x.d.vgv_bruto||0), mg = ok.map(x=>x.d.margem).filter(v=>v!=null);
+  const vmax = Math.max(...vg)*1.12 || 1, vst = niceStep(vmax,3), vtop = Math.ceil(vmax/vst)*vst;
+  // margem com escala variável: 1 p.p. precisa aparecer
+  const mmin=Math.min(...mg), mmax=Math.max(...mg), pad=Math.max((mmax-mmin)*.45, .01), mlo=mmin-pad, mhi=mmax+pad;
+  const X = i => ml + (et.length===1 ? iw/2 : iw*i/(et.length-1)), YV = v => mt+ih-ih*v/vtop, YM = v => mt+ih-ih*(v-mlo)/(mhi-mlo);
+  let s=`<svg viewBox="0 0 ${W} ${H}">`;
+  for (let v=0; v<=vtop+1; v+=vst) s+=`<line x1="${ml}" x2="${W-mr}" y1="${YV(v)}" y2="${YV(v)}" stroke="var(--grid)"/><text x="${ml-8}" y="${YV(v)+3.5}" text-anchor="end" style="fill:${cor}">${v?mi(v):"0"}</text>`;
+  const mst = niceStep(mhi-mlo, 3)||.01; for (let v=Math.ceil(mlo/mst)*mst; v<=mhi; v+=mst) s+=`<text x="${W-mr+8}" y="${YM(v)+3.5}" style="fill:${corM}">${nf(v*100,1)}%</text>`;
+  et.forEach((x,i)=>{ const sel=x.v===S.vbVer; s+=`<text x="${X(i)}" y="${H-8}" text-anchor="middle" style="${sel?"fill:var(--label);font-weight:700":""}${x.st==="wait"?";opacity:.55":""}">${x.v} · ${VNOME_C[x.v].replace(" (projeto)","")}</text>`;
+    if (sel) s+=`<rect x="${X(i)-30}" y="${mt-8}" width="60" height="${ih+12}" rx="10" fill="var(--fill)" opacity=".7"/>`; });
+  const linha = (pts, c, dash) => { let d=""; pts.forEach((p,k)=>{ d+=(k?"L":"M")+p[0]+","+p[1]; }); return pts.length>1?`<path d="${d}" fill="none" stroke="${c}" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" ${dash?'stroke-dasharray="5 5"':""}/>`:""; };
+  const pv = et.map((x,i)=>x.st==="ok"?[X(i),YV(x.d.vgv_bruto||0)]:null).filter(Boolean), pm = et.map((x,i)=>x.st==="ok"&&x.d.margem!=null?[X(i),YM(x.d.margem)]:null).filter(Boolean);
+  s += linha(pv, cor) + linha(pm, corM);
+  et.forEach((x,i)=>{ if (x.st!=="ok") { s+=`<circle cx="${X(i)}" cy="${mt+ih}" r="4" fill="none" stroke="var(--label-3)" stroke-dasharray="2 2"/>`; return; }
+    const yv=YV(x.d.vgv_bruto||0), ym=x.d.margem!=null?YM(x.d.margem):null, mAcima = ym!=null && ym<yv;  // o rótulo de quem está em cima vai para cima
+    s+=`<circle cx="${X(i)}" cy="${yv}" r="5" fill="${cor}" stroke="var(--card-solid)" stroke-width="2"/><text class="val" x="${X(i)}" y="${mAcima?yv+18:yv-10}" text-anchor="middle" style="fill:${cor}">${mi(x.d.vgv_bruto||0)}</text>`;
+    if (ym!=null) s+=`<circle cx="${X(i)}" cy="${ym}" r="5" fill="${corM}" stroke="var(--card-solid)" stroke-width="2"/><text class="val" x="${X(i)}" y="${mAcima?ym-10:ym+18}" text-anchor="middle" style="fill:${corM}">${nf(x.d.margem*100,2)}%</text>`;
+    s+=`<rect class="hit" data-v="${x.v}" x="${X(i)-34}" y="0" width="68" height="${H}" fill="transparent"/>`; });
+  box.innerHTML = s+"</svg>";
+  box.querySelectorAll(".hit").forEach(r=>{ const d=versao(e,r.dataset.v);
+    bindTip(r, `<b>${r.dataset.v} – ${VNOME_C[r.dataset.v]}</b> · ${mesTxt(d.mes)}<table><tr><td>VGV bruto</td><td class="n">${brl(d.vgv_bruto)}</td></tr><tr><td>Margem líquida</td><td class="n">${pct(d.margem)}</td></tr><tr><td>Lucro líquido</td><td class="n">${brl(d.lucro)}</td></tr></table><div class="muted">clique para selecionar a fase</div>`);
+    r.onclick = ()=>{ hideTip(); S.vbVer = r.dataset.v; renderViabPagina(); }; });
+  $("evoLeg").innerHTML = `<span><i style="background:${cor}"></i>VGV bruto</span><span><i style="background:${corM}"></i>Margem líquida (escala ajustada à variação)</span>`;
+}
+function renderViabPagina(){
+  const side=$("vbSide"), main=$("vbMain"); if (!side) return;
+  const L = ordena(filtrados().filter(e=>vig(e)));
+  if (!L.length){ side.innerHTML=""; main.innerHTML=`<article class="card"><p class="muted">Nenhuma viabilidade nos filtros atuais.</p></article>`; return; }
+  let e = L.find(x=>x.sigla===S.vbSel) || D.empreendimentos.find(x=>x.sigla===S.vbSel&&vig(x)) || L[0];
+  S.vbSel = e.sigla;
+  const et = etapas(e), vg = vig(e);
+  if (!S.vbVer || !et.some(x=>x.v===S.vbVer&&x.st==="ok")) S.vbVer = vg.versao;
+  // lista lateral
+  const q = vbBusca.trim().toLowerCase(), its = L.filter(x=>!q || (x.nome+" "+(x.ex_nome||"")+" "+x.cidade).toLowerCase().includes(q));
+  const grupos = grupoOrdem().map(id=>({id, its:its.filter(x=>grupoDe(x)===id)})).filter(g=>g.its.length);
+  side.innerHTML = `<div class="vb-sh"><h3>Empreendimentos <span>${its.length}</span></h3>
+      <label class="search"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/></svg><input id="vbBusca" type="search" placeholder="Buscar" value="${esc(vbBusca)}"></label></div>
+    <div class="vb-sl">${grupos.map(g=>`<div class="vb-g"><i style="background:${grupoCor(g.id)}"></i>${esc(grupoNome(g.id))}<span>${g.its.length}</span></div>${g.its.map(x=>`<button class="vb-r${x.sigla===e.sigla?" on":""}" data-s="${x.sigla}">${MP.icone(x.incorporadora, corDe(x))}<b>${esc(x.nome)}</b><span>${vig(x).versao} · ${brl(vig(x).vgv_bruto)} · ${pct(vig(x).margem,1)}</span></button>`).join("")}`).join("")}</div>`;
+  const inp=$("vbBusca"); inp.oninput=()=>{ vbBusca=inp.value; const p=inp.selectionStart; renderViabPagina(); const n=$("vbBusca"); n.focus(); n.setSelectionRange(p,p); };
+  side.querySelectorAll(".vb-r").forEach(b=>b.onclick=()=>{ S.vbSel=b.dataset.s; S.vbVer=null; history.replaceState(null,"","#viabilidade:"+b.dataset.s); renderViabPagina(); if (innerWidth<1100) $("vbMain").scrollIntoView({behavior:"smooth"}); });
+  // comparativo: fase selecionada × anterior preenchida (V4 também × V2)
+  const oks = et.filter(x=>x.st==="ok").map(x=>x.v), sel = S.vbVer, iS = oks.indexOf(sel), ant = iS>0 ? oks[iS-1] : null;
+  let cmp = !ant ? `<div class="cmp-note">${sel} – ${VNOME_C[sel]} é a primeira viabilidade: não há fase anterior para comparar.</div>` : cardCmp(e, ant, sel);
+  if (sel==="V4" && ant && ant!=="V2" && oks.includes("V2")) cmp += cardCmp(e, "V2", "V4");
+  // detalhamento
+  const det = et.map(x=>{
+    if (x.st==="wait") return `<div class="ph wait"><div class="ph-h"><b>${x.v}</b><span>${VNOME_C[x.v]}</span><em>aguardando ${x.v}</em></div></div>`;
+    const d=x.d, on=x.v===sel, vgt=x.v===vg.versao;
+    const chips = (vgt?`<span class="chip vig">vigente</span>`:"") + (d.situacao?`<span class="chip ${d.situacao==="Simulação"?"sim":"pend"}">${esc(d.situacao)}</span>`:"");
+    const corpo = on ? `<div class="ph-full">${[
+        ["Nº de unidades (NUH)", nf(d.unidades)], ["Unidades permutadas", nf(d.permutas)],
+        ["VGV bruto", brl(d.vgv_bruto)], ["VGV líquido", brl(d.vgv_liquido)],
+        ["Área total construída", d.area_construida!=null?nf(d.area_construida)+" m²":"—"], ["Valor de venda médio", d.preco_medio!=null?"R$ "+nf(d.preco_medio):"—"],
+        ["Custo de obra", brl(custoObra(d))], ["Custo por m²", d.custo_m2!=null?"R$ "+nf(d.custo_m2):"—"],
+        ["Margem líquida", pct(d.margem)], ["Lucro líquido", brl(d.lucro)],
+        ["Exposição máxima", brl(d.exposicao)], ["Eficiência", efic(d)!=null?pct(efic(d)):`<span class="muted" data-tip="Precisa da área privativa total, que ainda não está na lista Controle de Viabilidades">—</span>`],
+      ].map(([k,v])=>`<div><span>${k}</span><b>${v}</b></div>`).join("")}</div>${d.obs?`<p class="cap" style="margin-top:8px">${esc(d.obs)}</p>`:""}`
+      : `<div class="ph-k">${[["NUH",nf(d.unidades)],["VGV bruto",brl(d.vgv_bruto)],["Custo obra/m²",d.custo_m2!=null?"R$ "+nf(d.custo_m2):"—"],["Margem líq.",pct(d.margem)],["Eficiência",efic(d)!=null?pct(efic(d)):"—"]].map(([k,v])=>`<div><span>${k}</span><b>${v}</b></div>`).join("")}</div>`;
+    return `<div class="ph${on?" on":""}" data-v="${x.v}" style="--co:${coCor(e.incorporadora)}"><button class="ph-h"><b>${x.v}</b><span>${VNOME_C[x.v]}</span>${chips}<span class="ph-m"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 10h16"/></svg>${mesTxt(d.mes)} · ${idadeTxt(d.mes)}</span></button>${corpo}</div>`;
+  }).join("");
+  main.innerHTML = `
+    <article class="card vb-hd" id="sec-viab-hd">
+      ${MP.icone(e.incorporadora, corDe(e))}
+      <div class="vb-t"><div class="vb-n"><h2>${esc(e.nome)}</h2><span class="tagc" style="--c:${faseCor(faseDe(e))}">${esc(faseNome(e))}</span></div>
+        <div class="vb-s"><em style="color:${coCor(e.incorporadora)}">${esc(e.incorporadora)}</em> · ${local(e)}${e.ex_nome?" · ex-"+esc(e.ex_nome):""} · ${esc(linhaInfo(linhaDe(e)).curto)}</div>
+        <div class="vb-v">Versão vigente: <b>${vg.versao} – ${VNOME_C[vg.versao]}</b> · elaborada em ${mesTxt(vg.mes)}${idadeM(vg.mes)!=null?` (${idadeTxt(vg.mes)})`:""}</div></div>
+      <div class="vb-acts"><button class="pillbtn" id="vbMapa"><svg viewBox="0 0 24 24"><path d="M9 4.5 3.5 6.6v13l5.5-2.1 6 2.1 5.5-2.1v-13L15 6.6z"/></svg>Ver no mapa</button></div>
+    </article>
+    <article class="card" id="sec-viab-cmp"><div class="ch"><div><h3>Comparativo entre fases</h3><p class="cap">fase selecionada: ${sel} – ${VNOME_C[sel]} · escolha outra fase no detalhamento ou no gráfico</p></div></div>${cmp}</article>
+    <article class="card" id="sec-viab-det"><div class="ch"><div><h3>Detalhamento por fase</h3><p class="cap">clique numa fase para abrir</p></div></div><div class="phs">${det}</div></article>
+    <article class="card" id="sec-viab-evo"><div class="ch"><div><h3>Evolução por fase</h3><p class="cap">VGV bruto e margem líquida em cada versão</p></div><div class="leg" id="evoLeg" style="margin:0"></div></div><div class="chart" id="evoChart"></div></article>`;
+  main.querySelectorAll(".ph[data-v] .ph-h").forEach(b=>b.onclick=()=>{ S.vbVer=b.closest(".ph").dataset.v; renderViabPagina(); });
+  $("vbMapa").onclick = ()=>abreNoMapa(e);
+  chartEvo(e, $("evoChart"));
+}
 function renderViab(){
-  const its = filtrados().filter(e=>vig(e)).sort((a,b)=>a.nome.localeCompare(b.nome,"pt-BR"));
-  $("viabTable").innerHTML = `<table class="t"><thead><tr><th>Empreendimento</th><th>Linha</th><th>Vigente</th><th>Data-base</th><th class="n">Unidades</th><th class="n">VGV bruto</th><th class="n">VGV líquido</th><th class="n">Margem líq.</th><th class="n">Projetada lanç.</th><th class="n">Lucro líquido</th><th class="n">Exposição máx.</th><th>Observação</th></tr></thead><tbody>${its.map(e=>{const v=vig(e),p=proj(e);return `<tr><td>${esc(e.nome)}</td><td><span class="tagc" style="--c:${linhaCor(linhaDe(e))}">${esc(linhaInfo(linhaDe(e)).curto)}</span></td><td><b>${v.versao}</b></td><td>${v.mes?v.mes.slice(5)+"/"+v.mes.slice(0,4):"—"}</td><td class="n">${nf(v.unidades)}</td><td class="n">${brl(v.vgv_bruto)}</td><td class="n">${brl(v.vgv_liquido)}</td><td class="n">${pct(v.margem)}</td><td class="n">${p?pct(p.m):"—"}</td><td class="n">${brl(v.lucro)}</td><td class="n">${brl(v.exposicao)}</td><td class="muted">${esc(v.obs||"")}</td></tr>`}).join("")}</tbody></table>`;
+  const its = ordena(filtrados().filter(e=>vig(e)));
+  $("viabTable").innerHTML = `<table class="t"><thead><tr><th>Empreendimento</th><th>Linha</th><th>Fase</th><th>Vigente</th><th>Data-base</th><th class="n">Unidades</th><th class="n">VGV bruto</th><th class="n">VGV líquido</th><th class="n">Margem líq.</th><th class="n">Projetada lanç.</th><th class="n">Lucro líquido</th><th class="n">Exposição máx.</th><th>Observação</th></tr></thead><tbody>${its.map(e=>{const v=vig(e),p=proj(e);return `<tr class="lk${e.sigla===S.vbSel?" on":""}" data-s="${e.sigla}"><td><span class="tagc" style="--c:${corDe(e)}">${esc(e.nome)}</span></td><td>${esc(linhaInfo(linhaDe(e)).curto)}</td><td>${esc(faseNome(e))}</td><td><b>${v.versao}</b></td><td>${v.mes?v.mes.slice(5)+"/"+v.mes.slice(0,4):"—"}</td><td class="n">${nf(v.unidades)}</td><td class="n">${brl(v.vgv_bruto)}</td><td class="n">${brl(v.vgv_liquido)}</td><td class="n">${pct(v.margem)}</td><td class="n">${p?pct(p.m):"—"}</td><td class="n">${brl(v.lucro)}</td><td class="n">${brl(v.exposicao)}</td><td class="muted">${esc(v.obs||"")}</td></tr>`}).join("")}</tbody></table>`;
+  $("viabTable").querySelectorAll("tr[data-s]").forEach(r=>r.onclick=()=>{ S.vbSel=r.dataset.s; S.vbVer=null; renderViabPagina(); renderViab(); window.scrollTo({top:0,behavior:"smooth"}); });
+  renderViabPagina();
 }
 
 /* =========================================================
@@ -697,6 +878,7 @@ let paginaAtual = "resumo";
 function route(){
   const h = location.hash.slice(1), [pg, sig] = h.split(":"), p = PAGES.includes(pg) ? pg : "resumo"; paginaAtual = p;
   if (p==="mapa" && sig) S.mapSel = decodeURIComponent(sig);
+  if (p==="viabilidade" && sig){ S.vbSel = decodeURIComponent(sig); renderViab(); }
   document.querySelectorAll(".page").forEach(s=>s.hidden = s.dataset.page!==p);
   document.querySelectorAll("#nav .ni").forEach(a=>{ a.classList.toggle("on", a.dataset.p===p); a.toggleAttribute("aria-current", a.dataset.p===p); });
   document.documentElement.classList.toggle("no-scroll", p==="mapa");
@@ -704,7 +886,7 @@ function route(){
   if (p==="resumo" && mini) setTimeout(()=>mini.resize(),60);
 }
 function irPara(p, sec){
-  const alvo = p==="mapa" && S.mapSel ? "mapa:"+S.mapSel : p;
+  const alvo = p==="mapa" && S.mapSel ? "mapa:"+S.mapSel : p==="viabilidade" && S.vbSel ? "viabilidade:"+S.vbSel : p;
   if (location.hash.slice(1)!==alvo) location.hash = alvo; else route();
   fechaPops();
   if (sec && sec.startsWith("cid:")){ const c=sec.slice(4); S.mapSel=null; history.replaceState(null,"","#mapa"); setTimeout(()=>{ if (full) MP.enquadra(full, filtrados().filter(e=>e.pos&&e.cidade===c), PAD(), {animar:true, plano:true}); renderMapaPagina(); }, 120); return; }
@@ -754,7 +936,7 @@ function init(){
   addEventListener("keydown", e=>{ if (e.key==="Escape"){ abreFolha(null); fechaPops(); } });
   addEventListener("hashchange", route);
   addEventListener("scroll", hideTip, {passive:true});
-  let rt; addEventListener("resize", ()=>{ clearTimeout(rt); rt=setTimeout(()=>{ renderTraj(); renderSaude(); }, 150); });
+  let rt; addEventListener("resize", ()=>{ clearTimeout(rt); rt=setTimeout(()=>{ renderTraj(); renderSaude(); renderViabPagina(); }, 150); });
   route(); renderAll();
 }
 

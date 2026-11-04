@@ -148,8 +148,10 @@ const MP = (() => {
       const n=g.length, s = sel===e.nome;
       const off = n>1 ? [Math.round(Math.cos(2*Math.PI*i/n-Math.PI/2)*18), Math.round(Math.sin(2*Math.PI*i/n-Math.PI/2)*14)] : [0,0];
       const raiz = document.createElement("div");
-      raiz.innerHTML = s ? `<div class="pin sel" style="--c:${cor(e)}"><span class="bub">${icone(e.incorporadora,cor(e))}</span><span class="pt"></span></div>`
-                         : `<div class="pin" style="--c:${cor(e)}">${icone(e.incorporadora,cor(e))}</div>`;
+      const rot = `<span class="rot">${String(e.nome).replace(/[&<>]/g,"")}</span>`;
+      raiz.innerHTML = s ? `<div class="pin sel" style="--c:${cor(e)}"><span class="bub">${icone(e.incorporadora,cor(e))}</span><span class="pt"></span>${rot}</div>`
+                         : `<div class="pin" style="--c:${cor(e)}">${icone(e.incorporadora,cor(e))}${rot}</div>`;
+      raiz._prio = (s?1e12:0) + (e._vig?.vgv_bruto||0);
       raiz.addEventListener("mousemove", ev=>dica && dica(e, ev));
       raiz.addEventListener("mouseleave", ()=>dica && dica(null));
       raiz.addEventListener("click", ev=>{ ev.stopPropagation(); aoClicar && aoClicar(e); });
@@ -157,7 +159,19 @@ const MP = (() => {
       if (s) m.getElement().style.zIndex = 5;
       map._mk.push(m);
     }));
+    if (!map._rotOn){ map._rotOn=true; map.on("move", ()=>agendaRotulos(map)); map.on("moveend", ()=>rotulos(map)); }
+    agendaRotulos(map);
   }
+  // rótulos: embaixo do ícone; se bater em outro, tenta ao lado; se ainda bater, esconde (prioridade: selecionado, depois maior VGV)
+  function rotulos(map){
+    const mk=(map._mk||[]).map(m=>m.getElement()).sort((a,b)=>b._prio-a._prio), ocup=[];
+    const bate = r => ocup.some(o=>r.left<o.right&&r.right>o.left&&r.top<o.bottom&&r.bottom>o.top);
+    mk.forEach(el=>{ const p=el.querySelector(".pin"); if (p) ocup.push(p.querySelector(".ico").getBoundingClientRect()); });
+    mk.forEach(el=>{ const r=el.querySelector(".rot"); if (!r) return; r.classList.remove("off","dir");
+      let b=r.getBoundingClientRect(); if (bate(b)){ r.classList.add("dir"); b=r.getBoundingClientRect(); if (bate(b)){ r.classList.add("off"); return; } }
+      ocup.push(b); });
+  }
+  function agendaRotulos(map){ if (map._rt) return; map._rt=requestAnimationFrame(()=>{ map._rt=null; rotulos(map); }); }
   // enquadra os pontos; pad pode descontar barras que cobrem o mapa. Sempre termina em 2D com o norte para cima quando plano=true.
   function enquadra(map, lista, pad=50, {animar=false, plano=false}={}){
     const pts = lista.filter(e=>dentro(e.pos)); if (!pts.length) return;
