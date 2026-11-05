@@ -1,0 +1,630 @@
+{
+ "_leia": "Cadastro fixo do dashboard. Os dados que mudam (viabilidades, marcos, endereços, linhas) vêm do ClickUp pela rotina diária. Edite aqui só o que o ClickUp não tem.",
+ "empreendimentos": [
+  {
+   "nome": "Al Nasser 1",
+   "sigla": "AN1",
+   "cidade": "Curitiba",
+   "incorporadora": "Make It",
+   "ex_nome": "",
+   "lista_id": "901326874097"
+  },
+  {
+   "nome": "Al Nasser 2",
+   "sigla": "AN2",
+   "cidade": "Curitiba",
+   "incorporadora": "Make It",
+   "ex_nome": "",
+   "lista_id": "901327104307"
+  },
+  {
+   "nome": "Alba",
+   "sigla": "ALB",
+   "cidade": "Almirante Tamandaré",
+   "incorporadora": "Make It",
+   "ex_nome": "Tanguá",
+   "lista_id": "901305538823"
+  },
+  {
+   "nome": "Arbo",
+   "sigla": "ARB",
+   "cidade": "Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "Fênix",
+   "lista_id": "1400450000006205"
+  },
+  {
+   "nome": "Arena",
+   "sigla": "ARE",
+   "cidade": "Curitiba",
+   "incorporadora": "Make It",
+   "ex_nome": "",
+   "lista_id": "901327999906"
+  },
+  {
+   "nome": "Aura",
+   "sigla": "AUR",
+   "cidade": "São José dos Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "Alta Tensão",
+   "lista_id": "901325334354"
+  },
+  {
+   "nome": "Bravo",
+   "sigla": "BRA",
+   "cidade": "Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "Forza",
+   "lista_id": "901325179658"
+  },
+  {
+   "nome": "Container",
+   "sigla": "CON",
+   "cidade": "Curitiba",
+   "incorporadora": "Make It",
+   "ex_nome": "",
+   "lista_id": "901328210975"
+  },
+  {
+   "nome": "Edge",
+   "sigla": "EDG",
+   "cidade": "São José dos Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "Porto Rico",
+   "lista_id": "901305589843"
+  },
+  {
+   "nome": "Essence",
+   "sigla": "ESS",
+   "cidade": "Curitiba",
+   "incorporadora": "Make It",
+   "ex_nome": "Faculdade",
+   "lista_id": "901305651702"
+  },
+  {
+   "nome": "Flow",
+   "sigla": "FLO",
+   "cidade": "Araucária",
+   "incorporadora": "Make It",
+   "ex_nome": "Matsu II",
+   "lista_id": "901305618860"
+  },
+  {
+   "nome": "Fundação",
+   "sigla": "FUN",
+   "cidade": "Curitiba",
+   "incorporadora": "Make It",
+   "ex_nome": "",
+   "lista_id": "901327965854"
+  },
+  {
+   "nome": "Horizon",
+   "sigla": "HOR",
+   "cidade": "Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "Patrulha",
+   "lista_id": "901308225891"
+  },
+  {
+   "nome": "Lume",
+   "sigla": "LUM",
+   "cidade": "Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "Jardins",
+   "lista_id": "901305541456"
+  },
+  {
+   "nome": "Now",
+   "sigla": "NOW",
+   "cidade": "Araucária",
+   "incorporadora": "Make It",
+   "ex_nome": "Matsu I",
+   "lista_id": "901305540246"
+  },
+  {
+   "nome": "Quadratto",
+   "sigla": "QUA",
+   "cidade": "Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "Leilão",
+   "lista_id": "901327828147"
+  },
+  {
+   "nome": "Rafitec",
+   "sigla": "RAF",
+   "cidade": "Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "",
+   "lista_id": "1400450000002217"
+  },
+  {
+   "nome": "Uniq",
+   "sigla": "UNI",
+   "cidade": "Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "Shakespeare",
+   "lista_id": "1400450000001100"
+  },
+  {
+   "nome": "Vert",
+   "sigla": "VER",
+   "cidade": "São José dos Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "Follador",
+   "lista_id": "901322097447"
+  },
+  {
+   "nome": "Zago",
+   "sigla": "ZAG",
+   "cidade": "São José dos Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "",
+   "lista_id": "901328072536"
+  },
+  {
+   "nome": "Tuo",
+   "sigla": "TUO",
+   "cidade": "Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "",
+   "lista_id": "901307558770"
+  },
+  {
+   "nome": "La Vita",
+   "sigla": "LAV",
+   "cidade": "Pinhais",
+   "incorporadora": "Make It",
+   "ex_nome": "",
+   "lista_id": "901305333997"
+  },
+  {
+   "nome": "Guadalupe",
+   "sigla": "GUA",
+   "cidade": "Curitiba",
+   "incorporadora": "Gadens",
+   "ex_nome": "",
+   "lista_id": "1400450000008729"
+  },
+  {
+   "nome": "CORE Evo",
+   "sigla": "EVO",
+   "cidade": "Curitiba",
+   "incorporadora": "Gadens",
+   "ex_nome": "João Negrão",
+   "lista_id": "901328360960"
+  },
+  {
+   "nome": "Martim Afonso",
+   "sigla": "MAR",
+   "cidade": "Curitiba",
+   "incorporadora": "Gadens",
+   "ex_nome": "",
+   "lista_id": "901327721107"
+  },
+  {
+   "nome": "Lens Alto da Glória",
+   "sigla": "LAG",
+   "cidade": "Curitiba",
+   "incorporadora": "Gadens",
+   "ex_nome": "",
+   "lista_id": null
+  },
+  {
+   "nome": "Lens Barigui",
+   "sigla": "LBA",
+   "cidade": "Curitiba",
+   "incorporadora": "Gadens",
+   "ex_nome": "",
+   "lista_id": null
+  },
+  {
+   "nome": "Ares Juvevê",
+   "sigla": "ARS",
+   "cidade": "Curitiba",
+   "incorporadora": "Gadens",
+   "ex_nome": "",
+   "lista_id": null
+  },
+  {
+   "nome": "Morá",
+   "sigla": "MOR",
+   "cidade": "Curitiba",
+   "incorporadora": "Gadens",
+   "ex_nome": "",
+   "lista_id": null
+  },
+  {
+   "nome": "CORE Faivre",
+   "sigla": "CFV",
+   "cidade": "Curitiba",
+   "incorporadora": "Gadens",
+   "ex_nome": "",
+   "lista_id": null
+  },
+  {
+   "nome": "CORE Palacio",
+   "sigla": "CPL",
+   "cidade": "Curitiba",
+   "incorporadora": "Gadens",
+   "ex_nome": "",
+   "lista_id": null
+  },
+  {
+   "nome": "CORE Silva Jardim",
+   "sigla": "CSJ",
+   "cidade": "Curitiba",
+   "incorporadora": "Gadens",
+   "ex_nome": "",
+   "lista_id": null
+  }
+ ],
+ "legado": [
+  "LAV",
+  "TUO"
+ ],
+ "linha_padrao": {
+  "Uniq": "Make It Básico",
+  "Bravo": "Make It Básico",
+  "Now": "Make It Básico",
+  "Flow": "Make It Básico",
+  "Alba": "Make It Básico",
+  "Container": "Make It Básico",
+  "Zago": "Make It Básico",
+  "Aura": "Make It Básico",
+  "Tuo": "Make It Básico",
+  "La Vita": "Make It Básico",
+  "Lume": "Make It Intermediário",
+  "Edge": "Make It Intermediário",
+  "Quadratto": "Make It Intermediário",
+  "Rafitec": "Make It Intermediário",
+  "Horizon": "Make It Intermediário",
+  "Vert": "Make It Intermediário",
+  "Essence": "Make It Plus",
+  "Arena": "Make It Plus",
+  "Al Nasser 1": "Make It Plus",
+  "Al Nasser 2": "Make It Plus",
+  "Fundação": "Make It Smart",
+  "CORE Evo": "Gadens CORE",
+  "Guadalupe": "Gadens Outros",
+  "Martim Afonso": "Aguardando Definição",
+  "Lens Alto da Glória": "Gadens Lens",
+  "Lens Barigui": "Gadens Lens",
+  "Ares Juvevê": "Gadens Outros",
+  "Morá": "Gadens Outros",
+  "CORE Faivre": "Gadens CORE",
+  "CORE Palacio": "Gadens CORE",
+  "CORE Silva Jardim": "Gadens CORE",
+  "Arbo": "Aguardando Definição"
+ },
+ "coord_aproximada": {
+  "Essence": [
+   -25.472,
+   -49.238
+  ],
+  "Alba": [
+   -25.323,
+   -49.308
+  ],
+  "Now": [
+   -25.572,
+   -49.402
+  ],
+  "Flow": [
+   -25.5726,
+   -49.4012
+  ],
+  "Bravo": [
+   -25.438,
+   -49.188
+  ],
+  "Tuo": [
+   -25.4095,
+   -49.146
+  ],
+  "La Vita": [
+   -25.411,
+   -49.149
+  ],
+  "Arbo": [
+   -25.41,
+   -49.147
+  ],
+  "Edge": [
+   -25.529,
+   -49.188
+  ],
+  "Uniq": [
+   -25.4405,
+   -49.19
+  ],
+  "Lume": [
+   -25.4,
+   -49.21
+  ],
+  "Horizon": [
+   -25.4385,
+   -49.1885
+  ],
+  "Vert": [
+   -25.531,
+   -49.201
+  ],
+  "Al Nasser 1": [
+   -25.401,
+   -49.236
+  ],
+  "Al Nasser 2": [
+   -25.402,
+   -49.237
+  ],
+  "Aura": [
+   -25.535,
+   -49.205
+  ],
+  "Quadratto": [
+   -25.4448,
+   -49.193
+  ],
+  "Zago": [
+   -25.533,
+   -49.203
+  ],
+  "Fundação": [
+   -25.462,
+   -49.266
+  ],
+  "Arena": [
+   -25.459,
+   -49.228
+  ],
+  "Container": [
+   -25.524,
+   -49.256
+  ],
+  "Rafitec": [
+   -25.43,
+   -49.17
+  ],
+  "Guadalupe": [
+   -25.437,
+   -49.278
+  ],
+  "CORE Evo": [
+   -25.439,
+   -49.268
+  ],
+  "Martim Afonso": [
+   -25.427,
+   -49.29
+  ],
+  "Lens Alto da Glória": [
+   -25.4195,
+   -49.262
+  ],
+  "Lens Barigui": [
+   -25.429,
+   -49.305
+  ]
+ },
+ "endereco": {
+  "Essence": {
+   "lat": -25.4953495,
+   "lng": -49.3036737,
+   "endereco": "R. Affife Mansur,688 - Novo Mundo, Curitiba - PR, 81050-180"
+  },
+  "Alba": {
+   "lat": -25.3802836,
+   "lng": -49.3067713,
+   "endereco": "Rua Professor Alberto Krause, 891, Tanguá, Almirante Tamandaré - PR, 83508-500"
+  },
+  "Now": {
+   "lat": -25.5489358,
+   "lng": -49.40128,
+   "endereco": "Rua Shigemi Seima, 60 - Capela Velha, Araucária"
+  },
+  "Flow": {
+   "lat": -25.5489358,
+   "lng": -49.40128,
+   "endereco": "Rua Shigemi Seima, 41 - Capela Velha, Araucária",
+   "obs": "número 41 não encontrado no Google; usando o ponto do Now (mesma rua)"
+  },
+  "Bravo": {
+   "lat": -25.4354881,
+   "lng": -49.1536968,
+   "endereco": "R. Ver. Antônio Romeu Simoni, 473 - Jardim Amélia, Pinhais - PR, 83330-210"
+  },
+  "Edge": {
+   "lat": -25.5142276,
+   "lng": -49.1998346,
+   "endereco": "R. Porto Rico, 198 - Boneca do Iguaçu, São José dos Pinhais - PR, 83040-320"
+  },
+  "Uniq": {
+   "lat": -25.4323214,
+   "lng": -49.1570482,
+   "endereco": "R. Romeu Píres, 570 - Jardim Amélia, Pinhais - PR, 83330-220"
+  },
+  "Lume": {
+   "lat": -25.3984744,
+   "lng": -49.1925418,
+   "endereco": "R Tibúrcio G. de Oliveira, 304, Atuba, Pinhais - PR, 83326-195"
+  },
+  "Horizon": {
+   "lat": -25.4329207,
+   "lng": -49.1546814,
+   "endereco": "R. Aristides Evangelista, 546 - Jardim Amélia, Pinhais, PR - 83330-235"
+  },
+  "Vert": {
+   "lat": -25.5552028,
+   "lng": -49.210479,
+   "endereco": "Avenida Rui Barbosa, 11139, Santo Antônio, São José dos Pinhais - PR, 83025-010"
+  },
+  "Al Nasser 1": {
+   "lat": -25.3850231,
+   "lng": -49.2228717,
+   "endereco": "Rua Miguel Jorge Nasser, 432, Bacacheri, Curitiba - PR, 82620-140"
+  },
+  "Al Nasser 2": {
+   "lat": -25.3850231,
+   "lng": -49.2228717,
+   "endereco": "Rua Miguel Jorge Nasser, 432, Bacacheri, Curitiba - PR, 82620-140"
+  },
+  "Aura": {
+   "lat": -25.492656,
+   "lng": -49.179631,
+   "endereco": "Rua Dolovico Pissaia, 500, Parque da Fonte, São José dos Pinhais"
+  },
+  "Quadratto": {
+   "lat": -25.4283281,
+   "lng": -49.1885331,
+   "endereco": "Rua Salgado Filho, 2760, Centro, Pinhais - PR, 83320-332"
+  },
+  "Zago": {
+   "lat": -25.5601945,
+   "lng": -49.1968528,
+   "endereco": "Rua Quirino Zagonel, 951, Itália, São José dos Pinhais - PR, 83020-250"
+  },
+  "Fundação": {
+   "lat": -25.454925,
+   "lng": -49.2610613,
+   "endereco": "Rua Doutor Carvalho Chaves, 427, Parolin, Curitiba - PR, 80220-010"
+  },
+  "Arena": {
+   "lat": -25.4762709,
+   "lng": -49.3144318,
+   "endereco": "Rua Antônio Barbosa Ferraz Júnior, 362, Portão, Curitiba - PR, 81320"
+  },
+  "Rafitec": {
+   "lat": -25.411548,
+   "lng": -49.181532,
+   "endereco": "Av. Jacob Macanhan, 1919 - Emiliano Perneta, Pinhais - PR, 83325-390"
+  },
+  "Container": {
+   "lat": -25.5605032,
+   "lng": -49.2889506,
+   "endereco": "R. Bôrtolo Pelanda, 724 - Umbará, Curitiba"
+  },
+  "Arbo": {
+   "lat": -25.4410477,
+   "lng": -49.1746432,
+   "endereco": "R. Clóvis Beviláqua, 636 - Vargem Grande, Pinhais - PR, 83321-110"
+  },
+  "Tuo": {
+   "lat": -25.4425723,
+   "lng": -49.1753849,
+   "endereco": "R. Aluísio de Azevedo, 807 - Vargem Grande, Pinhais - PR, 83321-270"
+  },
+  "La Vita": {
+   "lat": -25.4497453,
+   "lng": -49.1729818,
+   "endereco": "R. Rui Barbosa, 306 - Vargem Grande, Pinhais - PR, 83321-240"
+  },
+  "Allegra": {
+   "lat": -25.4435206,
+   "lng": -49.1768226,
+   "endereco": "R. Cassiano Ricardo, 1515 - Vargem Grande, Pinhais - PR, 83321-090"
+  },
+  "Evviva": {
+   "lat": -25.4462712,
+   "lng": -49.1742329,
+   "endereco": "R. Antônio Gonçalves Dias, 905 - Vargem Grande, Pinhais - PR, 83321-070"
+  },
+  "Azzurra!": {
+   "lat": -25.4467015,
+   "lng": -49.181367,
+   "endereco": "R. Henrique Coelho Neto, 233 - Vargem Grande, Pinhais - PR, 83321-030"
+  },
+  "Figo!": {
+   "lat": -25.4316274,
+   "lng": -49.203417,
+   "endereco": "R. Paulo Kissula, 922 - Capão da Imbuia, Curitiba - PR, 82810-530"
+  },
+  "CORE Evo": {
+   "lat": -25.4357511,
+   "lng": -49.2643965,
+   "endereco": "R. João Negrão, 740 - Centro, Curitiba - PR, 80010-200"
+  },
+  "Guadalupe": {
+   "lat": -25.4335002,
+   "lng": -49.265213,
+   "endereco": "R. João Negrão, 486 - Centro, Curitiba - PR, 80010-200"
+  },
+  "Martim Afonso": {
+   "lat": -25.4369585,
+   "lng": -49.3058986,
+   "endereco": "R. Martim Afonso, 2955 - Campina do Siqueira, Curitiba - PR, 80730-030"
+  },
+  "Lens Alto da Glória": {
+   "lat": -25.4290514,
+   "lng": -49.2604248,
+   "endereco": "R. Gen. Carneiro, 756 - Centro, Curitiba - PR, 80060-150"
+  },
+  "Lens Barigui": {
+   "lat": -25.4323799,
+   "lng": -49.3009102,
+   "endereco": "R. Padre Agostinho, 2277 - Bigorrilho, Curitiba - PR, 80710-000"
+  },
+  "Ares Juvevê": {
+   "lat": -25.4177013,
+   "lng": -49.2538417,
+   "endereco": "R. Alm. Tamandaré, 1712 - Juvevê, Curitiba - PR, 80040-110"
+  },
+  "Morá": {
+   "lat": -25.4342993,
+   "lng": -49.2677559,
+   "endereco": "R. André de Barros, 513 - Centro, Curitiba - PR, 80010-080"
+  },
+  "CORE Faivre": {
+   "lat": -25.4326781,
+   "lng": -49.2595769,
+   "endereco": "R. Dr. Faivre, 1098 - Centro, Curitiba - PR, 80060-140"
+  },
+  "CORE Palacio": {
+   "lat": -25.4343232,
+   "lng": -49.2682051,
+   "endereco": "R. André de Barros, 485 - Centro, Curitiba - PR, 80010-080"
+  },
+  "CORE Silva Jardim": {
+   "lat": -25.4407366,
+   "lng": -49.2713291,
+   "endereco": "Av. Silva Jardim, 1074 - Rebouças, Curitiba - PR, 82590-300"
+  }
+ },
+ "fase_manual": {
+  "ARS": "ENT",
+  "MOR": "ENT",
+  "CFV": "OBR",
+  "CPL": "OBR",
+  "CSJ": "OBR"
+ },
+ "fase_manual_obs": "Ares Juvevê e Morá entregues; CORE Faivre, CORE Palacio e CORE Silva Jardim em obra (informado em 05/11/2026). Vale até os cronogramas entrarem no ClickUp.",
+ "alias_viabilidade": {
+  "Alba (Tanguá)": "Alba",
+  "Aura (Alta Tensão)": "Aura",
+  "Edge (Porto Rico)": "Edge",
+  "Flow (Matsu II)": "Flow",
+  "Horizon (Patrulha)": "Horizon",
+  "Now (Matsu I)": "Now",
+  "Quadratto (Leilão)": "Quadratto",
+  "Vert (Follador)": "Vert",
+  "Ares": "Ares Juvevê"
+ },
+ "marco_nome": {
+  "nov001": "Reunião de Arrancada",
+  "inc001": "Fim da Due Diligence",
+  "arq003": "Estudo Preliminar",
+  "arq005": "Anteprojeto",
+  "leg009": "Emissão de Alvará",
+  "leg010": "Registro de Incorporação",
+  "inc002": "Lançamento Comercial",
+  "orcV4": "Orçamento V4",
+  "eng001": "Início de Obra",
+  "eng002": "Término de Obra",
+  "leg011": "Registro de CVCO",
+  "mar001": "Entrega de Chaves",
+  "inc003": "Entrega em Contrato",
+  "nov002": "Escritura Assinada",
+  "leg008": "Protocolo de Alvará",
+  "cef003": "Contrato PJ",
+  "cef004": "Demanda Mínima"
+ }
+}

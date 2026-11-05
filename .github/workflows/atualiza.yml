@@ -1,0 +1,29 @@
+name: Atualização diária do dashboard
+# Lê o ClickUp pela API (segredo CLICKUP_TOKEN), remonta o dados.json e publica. Não usa o Claude.
+on:
+  schedule:
+    - cron: "17 9 * * *"      # 06:17 em Brasília, todos os dias
+  workflow_dispatch: {}       # botão "Run workflow" para atualizar na hora
+permissions:
+  contents: write
+concurrency: { group: atualiza, cancel-in-progress: false }
+jobs:
+  atualiza:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - name: Ler o ClickUp
+        env: { CLICKUP_TOKEN: "${{ secrets.CLICKUP_TOKEN }}" }
+        run: python3 scripts/clickup_sync.py
+      - name: Montar dados.json
+        run: python3 scripts/build_dados.py
+      - name: Publicar
+        run: |
+          git config user.name "Rotina do dashboard"
+          git config user.email "actions@users.noreply.github.com"
+          git add dados.json scripts/dados historico
+          if git diff --cached --quiet; then echo "Nada mudou."; exit 0; fi
+          git commit -m "Atualização diária: $(TZ=America/Sao_Paulo date +%d/%m/%Y)"
+          git push

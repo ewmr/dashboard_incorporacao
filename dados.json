@@ -1,9 +1,10 @@
 {
- "gerado_em": "2026-11-04T11:10-03:00",
+ "gerado_em": "2026-11-05T15:26-03:00",
  "fontes": {
-  "cronogramas": "Snapshot ClickUp de 2026-10-26",
+  "cronogramas": "Cronogramas do ClickUp em 2026-10-26",
   "viabilidades": "ClickUp · lista Controle de Viabilidades",
-  "variacoes": "2026-10-19 → 2026-10-26"
+  "variacoes": "2026-10-19 → 2026-10-26",
+  "rotina": "snapshot semanal do ClickUp + marcos criados em 30/10 e 04/11/2026"
  },
  "marco_nome": {
   "nov001": "Reunião de Arrancada",
@@ -36,6 +37,7 @@
    "lista": "EP | Al Nasser 1",
    "fase": "EP",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "nov001": {
      "data": "2025-06-17",
@@ -90,15 +92,17 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "",
+     "situacao": "Substituída",
      "task_id": "86ak61abn",
      "mes": "2025-03",
-     "vgv_bruto": 93520224.0,
+     "vgv_bruto": 93520224,
      "vgv_liquido": 93520224.0,
-     "lucro": 16601992.0,
+     "lucro": 16601992,
      "margem": 0.1775,
      "exposicao": 9759749.0,
      "area_construida": 17753.58,
+     "area_privativa": 12166.7,
+     "area_terreno": 12640.0,
      "unidades": 238.0,
      "permutas": 0,
      "preco_medio": 392942.1176470588,
@@ -107,21 +111,24 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "86ak61afy",
      "mes": "2025-09",
-     "vgv_bruto": 97251568.0,
+     "vgv_bruto": 97251568,
      "vgv_liquido": 97251568.0,
-     "lucro": 20612262.0,
+     "lucro": 20612262,
      "margem": 0.2119,
      "exposicao": 10487755.0,
      "area_construida": 17133.48,
+     "area_privativa": 10651.84,
+     "area_terreno": 6417.2,
      "unidades": 256.0,
      "permutas": 0.0,
      "preco_medio": 379888.9375,
-     "custo_m2": 2339.83
+     "custo_m2": 2340
     }
    ],
+   "foto": null,
    "pos": [
     -25.3850231,
     -49.2228717
@@ -140,6 +147,7 @@
    "lista": "EP | Al Nasser 2",
    "fase": "EP",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "nov001": {
      "data": "2025-06-17",
@@ -194,15 +202,17 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "",
+     "situacao": "Substituída",
      "task_id": "86ak6kqf7",
      "mes": "2025-03",
-     "vgv_bruto": 74520170.0,
+     "vgv_bruto": 74520170,
      "vgv_liquido": 74520170.0,
-     "lucro": 10976397.0,
+     "lucro": 10976397,
      "margem": 0.14730000000000001,
      "exposicao": 7787719.0,
      "area_construida": 13828.23,
+     "area_privativa": 9569.43,
+     "area_terreno": 7460.0,
      "unidades": 199.0,
      "permutas": 0,
      "preco_medio": 374473.216080402,
@@ -211,21 +221,24 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "86ak6krf0",
      "mes": "2025-09",
-     "vgv_bruto": 86041800.0,
+     "vgv_bruto": 86041800,
      "vgv_liquido": 86041800.0,
-     "lucro": 16966490.0,
+     "lucro": 16966490,
      "margem": 0.1972,
      "exposicao": 9459678.0,
      "area_construida": 15390.31,
+     "area_privativa": 9560.2,
+     "area_terreno": 13734.39,
      "unidades": 230.0,
      "permutas": 0.0,
      "preco_medio": 374094.7826086957,
-     "custo_m2": 2395.38
+     "custo_m2": 2395
     }
    ],
+   "foto": null,
    "pos": [
     -25.3850231,
     -49.2228717
@@ -244,6 +257,7 @@
    "lista": "ALV | Alba (Tanguá)",
    "fase": "ALV",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "nov001": {
      "data": "2023-08-02",
@@ -298,38 +312,43 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "",
+     "situacao": "Substituída",
      "task_id": "86ak6m0ag",
      "mes": "2025-01",
-     "vgv_bruto": 52640022.0,
+     "vgv_bruto": 52640022,
      "vgv_liquido": 45355019.0,
-     "lucro": 9105134.0,
+     "lucro": 9105134,
      "margem": 0.20079999999999998,
      "exposicao": 5596084.0,
      "area_construida": 11459.85,
+     "area_privativa": 11113.2,
+     "area_terreno": 17582.0,
      "unidades": 224.0,
      "permutas": 30.0,
      "preco_medio": 235000.10000000003,
-     "custo_m2": 1948.25
+     "custo_m2": 1948
     },
     {
      "versao": "V3",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "86ak6k3nw",
      "mes": "2025-01",
-     "vgv_bruto": 61600000.0,
+     "vgv_bruto": 61600000,
      "vgv_liquido": 53075000.0,
-     "lucro": 11689095.0,
+     "lucro": 11689095,
      "margem": 0.2202,
      "exposicao": 6159069.0,
      "area_construida": 11471.5,
+     "area_privativa": 11144.0,
+     "area_terreno": 17582.0,
      "unidades": 224.0,
      "permutas": 30.0,
      "preco_medio": 275000.0,
-     "custo_m2": 2242.98
+     "custo_m2": 2243
     }
    ],
+   "foto": null,
    "pos": [
     -25.3802836,
     -49.3067713
@@ -348,6 +367,7 @@
    "lista": "OBR | Arbo",
    "fase": "OBR",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "nov001": {
      "data": "2024-03-06",
@@ -394,21 +414,24 @@
     {
      "versao": "V4",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "86ak6m4ae",
      "mes": "2025-02",
-     "vgv_bruto": 22949000.0,
+     "vgv_bruto": 22949000,
      "vgv_liquido": 22949000.0,
-     "lucro": 4647402.0,
+     "lucro": 4647402,
      "margem": 0.2025,
      "exposicao": 2956344.0,
      "area_construida": 3899.23,
+     "area_privativa": 3459.84,
+     "area_terreno": 3800.0,
      "unidades": 80.0,
      "permutas": 0.0,
      "preco_medio": 286862.5,
-     "custo_m2": 2227.34
+     "custo_m2": 2227
     }
    ],
+   "foto": null,
    "pos": [
     -25.4410477,
     -49.1746432
@@ -427,6 +450,7 @@
    "lista": "EP | Arena",
    "fase": "EP",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "nov001": {
      "data": "2026-03-16",
@@ -481,38 +505,43 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "",
+     "situacao": "Substituída",
      "task_id": "86ak6m58d",
      "mes": "2025-12",
-     "vgv_bruto": 54900000.0,
+     "vgv_bruto": 54900000,
      "vgv_liquido": 50700000.0,
-     "lucro": 11729071.0,
+     "lucro": 11729071,
      "margem": 0.23129999999999998,
      "exposicao": 6605613.0,
      "area_construida": 8888.38,
+     "area_privativa": 5882.76,
+     "area_terreno": 4505.0,
      "unidades": 162.0,
      "permutas": 12.0,
      "preco_medio": 338000.0,
-     "custo_m2": 2438.54
+     "custo_m2": 2438
     },
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "17tpepch0bw",
      "mes": "2026-07",
-     "vgv_bruto": 65260034.0,
+     "vgv_bruto": 65260034,
      "vgv_liquido": 61420034.0,
-     "lucro": 14014291.0,
+     "lucro": 14014291,
      "margem": 0.22820000000000001,
      "exposicao": 8428402.0,
      "area_construida": 10225.83,
+     "area_privativa": 6746.36,
+     "area_terreno": 4505.75,
      "unidades": 178.0,
      "permutas": 12.0,
      "preco_medio": 370000.2048192771,
-     "custo_m2": 2615.53
+     "custo_m2": 2616
     }
    ],
+   "foto": null,
    "pos": [
     -25.4762709,
     -49.3144318
@@ -531,6 +560,7 @@
    "lista": "ALV | Aura (Alta Tensão)",
    "fase": "AP",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "nov001": {
      "data": "2025-11-10",
@@ -585,38 +615,43 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "",
+     "situacao": "Substituída",
      "task_id": "86ak6md41",
      "mes": "2025-08",
-     "vgv_bruto": 31320000.0,
+     "vgv_bruto": 31320000,
      "vgv_liquido": 26390000.0,
-     "lucro": 5734573.0,
+     "lucro": 5734573,
      "margem": 0.2173,
      "exposicao": 2924278.0,
      "area_construida": 5344.92,
+     "area_privativa": 4546.32,
+     "area_terreno": 3500.0,
      "unidades": 108.0,
      "permutas": 17.0,
      "preco_medio": 290000.0,
-     "custo_m2": 2472.16
+     "custo_m2": 2472
     },
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "86ak6mfjq",
      "mes": "2025-08",
-     "vgv_bruto": 32100000.0,
+     "vgv_bruto": 32100000,
      "vgv_liquido": 26700000.0,
-     "lucro": 6110583.0,
+     "lucro": 6110583,
      "margem": 0.2289,
      "exposicao": 4772140.0,
      "area_construida": 5056.36,
+     "area_privativa": 4075.63,
+     "area_terreno": 5480.39,
      "unidades": 107.0,
      "permutas": 18.0,
      "preco_medio": 300000.0,
-     "custo_m2": 2539.21
+     "custo_m2": 2539
     }
    ],
+   "foto": null,
    "pos": [
     -25.492656,
     -49.179631
@@ -635,6 +670,7 @@
    "lista": "✅ | Bravo",
    "fase": "ENT",
    "legado": true,
+   "fase_manual": false,
    "marcos": {
     "nov001": {
      "data": "2022-09-01",
@@ -693,21 +729,24 @@
     {
      "versao": "V4",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "86ak6mh22",
      "mes": "2025-02",
-     "vgv_bruto": 31360000.0,
+     "vgv_bruto": 31360000,
      "vgv_liquido": 31360000.0,
-     "lucro": 6386402.0,
+     "lucro": 6386402,
      "margem": 0.2036,
      "exposicao": 7347801.0,
      "area_construida": 6418.64,
+     "area_privativa": 5710.08,
+     "area_terreno": 6477.41,
      "unidades": 128.0,
      "permutas": 0.0,
      "preco_medio": 245000.0,
-     "custo_m2": 2057.47
+     "custo_m2": 2057
     }
    ],
+   "foto": null,
    "pos": [
     -25.4354881,
     -49.1536968
@@ -726,6 +765,7 @@
    "lista": "DUE | Container",
    "fase": "DUE",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "nov001": {
      "data": "2026-08-18",
@@ -740,21 +780,24 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "86ak6mq90",
      "mes": "2026-06",
-     "vgv_bruto": 86235000.0,
+     "vgv_bruto": 86235000,
      "vgv_liquido": 86235000.0,
-     "lucro": 19531113.0,
+     "lucro": 19531113,
      "margem": 0.22649999999999998,
      "exposicao": 4579767.0,
      "area_construida": 13299.54,
+     "area_privativa": 10010.88,
+     "area_terreno": 14445.97,
      "unidades": 288.0,
      "permutas": 0.0,
      "preco_medio": 299427.0833333333,
-     "custo_m2": 2381.0
+     "custo_m2": 2381
     }
    ],
+   "foto": null,
    "pos": [
     -25.5605032,
     -49.2889506
@@ -773,6 +816,7 @@
    "lista": "LIB | Edge (Porto Rico)",
    "fase": "LIB",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "nov001": {
      "data": "2024-06-27",
@@ -831,36 +875,40 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "",
+     "situacao": "Substituída",
      "task_id": "86ak6mr6p",
      "mes": "2024-02",
-     "vgv_bruto": 100440000.0,
+     "vgv_bruto": 100440000,
      "vgv_liquido": 85320000.0,
-     "lucro": 19179815.0,
+     "lucro": 19179815,
      "margem": 0.2248,
      "exposicao": 5679232.0,
      "area_construida": 23700.0,
+     "area_privativa": 16431.24,
+     "area_terreno": 8147.0,
      "unidades": 372.0,
      "permutas": 56.0,
      "preco_medio": 270000.0,
-     "custo_m2": 1800.0
+     "custo_m2": 1800
     },
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "86ak6mtb6",
      "mes": "2024-02",
-     "vgv_bruto": 116640000.0,
+     "vgv_bruto": 116640000,
      "vgv_liquido": 101520000.0,
-     "lucro": 23441522.0,
+     "lucro": 23441522,
      "margem": 0.2309,
      "exposicao": 6992685.0,
      "area_construida": 26828.44,
+     "area_privativa": 18979.92,
+     "area_terreno": 15609.51,
      "unidades": 432.0,
      "permutas": 56.0,
      "preco_medio": 270000.0,
-     "custo_m2": 1877.298808735
+     "custo_m2": 1877
     },
     {
      "versao": "V4",
@@ -868,18 +916,21 @@
      "situacao": "Pendente aprovação",
      "task_id": "17tpepcgy93",
      "mes": "2026-09",
-     "vgv_bruto": 165452267.0,
+     "vgv_bruto": 165452267,
      "vgv_liquido": 159460028.0,
-     "lucro": 42910861.0,
+     "lucro": 42910861,
      "margem": 0.2691,
      "exposicao": 12288063.0,
      "area_construida": 26814.43,
+     "area_privativa": 18958.6,
+     "area_terreno": 15609.51,
      "unidades": 432.0,
      "permutas": 16.0,
      "preco_medio": 383317.375,
-     "custo_m2": 2333.98
+     "custo_m2": 2334
     }
    ],
+   "foto": null,
    "pos": [
     -25.5142276,
     -49.1998346
@@ -898,6 +949,7 @@
    "lista": "OBR | Essence",
    "fase": "OBR",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "nov001": {
      "data": "2023-12-21",
@@ -952,55 +1004,62 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "",
+     "situacao": "Substituída",
      "task_id": "86ak6munf",
      "mes": "2023-06",
-     "vgv_bruto": 73760000.0,
+     "vgv_bruto": 73760000,
      "vgv_liquido": 65010000.0,
-     "lucro": 12960323.0,
+     "lucro": 12960323,
      "margem": 0.19940000000000002,
      "exposicao": 4901314.0,
      "area_construida": 16106.0,
+     "area_privativa": 11792.0,
+     "area_terreno": 8647.51,
      "unidades": 216.0,
      "permutas": 25.0,
      "preco_medio": 340366.49214659684,
-     "custo_m2": 2000.0
+     "custo_m2": 2000
     },
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "",
+     "situacao": "Substituída",
      "task_id": "86ak6mvzc",
      "mes": "2024-10",
-     "vgv_bruto": 89700000.0,
+     "vgv_bruto": 89700000,
      "vgv_liquido": 80300000.0,
-     "lucro": 21150274.0,
+     "lucro": 21150274,
      "margem": 0.2634,
      "exposicao": 8308659.0,
      "area_construida": 15841.29,
+     "area_privativa": 11520.1891,
+     "area_terreno": 8647.51,
      "unidades": 256.0,
      "permutas": 25.0,
      "preco_medio": 347619.04761904763,
-     "custo_m2": 2080.0
+     "custo_m2": 2080
     },
     {
      "versao": "V4",
      "obs": "Correção 06/26",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "86ak6mw12",
      "mes": "2025-06",
-     "vgv_bruto": 100004017.0,
+     "vgv_bruto": 100004017,
      "vgv_liquido": 100004017.0,
-     "lucro": 24658664.0,
+     "lucro": 24658664,
      "margem": 0.2466,
      "exposicao": 4684905.0,
      "area_construida": 15839.18,
+     "area_privativa": 12671.12,
+     "area_terreno": 8647.51,
      "unidades": 256.0,
      "permutas": 0.0,
      "preco_medio": 390640.69140625,
-     "custo_m2": 1440.51
+     "custo_m2": 2274
     }
    ],
+   "foto": null,
    "pos": [
     -25.4953495,
     -49.3036737
@@ -1019,6 +1078,7 @@
    "lista": "LAN | Flow (Matsu II)",
    "fase": "LAN",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "nov001": {
      "data": "2024-05-07",
@@ -1069,36 +1129,40 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "",
+     "situacao": "Substituída",
      "task_id": "17tpepcn9ck",
      "mes": "2024-02",
-     "vgv_bruto": 44160000.0,
+     "vgv_bruto": 44160000,
      "vgv_liquido": 44160000.0,
-     "lucro": 10619448.0,
+     "lucro": 10619448,
      "margem": 0.24050000000000002,
      "exposicao": 2408053.0,
      "area_construida": 9539.29,
+     "area_privativa": 8488.32,
+     "area_terreno": 10685.0,
      "unidades": 192.0,
      "permutas": 0.0,
      "preco_medio": 230000.00250000003,
-     "custo_m2": 1800.0
+     "custo_m2": 1800
     },
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "86ak6n447",
      "mes": "2024-10",
-     "vgv_bruto": 60160015.0,
+     "vgv_bruto": 60160015,
      "vgv_liquido": 60160015.0,
-     "lucro": 11973382.0,
+     "lucro": 11973382,
      "margem": 0.19899999999999998,
      "exposicao": 3331909.0,
      "area_construida": 13445.78,
+     "area_privativa": 11293.44,
+     "area_terreno": 10685.0,
      "unidades": 256.0,
      "permutas": 0.0,
      "preco_medio": 235000.0574,
-     "custo_m2": 1919.04
+     "custo_m2": 1919
     },
     {
      "versao": "V4",
@@ -1106,18 +1170,21 @@
      "situacao": "Simulação",
      "task_id": "17tpepcgz8a",
      "mes": "2026-10",
-     "vgv_bruto": 71680000.0,
+     "vgv_bruto": 71680000,
      "vgv_liquido": 71680000.0,
-     "lucro": 14595826.0,
+     "lucro": 14595826,
      "margem": 0.2036,
      "exposicao": 3194035.0,
      "area_construida": 13283.2,
+     "area_privativa": 11293.44,
+     "area_terreno": 10685.0,
      "unidades": 256.0,
      "permutas": 0.0,
      "preco_medio": 280000.0,
-     "custo_m2": 2404.77
+     "custo_m2": 2405
     }
    ],
+   "foto": null,
    "pos": [
     -25.5489358,
     -49.40128
@@ -1136,6 +1203,7 @@
    "lista": "EP | Fundação",
    "fase": "EP",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "nov001": {
      "data": "2026-02-10",
@@ -1190,55 +1258,62 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "",
+     "situacao": "Substituída",
      "task_id": "86ak6n6vn",
      "mes": "2026-01",
-     "vgv_bruto": 77258800.0,
+     "vgv_bruto": 77258800,
      "vgv_liquido": 77258800.0,
-     "lucro": 20016243.0,
+     "lucro": 20016243,
      "margem": 0.2591,
      "exposicao": 6583437.0,
      "area_construida": 10150.06,
+     "area_privativa": 8278.0,
+     "area_terreno": 3000.0,
      "unidades": 300.0,
      "permutas": 0.0,
      "preco_medio": 257529.33333333334,
-     "custo_m2": 2537.76
+     "custo_m2": 2537
     },
     {
      "versao": "V1",
      "obs": "",
-     "situacao": "",
+     "situacao": "Substituída",
      "task_id": "86ak6n7pt",
      "mes": "2026-04",
-     "vgv_bruto": 71050000.0,
+     "vgv_bruto": 71050000,
      "vgv_liquido": 71050000.0,
-     "lucro": 17890862.0,
+     "lucro": 17890862,
      "margem": 0.2518,
      "exposicao": 5751754.0,
      "area_construida": 9136.46,
+     "area_privativa": 7087.65,
+     "area_terreno": 2969.0,
      "unidades": 239.0,
      "permutas": 0.0,
      "preco_medio": 297280.33472803346,
-     "custo_m2": 2674.14
+     "custo_m2": 2674
     },
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "17tpepch0k5",
      "mes": "2026-06",
-     "vgv_bruto": 70860066.0,
+     "vgv_bruto": 70860066,
      "vgv_liquido": 70860066.0,
-     "lucro": 16751941.0,
+     "lucro": 16751941,
      "margem": 0.2364,
      "exposicao": 6008527.0,
      "area_construida": 9300.27,
+     "area_privativa": 7114.17,
+     "area_terreno": 2969.0,
      "unidades": 239.0,
      "permutas": 0.0,
      "preco_medio": 296485.6317991632,
-     "custo_m2": 2683.51
+     "custo_m2": 2684
     }
    ],
+   "foto": null,
    "pos": [
     -25.454925,
     -49.2610613
@@ -1257,6 +1332,7 @@
    "lista": "LIB | Horizon (Patrulha)",
    "fase": "LIB",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "nov001": {
      "data": "2024-09-10",
@@ -1315,36 +1391,40 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "",
+     "situacao": "Substituída",
      "task_id": "86ak6n978",
      "mes": "2024-09",
-     "vgv_bruto": 34560000.0,
+     "vgv_bruto": 34560000,
      "vgv_liquido": 30720000.0,
-     "lucro": 6720188.0,
+     "lucro": 6720188,
      "margem": 0.2188,
      "exposicao": 4043356.0,
      "area_construida": 7511.0,
+     "area_privativa": 6487.2,
+     "area_terreno": 8227.87,
      "unidades": 144.0,
      "permutas": 16.0,
      "preco_medio": 240000.0,
-     "custo_m2": 1846.0
+     "custo_m2": 1846
     },
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "86ak6nd0b",
      "mes": "2024-09",
-     "vgv_bruto": 41184000.0,
+     "vgv_bruto": 41184000,
      "vgv_liquido": 36608000.0,
-     "lucro": 7303816.0,
+     "lucro": 7303816,
      "margem": 0.19949999999999998,
      "exposicao": 4368549.0,
      "area_construida": 7703.31,
+     "area_privativa": 6456.96,
+     "area_terreno": 8227.87,
      "unidades": 144.0,
      "permutas": 16.0,
      "preco_medio": 286000.0,
-     "custo_m2": 2300.0
+     "custo_m2": 2300
     },
     {
      "versao": "V4",
@@ -1352,18 +1432,21 @@
      "situacao": "Pendente aprovação",
      "task_id": "17tpepcgy5k",
      "mes": "2026-05",
-     "vgv_bruto": 53890711.0,
+     "vgv_bruto": 53890711,
      "vgv_liquido": 47883447.0,
-     "lucro": 13994515.0,
+     "lucro": 13994515,
      "margem": 0.2923,
      "exposicao": 2947648.0,
      "area_construida": 7463.35,
+     "area_privativa": 6377.71,
+     "area_terreno": 8227.87,
      "unidades": 144.0,
      "permutas": 16.0,
      "preco_medio": 374089.4296875,
-     "custo_m2": 2714.53
+     "custo_m2": 2715
     }
    ],
+   "foto": null,
    "pos": [
     -25.4329207,
     -49.1546814
@@ -1382,6 +1465,7 @@
    "lista": "OBR | Lume",
    "fase": "OBR",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "nov001": {
      "data": "2023-09-28",
@@ -1436,21 +1520,24 @@
     {
      "versao": "V4",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "86ak6ne78",
      "mes": "2025-02",
-     "vgv_bruto": 112195999.0,
+     "vgv_bruto": 112195999,
      "vgv_liquido": 111900747.0,
-     "lucro": 23998286.0,
+     "lucro": 23998286,
      "margem": 0.2145,
      "exposicao": 6625038.0,
      "area_construida": 22408.21,
+     "area_privativa": 16931.8,
+     "area_terreno": 15180.0,
      "unidades": 380.0,
      "permutas": 0.0,
      "preco_medio": 295252.63,
-     "custo_m2": 1899.81
+     "custo_m2": 1900
     }
    ],
+   "foto": null,
    "pos": [
     -25.3984744,
     -49.1925418
@@ -1469,6 +1556,7 @@
    "lista": "LIB | Now (Matsu I)",
    "fase": "LIB",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "nov001": {
      "data": "2024-05-07",
@@ -1523,55 +1611,62 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "",
+     "situacao": "Substituída",
      "task_id": "86ak6ng1d",
      "mes": "2024-02",
-     "vgv_bruto": 33120000.0,
+     "vgv_bruto": 33120000,
      "vgv_liquido": 33120000.0,
-     "lucro": 7756838.0,
+     "lucro": 7756838,
      "margem": 0.23420000000000002,
      "exposicao": 1969287.0,
      "area_construida": 7263.0,
+     "area_privativa": 6366.24,
+     "area_terreno": 8147.0,
      "unidades": 144.0,
      "permutas": 0.0,
      "preco_medio": 230000.0,
-     "custo_m2": 1800.0
+     "custo_m2": 1800
     },
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "",
+     "situacao": "Substituída",
      "task_id": "86ak6nhct",
      "mes": "2024-10",
-     "vgv_bruto": 45120011.0,
+     "vgv_bruto": 45120011,
      "vgv_liquido": 45120011.0,
-     "lucro": 9147089.0,
+     "lucro": 9147089,
      "margem": 0.2027,
      "exposicao": 2689496.0,
      "area_construida": 10114.74,
+     "area_privativa": 8470.08,
+     "area_terreno": 8147.16,
      "unidades": 192.0,
      "permutas": 0.0,
      "preco_medio": 235000.05740000002,
-     "custo_m2": 1900.0
+     "custo_m2": 1900
     },
     {
      "versao": "V4",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "17tpepcgy0g",
      "mes": "2026-06",
-     "vgv_bruto": 53756304.0,
+     "vgv_bruto": 53756304,
      "vgv_liquido": 53756304.0,
-     "lucro": 10466146.0,
+     "lucro": 10466146,
      "margem": 0.19469999999999998,
      "exposicao": 4311838.0,
      "area_construida": 9996.91,
+     "area_privativa": 8417.28,
+     "area_terreno": 8147.16,
      "unidades": 192.0,
      "permutas": 0.0,
      "preco_medio": 279980.75,
      "custo_m2": 2459.46
     }
    ],
+   "foto": null,
    "pos": [
     -25.5489358,
     -49.40128
@@ -1590,6 +1685,7 @@
    "lista": "ALV | Quadratto (Leilão)",
    "fase": "AP",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "arq003": {
      "data": "2026-07-16",
@@ -1636,21 +1732,24 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "86ak6njzc",
      "mes": "2026-07",
-     "vgv_bruto": 95210000.0,
+     "vgv_bruto": 95210000,
      "vgv_liquido": 95210000.0,
-     "lucro": 18805903.0,
+     "lucro": 18805903,
      "margem": 0.1975,
      "exposicao": 5806679.0,
      "area_construida": 14429.16,
+     "area_privativa": 10611.2,
+     "area_terreno": 7599.84,
      "unidades": 256.0,
      "permutas": 0.0,
      "preco_medio": 371914.0625,
-     "custo_m2": 2600.0
+     "custo_m2": 2600
     }
    ],
+   "foto": null,
    "pos": [
     -25.4283281,
     -49.1885331
@@ -1669,6 +1768,7 @@
    "lista": "EP | Rafitec",
    "fase": "EP",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "nov001": {
      "data": "2026-09-04",
@@ -1719,38 +1819,43 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "",
+     "situacao": "Substituída",
      "task_id": "17tpepcp6hd",
      "mes": "2026-09",
-     "vgv_bruto": 105000000.0,
+     "vgv_bruto": 105000000,
      "vgv_liquido": 105000000.0,
-     "lucro": 29314819.0,
+     "lucro": 29314819,
      "margem": 0.2792,
      "exposicao": 14940994.0,
      "area_construida": 16670.51,
+     "area_privativa": 12645.0,
+     "area_terreno": 10500.0,
      "unidades": 300.0,
      "permutas": 0.0,
      "preco_medio": 350000.0,
-     "custo_m2": 2397.47
+     "custo_m2": 2397
     },
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "17tpepch0un",
      "mes": "2026-08",
-     "vgv_bruto": 105000000.0,
+     "vgv_bruto": 105000000,
      "vgv_liquido": 105000000.0,
-     "lucro": 23270758.0,
+     "lucro": 23270758,
      "margem": 0.2216,
      "exposicao": 12113350.0,
      "area_construida": 16746.97,
+     "area_privativa": 12537.0,
+     "area_terreno": 10430.0,
      "unidades": 300.0,
      "permutas": 0.0,
      "preco_medio": 350000.0,
-     "custo_m2": 2659.14
+     "custo_m2": 2659
     }
    ],
+   "foto": null,
    "pos": [
     -25.411548,
     -49.181532
@@ -1769,6 +1874,7 @@
    "lista": "OBR | Uniq",
    "fase": "OBR",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "nov001": {
      "data": "2023-08-16",
@@ -1815,21 +1921,24 @@
     {
      "versao": "V4",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "86ak6nn43",
      "mes": "2023-10",
-     "vgv_bruto": 29026816.0,
+     "vgv_bruto": 29026816,
      "vgv_liquido": 23843456.0,
-     "lucro": 3811899.0,
+     "lucro": 3811899,
      "margem": 0.15990000000000001,
      "exposicao": 1957487.0,
      "area_construida": 5331.24,
+     "area_privativa": 4996.32,
+     "area_terreno": 5880.0,
      "unidades": 112.0,
      "permutas": 0.0,
      "preco_medio": 259168.0,
-     "custo_m2": 2400.0
+     "custo_m2": 2400
     }
    ],
+   "foto": null,
    "pos": [
     -25.4323214,
     -49.1570482
@@ -1848,6 +1957,7 @@
    "lista": "ALV | Vert (Follador)",
    "fase": "AP",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "nov001": {
      "data": "2025-06-05",
@@ -1902,55 +2012,62 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "",
+     "situacao": "Substituída",
      "task_id": "86ak6nqc4",
      "mes": "2025-05",
-     "vgv_bruto": 74240000.0,
+     "vgv_bruto": 74240000,
      "vgv_liquido": 69310000.0,
-     "lucro": 15466755.0,
+     "lucro": 15466755,
      "margem": 0.2232,
      "exposicao": 12555601.0,
      "area_construida": 13296.0,
+     "area_privativa": 11535.36,
+     "area_terreno": 13269.0,
      "unidades": 256.0,
      "permutas": 17.0,
      "preco_medio": 290000.0,
-     "custo_m2": 2150.0
+     "custo_m2": 2150
     },
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "",
+     "situacao": "Substituída",
      "task_id": "86ak6nqep",
      "mes": "2025-10",
-     "vgv_bruto": 79360000.0,
+     "vgv_bruto": 79360000,
      "vgv_liquido": 74090000.0,
-     "lucro": 15796228.0,
+     "lucro": 15796228,
      "margem": 0.2132,
      "exposicao": 10757000.0,
      "area_construida": 13720.16,
+     "area_privativa": 11238.4,
+     "area_terreno": 13269.15,
      "unidades": 256.0,
      "permutas": 17.0,
      "preco_medio": 310000.0,
-     "custo_m2": 2326.27
+     "custo_m2": 2326
     },
     {
      "versao": "V3",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "86ak6nqjp",
      "mes": "2026-06",
-     "vgv_bruto": 83200000.0,
+     "vgv_bruto": 83200000,
      "vgv_liquido": 77675000.0,
-     "lucro": 17020841.0,
+     "lucro": 17020841,
      "margem": 0.2191,
      "exposicao": 11392156.0,
      "area_construida": 13024.57,
+     "area_privativa": 11202.56,
+     "area_terreno": 13269.15,
      "unidades": 256.0,
      "permutas": 17.0,
      "preco_medio": 325000.0,
-     "custo_m2": 2575.14
+     "custo_m2": 2575
     }
    ],
+   "foto": null,
    "pos": [
     -25.5552028,
     -49.210479
@@ -1969,6 +2086,7 @@
    "lista": "EP | Zago",
    "fase": "EP",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "nov001": {
      "data": "2026-02-18",
@@ -2023,38 +2141,43 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "",
+     "situacao": "Substituída",
      "task_id": "86ak6nyr2",
      "mes": "2026-02",
-     "vgv_bruto": 52800000.0,
+     "vgv_bruto": 52800000,
      "vgv_liquido": 46500000.0,
-     "lucro": 10501643.0,
+     "lucro": 10501643,
      "margem": 0.22579999999999997,
      "exposicao": 4863426.0,
      "area_construida": 9162.24,
+     "area_privativa": 7731.68,
+     "area_terreno": 9832.0,
      "unidades": 176.0,
      "permutas": 21.0,
      "preco_medio": 300000.0,
-     "custo_m2": 2333.11
+     "custo_m2": 2333
     },
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "17tpepch0ky",
      "mes": "2026-04",
-     "vgv_bruto": 66560000.0,
+     "vgv_bruto": 66560000,
      "vgv_liquido": 59840000.0,
-     "lucro": 12052748.0,
+     "lucro": 12052748,
      "margem": 0.2014,
      "exposicao": 7013343.0,
      "area_construida": 11791.75,
+     "area_privativa": 9137.44,
+     "area_terreno": 9832.0,
      "unidades": 208.0,
      "permutas": 21.0,
      "preco_medio": 320000.0,
-     "custo_m2": 2490.5
+     "custo_m2": 2491
     }
    ],
+   "foto": null,
    "pos": [
     -25.5601945,
     -49.1968528
@@ -2073,6 +2196,7 @@
    "lista": "✅ | Tuo",
    "fase": "ENT",
    "legado": true,
+   "fase_manual": false,
    "marcos": {
     "nov001": {
      "data": "2022-05-01",
@@ -2131,21 +2255,24 @@
     {
      "versao": "V4",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "17tpepcuzf3",
      "mes": "2022-05",
-     "vgv_bruto": 48880000.0,
+     "vgv_bruto": 48880000,
      "vgv_liquido": 48880000.0,
-     "lucro": 10527549.0,
+     "lucro": 10527549,
      "margem": 0.21539999999999998,
      "exposicao": 3437809.0,
      "area_construida": 10401.63,
+     "area_privativa": 9278.88,
+     "area_terreno": 9566.88,
      "unidades": 208.0,
      "permutas": 0,
      "preco_medio": 235000.0,
      "custo_m2": 1675.75
     }
    ],
+   "foto": null,
    "pos": [
     -25.4425723,
     -49.1753849
@@ -2164,6 +2291,7 @@
    "lista": "✅ | La Vita",
    "fase": "ENT",
    "legado": true,
+   "fase_manual": false,
    "marcos": {
     "nov001": {
      "data": "2020-12-01",
@@ -2210,21 +2338,24 @@
     {
      "versao": "V4",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "17tpepcuzf2",
      "mes": "2022-06",
-     "vgv_bruto": 22143092.0,
+     "vgv_bruto": 22143092,
      "vgv_liquido": 19144548.0,
-     "lucro": 3848927.0,
+     "lucro": 3848927,
      "margem": 0.201,
      "exposicao": 1550491.0,
      "area_construida": 4859.26,
+     "area_privativa": 4032.0,
+     "area_terreno": 5130.11,
      "unidades": 96.0,
      "permutas": 13,
      "preco_medio": 230657.21,
      "custo_m2": 1822.68
     }
    ],
+   "foto": null,
    "pos": [
     -25.4497453,
     -49.1729818
@@ -2243,6 +2374,7 @@
    "lista": "EP | Guadalupe",
    "fase": "DUE",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "inc001": {
      "data": "2026-03-23",
@@ -2289,38 +2421,43 @@
     {
      "versao": "V0",
      "obs": "",
-     "situacao": "",
+     "situacao": "Substituída",
      "task_id": "17tpepcp6kt",
      "mes": "2024-12",
-     "vgv_bruto": 88996655.0,
+     "vgv_bruto": 88996655,
      "vgv_liquido": 88996655.0,
-     "lucro": 18392047.0,
+     "lucro": 18392047,
      "margem": 0.20670000000000002,
      "exposicao": 9678696.0,
      "area_construida": 10111.23,
+     "area_privativa": 7677.97,
+     "area_terreno": 1131.8,
      "unidades": 400.0,
      "permutas": 0.0,
      "preco_medio": 220741.6375,
-     "custo_m2": 3500.0
+     "custo_m2": 3500
     },
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "17tpepch0re",
      "mes": "2026-07",
-     "vgv_bruto": 135883240.0,
+     "vgv_bruto": 135883240,
      "vgv_liquido": 135883240.0,
-     "lucro": 30764985.0,
+     "lucro": 30764985,
      "margem": 0.22640000000000002,
      "exposicao": 11015892.0,
      "area_construida": 13312.02,
+     "area_privativa": 10254.42,
+     "area_terreno": 1131.82,
      "unidades": 419.0,
      "permutas": 0.0,
      "preco_medio": 324303.6754176611,
-     "custo_m2": 3800.0
+     "custo_m2": 3800
     }
    ],
+   "foto": null,
    "pos": [
     -25.4335002,
     -49.265213
@@ -2339,6 +2476,7 @@
    "lista": "EP | CORE Evo (João Negrão)",
    "fase": "EP",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "inc001": {
      "data": "2024-11-11",
@@ -2388,35 +2526,40 @@
      "situacao": "Simulação",
      "task_id": "17tpepcgznw",
      "mes": "2023-08",
-     "vgv_bruto": 113187131.0,
+     "vgv_bruto": 113187131,
      "vgv_liquido": 97791756.0,
-     "lucro": 17798835.0,
+     "lucro": 17798835,
      "margem": 0.182,
      "exposicao": 7265570.0,
      "area_construida": 13610.16,
+     "area_privativa": 8872.57,
+     "area_terreno": 1716.0,
      "unidades": 319.0,
      "permutas": 47.0,
      "preco_medio": 340821.8085106383,
-     "custo_m2": 3700.0
+     "custo_m2": 3700
     },
     {
      "versao": "V3",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "17tpepcu22n",
      "mes": "2026-10",
-     "vgv_bruto": 130928520.0,
+     "vgv_bruto": 130928520,
      "vgv_liquido": 116995200.0,
-     "lucro": 27211617.0,
+     "lucro": 27211617,
      "margem": 0.23260000000000003,
      "exposicao": 11855224.0,
      "area_construida": 13997.75,
+     "area_privativa": 9189.18,
+     "area_terreno": 1716.0,
      "unidades": 357.0,
      "permutas": 47.0,
      "preco_medio": 360360.0,
-     "custo_m2": 3700.0
+     "custo_m2": 3700
     }
    ],
+   "foto": null,
    "pos": [
     -25.4357511,
     -49.2643965
@@ -2435,6 +2578,7 @@
    "lista": "EP | Martim Afonso",
    "fase": "EP",
    "legado": false,
+   "fase_manual": false,
    "marcos": {
     "inc001": {
      "data": "2026-05-18",
@@ -2481,21 +2625,24 @@
     {
      "versao": "V2",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "17tpepch0d8",
      "mes": "2026-07",
-     "vgv_bruto": 51545795.0,
+     "vgv_bruto": 51545795,
      "vgv_liquido": 51545795.0,
-     "lucro": 6486484.0,
+     "lucro": 6486484,
      "margem": 0.1258,
      "exposicao": 25115818.0,
      "area_construida": 4892.28,
+     "area_privativa": 3224.89,
+     "area_terreno": 1459.0,
      "unidades": 116.0,
      "permutas": 0.0,
      "preco_medio": 430912.025862069,
-     "custo_m2": 3800.0
+     "custo_m2": 3800
     }
    ],
+   "foto": null,
    "pos": [
     -25.4369585,
     -49.3058986
@@ -2514,26 +2661,30 @@
    "lista": null,
    "fase": null,
    "legado": false,
+   "fase_manual": false,
    "marcos": {},
    "viabilidades": [
     {
      "versao": "V4",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "17tpepcgz0m",
      "mes": "2026-07",
-     "vgv_bruto": 77556904.0,
+     "vgv_bruto": 77556904,
      "vgv_liquido": 77556904.0,
-     "lucro": 13252864.0,
+     "lucro": 13252864,
      "margem": 0.1709,
      "exposicao": 12183047.0,
      "area_construida": 8007.51,
+     "area_privativa": 4633.59,
+     "area_terreno": 1847.0,
      "unidades": 163.0,
      "permutas": 0.0,
      "preco_medio": 459674.0306748466,
-     "custo_m2": 3853.98
+     "custo_m2": 3854
     }
    ],
+   "foto": null,
    "pos": [
     -25.4290514,
     -49.2604248
@@ -2552,26 +2703,30 @@
    "lista": null,
    "fase": null,
    "legado": false,
+   "fase_manual": false,
    "marcos": {},
    "viabilidades": [
     {
      "versao": "V3",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "17tpepcgzdg",
      "mes": "2026-06",
-     "vgv_bruto": 86981760.0,
+     "vgv_bruto": 86981760,
      "vgv_liquido": 69909408.0,
-     "lucro": 14419297.0,
+     "lucro": 14419297,
      "margem": 0.20629999999999998,
      "exposicao": 11662936.0,
      "area_construida": 8387.51,
+     "area_privativa": 5021.28,
+     "area_terreno": 1440.89,
      "unidades": 176.0,
      "permutas": 35.2,
      "preco_medio": 485009.99999999994,
-     "custo_m2": 3700.0
+     "custo_m2": 3700
     }
    ],
+   "foto": null,
    "pos": [
     -25.4323799,
     -49.3009102
@@ -2588,8 +2743,9 @@
    "ex_nome": "",
    "lista_id": null,
    "lista": null,
-   "fase": null,
-   "legado": false,
+   "fase": "ENT",
+   "legado": true,
+   "fase_manual": true,
    "marcos": {},
    "viabilidades": [
     {
@@ -2598,18 +2754,21 @@
      "situacao": "",
      "task_id": "17tpepcvmt0",
      "mes": "2026-06",
-     "vgv_bruto": 47668635.0,
+     "vgv_bruto": 47668635,
      "vgv_liquido": 44403660.0,
-     "lucro": 12528032.0,
+     "lucro": 12528032,
      "margem": 0.2821,
      "exposicao": 5756594.0,
      "area_construida": 7524.46,
+     "area_privativa": null,
+     "area_terreno": null,
      "unidades": 73.0,
      "permutas": 5.0,
      "preco_medio": 652995,
-     "custo_m2": 2617.0
+     "custo_m2": 2617
     }
    ],
+   "foto": null,
    "pos": [
     -25.4177013,
     -49.2538417
@@ -2626,8 +2785,9 @@
    "ex_nome": "",
    "lista_id": null,
    "lista": null,
-   "fase": null,
-   "legado": false,
+   "fase": "ENT",
+   "legado": true,
+   "fase_manual": true,
    "marcos": {},
    "viabilidades": [
     {
@@ -2636,18 +2796,21 @@
      "situacao": "",
      "task_id": "17tpepcvmqu",
      "mes": "2026-06",
-     "vgv_bruto": 75263772.0,
+     "vgv_bruto": 75263772,
      "vgv_liquido": 61653103.0,
-     "lucro": 9200304.0,
+     "lucro": 9200304,
      "margem": 0.1492,
      "exposicao": 5871724.0,
      "area_construida": 11340.56,
+     "area_privativa": null,
+     "area_terreno": null,
      "unidades": 240.0,
      "permutas": 55.0,
      "preco_medio": 303349.25,
      "custo_m2": 2874.43
     }
    ],
+   "foto": null,
    "pos": [
     -25.4342993,
     -49.2677559
@@ -2664,8 +2827,9 @@
    "ex_nome": "",
    "lista_id": null,
    "lista": null,
-   "fase": null,
+   "fase": "OBR",
    "legado": false,
+   "fase_manual": true,
    "marcos": {},
    "viabilidades": [
     {
@@ -2674,18 +2838,21 @@
      "situacao": "",
      "task_id": "17tpepcvmqk",
      "mes": "2026-09",
-     "vgv_bruto": 67316700.0,
+     "vgv_bruto": 67316700,
      "vgv_liquido": 58003250.0,
-     "lucro": 10687388.0,
+     "lucro": 10687388,
      "margem": 0.1843,
      "exposicao": 4558249.0,
      "area_construida": 8678.31,
+     "area_privativa": null,
+     "area_terreno": null,
      "unidades": 238.0,
      "permutas": 38.0,
      "preco_medio": 274650,
-     "custo_m2": 3200.0
+     "custo_m2": 3200
     }
    ],
+   "foto": null,
    "pos": [
     -25.4326781,
     -49.2595769
@@ -2702,8 +2869,9 @@
    "ex_nome": "",
    "lista_id": null,
    "lista": null,
-   "fase": null,
+   "fase": "OBR",
    "legado": false,
+   "fase_manual": true,
    "marcos": {},
    "viabilidades": [
     {
@@ -2712,18 +2880,21 @@
      "situacao": "",
      "task_id": "17tpepcvmpv",
      "mes": "2026-06",
-     "vgv_bruto": 168106103.0,
+     "vgv_bruto": 168106103,
      "vgv_liquido": 168106103.0,
-     "lucro": 38331877.0,
+     "lucro": 38331877,
      "margem": 0.228,
      "exposicao": 8221772.0,
      "area_construida": 18241.95,
+     "area_privativa": null,
+     "area_terreno": null,
      "unidades": 479.0,
      "permutas": 0.0,
      "preco_medio": 350952.2,
      "custo_m2": 3309.13
     }
    ],
+   "foto": null,
    "pos": [
     -25.4343232,
     -49.2682051
@@ -2740,8 +2911,9 @@
    "ex_nome": "",
    "lista_id": null,
    "lista": null,
-   "fase": null,
+   "fase": "OBR",
    "legado": false,
+   "fase_manual": true,
    "marcos": {},
    "viabilidades": [
     {
@@ -2750,18 +2922,21 @@
      "situacao": "",
      "task_id": "17tpepcvmpd",
      "mes": "2026-06",
-     "vgv_bruto": 83080090.0,
+     "vgv_bruto": 83080090,
      "vgv_liquido": 77017760.0,
-     "lucro": 14768019.0,
+     "lucro": 14768019,
      "margem": 0.1917,
      "exposicao": 16259898.0,
      "area_construida": 9058.06,
+     "area_privativa": null,
+     "area_terreno": null,
      "unidades": 241.0,
      "permutas": 21.0,
      "preco_medio": 342490,
      "custo_m2": 3799.91
     }
    ],
+   "foto": null,
    "pos": [
     -25.4407366,
     -49.2713291
@@ -2888,5 +3063,6 @@
    "atual": "2030-06-14",
    "dias": -31
   }
- ]
+ ],
+ "listas_sem_cadastro": []
 }

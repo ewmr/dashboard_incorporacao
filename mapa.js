@@ -123,10 +123,10 @@ const MP = (() => {
     if (on) gira(map); else map.stop();
     map.fire("orbita", {on});
   }
-  function voa3d(map, pos, {orbitar=true}={}){
+  function voa3d(map, pos, {orbitar=true, padding=null}={}){
     if (map._orb){ map._orb=false; map.stop(); }
     aplica3d(map, true, false);
-    map.flyTo({center:[pos[1],pos[0]], zoom:17.2, pitch:60, bearing:-24, duration:1700, essential:true});
+    map.flyTo({center:[pos[1],pos[0]], zoom:17.2, pitch:60, bearing:-24, duration:1700, essential:true, ...(padding?{padding}:{})});
     if (orbitar) map.once("moveend", ()=>{ if (map._3d) orbita(map, true); });
   }
 
@@ -178,6 +178,7 @@ const MP = (() => {
     const b = new maplibregl.LngLatBounds(); pts.forEach(e=>b.extend([e.pos[1],e.pos[0]]));
     if (plano){
       if (map._orb){ map._orb=false; map.stop(); }
+      map.setPadding({top:0, bottom:0, left:0, right:0});
       aplica3d(map, false, false);
       const cur = {center:map.getCenter(), zoom:map.getZoom(), pitch:map.getPitch(), bearing:map.getBearing()};
       map.jumpTo({pitch:0, bearing:0});

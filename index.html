@@ -9,7 +9,7 @@
 <style>:where(svg){max-width:100%}:where(.top,.bot) :where(svg){width:22px;height:22px}</style>
 <link rel="stylesheet" href="vendor/maplibre/maplibre-gl.css?v=4.7.1">
 <link rel="preload" href="vendor/fonts/nunito-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="app.css?v=0.7.0">
+<link rel="stylesheet" href="app.css?v=0.8.0">
 </head>
 <body>
 <!-- fundo: degradê desfocado na cor da incorporadora -->
@@ -118,7 +118,7 @@
       <aside class="card vb-side" id="vbSide"></aside>
       <div class="vb-main" id="vbMain"></div>
     </div>
-    <article class="card" id="sec-viab"><div class="ch"><div><h3>Viabilidades vigentes</h3><p class="cap">todas as viabilidades vigentes nos filtros atuais · clique numa linha para abrir</p></div></div><div class="tbl-wrap" id="viabTable"></div></article>
+    <article class="card saude fechado" id="sec-viab"><button class="sh-toggle" id="vbTabT" aria-expanded="false"><span class="st-ic"><svg viewBox="0 0 24 24"><rect x="3.5" y="4.5" width="17" height="15" rx="3"/><path d="M3.5 9.5h17M9 9.5v10"/></svg></span><span class="st-t"><b>Viabilidades vigentes</b><span class="cap">tabela com todos os empreendimentos nos filtros atuais · clique numa linha para abrir</span></span><span class="chev"><svg viewBox="0 0 24 24"><path d="M7 10l5 5 5-5"/></svg></span></button><div class="tbl-wrap vb-tab" id="viabTable"></div></article>
   </section>
 
   <!-- METAS -->
@@ -165,7 +165,7 @@
 <div class="tip" id="tip" hidden></div>
 <script src="vendor/maplibre/maplibre-gl.js?v=4.7.1"></script>
 <script src="vendor/maplibre/pmtiles.js?v=4.5.0"></script>
-<script src="mapa.js?v=0.7.0"></script>
-<script src="app.js?v=0.7.0"></script>
+<script src="mapa.js?v=0.8.0"></script>
+<script src="app.js?v=0.8.0"></script>
 </body>
 </html>
