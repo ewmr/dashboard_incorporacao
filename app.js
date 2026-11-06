@@ -55,6 +55,7 @@ const MIN_AMOSTRA = 2;
 const INCS = [["all","Consolidado"],["Make It","Make It"],["Gadens","Gadens"]];
 
 const CHANGELOG = [
+  {v:"0.8.1", d:"2026-11-05", itens:["Fotos de capa nas fichas de 19 empreendimentos.","Linha do tempo da ficha em sequência, legível com muitos marcos.","Botões sem contorno, no estilo plano."]},
   {v:"0.8", d:"2026-11-05", itens:[
     "Ficha do empreendimento: botão no canto da barra lateral do mapa abre a ficha completa (capa, números, produto e terreno, eficiência, versões da viabilidade e linha do tempo dos marcos). Também abre pelo mapa da página inicial e pela página de viabilidade.",
     "Página de viabilidade mais visual: versão vigente em destaque, linha de versões nas cores do ClickUp, cartões com variação e minigráfico, cascata do VGV ao lucro, produto e eficiência, tendência tracejada da margem nas versões futuras e cartão da margem projetada no lançamento.",
@@ -428,20 +429,17 @@ const local = e => esc(e.cidade)+(bairroDe(e)?" - "+esc(bairroDe(e)):"");
 // anel de eficiência e linha do tempo da ficha
 function anel(v, cor){ const r=26, c=2*Math.PI*r, f=v==null?0:Math.max(0,Math.min(1,v)); return `<svg class="anel" viewBox="0 0 64 64"><circle cx="32" cy="32" r="${r}" fill="none" stroke="var(--fill-2)" stroke-width="7"/><circle cx="32" cy="32" r="${r}" fill="none" stroke="${cor}" stroke-width="7" stroke-linecap="round" stroke-dasharray="${c*f} ${c}" transform="rotate(-90 32 32)"/></svg>`; }
 function linhaTempo(e, box){
-  const ms = Object.entries(e.marcos).map(([c,m])=>({c, n:D.marco_nome[c]||c, ...m, t:+new Date(m.data)})).sort((a,b)=>a.t-b.t);
+  const ms = Object.entries(e.marcos).map(([c,m])=>({c, n:D.marco_nome[c]||c, ...m})).sort((a,b)=>a.data.localeCompare(b.data));
   if (!ms.length){ box.innerHTML="<p class='muted'>Sem marcos de cronograma no ClickUp.</p>"; return; }
-  const hoje=+new Date(HOJE()), t0=Math.min(ms[0].t, hoje), t1=Math.max(ms[ms.length-1].t, hoje), span=(t1-t0)||1;
-  const W=Math.max(420, box.clientWidth||700), ml=18, mr=18, H=200, y0=H/2, X=t=>ml+(W-ml-mr)*(t-t0)/span, cor=corDe(e);
-  let s=`<svg viewBox="0 0 ${W} ${H}"><line x1="${ml}" x2="${W-mr}" y1="${y0}" y2="${y0}" stroke="var(--fill-2)" stroke-width="4" stroke-linecap="round"/>`;
-  const done=ms.filter(m=>m.ok); if (done.length) s+=`<line x1="${ml}" x2="${X(Math.max(...done.map(m=>m.t)))}" y1="${y0}" y2="${y0}" stroke="${cor}" stroke-width="4" stroke-linecap="round"/>`;
-  for (let a=new Date(t0).getFullYear()+1; a<=new Date(t1).getFullYear(); a++){ const x=X(+new Date(a,0,1)); s+=`<line x1="${x}" x2="${x}" y1="${y0-6}" y2="${y0+6}" stroke="var(--label-3)"/><text x="${x}" y="${H-4}" text-anchor="middle">${a}</text>`; }
-  s+=`<line x1="${X(hoje)}" x2="${X(hoje)}" y1="16" y2="${H-18}" stroke="var(--red-ink)" stroke-dasharray="3 3"/><text x="${X(hoje)}" y="12" text-anchor="middle" style="fill:var(--red-ink);font-weight:700">hoje</text>`;
-  const fila=[0,0]; let ultimo=[-1e9,-1e9];
-  ms.forEach((m,i)=>{ const x=X(m.t), lado=i%2, nivel = x-ultimo[lado] < 120 ? 1 : 0; ultimo[lado]=x;
-    const yy = lado ? y0+26+nivel*26 : y0-20-nivel*26;
-    s+=`<line x1="${x}" x2="${x}" y1="${y0}" y2="${lado?yy-11:yy+4}" stroke="var(--label-3)" stroke-width="1"/><circle cx="${x}" cy="${y0}" r="6" fill="${m.ok?cor:"var(--card-solid)"}" stroke="${cor}" stroke-width="2.4"/>
-      <text x="${x}" y="${yy}" text-anchor="middle" style="fill:var(--label);font-weight:600;font-size:10.5px">${esc(m.n)}</text><text x="${x}" y="${yy+12}" text-anchor="middle" style="font-size:9.5px">${my(m.data)}</text>`; });
-  box.innerHTML = s+"</svg>";
+  const h=HOJE(), cor=corDe(e); let ano="", html="", hojeFeito=false;
+  ms.forEach(m=>{
+    if (!hojeFeito && m.data>h){ hojeFeito=true; html+=`<div class="tl-i hoje"><span class="a"></span><span class="d"></span><span class="p"><i></i></span><span class="n">hoje</span></div>`; }
+    const a=m.data.slice(0,4), mostraAno = a!==ano; ano=a;
+    html+=`<div class="tl-i${m.ok?" ok":""}${!m.ok&&m.data<h?" atr":""}" title="${esc(m.n)} · ${dmy(m.data)}${m.ok?" · concluído":!m.ok&&m.data<h?" · atrasado":""}"><span class="a">${mostraAno?a:""}</span><span class="d">${dmy(m.data).slice(0,5)}</span><span class="p"><i></i></span><span class="n">${esc(m.n)}</span></div>`;
+  });
+  if (!hojeFeito) html+=`<div class="tl-i hoje"><span class="a"></span><span class="d"></span><span class="p"><i></i></span><span class="n">hoje</span></div>`;
+  box.innerHTML = `<div class="tl" style="--c:${cor}">${html}</div>`;
+  const prox = box.querySelector(".tl-i.hoje"); if (prox) box.firstChild.scrollLeft = Math.max(0, prox.offsetLeft - box.clientWidth/2);
 }
 const urlLista = e => e.lista_id ? `https://app.clickup.com/9013344143/v/li/${e.lista_id}` : null;
 function renderMapaPagina(){
@@ -500,7 +498,7 @@ function renderMapaPagina(){
               <p class="cap" style="margin:8px 0 10px">${v?`Vigente: <b>${v.versao} – ${VNOME_C[v.versao]}</b>, elaborada em ${mesTxt(v.mes)} (${idadeTxt(v.mes)}).`:"Sem viabilidade cadastrada."}${p&&p.aj?` Margem projetada no lançamento: <b>${pct(p.m,1)}</b> (${pp(p.aj)}, ${esc(p.motivo)}).`:""}</p>
               ${links}</section>
           </div>
-          <section class="fl-box"><h4>Linha do tempo</h4><div class="chart" id="fTempo"></div></section>
+          <section class="fl-box"><h4>Linha do tempo <span class="cap" style="font-weight:500">· marcos em sequência, do mais antigo ao mais recente</span></h4><div class="chart" id="fTempo"></div></section>
         </div></div>`;
       linhaTempo(sel, $("fTempo"));
     }
