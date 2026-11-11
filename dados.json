@@ -1,9 +1,9 @@
 {
- "gerado_em": "2026-11-10T22:40-03:00",
+ "gerado_em": "2026-11-11T14:12-03:00",
  "fontes": {
-  "cronogramas": "Cronogramas do ClickUp em 2026-11-10",
+  "cronogramas": "Cronogramas do ClickUp em 2026-11-11",
   "viabilidades": "ClickUp · lista Controle de Viabilidades",
-  "variacoes": "2026-10-19 → 2026-11-10",
+  "variacoes": "2026-10-19 → 2026-11-11",
   "rotina": "rotina diária do GitHub (API do ClickUp)"
  },
  "marco_nome": {
@@ -531,7 +531,7 @@
      ]
     }
    ],
-   "foto": "img/emp/ARB.webp?v=1794361164",
+   "foto": "img/emp/ARB.webp?v=1794417121",
    "pos": [
     -25.4410477,
     -49.1746432
@@ -557,11 +557,11 @@
      "ok": 0
     },
     "cef004": {
-     "data": "2027-12-13",
+     "data": "2027-12-28",
      "ok": 0
     },
     "cef003": {
-     "data": "2027-10-07",
+     "data": "2027-10-22",
      "ok": 0
     },
     "inc002": {
@@ -569,11 +569,11 @@
      "ok": 0
     },
     "leg010": {
-     "data": "2027-07-15",
+     "data": "2027-07-30",
      "ok": 0
     },
     "leg009": {
-     "data": "2027-05-04",
+     "data": "2027-05-19",
      "ok": 0
     },
     "leg008": {
@@ -581,7 +581,7 @@
      "ok": 0
     },
     "nov002": {
-     "data": "2027-05-04",
+     "data": "2027-05-19",
      "ok": 0
     },
     "nov001": {
@@ -905,7 +905,7 @@
      ]
     }
    ],
-   "foto": "img/emp/BRA.webp?v=1794361164",
+   "foto": "img/emp/BRA.webp?v=1794417121",
    "pos": [
     -25.4354881,
     -49.1536968
@@ -1119,7 +1119,7 @@
      ]
     }
    ],
-   "foto": "img/emp/EDG.webp?v=1794361164",
+   "foto": "img/emp/EDG.webp?v=1794417121",
    "pos": [
     -25.5142276,
     -49.1998346
@@ -1279,7 +1279,7 @@
      ]
     }
    ],
-   "foto": "img/emp/ESS.webp?v=1794361164",
+   "foto": "img/emp/ESS.webp?v=1794417121",
    "pos": [
     -25.4953495,
     -49.3036737
@@ -1435,7 +1435,7 @@
      ]
     }
    ],
-   "foto": "img/emp/FLO.webp?v=1794361164",
+   "foto": "img/emp/FLO.webp?v=1794417121",
    "pos": [
     -25.5489358,
     -49.40128
@@ -1759,7 +1759,7 @@
      ]
     }
    ],
-   "foto": "img/emp/HOR.webp?v=1794361164",
+   "foto": "img/emp/HOR.webp?v=1794417121",
    "pos": [
     -25.4329207,
     -49.1546814
@@ -1873,7 +1873,7 @@
      ]
     }
    ],
-   "foto": "img/emp/LUM.webp?v=1794361164",
+   "foto": "img/emp/LUM.webp?v=1794417121",
    "pos": [
     -25.3984744,
     -49.1925418
@@ -2033,7 +2033,7 @@
      ]
     }
    ],
-   "foto": "img/emp/NOW.webp?v=1794361164",
+   "foto": "img/emp/NOW.webp?v=1794417121",
    "pos": [
     -25.5489358,
     -49.40128
@@ -2376,7 +2376,7 @@
      ]
     }
    ],
-   "foto": "img/emp/UNI.webp?v=1794361164",
+   "foto": "img/emp/UNI.webp?v=1794417121",
    "pos": [
     -25.4323214,
     -49.1570482
@@ -2772,7 +2772,7 @@
      ]
     }
    ],
-   "foto": "img/emp/TUO.webp?v=1794361164",
+   "foto": "img/emp/TUO.webp?v=1794417121",
    "pos": [
     -25.4425723,
     -49.1753849
@@ -2858,7 +2858,7 @@
      ]
     }
    ],
-   "foto": "img/emp/LAV.webp?v=1794361164",
+   "foto": "img/emp/LAV.webp?v=1794417121",
    "pos": [
     -25.4497453,
     -49.1729818
@@ -3110,7 +3110,7 @@
      ]
     }
    ],
-   "foto": "img/emp/EVO.webp?v=1794361164",
+   "foto": "img/emp/EVO.webp?v=1794417121",
    "pos": [
     -25.4357511,
     -49.2643965
@@ -3308,7 +3308,7 @@
      ]
     }
    ],
-   "foto": "img/emp/LAG.webp?v=1794361164",
+   "foto": "img/emp/LAG.webp?v=1794417121",
    "pos": [
     -25.4290514,
     -49.2604248
@@ -3399,7 +3399,7 @@
      ]
     }
    ],
-   "foto": "img/emp/LBA.webp?v=1794361164",
+   "foto": "img/emp/LBA.webp?v=1794417121",
    "pos": [
     -25.4323799,
     -49.3009102
@@ -3445,7 +3445,7 @@
      ]
     }
    ],
-   "foto": "img/emp/ARS.webp?v=1794361164",
+   "foto": "img/emp/ARS.webp?v=1794417121",
    "pos": [
     -25.4177013,
     -49.2538417
@@ -3491,7 +3491,7 @@
      ]
     }
    ],
-   "foto": "img/emp/MOR.webp?v=1794361164",
+   "foto": "img/emp/MOR.webp?v=1794417121",
    "pos": [
     -25.4342993,
     -49.2677559
@@ -3537,7 +3537,7 @@
      ]
     }
    ],
-   "foto": "img/emp/CFV.webp?v=1794361164",
+   "foto": "img/emp/CFV.webp?v=1794417121",
    "pos": [
     -25.4326781,
     -49.2595769
@@ -3583,7 +3583,7 @@
      ]
     }
    ],
-   "foto": "img/emp/CPL.webp?v=1794361164",
+   "foto": "img/emp/CPL.webp?v=1794417121",
    "pos": [
     -25.4343232,
     -49.2682051
@@ -3629,7 +3629,7 @@
      ]
     }
    ],
-   "foto": "img/emp/CSJ.webp?v=1794361164",
+   "foto": "img/emp/CSJ.webp?v=1794417121",
    "pos": [
     -25.4407366,
     -49.2713291
