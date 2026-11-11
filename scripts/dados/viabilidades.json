@@ -26,7 +26,10 @@
   "endereco": "R. Alm. Tamandaré, 1712 - Juvevê, Curitiba - PR, 80040-110",
   "lat": -25.4177013,
   "lng": -49.2538417,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "17tpepcvmqu",
@@ -55,7 +58,10 @@
   "endereco": "R. André de Barros, 513 - Centro, Curitiba - PR, 80010-080",
   "lat": -25.4342993,
   "lng": -49.2677559,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "17tpepcvmqk",
@@ -84,7 +90,10 @@
   "endereco": "R. Dr. Faivre, 1098 - Centro, Curitiba - PR, 80060-140",
   "lat": -25.4326781,
   "lng": -49.2595769,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "17tpepcvmpv",
@@ -113,7 +122,10 @@
   "endereco": "R. André de Barros, 485 - Centro, Curitiba - PR, 80010-080",
   "lat": -25.4343232,
   "lng": -49.2682051,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "17tpepcvmpd",
@@ -142,7 +154,10 @@
   "endereco": "Av. Silva Jardim, 1074 - Rebouças, Curitiba - PR, 82590-300",
   "lat": -25.4407366,
   "lng": -49.2713291,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "17tpepcuzf3",
@@ -171,7 +186,9 @@
   "endereco": "R. Aluísio de Azevedo, 807 - Vargem Grande, Pinhais - PR, 83321-270",
   "lat": -25.4425723,
   "lng": -49.1753849,
-  "planilhas": []
+  "planilhas": [
+   "dre"
+  ]
  },
  {
   "task_id": "17tpepcuzf2",
@@ -200,7 +217,9 @@
   "endereco": "R. Rui Barbosa, 306 - Vargem Grande, Pinhais - PR, 83321-240",
   "lat": -25.4497453,
   "lng": -49.1729818,
-  "planilhas": []
+  "planilhas": [
+   "dre"
+  ]
  },
  {
   "task_id": "17tpepcu22n",
@@ -229,7 +248,10 @@
   "endereco": "R. João Negrão, 740 - Centro, Curitiba - PR, 80010-200",
   "lat": -25.4357511,
   "lng": -49.2643965,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "17tpepcp6kt",
@@ -258,7 +280,10 @@
   "endereco": "R. João Negrão, 486 - Centro, Curitiba - PR, 80010-200",
   "lat": -25.4335002,
   "lng": -49.265213,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "17tpepcp6hd",
@@ -287,7 +312,10 @@
   "endereco": "Av. Jacob Macanhan, 1919 - Emiliano Perneta, Pinhais - PR, 83325-390",
   "lat": -25.411548,
   "lng": -49.181532,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "17tpepcn9ck",
@@ -316,7 +344,10 @@
   "endereco": "Rua Shigemi Seima, 41 - Capela Velha, Araucária",
   "lat": -25.5489358,
   "lng": -49.40128,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "17tpepch0un",
@@ -345,7 +376,10 @@
   "endereco": "Av. Jacob Macanhan, 1919 - Emiliano Perneta, Pinhais - PR, 83325-390",
   "lat": -25.411548,
   "lng": -49.181532,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "17tpepch0re",
@@ -374,7 +408,10 @@
   "endereco": "R. João Negrão, 486 - Centro, Curitiba - PR, 80010-200",
   "lat": -25.4335002,
   "lng": -49.265213,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "17tpepch0ky",
@@ -403,7 +440,10 @@
   "endereco": "Rua Quirino Zagonel, 951, Itália, São José dos Pinhais - PR, 83020-250",
   "lat": -25.5601945,
   "lng": -49.1968528,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "17tpepch0k5",
@@ -432,7 +472,10 @@
   "endereco": "Rua Doutor Carvalho Chaves, 427, Parolin, Curitiba - PR, 80220-010",
   "lat": -25.454925,
   "lng": -49.2610613,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "17tpepch0d8",
@@ -461,7 +504,10 @@
   "endereco": "R. Martim Afonso, 2955 - Campina do Siqueira, Curitiba - PR, 80730-030",
   "lat": -25.4369585,
   "lng": -49.3058986,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "17tpepch0bw",
@@ -490,7 +536,10 @@
   "endereco": "Rua Antônio Barbosa Ferraz Júnior, 362, Portão, Curitiba - PR, 81320",
   "lat": -25.4762709,
   "lng": -49.3144318,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "17tpepcgznw",
@@ -519,7 +568,10 @@
   "endereco": "R. João Negrão, 740 - Centro, Curitiba - PR, 80010-200",
   "lat": -25.4357511,
   "lng": -49.2643965,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "17tpepcgzdg",
@@ -548,7 +600,10 @@
   "endereco": "R. Padre Agostinho, 2277 - Bigorrilho, Curitiba - PR, 80710-000",
   "lat": -25.4323799,
   "lng": -49.3009102,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "17tpepcgz8a",
@@ -577,7 +632,10 @@
   "endereco": "Rua Shigemi Seima, 41 - Capela Velha, Araucária",
   "lat": -25.5489358,
   "lng": -49.40128,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "17tpepcgz0m",
@@ -606,7 +664,10 @@
   "endereco": "R. Gen. Carneiro, 756 - Centro, Curitiba - PR, 80060-150",
   "lat": -25.4290514,
   "lng": -49.2604248,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "17tpepcgy93",
@@ -635,7 +696,10 @@
   "endereco": "R. Porto Rico, 198 - Boneca do Iguaçu, São José dos Pinhais - PR, 83040-320",
   "lat": -25.5142276,
   "lng": -49.1998346,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "17tpepcgy5k",
@@ -664,7 +728,10 @@
   "endereco": "R. Aristides Evangelista, 546 - Jardim Amélia, Pinhais, PR - 83330-235",
   "lat": -25.4329207,
   "lng": -49.1546814,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "17tpepcgy0g",
@@ -693,7 +760,10 @@
   "endereco": "Rua Shigemi Seima, 60 - Capela Velha, Araucária",
   "lat": -25.5489358,
   "lng": -49.40128,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "86ak6nyr2",
@@ -722,7 +792,10 @@
   "endereco": "Rua Quirino Zagonel, 951, Itália, São José dos Pinhais - PR, 83020-250",
   "lat": -25.5601945,
   "lng": -49.1968528,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "86ak6nqjp",
@@ -751,7 +824,10 @@
   "endereco": "Avenida Rui Barbosa, 11139, Santo Antônio, São José dos Pinhais - PR, 83025-010",
   "lat": -25.5552028,
   "lng": -49.210479,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "86ak6nqep",
@@ -780,7 +856,9 @@
   "endereco": "Avenida Rui Barbosa, 11139, Santo Antônio, São José dos Pinhais - PR, 83025-010",
   "lat": -25.5552028,
   "lng": -49.210479,
-  "planilhas": []
+  "planilhas": [
+   "dre"
+  ]
  },
  {
   "task_id": "86ak6nqc4",
@@ -809,7 +887,10 @@
   "endereco": "Avenida Rui Barbosa, 11139, Santo Antônio, São José dos Pinhais - PR, 83025-010",
   "lat": -25.5552028,
   "lng": -49.210479,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "86ak6nn43",
@@ -838,7 +919,9 @@
   "endereco": "R. Romeu Píres, 570 - Jardim Amélia, Pinhais - PR, 83330-220",
   "lat": -25.4323214,
   "lng": -49.1570482,
-  "planilhas": []
+  "planilhas": [
+   "dre"
+  ]
  },
  {
   "task_id": "86ak6njzc",
@@ -867,7 +950,10 @@
   "endereco": "Rua Salgado Filho, 2760, Centro, Pinhais - PR, 83320-332",
   "lat": -25.4283281,
   "lng": -49.1885331,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "86ak6nhct",
@@ -896,7 +982,9 @@
   "endereco": "Rua Shigemi Seima, 60 - Capela Velha, Araucária",
   "lat": -25.5489358,
   "lng": -49.40128,
-  "planilhas": []
+  "planilhas": [
+   "dre"
+  ]
  },
  {
   "task_id": "86ak6ng1d",
@@ -925,7 +1013,10 @@
   "endereco": "Rua Shigemi Seima, 60 - Capela Velha, Araucária",
   "lat": -25.5489358,
   "lng": -49.40128,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "86ak6ne78",
@@ -954,7 +1045,9 @@
   "endereco": "R. Tibúrcio Gomes de Oliveira, 304, Atuba, Pinhais - PR, 83326-195",
   "lat": -25.3984744,
   "lng": -49.1925418,
-  "planilhas": []
+  "planilhas": [
+   "dre"
+  ]
  },
  {
   "task_id": "86ak6nd0b",
@@ -983,7 +1076,9 @@
   "endereco": "R. Aristides Evangelista, 546 - Jardim Amélia, Pinhais, PR - 83330-235",
   "lat": -25.4329207,
   "lng": -49.1546814,
-  "planilhas": []
+  "planilhas": [
+   "dre"
+  ]
  },
  {
   "task_id": "86ak6n978",
@@ -1012,7 +1107,10 @@
   "endereco": "R. Aristides Evangelista, 546 - Jardim Amélia, Pinhais, PR - 83330-235",
   "lat": -25.4329207,
   "lng": -49.1546814,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "86ak6n7pt",
@@ -1041,7 +1139,9 @@
   "endereco": "Rua Doutor Carvalho Chaves, 427, Parolin, Curitiba - PR, 80220-010",
   "lat": -25.454925,
   "lng": -49.2610613,
-  "planilhas": []
+  "planilhas": [
+   "dre"
+  ]
  },
  {
   "task_id": "86ak6n6vn",
@@ -1070,7 +1170,10 @@
   "endereco": "Rua Doutor Carvalho Chaves, 427, Parolin, Curitiba - PR, 80220-010",
   "lat": -25.454925,
   "lng": -49.2610613,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "86ak6n447",
@@ -1099,7 +1202,9 @@
   "endereco": "Rua Shigemi Seima, 41 - Capela Velha, Araucária",
   "lat": -25.5489358,
   "lng": -49.40128,
-  "planilhas": []
+  "planilhas": [
+   "dre"
+  ]
  },
  {
   "task_id": "86ak6mw12",
@@ -1128,7 +1233,10 @@
   "endereco": "R. Affife Mansur, 688 - Novo Mundo, Curitiba - PR, 81050-180",
   "lat": -25.4953495,
   "lng": -49.3036737,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "86ak6mvzc",
@@ -1157,7 +1265,9 @@
   "endereco": "R. Affife Mansur, 688 - Novo Mundo, Curitiba - PR, 81050-180",
   "lat": -25.4953495,
   "lng": -49.3036737,
-  "planilhas": []
+  "planilhas": [
+   "dre"
+  ]
  },
  {
   "task_id": "86ak6munf",
@@ -1186,7 +1296,10 @@
   "endereco": "R. Affife Mansur, 688 - Novo Mundo, Curitiba - PR, 81050-180",
   "lat": -25.4953495,
   "lng": -49.3036737,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "86ak6mtb6",
@@ -1215,7 +1328,9 @@
   "endereco": "R. Porto Rico, 198 - Boneca do Iguaçu, São José dos Pinhais - PR, 83040-320",
   "lat": -25.5142276,
   "lng": -49.1998346,
-  "planilhas": []
+  "planilhas": [
+   "dre"
+  ]
  },
  {
   "task_id": "86ak6mr6p",
@@ -1244,7 +1359,9 @@
   "endereco": "R. Porto Rico, 198 - Boneca do Iguaçu, São José dos Pinhais - PR, 83040-320",
   "lat": -25.5142276,
   "lng": -49.1998346,
-  "planilhas": []
+  "planilhas": [
+   "dre"
+  ]
  },
  {
   "task_id": "86ak6mq90",
@@ -1273,7 +1390,10 @@
   "endereco": "R. Bôrtolo Pelanda, 724 - Umbará, Curitiba",
   "lat": -25.5605032,
   "lng": -49.2889506,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "86ak6mh22",
@@ -1302,7 +1422,9 @@
   "endereco": "R. Ver. Antônio Romeu Simoni, 473 - Jardim Amélia, Pinhais - PR, 83330-210",
   "lat": -25.4354881,
   "lng": -49.1536968,
-  "planilhas": []
+  "planilhas": [
+   "dre"
+  ]
  },
  {
   "task_id": "86ak6mfjq",
@@ -1331,7 +1453,10 @@
   "endereco": "Rua Dolovico Pissaia, 500, Parque da Fonte, São José dos Pinhais",
   "lat": -25.492656,
   "lng": -49.179631,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "86ak6md41",
@@ -1360,7 +1485,10 @@
   "endereco": "Rua Dolovico Pissaia, 500, Parque da Fonte, São José dos Pinhais",
   "lat": -25.492656,
   "lng": -49.179631,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "86ak6m58d",
@@ -1389,7 +1517,10 @@
   "endereco": "Rua Antônio Barbosa Ferraz Júnior, 362, Portão, Curitiba - PR, 81320",
   "lat": -25.4762709,
   "lng": -49.3144318,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "86ak6m4ae",
@@ -1418,7 +1549,9 @@
   "endereco": "R. Clóvis Beviláqua, 636 - Vargem Grande, Pinhais - PR, 83321-110",
   "lat": -25.4410477,
   "lng": -49.1746432,
-  "planilhas": []
+  "planilhas": [
+   "dre"
+  ]
  },
  {
   "task_id": "86ak6m0ag",
@@ -1447,7 +1580,9 @@
   "endereco": "Rua Professor Alberto Krause, 891, Tanguá, Almirante Tamandaré - PR, 83508-500",
   "lat": -25.3802836,
   "lng": -49.3067713,
-  "planilhas": []
+  "planilhas": [
+   "dre"
+  ]
  },
  {
   "task_id": "86ak6krf0",
@@ -1476,7 +1611,10 @@
   "endereco": "Rua Miguel Jorge Nasser, 432, Bacacheri, Curitiba - PR, 82620-140",
   "lat": -25.3850231,
   "lng": -49.2228717,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "86ak6kqf7",
@@ -1534,7 +1672,10 @@
   "endereco": "Rua Professor Alberto Krause, 891, Tanguá, Almirante Tamandaré - PR, 83508-500",
   "lat": -25.3802836,
   "lng": -49.3067713,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "86ak61afy",
@@ -1563,7 +1704,10 @@
   "endereco": "Rua Miguel Jorge Nasser, 432, Bacacheri, Curitiba - PR, 82620-140",
   "lat": -25.3850231,
   "lng": -49.2228717,
-  "planilhas": []
+  "planilhas": [
+   "dre",
+   "fluxo"
+  ]
  },
  {
   "task_id": "86ak61abn",
