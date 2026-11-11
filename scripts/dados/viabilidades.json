@@ -10,8 +10,8 @@
   "unidades": 73.0,
   "permutas": 5.0,
   "area": 7524.46,
-  "area_privativa": null,
-  "area_terreno": null,
+  "area_privativa": 4459.57,
+  "area_terreno": 1844.78,
   "vgv_b": 47668635.0,
   "vgv_l": 44403660.0,
   "lucro": 12528032.0,
@@ -25,7 +25,8 @@
   "incorporadora": "Gadens",
   "endereco": "R. Alm. Tamandaré, 1712 - Juvevê, Curitiba - PR, 80040-110",
   "lat": -25.4177013,
-  "lng": -49.2538417
+  "lng": -49.2538417,
+  "planilhas": []
  },
  {
   "task_id": "17tpepcvmqu",
@@ -38,8 +39,8 @@
   "unidades": 240.0,
   "permutas": 55.0,
   "area": 11340.56,
-  "area_privativa": null,
-  "area_terreno": null,
+  "area_privativa": 6581.4,
+  "area_terreno": 1146.81,
   "vgv_b": 75263772.0,
   "vgv_l": 61653103.0,
   "lucro": 9200304.0,
@@ -53,7 +54,8 @@
   "incorporadora": "Gadens",
   "endereco": "R. André de Barros, 513 - Centro, Curitiba - PR, 80010-080",
   "lat": -25.4342993,
-  "lng": -49.2677559
+  "lng": -49.2677559,
+  "planilhas": []
  },
  {
   "task_id": "17tpepcvmqk",
@@ -66,8 +68,8 @@
   "unidades": 238.0,
   "permutas": 38.0,
   "area": 8678.31,
-  "area_privativa": null,
-  "area_terreno": null,
+  "area_privativa": 5229.34,
+  "area_terreno": 800.0,
   "vgv_b": 67316700.0,
   "vgv_l": 58003250.0,
   "lucro": 10687388.0,
@@ -75,13 +77,14 @@
   "expo": 4558249.0,
   "preco": 274650.0,
   "custo": 3200.0,
-  "situacao_cu": "",
+  "situacao_cu": "Vigente",
   "linha": "Gadens CORE",
   "cidade": "Curitiba",
   "incorporadora": "Gadens",
   "endereco": "R. Dr. Faivre, 1098 - Centro, Curitiba - PR, 80060-140",
   "lat": -25.4326781,
-  "lng": -49.2595769
+  "lng": -49.2595769,
+  "planilhas": []
  },
  {
   "task_id": "17tpepcvmpv",
@@ -94,8 +97,8 @@
   "unidades": 479.0,
   "permutas": 0.0,
   "area": 18241.95,
-  "area_privativa": null,
-  "area_terreno": null,
+  "area_privativa": 12995.73,
+  "area_terreno": 1838.07,
   "vgv_b": 168106103.0,
   "vgv_l": 168106103.0,
   "lucro": 38331877.0,
@@ -103,13 +106,14 @@
   "expo": 8221772.0,
   "preco": 350952.2,
   "custo": 3309.13,
-  "situacao_cu": "",
+  "situacao_cu": "Vigente",
   "linha": "Gadens CORE",
   "cidade": "Curitiba",
   "incorporadora": "Gadens",
   "endereco": "R. André de Barros, 485 - Centro, Curitiba - PR, 80010-080",
   "lat": -25.4343232,
-  "lng": -49.2682051
+  "lng": -49.2682051,
+  "planilhas": []
  },
  {
   "task_id": "17tpepcvmpd",
@@ -122,8 +126,8 @@
   "unidades": 241.0,
   "permutas": 21.0,
   "area": 9058.06,
-  "area_privativa": null,
-  "area_terreno": null,
+  "area_privativa": 5692.42,
+  "area_terreno": 1039.72,
   "vgv_b": 83080090.0,
   "vgv_l": 77017760.0,
   "lucro": 14768019.0,
@@ -137,7 +141,8 @@
   "incorporadora": "Gadens",
   "endereco": "Av. Silva Jardim, 1074 - Rebouças, Curitiba - PR, 82590-300",
   "lat": -25.4407366,
-  "lng": -49.2713291
+  "lng": -49.2713291,
+  "planilhas": []
  },
  {
   "task_id": "17tpepcuzf3",
@@ -165,7 +170,8 @@
   "incorporadora": "Make It",
   "endereco": "R. Aluísio de Azevedo, 807 - Vargem Grande, Pinhais - PR, 83321-270",
   "lat": -25.4425723,
-  "lng": -49.1753849
+  "lng": -49.1753849,
+  "planilhas": []
  },
  {
   "task_id": "17tpepcuzf2",
@@ -193,7 +199,8 @@
   "incorporadora": "Make It",
   "endereco": "R. Rui Barbosa, 306 - Vargem Grande, Pinhais - PR, 83321-240",
   "lat": -25.4497453,
-  "lng": -49.1729818
+  "lng": -49.1729818,
+  "planilhas": []
  },
  {
   "task_id": "17tpepcu22n",
@@ -221,7 +228,8 @@
   "incorporadora": "Gadens",
   "endereco": "R. João Negrão, 740 - Centro, Curitiba - PR, 80010-200",
   "lat": -25.4357511,
-  "lng": -49.2643965
+  "lng": -49.2643965,
+  "planilhas": []
  },
  {
   "task_id": "17tpepcp6kt",
@@ -249,7 +257,8 @@
   "incorporadora": "Gadens",
   "endereco": "R. João Negrão, 486 - Centro, Curitiba - PR, 80010-200",
   "lat": -25.4335002,
-  "lng": -49.265213
+  "lng": -49.265213,
+  "planilhas": []
  },
  {
   "task_id": "17tpepcp6hd",
@@ -277,7 +286,8 @@
   "incorporadora": "Make It",
   "endereco": "Av. Jacob Macanhan, 1919 - Emiliano Perneta, Pinhais - PR, 83325-390",
   "lat": -25.411548,
-  "lng": -49.181532
+  "lng": -49.181532,
+  "planilhas": []
  },
  {
   "task_id": "17tpepcn9ck",
@@ -305,7 +315,8 @@
   "incorporadora": "Make It",
   "endereco": "Rua Shigemi Seima, 41 - Capela Velha, Araucária",
   "lat": -25.5489358,
-  "lng": -49.40128
+  "lng": -49.40128,
+  "planilhas": []
  },
  {
   "task_id": "17tpepch0un",
@@ -333,7 +344,8 @@
   "incorporadora": "Make It",
   "endereco": "Av. Jacob Macanhan, 1919 - Emiliano Perneta, Pinhais - PR, 83325-390",
   "lat": -25.411548,
-  "lng": -49.181532
+  "lng": -49.181532,
+  "planilhas": []
  },
  {
   "task_id": "17tpepch0re",
@@ -361,7 +373,8 @@
   "incorporadora": "Gadens",
   "endereco": "R. João Negrão, 486 - Centro, Curitiba - PR, 80010-200",
   "lat": -25.4335002,
-  "lng": -49.265213
+  "lng": -49.265213,
+  "planilhas": []
  },
  {
   "task_id": "17tpepch0ky",
@@ -389,7 +402,8 @@
   "incorporadora": "Make It",
   "endereco": "Rua Quirino Zagonel, 951, Itália, São José dos Pinhais - PR, 83020-250",
   "lat": -25.5601945,
-  "lng": -49.1968528
+  "lng": -49.1968528,
+  "planilhas": []
  },
  {
   "task_id": "17tpepch0k5",
@@ -417,7 +431,8 @@
   "incorporadora": "Make It",
   "endereco": "Rua Doutor Carvalho Chaves, 427, Parolin, Curitiba - PR, 80220-010",
   "lat": -25.454925,
-  "lng": -49.2610613
+  "lng": -49.2610613,
+  "planilhas": []
  },
  {
   "task_id": "17tpepch0d8",
@@ -445,7 +460,8 @@
   "incorporadora": "Gadens",
   "endereco": "R. Martim Afonso, 2955 - Campina do Siqueira, Curitiba - PR, 80730-030",
   "lat": -25.4369585,
-  "lng": -49.3058986
+  "lng": -49.3058986,
+  "planilhas": []
  },
  {
   "task_id": "17tpepch0bw",
@@ -473,7 +489,8 @@
   "incorporadora": "Make It",
   "endereco": "Rua Antônio Barbosa Ferraz Júnior, 362, Portão, Curitiba - PR, 81320",
   "lat": -25.4762709,
-  "lng": -49.3144318
+  "lng": -49.3144318,
+  "planilhas": []
  },
  {
   "task_id": "17tpepcgznw",
@@ -501,7 +518,8 @@
   "incorporadora": "Gadens",
   "endereco": "R. João Negrão, 740 - Centro, Curitiba - PR, 80010-200",
   "lat": -25.4357511,
-  "lng": -49.2643965
+  "lng": -49.2643965,
+  "planilhas": []
  },
  {
   "task_id": "17tpepcgzdg",
@@ -529,7 +547,8 @@
   "incorporadora": "Gadens",
   "endereco": "R. Padre Agostinho, 2277 - Bigorrilho, Curitiba - PR, 80710-000",
   "lat": -25.4323799,
-  "lng": -49.3009102
+  "lng": -49.3009102,
+  "planilhas": []
  },
  {
   "task_id": "17tpepcgz8a",
@@ -557,7 +576,8 @@
   "incorporadora": "Make It",
   "endereco": "Rua Shigemi Seima, 41 - Capela Velha, Araucária",
   "lat": -25.5489358,
-  "lng": -49.40128
+  "lng": -49.40128,
+  "planilhas": []
  },
  {
   "task_id": "17tpepcgz0m",
@@ -585,7 +605,8 @@
   "incorporadora": "Gadens",
   "endereco": "R. Gen. Carneiro, 756 - Centro, Curitiba - PR, 80060-150",
   "lat": -25.4290514,
-  "lng": -49.2604248
+  "lng": -49.2604248,
+  "planilhas": []
  },
  {
   "task_id": "17tpepcgy93",
@@ -613,7 +634,8 @@
   "incorporadora": "Make It",
   "endereco": "R. Porto Rico, 198 - Boneca do Iguaçu, São José dos Pinhais - PR, 83040-320",
   "lat": -25.5142276,
-  "lng": -49.1998346
+  "lng": -49.1998346,
+  "planilhas": []
  },
  {
   "task_id": "17tpepcgy5k",
@@ -641,7 +663,8 @@
   "incorporadora": "Make It",
   "endereco": "R. Aristides Evangelista, 546 - Jardim Amélia, Pinhais, PR - 83330-235",
   "lat": -25.4329207,
-  "lng": -49.1546814
+  "lng": -49.1546814,
+  "planilhas": []
  },
  {
   "task_id": "17tpepcgy0g",
@@ -669,7 +692,8 @@
   "incorporadora": "Make It",
   "endereco": "Rua Shigemi Seima, 60 - Capela Velha, Araucária",
   "lat": -25.5489358,
-  "lng": -49.40128
+  "lng": -49.40128,
+  "planilhas": []
  },
  {
   "task_id": "86ak6nyr2",
@@ -697,7 +721,8 @@
   "incorporadora": "Make It",
   "endereco": "Rua Quirino Zagonel, 951, Itália, São José dos Pinhais - PR, 83020-250",
   "lat": -25.5601945,
-  "lng": -49.1968528
+  "lng": -49.1968528,
+  "planilhas": []
  },
  {
   "task_id": "86ak6nqjp",
@@ -725,7 +750,8 @@
   "incorporadora": "Make It",
   "endereco": "Avenida Rui Barbosa, 11139, Santo Antônio, São José dos Pinhais - PR, 83025-010",
   "lat": -25.5552028,
-  "lng": -49.210479
+  "lng": -49.210479,
+  "planilhas": []
  },
  {
   "task_id": "86ak6nqep",
@@ -753,7 +779,8 @@
   "incorporadora": "Make It",
   "endereco": "Avenida Rui Barbosa, 11139, Santo Antônio, São José dos Pinhais - PR, 83025-010",
   "lat": -25.5552028,
-  "lng": -49.210479
+  "lng": -49.210479,
+  "planilhas": []
  },
  {
   "task_id": "86ak6nqc4",
@@ -781,7 +808,8 @@
   "incorporadora": "Make It",
   "endereco": "Avenida Rui Barbosa, 11139, Santo Antônio, São José dos Pinhais - PR, 83025-010",
   "lat": -25.5552028,
-  "lng": -49.210479
+  "lng": -49.210479,
+  "planilhas": []
  },
  {
   "task_id": "86ak6nn43",
@@ -809,7 +837,8 @@
   "incorporadora": "Make It",
   "endereco": "R. Romeu Píres, 570 - Jardim Amélia, Pinhais - PR, 83330-220",
   "lat": -25.4323214,
-  "lng": -49.1570482
+  "lng": -49.1570482,
+  "planilhas": []
  },
  {
   "task_id": "86ak6njzc",
@@ -837,7 +866,8 @@
   "incorporadora": "Make It",
   "endereco": "Rua Salgado Filho, 2760, Centro, Pinhais - PR, 83320-332",
   "lat": -25.4283281,
-  "lng": -49.1885331
+  "lng": -49.1885331,
+  "planilhas": []
  },
  {
   "task_id": "86ak6nhct",
@@ -865,7 +895,8 @@
   "incorporadora": "Make It",
   "endereco": "Rua Shigemi Seima, 60 - Capela Velha, Araucária",
   "lat": -25.5489358,
-  "lng": -49.40128
+  "lng": -49.40128,
+  "planilhas": []
  },
  {
   "task_id": "86ak6ng1d",
@@ -893,7 +924,8 @@
   "incorporadora": "Make It",
   "endereco": "Rua Shigemi Seima, 60 - Capela Velha, Araucária",
   "lat": -25.5489358,
-  "lng": -49.40128
+  "lng": -49.40128,
+  "planilhas": []
  },
  {
   "task_id": "86ak6ne78",
@@ -921,7 +953,8 @@
   "incorporadora": "Make It",
   "endereco": "R. Tibúrcio Gomes de Oliveira, 304, Atuba, Pinhais - PR, 83326-195",
   "lat": -25.3984744,
-  "lng": -49.1925418
+  "lng": -49.1925418,
+  "planilhas": []
  },
  {
   "task_id": "86ak6nd0b",
@@ -949,7 +982,8 @@
   "incorporadora": "Make It",
   "endereco": "R. Aristides Evangelista, 546 - Jardim Amélia, Pinhais, PR - 83330-235",
   "lat": -25.4329207,
-  "lng": -49.1546814
+  "lng": -49.1546814,
+  "planilhas": []
  },
  {
   "task_id": "86ak6n978",
@@ -977,7 +1011,8 @@
   "incorporadora": "Make It",
   "endereco": "R. Aristides Evangelista, 546 - Jardim Amélia, Pinhais, PR - 83330-235",
   "lat": -25.4329207,
-  "lng": -49.1546814
+  "lng": -49.1546814,
+  "planilhas": []
  },
  {
   "task_id": "86ak6n7pt",
@@ -1005,7 +1040,8 @@
   "incorporadora": "Make It",
   "endereco": "Rua Doutor Carvalho Chaves, 427, Parolin, Curitiba - PR, 80220-010",
   "lat": -25.454925,
-  "lng": -49.2610613
+  "lng": -49.2610613,
+  "planilhas": []
  },
  {
   "task_id": "86ak6n6vn",
@@ -1033,7 +1069,8 @@
   "incorporadora": "Make It",
   "endereco": "Rua Doutor Carvalho Chaves, 427, Parolin, Curitiba - PR, 80220-010",
   "lat": -25.454925,
-  "lng": -49.2610613
+  "lng": -49.2610613,
+  "planilhas": []
  },
  {
   "task_id": "86ak6n447",
@@ -1061,7 +1098,8 @@
   "incorporadora": "Make It",
   "endereco": "Rua Shigemi Seima, 41 - Capela Velha, Araucária",
   "lat": -25.5489358,
-  "lng": -49.40128
+  "lng": -49.40128,
+  "planilhas": []
  },
  {
   "task_id": "86ak6mw12",
@@ -1089,7 +1127,8 @@
   "incorporadora": "Make It",
   "endereco": "R. Affife Mansur, 688 - Novo Mundo, Curitiba - PR, 81050-180",
   "lat": -25.4953495,
-  "lng": -49.3036737
+  "lng": -49.3036737,
+  "planilhas": []
  },
  {
   "task_id": "86ak6mvzc",
@@ -1117,7 +1156,8 @@
   "incorporadora": "Make It",
   "endereco": "R. Affife Mansur, 688 - Novo Mundo, Curitiba - PR, 81050-180",
   "lat": -25.4953495,
-  "lng": -49.3036737
+  "lng": -49.3036737,
+  "planilhas": []
  },
  {
   "task_id": "86ak6munf",
@@ -1145,7 +1185,8 @@
   "incorporadora": "Make It",
   "endereco": "R. Affife Mansur, 688 - Novo Mundo, Curitiba - PR, 81050-180",
   "lat": -25.4953495,
-  "lng": -49.3036737
+  "lng": -49.3036737,
+  "planilhas": []
  },
  {
   "task_id": "86ak6mtb6",
@@ -1173,7 +1214,8 @@
   "incorporadora": "Make It",
   "endereco": "R. Porto Rico, 198 - Boneca do Iguaçu, São José dos Pinhais - PR, 83040-320",
   "lat": -25.5142276,
-  "lng": -49.1998346
+  "lng": -49.1998346,
+  "planilhas": []
  },
  {
   "task_id": "86ak6mr6p",
@@ -1201,7 +1243,8 @@
   "incorporadora": "Make It",
   "endereco": "R. Porto Rico, 198 - Boneca do Iguaçu, São José dos Pinhais - PR, 83040-320",
   "lat": -25.5142276,
-  "lng": -49.1998346
+  "lng": -49.1998346,
+  "planilhas": []
  },
  {
   "task_id": "86ak6mq90",
@@ -1229,7 +1272,8 @@
   "incorporadora": "Make It",
   "endereco": "R. Bôrtolo Pelanda, 724 - Umbará, Curitiba",
   "lat": -25.5605032,
-  "lng": -49.2889506
+  "lng": -49.2889506,
+  "planilhas": []
  },
  {
   "task_id": "86ak6mh22",
@@ -1257,7 +1301,8 @@
   "incorporadora": "Make It",
   "endereco": "R. Ver. Antônio Romeu Simoni, 473 - Jardim Amélia, Pinhais - PR, 83330-210",
   "lat": -25.4354881,
-  "lng": -49.1536968
+  "lng": -49.1536968,
+  "planilhas": []
  },
  {
   "task_id": "86ak6mfjq",
@@ -1285,7 +1330,8 @@
   "incorporadora": "Make It",
   "endereco": "Rua Dolovico Pissaia, 500, Parque da Fonte, São José dos Pinhais",
   "lat": -25.492656,
-  "lng": -49.179631
+  "lng": -49.179631,
+  "planilhas": []
  },
  {
   "task_id": "86ak6md41",
@@ -1313,7 +1359,8 @@
   "incorporadora": "Make It",
   "endereco": "Rua Dolovico Pissaia, 500, Parque da Fonte, São José dos Pinhais",
   "lat": -25.492656,
-  "lng": -49.179631
+  "lng": -49.179631,
+  "planilhas": []
  },
  {
   "task_id": "86ak6m58d",
@@ -1341,7 +1388,8 @@
   "incorporadora": "Make It",
   "endereco": "Rua Antônio Barbosa Ferraz Júnior, 362, Portão, Curitiba - PR, 81320",
   "lat": -25.4762709,
-  "lng": -49.3144318
+  "lng": -49.3144318,
+  "planilhas": []
  },
  {
   "task_id": "86ak6m4ae",
@@ -1369,7 +1417,8 @@
   "incorporadora": "Make It",
   "endereco": "R. Clóvis Beviláqua, 636 - Vargem Grande, Pinhais - PR, 83321-110",
   "lat": -25.4410477,
-  "lng": -49.1746432
+  "lng": -49.1746432,
+  "planilhas": []
  },
  {
   "task_id": "86ak6m0ag",
@@ -1397,7 +1446,8 @@
   "incorporadora": "Make It",
   "endereco": "Rua Professor Alberto Krause, 891, Tanguá, Almirante Tamandaré - PR, 83508-500",
   "lat": -25.3802836,
-  "lng": -49.3067713
+  "lng": -49.3067713,
+  "planilhas": []
  },
  {
   "task_id": "86ak6krf0",
@@ -1425,7 +1475,8 @@
   "incorporadora": "Make It",
   "endereco": "Rua Miguel Jorge Nasser, 432, Bacacheri, Curitiba - PR, 82620-140",
   "lat": -25.3850231,
-  "lng": -49.2228717
+  "lng": -49.2228717,
+  "planilhas": []
  },
  {
   "task_id": "86ak6kqf7",
@@ -1453,7 +1504,8 @@
   "incorporadora": "Make It",
   "endereco": "Rua Miguel Jorge Nasser, 432, Bacacheri, Curitiba - PR, 82620-140",
   "lat": -25.3850231,
-  "lng": -49.2228717
+  "lng": -49.2228717,
+  "planilhas": []
  },
  {
   "task_id": "86ak6k3nw",
@@ -1481,7 +1533,8 @@
   "incorporadora": "Make It",
   "endereco": "Rua Professor Alberto Krause, 891, Tanguá, Almirante Tamandaré - PR, 83508-500",
   "lat": -25.3802836,
-  "lng": -49.3067713
+  "lng": -49.3067713,
+  "planilhas": []
  },
  {
   "task_id": "86ak61afy",
@@ -1509,7 +1562,8 @@
   "incorporadora": "Make It",
   "endereco": "Rua Miguel Jorge Nasser, 432, Bacacheri, Curitiba - PR, 82620-140",
   "lat": -25.3850231,
-  "lng": -49.2228717
+  "lng": -49.2228717,
+  "planilhas": []
  },
  {
   "task_id": "86ak61abn",
@@ -1537,6 +1591,7 @@
   "incorporadora": "Make It",
   "endereco": "Rua Miguel Jorge Nasser, 432, Bacacheri, Curitiba - PR, 82620-140",
   "lat": -25.3850231,
-  "lng": -49.2228717
+  "lng": -49.2228717,
+  "planilhas": []
  }
 ]

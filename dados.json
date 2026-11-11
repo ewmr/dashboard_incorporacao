@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-10T22:12-03:00",
+ "gerado_em": "2026-11-10T22:13-03:00",
  "fontes": {
   "cronogramas": "Cronogramas do ClickUp em 2026-11-10",
   "viabilidades": "ClickUp · lista Controle de Viabilidades",
@@ -518,7 +518,7 @@
      "planilhas": []
     }
    ],
-   "foto": "img/emp/ARB.webp?v=1793932034",
+   "foto": "img/emp/ARB.webp?v=1794359586",
    "pos": [
     -25.4410477,
     -49.1746432
@@ -878,7 +878,7 @@
      "planilhas": []
     }
    ],
-   "foto": "img/emp/BRA.webp?v=1793932035",
+   "foto": "img/emp/BRA.webp?v=1794359586",
    "pos": [
     -25.4354881,
     -49.1536968
@@ -1082,7 +1082,7 @@
      "planilhas": []
     }
    ],
-   "foto": "img/emp/EDG.webp?v=1793932037",
+   "foto": "img/emp/EDG.webp?v=1794359586",
    "pos": [
     -25.5142276,
     -49.1998346
@@ -1234,7 +1234,7 @@
      "planilhas": []
     }
    ],
-   "foto": "img/emp/ESS.webp?v=1793932038",
+   "foto": "img/emp/ESS.webp?v=1794359586",
    "pos": [
     -25.4953495,
     -49.3036737
@@ -1382,7 +1382,7 @@
      "planilhas": []
     }
    ],
-   "foto": "img/emp/FLO.webp?v=1793932038",
+   "foto": "img/emp/FLO.webp?v=1794359586",
    "pos": [
     -25.5489358,
     -49.40128
@@ -1690,7 +1690,7 @@
      "planilhas": []
     }
    ],
-   "foto": "img/emp/HOR.webp?v=1793932038",
+   "foto": "img/emp/HOR.webp?v=1794359586",
    "pos": [
     -25.4329207,
     -49.1546814
@@ -1802,7 +1802,7 @@
      "planilhas": []
     }
    ],
-   "foto": "img/emp/LUM.webp?v=1793932040",
+   "foto": "img/emp/LUM.webp?v=1794359586",
    "pos": [
     -25.3984744,
     -49.1925418
@@ -1954,7 +1954,7 @@
      "planilhas": []
     }
    ],
-   "foto": "img/emp/NOW.webp?v=1793932041",
+   "foto": "img/emp/NOW.webp?v=1794359586",
    "pos": [
     -25.5489358,
     -49.40128
@@ -2286,7 +2286,7 @@
      "planilhas": []
     }
    ],
-   "foto": "img/emp/UNI.webp?v=1793932041",
+   "foto": "img/emp/UNI.webp?v=1794359586",
    "pos": [
     -25.4323214,
     -49.1570482
@@ -2666,7 +2666,7 @@
      "planilhas": []
     }
    ],
-   "foto": "img/emp/TUO.webp?v=1793932041",
+   "foto": "img/emp/TUO.webp?v=1794359586",
    "pos": [
     -25.4425723,
     -49.1753849
@@ -2750,7 +2750,7 @@
      "planilhas": []
     }
    ],
-   "foto": "img/emp/LAV.webp?v=1793932039",
+   "foto": "img/emp/LAV.webp?v=1794359586",
    "pos": [
     -25.4497453,
     -49.1729818
@@ -2990,7 +2990,7 @@
      "planilhas": []
     }
    ],
-   "foto": "img/emp/EVO.webp?v=1793932036",
+   "foto": "img/emp/EVO.webp?v=1794359586",
    "pos": [
     -25.4357511,
     -49.2643965
@@ -3182,7 +3182,7 @@
      "planilhas": []
     }
    ],
-   "foto": "img/emp/LAG.webp?v=1793932039",
+   "foto": "img/emp/LAG.webp?v=1794359586",
    "pos": [
     -25.4290514,
     -49.2604248
@@ -3270,7 +3270,7 @@
      "planilhas": []
     }
    ],
-   "foto": "img/emp/LBA.webp?v=1793932039",
+   "foto": "img/emp/LBA.webp?v=1794359586",
    "pos": [
     -25.4323799,
     -49.3009102
@@ -3304,8 +3304,8 @@
      "margem": 0.2821,
      "exposicao": 5756594.0,
      "area_construida": 7524.46,
-     "area_privativa": null,
-     "area_terreno": null,
+     "area_privativa": 4459.57,
+     "area_terreno": 1844.78,
      "unidades": 73.0,
      "permutas": 5.0,
      "preco_medio": 652995.0,
@@ -3313,7 +3313,7 @@
      "planilhas": []
     }
    ],
-   "foto": "img/emp/ARS.webp?v=1793932035",
+   "foto": "img/emp/ARS.webp?v=1794359586",
    "pos": [
     -25.4177013,
     -49.2538417
@@ -3347,8 +3347,8 @@
      "margem": 0.1492,
      "exposicao": 5871724.0,
      "area_construida": 11340.56,
-     "area_privativa": null,
-     "area_terreno": null,
+     "area_privativa": 6581.4,
+     "area_terreno": 1146.81,
      "unidades": 240.0,
      "permutas": 55.0,
      "preco_medio": 303349.25,
@@ -3356,7 +3356,7 @@
      "planilhas": []
     }
    ],
-   "foto": "img/emp/MOR.webp?v=1793932040",
+   "foto": "img/emp/MOR.webp?v=1794359586",
    "pos": [
     -25.4342993,
     -49.2677559
@@ -3381,7 +3381,7 @@
     {
      "versao": "V4",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "17tpepcvmqk",
      "mes": "2026-09",
      "vgv_bruto": 67316700.0,
@@ -3390,8 +3390,8 @@
      "margem": 0.1843,
      "exposicao": 4558249.0,
      "area_construida": 8678.31,
-     "area_privativa": null,
-     "area_terreno": null,
+     "area_privativa": 5229.34,
+     "area_terreno": 800.0,
      "unidades": 238.0,
      "permutas": 38.0,
      "preco_medio": 274650.0,
@@ -3399,7 +3399,7 @@
      "planilhas": []
     }
    ],
-   "foto": "img/emp/CFV.webp?v=1793932036",
+   "foto": "img/emp/CFV.webp?v=1794359586",
    "pos": [
     -25.4326781,
     -49.2595769
@@ -3424,7 +3424,7 @@
     {
      "versao": "V4",
      "obs": "",
-     "situacao": "",
+     "situacao": "Vigente",
      "task_id": "17tpepcvmpv",
      "mes": "2026-06",
      "vgv_bruto": 168106103.0,
@@ -3433,8 +3433,8 @@
      "margem": 0.228,
      "exposicao": 8221772.0,
      "area_construida": 18241.95,
-     "area_privativa": null,
-     "area_terreno": null,
+     "area_privativa": 12995.73,
+     "area_terreno": 1838.07,
      "unidades": 479.0,
      "permutas": 0.0,
      "preco_medio": 350952.2,
@@ -3442,7 +3442,7 @@
      "planilhas": []
     }
    ],
-   "foto": "img/emp/CPL.webp?v=1793932036",
+   "foto": "img/emp/CPL.webp?v=1794359586",
    "pos": [
     -25.4343232,
     -49.2682051
@@ -3476,8 +3476,8 @@
      "margem": 0.1917,
      "exposicao": 16259898.0,
      "area_construida": 9058.06,
-     "area_privativa": null,
-     "area_terreno": null,
+     "area_privativa": 5692.42,
+     "area_terreno": 1039.72,
      "unidades": 241.0,
      "permutas": 21.0,
      "preco_medio": 342490.0,
@@ -3485,7 +3485,7 @@
      "planilhas": []
     }
    ],
-   "foto": "img/emp/CSJ.webp?v=1793932037",
+   "foto": "img/emp/CSJ.webp?v=1794359586",
    "pos": [
     -25.4407366,
     -49.2713291
@@ -3614,5 +3614,734 @@
   }
  ],
  "listas_sem_cadastro": [],
- "planilhas_erros": []
+ "planilhas_erros": [
+  {
+   "task_id": "17tpepcvmt0",
+   "emp": "Ares Juvevê",
+   "ver": "V4",
+   "tipo": "DRE",
+   "arquivo": "Ares - Lançamento rev0626.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcvmt0",
+   "emp": "Ares Juvevê",
+   "ver": "V4",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO Ares - Lançamento rev0626.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcvmqu",
+   "emp": "Morá",
+   "ver": "V4",
+   "tipo": "DRE",
+   "arquivo": "Morá - Lançamento rev0626.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcvmqu",
+   "emp": "Morá",
+   "ver": "V4",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO Morá - Lançamento rev0626.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcvmqk",
+   "emp": "CORE Faivre",
+   "ver": "V4",
+   "tipo": "DRE",
+   "arquivo": "CORE Faivre - Lançamento - rev0926.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcvmqk",
+   "emp": "CORE Faivre",
+   "ver": "V4",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO CORE Faivre - Lançamento - rev0926.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcvmpv",
+   "emp": "CORE Palacio",
+   "ver": "V4",
+   "tipo": "DRE",
+   "arquivo": "CORE Palacio - Lançamento rev0626.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcvmpv",
+   "emp": "CORE Palacio",
+   "ver": "V4",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO CORE Palacio - Lançamento rev0626.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcvmpd",
+   "emp": "CORE Silva Jardim",
+   "ver": "V4",
+   "tipo": "DRE",
+   "arquivo": "CORE Silva Jardim - Lançamento rev0626.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcvmpd",
+   "emp": "CORE Silva Jardim",
+   "ver": "V4",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO CORE Silva Jardim - Lançamento rev0626.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcuzf3",
+   "emp": "Tuo",
+   "ver": "V4",
+   "tipo": "DRE",
+   "arquivo": "Viabilidade - Tuo - 1024 208UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcuzf2",
+   "emp": "La Vita",
+   "ver": "V4",
+   "tipo": "DRE",
+   "arquivo": "Viabilidade - La Vita - 1024 96UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcu22n",
+   "emp": "CORE Evo",
+   "ver": "V3",
+   "tipo": "DRE",
+   "arquivo": "INC - CORE EVO - V3 1026 357UH R$14000.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcu22n",
+   "emp": "CORE Evo",
+   "ver": "V3",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO INC - CORE EVO - V3 1026 357UH R$14000.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcp6kt",
+   "emp": "Guadalupe",
+   "ver": "V0",
+   "tipo": "DRE",
+   "arquivo": "DRE - NN GUADALUPE V0 COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcp6kt",
+   "emp": "Guadalupe",
+   "ver": "V0",
+   "tipo": "FLUXO",
+   "arquivo": "Fluxo - NN  GUADALUPE V0 COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcp6hd",
+   "emp": "Rafitec",
+   "ver": "V0",
+   "tipo": "DRE",
+   "arquivo": "DRE - NN - RAFITEC - V0 - COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcp6hd",
+   "emp": "Rafitec",
+   "ver": "V0",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO - NN - RAFITEC - V0 - COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcn9ck",
+   "emp": "Flow",
+   "ver": "V0",
+   "tipo": "DRE",
+   "arquivo": "DRE - NN  FLOW  V0 192 UH COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcn9ck",
+   "emp": "Flow",
+   "ver": "V0",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO - NN  FLOW  V0 192 UH COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepch0un",
+   "emp": "Rafitec",
+   "ver": "V2",
+   "tipo": "DRE",
+   "arquivo": "INC - RAFITEC - V2 - 0926 300UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepch0un",
+   "emp": "Rafitec",
+   "ver": "V2",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO - INC - RAFITEC - V2 - 0926 300UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepch0re",
+   "emp": "Guadalupe",
+   "ver": "V2",
+   "tipo": "DRE",
+   "arquivo": "INC - GUADALUPE OP1 - V2 0726 412UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepch0re",
+   "emp": "Guadalupe",
+   "ver": "V2",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO - INC - GUADALUPE OP1 - V2 0726 412UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepch0ky",
+   "emp": "Zago",
+   "ver": "V2",
+   "tipo": "DRE",
+   "arquivo": "INC - ZAGO - V2 0726 208UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepch0ky",
+   "emp": "Zago",
+   "ver": "V2",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO - INC - ZAGO - V2 0726 208UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepch0k5",
+   "emp": "Fundação",
+   "ver": "V2",
+   "tipo": "DRE",
+   "arquivo": "INC- FUNDAÇÃO - V2 - 0726 239UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepch0k5",
+   "emp": "Fundação",
+   "ver": "V2",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO - INC- FUNDAÇÃO - V2 - 0726 239UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepch0d8",
+   "emp": "Martim Afonso",
+   "ver": "V2",
+   "tipo": "DRE",
+   "arquivo": "INC - MARTIM - V2 0726 116UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepch0d8",
+   "emp": "Martim Afonso",
+   "ver": "V2",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO - INC - MARTIM - V2 0726 116UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepch0bw",
+   "emp": "Arena",
+   "ver": "V2",
+   "tipo": "DRE",
+   "arquivo": "INC - ARENA - V2 0726 178UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepch0bw",
+   "emp": "Arena",
+   "ver": "V2",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO - INC - ARENA - V2 0726 178UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcgznw",
+   "emp": "CORE Evo",
+   "ver": "V2",
+   "tipo": "DRE",
+   "arquivo": "JOÃO NEGRÃO - DRE.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcgznw",
+   "emp": "CORE Evo",
+   "ver": "V2",
+   "tipo": "FLUXO",
+   "arquivo": "JOÃO NEGRÃO - FLUXO.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcgzdg",
+   "emp": "Lens Barigui",
+   "ver": "V3",
+   "tipo": "DRE",
+   "arquivo": "PADRE AGOSTINHO - DRE.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcgzdg",
+   "emp": "Lens Barigui",
+   "ver": "V3",
+   "tipo": "FLUXO",
+   "arquivo": "PADRE AGOSTINHO - FLUXO.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcgz8a",
+   "emp": "Flow",
+   "ver": "V4",
+   "tipo": "DRE",
+   "arquivo": "INC - FLOW - V4 - 1026 256UH SIMULAÇÃO.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcgz8a",
+   "emp": "Flow",
+   "ver": "V4",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO - INC - FLOW - V4 - 1026 256UH SIMULAÇÃO.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcgz0m",
+   "emp": "Lens Alto da Glória",
+   "ver": "V4",
+   "tipo": "DRE",
+   "arquivo": "INC - LENS ADG - V4 0826 163UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcgz0m",
+   "emp": "Lens Alto da Glória",
+   "ver": "V4",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO - INC - LENS ADG - V4 0826 163UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcgy93",
+   "emp": "Edge",
+   "ver": "V4",
+   "tipo": "DRE",
+   "arquivo": "INC - EDGE - V4 1126 432UH 25PERM rev01.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcgy93",
+   "emp": "Edge",
+   "ver": "V4",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO - INC - EDGE - V4 1126 432UH 25PERM rev01.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcgy5k",
+   "emp": "Horizon",
+   "ver": "V4",
+   "tipo": "DRE",
+   "arquivo": "INC - HORIZON - V4 - 0926 144UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcgy5k",
+   "emp": "Horizon",
+   "ver": "V4",
+   "tipo": "FLUXO",
+   "arquivo": "INC - HORIZON - V4 - 0926 144UH FLUXO.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcgy0g",
+   "emp": "Now",
+   "ver": "V4",
+   "tipo": "DRE",
+   "arquivo": "INC - NOW - V4 0626 192UH (LANÇAMENTO).xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "17tpepcgy0g",
+   "emp": "Now",
+   "ver": "V4",
+   "tipo": "FLUXO",
+   "arquivo": "INC - NOW - V4 0626 192UH (LANÇAMENTO) FLUXO.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6nyr2",
+   "emp": "Zago",
+   "ver": "V0",
+   "tipo": "DRE",
+   "arquivo": "DRE - ZAGO - NN - V0 -  COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6nyr2",
+   "emp": "Zago",
+   "ver": "V0",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO - ZAGO - NN - V0 -  COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6nqjp",
+   "emp": "Vert",
+   "ver": "V3",
+   "tipo": "DRE",
+   "arquivo": "INC - VERT - V3 0626 256UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6nqjp",
+   "emp": "Vert",
+   "ver": "V3",
+   "tipo": "FLUXO",
+   "arquivo": "INC - VERT - V3 0626 256UH FLUXO.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6nqep",
+   "emp": "Vert",
+   "ver": "V2",
+   "tipo": "DRE",
+   "arquivo": "INC - FOLLADOR - DUE - v2.1 1025 256UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6nqc4",
+   "emp": "Vert",
+   "ver": "V0",
+   "tipo": "DRE",
+   "arquivo": "NN - Follador - v0 - COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6nqc4",
+   "emp": "Vert",
+   "ver": "V0",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO - NN - R01 - COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6nn43",
+   "emp": "Uniq",
+   "ver": "V4",
+   "tipo": "DRE",
+   "arquivo": "UNIQ - DRE.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6njzc",
+   "emp": "Quadratto",
+   "ver": "V2",
+   "tipo": "DRE",
+   "arquivo": "INC - LEILÃO - V2 - 0726 256UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6njzc",
+   "emp": "Quadratto",
+   "ver": "V2",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO - INC - LEILÃO - V2 - 0726 256UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6nhct",
+   "emp": "Now",
+   "ver": "V2",
+   "tipo": "DRE",
+   "arquivo": "INC - NOW - DUE - v05 1024 192UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6ng1d",
+   "emp": "Now",
+   "ver": "V0",
+   "tipo": "DRE",
+   "arquivo": "DRE - NN - NOW V0 COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6ng1d",
+   "emp": "Now",
+   "ver": "V0",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO - NN  NOW V0 COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6ne78",
+   "emp": "Lume",
+   "ver": "V4",
+   "tipo": "DRE",
+   "arquivo": "INC - LUME - LANÇ - v04 0225 380UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6nd0b",
+   "emp": "Horizon",
+   "ver": "V2",
+   "tipo": "DRE",
+   "arquivo": "HORIZON - DRE.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6n978",
+   "emp": "Horizon",
+   "ver": "V0",
+   "tipo": "DRE",
+   "arquivo": "DRE_PATRULHA CANINA - Viabilidade - 144 UH - COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6n978",
+   "emp": "Horizon",
+   "ver": "V0",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO_PATRULHA CANINA - Viabilidade - 144 UH - COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6n7pt",
+   "emp": "Fundação",
+   "ver": "V1",
+   "tipo": "DRE",
+   "arquivo": "INC- FUNDAÇÃO - DUE - v2 0426 - 239UH CTG.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6n6vn",
+   "emp": "Fundação",
+   "ver": "V0",
+   "tipo": "DRE",
+   "arquivo": "DRE_FUNDAÇÃO - NN - ESTUDO TRENTO - fev26 atualização incc - COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6n6vn",
+   "emp": "Fundação",
+   "ver": "V0",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO_FUNDAÇÃO - NN - ESTUDO TRENTO - fev26 atualização incc - COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6n447",
+   "emp": "Flow",
+   "ver": "V2",
+   "tipo": "DRE",
+   "arquivo": "INC - FLOW - DUE - v04 1024 256UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6mw12",
+   "emp": "Essence",
+   "ver": "V4",
+   "tipo": "DRE",
+   "arquivo": "INC - ESSENCE - LAN - v12 0925 256UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6mw12",
+   "emp": "Essence",
+   "ver": "V4",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO - INC - ESSENCE - LAN - v12 0925 256UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6mvzc",
+   "emp": "Essence",
+   "ver": "V2",
+   "tipo": "DRE",
+   "arquivo": "INC - ESSENCE - DUE - v06 1024 256UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6munf",
+   "emp": "Essence",
+   "ver": "V0",
+   "tipo": "DRE",
+   "arquivo": "DRE - NN - ESSENCE - V0 - COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6munf",
+   "emp": "Essence",
+   "ver": "V0",
+   "tipo": "FLUXO",
+   "arquivo": "FLU - NN - ESSENCE - V0 - COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6mtb6",
+   "emp": "Edge",
+   "ver": "V2",
+   "tipo": "DRE",
+   "arquivo": "INC - EDGE - DUE - v04 1124 432UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6mr6p",
+   "emp": "Edge",
+   "ver": "V0",
+   "tipo": "DRE",
+   "arquivo": "NN - EDGE - V0 - 0724 372UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6mq90",
+   "emp": "Container",
+   "ver": "V0",
+   "tipo": "DRE",
+   "arquivo": "DRE - NN - CONTAINER - V0 - COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6mq90",
+   "emp": "Container",
+   "ver": "V0",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO - NN - CONTAINER - V0 - COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6mh22",
+   "emp": "Bravo",
+   "ver": "V4",
+   "tipo": "DRE",
+   "arquivo": "INC - BRAVO - LANÇ - v04 0225 128UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6mfjq",
+   "emp": "Aura",
+   "ver": "V2",
+   "tipo": "DRE",
+   "arquivo": "INC - ALTA TENSÃO - DUE - v2.3 0426 107UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6mfjq",
+   "emp": "Aura",
+   "ver": "V2",
+   "tipo": "FLUXO",
+   "arquivo": "AURA - FLUXO.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6md41",
+   "emp": "Aura",
+   "ver": "V0",
+   "tipo": "DRE",
+   "arquivo": "DRE_AURA_COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6md41",
+   "emp": "Aura",
+   "ver": "V0",
+   "tipo": "FLUXO",
+   "arquivo": "FLXUO_AURA_COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6m58d",
+   "emp": "Arena",
+   "ver": "V0",
+   "tipo": "DRE",
+   "arquivo": "DRE_NN - ARENA - 162 UH - COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6m58d",
+   "emp": "Arena",
+   "ver": "V0",
+   "tipo": "FLUXO",
+   "arquivo": "FLUXO_ NN - ARENA - 162 UH - COMPRA.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6m4ae",
+   "emp": "Arbo",
+   "ver": "V4",
+   "tipo": "DRE",
+   "arquivo": "ARBO - DRE.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6m0ag",
+   "emp": "Alba",
+   "ver": "V2",
+   "tipo": "DRE",
+   "arquivo": "INC - ALBA - DUE - v03 0125 224UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6krf0",
+   "emp": "Al Nasser 2",
+   "ver": "V2",
+   "tipo": "DRE",
+   "arquivo": "AL NASSER 2 - DRE.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6krf0",
+   "emp": "Al Nasser 2",
+   "ver": "V2",
+   "tipo": "FLUXO",
+   "arquivo": "AL NASSER 2 - FLUXO.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6k3nw",
+   "emp": "Alba",
+   "ver": "V3",
+   "tipo": "DRE",
+   "arquivo": "INC - ALBA - DUE - v3.2 1125 224UH.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak6k3nw",
+   "emp": "Alba",
+   "ver": "V3",
+   "tipo": "FLUXO",
+   "arquivo": "ALBA - FLUXO.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak61afy",
+   "emp": "Al Nasser 1",
+   "ver": "V2",
+   "tipo": "DRE",
+   "arquivo": "AL NASSER 1 - DRE.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  },
+  {
+   "task_id": "86ak61afy",
+   "emp": "Al Nasser 1",
+   "ver": "V2",
+   "tipo": "FLUXO",
+   "arquivo": "AL NASSER 1 - FLUXO.xlsx",
+   "erro": "HTTP 401 ao baixar o anexo"
+  }
+ ]
 }
