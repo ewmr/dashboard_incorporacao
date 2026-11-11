@@ -47,6 +47,7 @@ for r in ROWS:
         "vgv_bruto": r.get("vgv_b"), "vgv_liquido": r.get("vgv_l"), "lucro": r.get("lucro"), "margem": r.get("margem"),
         "exposicao": r.get("expo"), "area_construida": r.get("area"), "area_privativa": r.get("area_privativa"), "area_terreno": r.get("area_terreno"),
         "unidades": r.get("unidades"), "permutas": r.get("permutas"), "preco_medio": r.get("preco"), "custo_m2": r.get("custo"),
+        "planilhas": r.get("planilhas", []),
     })
     # cadastro vindo do ClickUp (linha, cidade, endereço): vale o da versão mais recente
     k = (ordem.get(r["ver"], 0), mes(r) or "")
@@ -102,6 +103,8 @@ dados = {
              "variacoes": f"{MAR['snap_ant']} → {MAR['snap']}", "rotina": MAR.get("fonte", "")},
   "marco_nome": CAD["marco_nome"], "empreendimentos": out, "variacoes": variacoes,
   "listas_sem_cadastro": MAR.get("listas_sem_cadastro", []),
+  "planilhas_erros": (json.loads((RAIZ / "scripts" / "dados" / "planilhas_erros.json").read_text(encoding="utf-8"))
+                      if (RAIZ / "scripts" / "dados" / "planilhas_erros.json").exists() else []),
 }
 (RAIZ / "dados.json").write_text(json.dumps(dados, ensure_ascii=False, indent=1), encoding="utf-8")
 print(len(out), "empreendimentos ·", sum(len(e["viabilidades"]) for e in out), "viabilidades ·", len(variacoes), "variações")

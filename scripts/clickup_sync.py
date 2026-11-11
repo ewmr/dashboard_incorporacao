@@ -30,7 +30,9 @@ F = {  # campos da lista Controle de Viabilidades
   "situacao":"c5595233-1695-4d97-b5bc-4d982834e13f", "unidades":"ce96a927-0fea-41e8-a08e-c69673816184", "lucro":"d39cf368-9792-48a9-bba6-918d9548e4bb",
   "linha":"da749a5b-9a72-409c-8c94-071d2d9d356c", "empresa":"fc9a48bf-549c-4641-8b8d-ae2fbf1d8616",
   "area_privativa":"29154718-4a97-410c-ae8f-5cc832767138", "area_terreno":"5a47426d-acd4-4f28-a3e1-2838d1d36167",
+  "dre":"680c4801-87d1-40ab-acac-225113d5f8f7", "fluxo":"5f7ad38c-bc65-441b-8590-a357b4a63602",
 }
+VIAB_DIR = RAIZ / "viab"
 chamadas = 0
 
 def api(caminho, params=None):
@@ -71,6 +73,87 @@ def valor(t, fid):
         except Exception: return None
     return v
 
+def anexo(t, fid):
+    """Anexo mais recente de um campo do tipo arquivo (id, título, url)."""
+    c = campo(t, fid)
+    v = [a for a in (c or {}).get("value") or [] if isinstance(a, dict) and not a.get("deleted")]
+    if not v: return None
+    a = max(v, key=lambda a: int(a.get("date") or 0))
+    return {"id": a.get("id"), "titulo": a.get("title"), "url": a.get("url_w_host") or a.get("url")}
+
+class _SemRedirecionar(urllib.request.HTTPRedirectHandler):
+    def redirect_request(self, *a, **k): return None
+_abre = urllib.request.build_opener(_SemRedirecionar)
+
+def baixar(url):
+    """Baixa um anexo privado: o ClickUp redireciona para um gerador de token de acesso,
+    que aceita o token da API e devolve a url assinada (uso único)."""
+    def get(u, auth=True):
+        h = {"Authorization": TOKEN} if auth else {}
+        try:
+            with _abre.open(urllib.request.Request(u, headers=h), timeout=90) as r:
+                return r.status, dict(r.headers), r.read()
+        except urllib.error.HTTPError as e:
+            return e.code, dict(e.headers), e.read()
+    u = url
+    for _ in range(5):
+        st, hd, corpo = get(u)
+        if st == 200:
+            if corpo[:2] == b"PK": return corpo
+            try:
+                j = json.loads(corpo.decode())
+                nova = next((j[k] for k in ("url", "signed_url", "cf_url") if isinstance(j.get(k), str)), None)
+                tok = j.get("authz_token") or j.get("token")
+                if nova and "authz_token" in nova: u = nova; continue
+                if tok: u = url + ("&" if "?" in url else "?") + "authz_token=" + urllib.parse.quote(tok); continue
+            except Exception: pass
+            raise RuntimeError("resposta inesperada ao baixar o anexo")
+        if st in (301, 302, 303, 307, 308):
+            u = urllib.parse.urljoin(u, hd.get("Location") or hd.get("location") or ""); continue
+        raise RuntimeError(f"HTTP {st} ao baixar o anexo")
+    raise RuntimeError("redirecionamentos demais ao baixar o anexo")
+
+def planilhas(rows):
+    """Lê DRE e Fluxo anexados; só baixa o que mudou desde a última leitura."""
+    import tempfile
+    sys.path.insert(0, str(RAIZ / "scripts"))
+    from viab_arquivos import ler_dre, ler_fluxo
+    VIAB_DIR.mkdir(exist_ok=True)
+    cache_p = DADOS / "anexos.json"
+    cache = json.loads(cache_p.read_text(encoding="utf-8")) if cache_p.exists() else {}
+    erros, baixados = [], 0
+    for r in rows:
+        ax = r.pop("_anexos", {}) or {}
+        tid, c = r["task_id"], cache.get(r["task_id"], {})
+        destino = VIAB_DIR / f"{tid}.json"
+        atual = json.loads(destino.read_text(encoding="utf-8")) if destino.exists() else {}
+        mudou = False
+        for k, ler in (("dre", ler_dre), ("fluxo", ler_fluxo)):
+            a = ax.get(k)
+            if not a:
+                if k in atual: atual.pop(k); mudou = True
+                c.pop(k, None); continue
+            if c.get(k) == a["id"] and k in atual: continue
+            try:
+                with tempfile.NamedTemporaryFile(suffix=".xlsx") as tmp:
+                    tmp.write(baixar(a["url"])); tmp.flush(); baixados += 1
+                    atual[k] = {**ler(tmp.name), "arquivo": a["titulo"]}
+                c[k] = a["id"]; mudou = True
+            except Exception as e:
+                erros.append({"task_id": tid, "emp": r["emp"], "ver": r["ver"], "tipo": k.upper(), "arquivo": a["titulo"], "erro": str(e)[:160]})
+        cache[tid] = c
+        if mudou:
+            if atual: destino.write_text(json.dumps(atual, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+            elif destino.exists(): destino.unlink()
+        r["planilhas"] = sorted(k for k in ("dre", "fluxo") if k in atual)
+    vivos = {r["task_id"] for r in rows}
+    for f in VIAB_DIR.glob("*.json"):
+        if f.stem not in vivos: f.unlink()
+    cache_p.write_text(json.dumps({k: v for k, v in cache.items() if k in vivos}, ensure_ascii=False, indent=1), encoding="utf-8")
+    (DADOS / "planilhas_erros.json").write_text(json.dumps(erros, ensure_ascii=False, indent=1), encoding="utf-8")
+    print(f"Planilhas: {baixados} baixadas · {len(erros)} com problema")
+    for e in erros: print("  ·", e["emp"], e["ver"], e["tipo"], "-", e["erro"])
+
 def viabilidades(cad):
     alias = cad.get("alias_viabilidade", {})
     rows = []
@@ -92,6 +175,7 @@ def viabilidades(cad):
             "margem": mg / 100 if mg is not None else None, "expo": valor(t, F["expo"]), "preco": valor(t, F["preco"]), "custo": valor(t, F["custo"]),
             "situacao_cu": valor(t, F["situacao"]) or "", "linha": valor(t, F["linha"]), "cidade": valor(t, F["cidade"]),
             "incorporadora": valor(t, F["empresa"]),
+            "_anexos": {k: anexo(t, F[k]) for k in ("dre", "fluxo")},
             "endereco": loc.get("formatted_address"), "lat": (loc.get("location") or {}).get("lat"), "lng": (loc.get("location") or {}).get("lng"),
         })
     return rows
@@ -162,6 +246,7 @@ def main():
     cad = json.loads((DADOS / "cadastro.json").read_text(encoding="utf-8"))
     rows = viabilidades(cad)
     if not rows: raise SystemExit("A lista Controle de Viabilidades voltou vazia; nada foi alterado.")
+    planilhas(rows)
     M, listas, sem = marcos(cad)
     if sum(len(v) for v in M.values()) < 50: raise SystemExit("Poucos marcos lidos do ClickUp; nada foi alterado.")
     hoje = dt.datetime.now(TZ).date().isoformat()

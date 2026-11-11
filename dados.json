@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-10T21:47-03:00",
+ "gerado_em": "2026-11-10T22:12-03:00",
  "fontes": {
   "cronogramas": "Cronogramas do ClickUp em 2026-11-10",
   "viabilidades": "ClickUp · lista Controle de Viabilidades",
@@ -126,7 +126,8 @@
      "unidades": 238.0,
      "permutas": 0.0,
      "preco_medio": 392942.12,
-     "custo_m2": 2265.91
+     "custo_m2": 2265.91,
+     "planilhas": []
     },
     {
      "versao": "V2",
@@ -145,7 +146,8 @@
      "unidades": 256.0,
      "permutas": 0.0,
      "preco_medio": 379889.0,
-     "custo_m2": 2340.0
+     "custo_m2": 2340.0,
+     "planilhas": []
     }
    ],
    "foto": null,
@@ -256,7 +258,8 @@
      "unidades": 199.0,
      "permutas": 0.0,
      "preco_medio": 374473.22,
-     "custo_m2": 2463.27
+     "custo_m2": 2463.27,
+     "planilhas": []
     },
     {
      "versao": "V2",
@@ -275,7 +278,8 @@
      "unidades": 230.0,
      "permutas": 0.0,
      "preco_medio": 374095.0,
-     "custo_m2": 2395.0
+     "custo_m2": 2395.0,
+     "planilhas": []
     }
    ],
    "foto": null,
@@ -386,7 +390,8 @@
      "unidades": 224.0,
      "permutas": 30.0,
      "preco_medio": 235000.0,
-     "custo_m2": 1948.0
+     "custo_m2": 1948.0,
+     "planilhas": []
     },
     {
      "versao": "V3",
@@ -405,7 +410,8 @@
      "unidades": 224.0,
      "permutas": 30.0,
      "preco_medio": 275000.0,
-     "custo_m2": 2243.0
+     "custo_m2": 2243.0,
+     "planilhas": []
     }
    ],
    "foto": null,
@@ -508,10 +514,11 @@
      "unidades": 80.0,
      "permutas": 0.0,
      "preco_medio": 286863.0,
-     "custo_m2": 2227.0
+     "custo_m2": 2227.0,
+     "planilhas": []
     }
    ],
-   "foto": "img/emp/ARB.webp?v=1794358046",
+   "foto": "img/emp/ARB.webp?v=1793932034",
    "pos": [
     -25.4410477,
     -49.1746432
@@ -619,7 +626,8 @@
      "unidades": 162.0,
      "permutas": 12.0,
      "preco_medio": 338000.0,
-     "custo_m2": 2438.0
+     "custo_m2": 2438.0,
+     "planilhas": []
     },
     {
      "versao": "V2",
@@ -638,7 +646,8 @@
      "unidades": 178.0,
      "permutas": 12.0,
      "preco_medio": 370000.0,
-     "custo_m2": 2616.0
+     "custo_m2": 2616.0,
+     "planilhas": []
     }
    ],
    "foto": null,
@@ -749,7 +758,8 @@
      "unidades": 108.0,
      "permutas": 17.0,
      "preco_medio": 290000.0,
-     "custo_m2": 2472.0
+     "custo_m2": 2472.0,
+     "planilhas": []
     },
     {
      "versao": "V2",
@@ -768,7 +778,8 @@
      "unidades": 107.0,
      "permutas": 18.0,
      "preco_medio": 300000.0,
-     "custo_m2": 2539.0
+     "custo_m2": 2539.0,
+     "planilhas": []
     }
    ],
    "foto": null,
@@ -863,10 +874,11 @@
      "unidades": 128.0,
      "permutas": 0.0,
      "preco_medio": 245000.0,
-     "custo_m2": 2057.0
+     "custo_m2": 2057.0,
+     "planilhas": []
     }
    ],
-   "foto": "img/emp/BRA.webp?v=1794358046",
+   "foto": "img/emp/BRA.webp?v=1793932035",
    "pos": [
     -25.4354881,
     -49.1536968
@@ -914,7 +926,8 @@
      "unidades": 288.0,
      "permutas": 0.0,
      "preco_medio": 299427.0,
-     "custo_m2": 2381.0
+     "custo_m2": 2381.0,
+     "planilhas": []
     }
    ],
    "foto": null,
@@ -1025,7 +1038,8 @@
      "unidades": 372.0,
      "permutas": 56.0,
      "preco_medio": 270000.0,
-     "custo_m2": 1800.0
+     "custo_m2": 1800.0,
+     "planilhas": []
     },
     {
      "versao": "V2",
@@ -1044,7 +1058,8 @@
      "unidades": 432.0,
      "permutas": 56.0,
      "preco_medio": 270000.0,
-     "custo_m2": 1877.0
+     "custo_m2": 1877.0,
+     "planilhas": []
     },
     {
      "versao": "V4",
@@ -1063,10 +1078,11 @@
      "unidades": 432.0,
      "permutas": 25.0,
      "preco_medio": 383005.19,
-     "custo_m2": 2333.98
+     "custo_m2": 2333.98,
+     "planilhas": []
     }
    ],
-   "foto": "img/emp/EDG.webp?v=1794358046",
+   "foto": "img/emp/EDG.webp?v=1793932037",
    "pos": [
     -25.5142276,
     -49.1998346
@@ -1174,7 +1190,8 @@
      "unidades": 216.0,
      "permutas": 25.0,
      "preco_medio": 340366.0,
-     "custo_m2": 2000.0
+     "custo_m2": 2000.0,
+     "planilhas": []
     },
     {
      "versao": "V2",
@@ -1193,7 +1210,8 @@
      "unidades": 256.0,
      "permutas": 25.0,
      "preco_medio": 347619.0,
-     "custo_m2": 2080.0
+     "custo_m2": 2080.0,
+     "planilhas": []
     },
     {
      "versao": "V4",
@@ -1212,10 +1230,11 @@
      "unidades": 256.0,
      "permutas": 0.0,
      "preco_medio": 390641.0,
-     "custo_m2": 2274.0
+     "custo_m2": 2274.0,
+     "planilhas": []
     }
    ],
-   "foto": "img/emp/ESS.webp?v=1794358046",
+   "foto": "img/emp/ESS.webp?v=1793932038",
    "pos": [
     -25.4953495,
     -49.3036737
@@ -1319,7 +1338,8 @@
      "unidades": 192.0,
      "permutas": 0.0,
      "preco_medio": 230000.0,
-     "custo_m2": 1800.0
+     "custo_m2": 1800.0,
+     "planilhas": []
     },
     {
      "versao": "V2",
@@ -1338,7 +1358,8 @@
      "unidades": 256.0,
      "permutas": 0.0,
      "preco_medio": 235000.0,
-     "custo_m2": 1919.0
+     "custo_m2": 1919.0,
+     "planilhas": []
     },
     {
      "versao": "V4",
@@ -1357,10 +1378,11 @@
      "unidades": 256.0,
      "permutas": 0.0,
      "preco_medio": 280000.0,
-     "custo_m2": 2405.0
+     "custo_m2": 2405.0,
+     "planilhas": []
     }
    ],
-   "foto": "img/emp/FLO.webp?v=1794358046",
+   "foto": "img/emp/FLO.webp?v=1793932038",
    "pos": [
     -25.5489358,
     -49.40128
@@ -1468,7 +1490,8 @@
      "unidades": 300.0,
      "permutas": 0.0,
      "preco_medio": 257529.0,
-     "custo_m2": 2537.0
+     "custo_m2": 2537.0,
+     "planilhas": []
     },
     {
      "versao": "V1",
@@ -1487,7 +1510,8 @@
      "unidades": 239.0,
      "permutas": 0.0,
      "preco_medio": 297280.0,
-     "custo_m2": 2674.0
+     "custo_m2": 2674.0,
+     "planilhas": []
     },
     {
      "versao": "V2",
@@ -1506,7 +1530,8 @@
      "unidades": 239.0,
      "permutas": 0.0,
      "preco_medio": 296486.0,
-     "custo_m2": 2684.0
+     "custo_m2": 2684.0,
+     "planilhas": []
     }
    ],
    "foto": null,
@@ -1621,7 +1646,8 @@
      "unidades": 144.0,
      "permutas": 16.0,
      "preco_medio": 240000.0,
-     "custo_m2": 1846.0
+     "custo_m2": 1846.0,
+     "planilhas": []
     },
     {
      "versao": "V2",
@@ -1640,7 +1666,8 @@
      "unidades": 144.0,
      "permutas": 16.0,
      "preco_medio": 286000.0,
-     "custo_m2": 2300.0
+     "custo_m2": 2300.0,
+     "planilhas": []
     },
     {
      "versao": "V4",
@@ -1659,10 +1686,11 @@
      "unidades": 144.0,
      "permutas": 16.0,
      "preco_medio": 374089.0,
-     "custo_m2": 2715.0
+     "custo_m2": 2715.0,
+     "planilhas": []
     }
    ],
-   "foto": "img/emp/HOR.webp?v=1794358046",
+   "foto": "img/emp/HOR.webp?v=1793932038",
    "pos": [
     -25.4329207,
     -49.1546814
@@ -1770,10 +1798,11 @@
      "unidades": 380.0,
      "permutas": 0.0,
      "preco_medio": 295253.0,
-     "custo_m2": 1900.0
+     "custo_m2": 1900.0,
+     "planilhas": []
     }
    ],
-   "foto": "img/emp/LUM.webp?v=1794358046",
+   "foto": "img/emp/LUM.webp?v=1793932040",
    "pos": [
     -25.3984744,
     -49.1925418
@@ -1881,7 +1910,8 @@
      "unidades": 144.0,
      "permutas": 0.0,
      "preco_medio": 230000.0,
-     "custo_m2": 1800.0
+     "custo_m2": 1800.0,
+     "planilhas": []
     },
     {
      "versao": "V2",
@@ -1900,7 +1930,8 @@
      "unidades": 192.0,
      "permutas": 0.0,
      "preco_medio": 235000.0,
-     "custo_m2": 1900.0
+     "custo_m2": 1900.0,
+     "planilhas": []
     },
     {
      "versao": "V4",
@@ -1919,10 +1950,11 @@
      "unidades": 192.0,
      "permutas": 0.0,
      "preco_medio": 279981.0,
-     "custo_m2": 2459.46
+     "custo_m2": 2459.46,
+     "planilhas": []
     }
    ],
-   "foto": "img/emp/NOW.webp?v=1794358046",
+   "foto": "img/emp/NOW.webp?v=1793932041",
    "pos": [
     -25.5489358,
     -49.40128
@@ -2018,7 +2050,8 @@
      "unidades": 256.0,
      "permutas": 0.0,
      "preco_medio": 371914.0,
-     "custo_m2": 2600.0
+     "custo_m2": 2600.0,
+     "planilhas": []
     }
    ],
    "foto": null,
@@ -2125,7 +2158,8 @@
      "unidades": 300.0,
      "permutas": 0.0,
      "preco_medio": 350000.0,
-     "custo_m2": 2397.0
+     "custo_m2": 2397.0,
+     "planilhas": []
     },
     {
      "versao": "V2",
@@ -2144,7 +2178,8 @@
      "unidades": 300.0,
      "permutas": 0.0,
      "preco_medio": 350000.0,
-     "custo_m2": 2659.0
+     "custo_m2": 2659.0,
+     "planilhas": []
     }
    ],
    "foto": null,
@@ -2247,10 +2282,11 @@
      "unidades": 112.0,
      "permutas": 0.0,
      "preco_medio": 259168.0,
-     "custo_m2": 2400.0
+     "custo_m2": 2400.0,
+     "planilhas": []
     }
    ],
-   "foto": "img/emp/UNI.webp?v=1794358046",
+   "foto": "img/emp/UNI.webp?v=1793932041",
    "pos": [
     -25.4323214,
     -49.1570482
@@ -2358,7 +2394,8 @@
      "unidades": 256.0,
      "permutas": 17.0,
      "preco_medio": 290000.0,
-     "custo_m2": 2150.0
+     "custo_m2": 2150.0,
+     "planilhas": []
     },
     {
      "versao": "V2",
@@ -2377,7 +2414,8 @@
      "unidades": 256.0,
      "permutas": 17.0,
      "preco_medio": 310000.0,
-     "custo_m2": 2326.0
+     "custo_m2": 2326.0,
+     "planilhas": []
     },
     {
      "versao": "V3",
@@ -2396,7 +2434,8 @@
      "unidades": 256.0,
      "permutas": 17.0,
      "preco_medio": 325000.0,
-     "custo_m2": 2575.0
+     "custo_m2": 2575.0,
+     "planilhas": []
     }
    ],
    "foto": null,
@@ -2507,7 +2546,8 @@
      "unidades": 176.0,
      "permutas": 21.0,
      "preco_medio": 300000.0,
-     "custo_m2": 2333.0
+     "custo_m2": 2333.0,
+     "planilhas": []
     },
     {
      "versao": "V2",
@@ -2526,7 +2566,8 @@
      "unidades": 208.0,
      "permutas": 21.0,
      "preco_medio": 320000.0,
-     "custo_m2": 2491.0
+     "custo_m2": 2491.0,
+     "planilhas": []
     }
    ],
    "foto": null,
@@ -2621,10 +2662,11 @@
      "unidades": 208.0,
      "permutas": 0.0,
      "preco_medio": 235000.0,
-     "custo_m2": 1675.75
+     "custo_m2": 1675.75,
+     "planilhas": []
     }
    ],
-   "foto": "img/emp/TUO.webp?v=1794358046",
+   "foto": "img/emp/TUO.webp?v=1793932041",
    "pos": [
     -25.4425723,
     -49.1753849
@@ -2704,10 +2746,11 @@
      "unidades": 96.0,
      "permutas": 13.0,
      "preco_medio": 230657.21,
-     "custo_m2": 1822.68
+     "custo_m2": 1822.68,
+     "planilhas": []
     }
    ],
-   "foto": "img/emp/LAV.webp?v=1794358046",
+   "foto": "img/emp/LAV.webp?v=1793932039",
    "pos": [
     -25.4497453,
     -49.1729818
@@ -2803,7 +2846,8 @@
      "unidades": 400.0,
      "permutas": 0.0,
      "preco_medio": 207000.0,
-     "custo_m2": 3500.0
+     "custo_m2": 3500.0,
+     "planilhas": []
     },
     {
      "versao": "V2",
@@ -2822,7 +2866,8 @@
      "unidades": 419.0,
      "permutas": 0.0,
      "preco_medio": 324304.0,
-     "custo_m2": 3800.0
+     "custo_m2": 3800.0,
+     "planilhas": []
     }
    ],
    "foto": null,
@@ -2921,7 +2966,8 @@
      "unidades": 319.0,
      "permutas": 47.0,
      "preco_medio": 340822.0,
-     "custo_m2": 3700.0
+     "custo_m2": 3700.0,
+     "planilhas": []
     },
     {
      "versao": "V3",
@@ -2940,10 +2986,11 @@
      "unidades": 357.0,
      "permutas": 47.0,
      "preco_medio": 360360.0,
-     "custo_m2": 3700.0
+     "custo_m2": 3700.0,
+     "planilhas": []
     }
    ],
-   "foto": "img/emp/EVO.webp?v=1794358046",
+   "foto": "img/emp/EVO.webp?v=1793932036",
    "pos": [
     -25.4357511,
     -49.2643965
@@ -3039,7 +3086,8 @@
      "unidades": 116.0,
      "permutas": 0.0,
      "preco_medio": 430912.0,
-     "custo_m2": 3800.0
+     "custo_m2": 3800.0,
+     "planilhas": []
     }
    ],
    "foto": null,
@@ -3130,10 +3178,11 @@
      "unidades": 163.0,
      "permutas": 0.0,
      "preco_medio": 459674.0,
-     "custo_m2": 3854.0
+     "custo_m2": 3854.0,
+     "planilhas": []
     }
    ],
-   "foto": "img/emp/LAG.webp?v=1794358046",
+   "foto": "img/emp/LAG.webp?v=1793932039",
    "pos": [
     -25.4290514,
     -49.2604248
@@ -3217,10 +3266,11 @@
      "unidades": 176.0,
      "permutas": 35.0,
      "preco_medio": 485010.0,
-     "custo_m2": 3700.0
+     "custo_m2": 3700.0,
+     "planilhas": []
     }
    ],
-   "foto": "img/emp/LBA.webp?v=1794358046",
+   "foto": "img/emp/LBA.webp?v=1793932039",
    "pos": [
     -25.4323799,
     -49.3009102
@@ -3259,10 +3309,11 @@
      "unidades": 73.0,
      "permutas": 5.0,
      "preco_medio": 652995.0,
-     "custo_m2": 2617.0
+     "custo_m2": 2617.0,
+     "planilhas": []
     }
    ],
-   "foto": "img/emp/ARS.webp?v=1794358046",
+   "foto": "img/emp/ARS.webp?v=1793932035",
    "pos": [
     -25.4177013,
     -49.2538417
@@ -3301,10 +3352,11 @@
      "unidades": 240.0,
      "permutas": 55.0,
      "preco_medio": 303349.25,
-     "custo_m2": 2874.43
+     "custo_m2": 2874.43,
+     "planilhas": []
     }
    ],
-   "foto": "img/emp/MOR.webp?v=1794358046",
+   "foto": "img/emp/MOR.webp?v=1793932040",
    "pos": [
     -25.4342993,
     -49.2677559
@@ -3343,10 +3395,11 @@
      "unidades": 238.0,
      "permutas": 38.0,
      "preco_medio": 274650.0,
-     "custo_m2": 3200.0
+     "custo_m2": 3200.0,
+     "planilhas": []
     }
    ],
-   "foto": "img/emp/CFV.webp?v=1794358046",
+   "foto": "img/emp/CFV.webp?v=1793932036",
    "pos": [
     -25.4326781,
     -49.2595769
@@ -3385,10 +3438,11 @@
      "unidades": 479.0,
      "permutas": 0.0,
      "preco_medio": 350952.2,
-     "custo_m2": 3309.13
+     "custo_m2": 3309.13,
+     "planilhas": []
     }
    ],
-   "foto": "img/emp/CPL.webp?v=1794358046",
+   "foto": "img/emp/CPL.webp?v=1793932036",
    "pos": [
     -25.4343232,
     -49.2682051
@@ -3427,10 +3481,11 @@
      "unidades": 241.0,
      "permutas": 21.0,
      "preco_medio": 342490.0,
-     "custo_m2": 3799.91
+     "custo_m2": 3799.91,
+     "planilhas": []
     }
    ],
-   "foto": "img/emp/CSJ.webp?v=1794358046",
+   "foto": "img/emp/CSJ.webp?v=1793932037",
    "pos": [
     -25.4407366,
     -49.2713291
@@ -3558,5 +3613,6 @@
    "dias": -31
   }
  ],
- "listas_sem_cadastro": []
+ "listas_sem_cadastro": [],
+ "planilhas_erros": []
 }
