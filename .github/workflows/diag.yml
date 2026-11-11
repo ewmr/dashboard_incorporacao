@@ -1,0 +1,9 @@
+name: Diagnóstico de anexos (temporário)
+on: { workflow_dispatch: {} }
+jobs:
+  d:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - env: { CLICKUP_TOKEN: "${{ secrets.CLICKUP_TOKEN }}" }
+        run: python3 scripts/diag_anexo.py
