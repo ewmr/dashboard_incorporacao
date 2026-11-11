@@ -707,3 +707,15 @@ table.dre-c .bb.neg{background:var(--red-ink);opacity:.6}
 .fx-h{margin:18px 0 8px;font-size:.95rem}
 #expBody table.t tr.on td{background:var(--accent-tint)}
 #flxExp{flex:none}
+/* janelas: o corpo rola inteiro, nada encolhe */
+.sh-b{min-height:0}
+.sh-b>*{flex-shrink:0}
+/* números da viabilidade */
+.vb-dest{display:flex;align-items:center;gap:14px;margin:8px 0 10px;flex-wrap:wrap}
+.vb-dest .vb-ef span{line-height:1.3}
+.vb-tk{flex:1;min-width:180px;background:var(--fill);border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:2px}
+.vb-tk span{font-size:.72rem;color:var(--label-2);font-weight:600}
+.vb-tk b{font:700 1.4rem var(--font-r);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.vb-tk small{font-size:.7rem;color:var(--label-3)}
+.vb-num .ph-full.um{grid-template-columns:1fr;padding:0 2px}
+.vb-num .ph-full.um div{padding:7px 0}
