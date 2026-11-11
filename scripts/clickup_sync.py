@@ -104,7 +104,7 @@ def planilhas(rows):
     """Lê DRE e Fluxo anexados; só baixa o que mudou desde a última leitura."""
     import tempfile
     sys.path.insert(0, str(RAIZ / "scripts"))
-    from viab_arquivos import ler_dre, ler_fluxo
+    from viab_arquivos import ler_dre, ler_fluxo, VERSAO_LEITOR
     VIAB_DIR.mkdir(exist_ok=True)
     cache_p = DADOS / "anexos.json"
     cache = json.loads(cache_p.read_text(encoding="utf-8")) if cache_p.exists() else {}
@@ -120,7 +120,7 @@ def planilhas(rows):
             if not a:
                 if k in atual: atual.pop(k); mudou = True
                 c.pop(k, None); continue
-            if c.get(k) == a["id"] and k in atual: continue
+            if c.get(k) == a["id"] and k in atual and atual[k].get("leitor") == VERSAO_LEITOR: continue
             try:
                 if k not in assin: assin[k] = urls_assinadas(F[k])
                 url = assin[k].get(a["id"])

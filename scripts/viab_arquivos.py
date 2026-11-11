@@ -11,6 +11,9 @@ realizado e a realizar: viabilidade é previsão, só o total importa.
 import datetime as _dt
 import openpyxl
 
+# muda quando o leitor passa a extrair algo novo: a rotina relê os arquivos já baixados
+VERSAO_LEITOR = 2
+
 # grupos que encerram/abrem blocos da cascata
 SUBTOTAIS = {"Receita Bruta", "Receita Líquida", "Resultado Bruto", "EBITDA",
              "Resultado Operacional", "Saldo"}
@@ -92,7 +95,7 @@ def ler_dre(caminho):
             atual["linhas"].append({"nome": c, "valor": tot})
     if not grupos or grupos[0]["nome"] != "Receita Bruta":
         raise ValueError("estrutura da DRE não reconhecida")
-    return {"grupos": grupos, "area_privativa": area_priv, "area_terreno": area_terr}
+    return {"grupos": grupos, "area_privativa": area_priv, "area_terreno": area_terr, "leitor": VERSAO_LEITOR}
 
 
 def ler_fluxo(caminho):
@@ -127,9 +130,14 @@ def ler_fluxo(caminho):
     # recorta meses vazios no início e no fim
     ativos = [i for i in range(len(meses)) if E[i] or S[i] or J[i]]
     a, b = (ativos[0], ativos[-1]) if ativos else (0, len(meses) - 1)
-    eventos = []
+    eventos, vp = [], {}
     f = _aba(wb, "Fluxo")
     if f is not None:
+        cab = [_txt(x) for x in next(f.iter_rows(min_row=7, max_row=7, values_only=True))]
+        cVP = cab.index("Saldo a VP Acumulado") if "Saldo a VP Acumulado" in cab else None
+        for r in f.iter_rows(min_row=15, values_only=True):
+            if cVP is not None and isinstance(r[1], (_dt.datetime, _dt.date)) and isinstance(r[cVP], (int, float)):
+                vp[r[1].strftime("%Y-%m")] = r[cVP]
         for r in f.iter_rows(min_row=15, max_col=3, values_only=True):
             d, ev = r[1], _txt(r[2])
             if ev and isinstance(d, (_dt.datetime, _dt.date)):
@@ -144,11 +152,23 @@ def ler_fluxo(caminho):
         "juros": J[a:b + 1],
         "saldo": [round(x) for x in sal[a:b + 1]],
     }
+    # saldo acumulado a valor presente (é dele que sai a exposição máxima dos indicadores da DRE)
+    if vp:
+        ult = 0
+        serie["saldo_vp"] = []
+        for m in serie["meses"]:
+            ult = vp.get(m, ult); serie["saldo_vp"].append(round(ult))
     s = serie["saldo"]
     imin = min(range(len(s)), key=lambda i: s[i])
     pos = next((i for i in range(imin, len(s)) if s[i] >= 0), None)
+    expo_vp = None
+    if serie.get("saldo_vp"):
+        sv = serie["saldo_vp"]; j = min(range(len(sv)), key=lambda i: sv[i])
+        expo_vp = {"valor": sv[j], "mes": serie["meses"][j]}
     return {
         **serie,
+        "leitor": VERSAO_LEITOR,
+        "exposicao_vp": expo_vp,
         "eventos": eventos,
         "exposicao": {"valor": s[imin], "mes": serie["meses"][imin]},
         "payback": serie["meses"][pos] if pos is not None else None,
