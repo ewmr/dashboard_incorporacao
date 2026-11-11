@@ -37,7 +37,8 @@ chamadas = 0
 
 def api(caminho, params=None):
     global chamadas
-    url = "https://api.clickup.com/api/v2/" + caminho + ("?" + urllib.parse.urlencode(params, doseq=True) if params else "")
+    base = "https://api.clickup.com/api/" + ("" if caminho.startswith("v3/") else "v2/")
+    url = base + caminho + ("?" + urllib.parse.urlencode(params, doseq=True) if params else "")
     for tentativa in range(4):
         req = urllib.request.Request(url, headers={"Authorization": TOKEN, "Content-Type": "application/json"})
         try:
@@ -81,37 +82,23 @@ def anexo(t, fid):
     a = max(v, key=lambda a: int(a.get("date") or 0))
     return {"id": a.get("id"), "titulo": a.get("title"), "url": a.get("url_w_host") or a.get("url")}
 
-class _SemRedirecionar(urllib.request.HTTPRedirectHandler):
-    def redirect_request(self, *a, **k): return None
-_abre = urllib.request.build_opener(_SemRedirecionar)
+def urls_assinadas(fid):
+    """Lista os arquivos de um campo do tipo arquivo (API v3): devolve id -> url assinada.
+    Uma ou duas chamadas por campo, em vez de uma por arquivo."""
+    out, cur = {}, None
+    for _ in range(20):
+        p = {"limit": 100, **({"cursor": cur} if cur else {})}
+        d = api(f"v3/workspaces/{TEAM}/custom_fields/{fid}/attachments", p)
+        for a in d.get("data") or []: out[a.get("id")] = a.get("url")
+        cur = d.get("next_cursor")
+        if not cur or not d.get("data"): break
+    return out
 
 def baixar(url):
-    """Baixa um anexo privado: o ClickUp redireciona para um gerador de token de acesso,
-    que aceita o token da API e devolve a url assinada (uso único)."""
-    def get(u, auth=True):
-        h = {"Authorization": TOKEN} if auth else {}
-        try:
-            with _abre.open(urllib.request.Request(u, headers=h), timeout=90) as r:
-                return r.status, dict(r.headers), r.read()
-        except urllib.error.HTTPError as e:
-            return e.code, dict(e.headers), e.read()
-    u = url
-    for _ in range(5):
-        st, hd, corpo = get(u)
-        if st == 200:
-            if corpo[:2] == b"PK": return corpo
-            try:
-                j = json.loads(corpo.decode())
-                nova = next((j[k] for k in ("url", "signed_url", "cf_url") if isinstance(j.get(k), str)), None)
-                tok = j.get("authz_token") or j.get("token")
-                if nova and "authz_token" in nova: u = nova; continue
-                if tok: u = url + ("&" if "?" in url else "?") + "authz_token=" + urllib.parse.quote(tok); continue
-            except Exception: pass
-            raise RuntimeError("resposta inesperada ao baixar o anexo")
-        if st in (301, 302, 303, 307, 308):
-            u = urllib.parse.urljoin(u, hd.get("Location") or hd.get("location") or ""); continue
-        raise RuntimeError(f"HTTP {st} ao baixar o anexo")
-    raise RuntimeError("redirecionamentos demais ao baixar o anexo")
+    with urllib.request.urlopen(urllib.request.Request(url), timeout=90) as r:
+        corpo = r.read()
+    if corpo[:2] != b"PK": raise RuntimeError("o arquivo baixado não é uma planilha .xlsx")
+    return corpo
 
 def planilhas(rows):
     """Lê DRE e Fluxo anexados; só baixa o que mudou desde a última leitura."""
@@ -121,7 +108,7 @@ def planilhas(rows):
     VIAB_DIR.mkdir(exist_ok=True)
     cache_p = DADOS / "anexos.json"
     cache = json.loads(cache_p.read_text(encoding="utf-8")) if cache_p.exists() else {}
-    erros, baixados = [], 0
+    erros, baixados, assin = [], 0, {}
     for r in rows:
         ax = r.pop("_anexos", {}) or {}
         tid, c = r["task_id"], cache.get(r["task_id"], {})
@@ -135,8 +122,11 @@ def planilhas(rows):
                 c.pop(k, None); continue
             if c.get(k) == a["id"] and k in atual: continue
             try:
+                if k not in assin: assin[k] = urls_assinadas(F[k])
+                url = assin[k].get(a["id"])
+                if not url: raise RuntimeError("arquivo não encontrado na lista de anexos do campo")
                 with tempfile.NamedTemporaryFile(suffix=".xlsx") as tmp:
-                    tmp.write(baixar(a["url"])); tmp.flush(); baixados += 1
+                    tmp.write(baixar(url)); tmp.flush(); baixados += 1
                     atual[k] = {**ler(tmp.name), "arquivo": a["titulo"]}
                 c[k] = a["id"]; mudou = True
             except Exception as e:
