@@ -55,6 +55,7 @@ const MIN_AMOSTRA = 2;
 const INCS = [["all","Consolidado"],["Make It","Make It"],["Gadens","Gadens"]];
 
 const CHANGELOG = [
+  {v:"0.10", d:"2026-11-11", itens:["Página Cronograma: Portfólio macro em Gantt (fases, Assinatura PJ e Entrega em contrato), Régua de lançamentos por ano com a meta de VGV, Agenda de marcos dos próximos 90 dias, Prazo de financiamento e o cronograma de cada empreendimento em escala de tempo.","Prazo de financiamento = meses entre o Lançamento Comercial e a Entrega em Contrato (inc003); as Pendências listam quem ainda não tem a Entrega em Contrato."]},
   {v:"0.9.2", d:"2026-11-10", itens:["O card de produto virou Números da versão: eficiência e ticket médio em destaque e, abaixo, todos os indicadores da viabilidade (substitui a lista recolhida).","Janelas rolam por inteiro: o resumo por ano do fluxo detalhado fica legível."]},
   {v:"0.9.1", d:"2026-11-10", itens:["Fluxo de caixa marca o mês em que o estudo foi elaborado (no lugar de hoje); o período anterior fica em cinza.","Card do fluxo mais limpo, com botão Fluxo detalhado: curva nominal e a valor presente, eventos, entradas e saídas do mês e resumo por ano.","Exposição máxima a valor presente, igual aos indicadores da DRE e ao ClickUp.","Botão que abre a tarefa da viabilidade no ClickUp, para acessar a DRE e o Fluxo."]},
   {v:"0.9", d:"2026-11-10", itens:["Viabilidade lê a DRE e o Fluxo anexados em cada versão no ClickUp (a rotina diária baixa só o que mudou).","Do VGV ao lucro pela DRE, grupo a grupo, com o % do VGV; ao passar o mouse, todas as linhas do grupo.","Fluxo de caixa: saldo acumulado com exposição máxima, mês em que o saldo fica positivo e eventos; entradas e saídas de cada mês.","DRE comparada entre versões, grupo a grupo, em % do VGV.","Pendências listam viabilidades vigentes sem DRE ou Fluxo anexados."]},
@@ -790,6 +791,7 @@ function pendencias(){
   add("Área privativa ou área do terreno não preenchidas na viabilidade vigente", B.filter(e=>vig(e)&&(vig(e).area_privativa==null||vig(e).area_terreno==null)).map(e=>e.nome));
   add("Cronogramas do ClickUp sem empreendimento no cadastro do dashboard", D.listas_sem_cadastro||[]);
   add("Viabilidade vigente sem DRE ou Fluxo anexados no ClickUp", B.filter(e=>vig(e)&&!((vig(e).planilhas||[]).length===2)).map(e=>`${e.nome} ${vig(e).versao}${temPl(vig(e),"dre")?" (falta o Fluxo)":temPl(vig(e),"fluxo")?" (falta a DRE)":""}`));
+  add("Lançamento previsto sem Entrega em Contrato (inc003) no cronograma", B.filter(e=>!e.legado&&ativa(e)&&e.marcos.inc002&&!e.marcos.inc003).map(e=>e.nome));
   add("Planilhas anexadas que não puderam ser lidas", (D.planilhas_erros||[]).map(x=>`${x.emp} ${x.ver} · ${x.tipo} (${x.erro})`));
   add("Endereço não preenchido no ClickUp (posição aproximada no mapa)", B.filter(e=>!e.legado&&e.pos_fonte!=="clickup").map(e=>e.nome));
   return out;
@@ -810,10 +812,6 @@ function abreFolha(id){ ["setSheet","expSheet"].forEach(s=>$(s).hidden = s!==id)
 /* =========================================================
    OUTRAS PÁGINAS (prévias)
    ========================================================= */
-function renderLaunches(){
-  const its = filtrados().filter(e=>lanc(e)&&!lanc(e).ok).sort((a,b)=>lanc(a).data.localeCompare(lanc(b).data));
-  $("launchList").innerHTML = `<div class="tbl-wrap"><table class="t"><thead><tr><th>Empreendimento</th><th>Cidade</th><th>Fase</th><th>Registro de Incorporação</th><th>Orçamento V4</th><th>Lançamento previsto</th><th class="n">VGV bruto</th></tr></thead><tbody>${its.map(e=>`<tr><td><span class="tagc" style="--c:${corDe(e)}">${esc(e.nome)}</span></td><td>${esc(e.cidade)}</td><td>${esc(faseNome(e))}</td><td>${e.marcos.leg010?dmy(e.marcos.leg010.data):"—"}</td><td>${e.marcos.orcV4?dmy(e.marcos.orcV4.data):"—"}</td><td><b>${dmy(lanc(e).data)}</b></td><td class="n">${brl(vig(e)?.vgv_bruto)}</td></tr>`).join("")}</tbody></table></div>`;
-}
 function renderVariacoes(){
   $("varNote").textContent = D.fontes.variacoes.split(" → ").map(dmy).join(" → ");
   const ok = new Set(filtrados().map(e=>e.sigla)), vs = D.variacoes.filter(v=>ok.has(v.sigla));
@@ -1177,6 +1175,7 @@ function route(){
   document.querySelectorAll(".page").forEach(s=>s.hidden = s.dataset.page!==p);
   document.querySelectorAll("#nav .ni").forEach(a=>{ a.classList.toggle("on", a.dataset.p===p); a.toggleAttribute("aria-current", a.dataset.p===p); });
   document.documentElement.classList.toggle("no-scroll", p==="mapa");
+  if (p==="cronograma" && typeof renderCrono==="function") requestAnimationFrame(renderCrono);
   if (p==="mapa"){ setTimeout(()=>{ iniciaMapaPagina(); const e=D.empreendimentos.find(x=>x.sigla===S.mapSel); renderMapaPagina(); if (e && full.loaded()) MP.voa3d(full, e.pos, {padding:PADF()}); marca3d(); }, 30); }
   if (p==="resumo" && mini) setTimeout(()=>mini.resize(),60);
 }
@@ -1192,7 +1191,7 @@ function renderAll(){
   document.documentElement.dataset.inc = S.inc;
   renderFilterPop(); renderCoPop();
   renderKpis(); renderTraj(); renderDonut(); renderMap(); renderSaude(); renderMarcos(); renderData();
-  renderLaunches(); renderVariacoes(); renderViab();
+  if (typeof renderCrono==="function") renderCrono(); renderVariacoes(); renderViab();
   if (!$("setSheet").hidden) renderSettings();
 }
 function renderData(){
@@ -1232,7 +1231,7 @@ function init(){
   addEventListener("keydown", e=>{ if (e.key==="Escape"){ abreFolha(null); fechaPops(); } });
   addEventListener("hashchange", route);
   addEventListener("scroll", hideTip, {passive:true});
-  let rt; addEventListener("resize", ()=>{ clearTimeout(rt); rt=setTimeout(()=>{ renderTraj(); renderSaude(); renderViabPagina(); }, 150); });
+  let rt; addEventListener("resize", ()=>{ clearTimeout(rt); rt=setTimeout(()=>{ renderTraj(); renderSaude(); renderViabPagina(); if (paginaAtual==="cronograma") renderCrono(); }, 150); });
   route(); renderAll();
 }
 
