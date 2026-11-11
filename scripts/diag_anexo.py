@@ -12,10 +12,16 @@ def t(nome,u,h,m="GET",body=None):
     loc=hd.get("Location") or hd.get("location") or ""
     print(f"[{nome}] {st} ct={hd.get('Content-Type')} loc={mask(loc)[:160]} body={mask(b[:300].decode('utf-8','replace')) if b[:2]!=b'PK' else 'XLSX '+str(len(b))}")
     return st,hd,b
-A={"Authorization":T}; B={"Authorization":"Bearer "+T}
-t("A anexo+token",U,A)
-z="https://id.app.clickup.com/attachments/v1/data/workspaces/%s/utils/authz_token?cf_url=%s"%(WS,urllib.parse.quote(U,safe=""))
-t("B authz token",z,A); t("C authz bearer",z,B)
-t("D v3 anexos",f"https://api.clickup.com/api/v3/workspaces/{WS}/task/{TID}/attachments",A)
-t("E v3 anexos bearer",f"https://api.clickup.com/api/v3/workspaces/{WS}/task/{TID}/attachments",B)
-t("F v2 task anexos",f"https://api.clickup.com/api/v2/task/{TID}?include_attachments=true",A)
+A={"Authorization":T}
+import json as J
+for nome,u in [("G v3 campo Fluxo",f"https://api.clickup.com/api/v3/workspaces/{WS}/custom_fields/5f7ad38c-bc65-441b-8590-a357b4a63602/attachments?limit=5"),
+               ("H v3 tarefa",f"https://api.clickup.com/api/v3/workspaces/{WS}/attachments/{TID}/attachments")]:
+    st,hd,b=t(nome,u,A)
+    try:
+        d=J.loads(b); L=d.get("data") or []
+        print(nome,"itens",len(L),"chaves",sorted(L[0].keys()) if L else None,"next",bool(d.get("next_cursor")))
+        for a in L[:3]:
+            print("  ",a.get("title"),a.get("parent_id"),a.get("parent_entity_type"),"signed=",a.get("signed"),"url_tem_token=", "authz_token" in (a.get("url") or "") or "X-Amz" in (a.get("url") or "") or "Signature" in (a.get("url") or ""), mask((a.get("url") or "")[:90]))
+        if L:
+            st2,_,b2=t(nome+" download",L[0]["url"],{})
+    except Exception as e: print(nome,"falhou",e)
