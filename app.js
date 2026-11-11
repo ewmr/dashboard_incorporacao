@@ -55,6 +55,7 @@ const MIN_AMOSTRA = 2;
 const INCS = [["all","Consolidado"],["Make It","Make It"],["Gadens","Gadens"]];
 
 const CHANGELOG = [
+  {v:"0.9", d:"2026-11-10", itens:["Viabilidade lê a DRE e o Fluxo anexados em cada versão no ClickUp (a rotina diária baixa só o que mudou).","Do VGV ao lucro pela DRE, grupo a grupo, com o % do VGV; ao passar o mouse, todas as linhas do grupo.","Fluxo de caixa: saldo acumulado com exposição máxima, mês em que o saldo fica positivo e eventos; entradas e saídas de cada mês.","DRE comparada entre versões, grupo a grupo, em % do VGV.","Pendências listam viabilidades vigentes sem DRE ou Fluxo anexados."]},
   {v:"0.8.1", d:"2026-11-05", itens:["Fotos de capa nas fichas de 19 empreendimentos.","Linha do tempo da ficha em sequência, legível com muitos marcos.","Botões sem contorno, no estilo plano."]},
   {v:"0.8", d:"2026-11-05", itens:[
     "Ficha do empreendimento: botão no canto da barra lateral do mapa abre a ficha completa (capa, números, produto e terreno, eficiência, versões da viabilidade e linha do tempo dos marcos). Também abre pelo mapa da página inicial e pela página de viabilidade.",
@@ -786,6 +787,8 @@ function pendencias(){
   add("Linha de produto aguardando definição", B.filter(e=>!e.legado&&linhaDe(e)==="Aguardando Definição").map(e=>e.nome));
   add("Área privativa ou área do terreno não preenchidas na viabilidade vigente", B.filter(e=>vig(e)&&(vig(e).area_privativa==null||vig(e).area_terreno==null)).map(e=>e.nome));
   add("Cronogramas do ClickUp sem empreendimento no cadastro do dashboard", D.listas_sem_cadastro||[]);
+  add("Viabilidade vigente sem DRE ou Fluxo anexados no ClickUp", B.filter(e=>vig(e)&&!((vig(e).planilhas||[]).length===2)).map(e=>`${e.nome} ${vig(e).versao}${temPl(vig(e),"dre")?" (falta o Fluxo)":temPl(vig(e),"fluxo")?" (falta a DRE)":""}`));
+  add("Planilhas anexadas que não puderam ser lidas", (D.planilhas_erros||[]).map(x=>`${x.emp} ${x.ver} · ${x.tipo} (${x.erro})`));
   add("Endereço não preenchido no ClickUp (posição aproximada no mapa)", B.filter(e=>!e.legado&&e.pos_fonte!=="clickup").map(e=>e.nome));
   return out;
 }
@@ -916,6 +919,149 @@ function cascata(d, cor, box){
     if (i<passos.length-1) s+=`<line x1="${x+bw}" x2="${x+step}" y1="${Y(nivel)}" y2="${Y(nivel)}" stroke="var(--label-3)" stroke-dasharray="2 3"/>`; });
   box.innerHTML = s+"</svg>";
 }
+/* ---------- planilhas anexadas (DRE e Fluxo), lidas pela rotina diária ---------- */
+const PL = new Map();
+function planilha(tid){
+  if (!PL.has(tid)) PL.set(tid, fetch(`viab/${tid}.json?v=${encodeURIComponent(D.gerado_em||"")}`).then(r=>r.ok?r.json():null).catch(()=>null));
+  return PL.get(tid);
+}
+const temPl = (d,k) => !!d && (d.planilhas||[]).includes(k);
+const mc = v => { const a=Math.abs(v); return a>=1e6 ? nf(v/1e6, a>=1e8?0:1)+" mi" : a>=1e3 ? nf(v/1e3,0)+" mil" : nf(v,0); };
+const mesCurto = ym => ym ? MESES[+ym.slice(5,7)-1]+"/"+ym.slice(2,4) : "—";
+const DRE_CURTO = {"Receita Bruta":"Receita bruta","Impostos s/ receita":"Impostos","Receita Líquida":"Receita líquida","Despesas c/ Financiamento":"Desp. financ.","Gerenciamento":"Gerenc.","Incorporação":"Incorp.","Outras Despesas":"Outras desp.","Resultado Bruto":"Resultado bruto","Despesas Comerciais":"Comerciais","Resultado financeiro":"Res. financeiro","Saldo":"Lucro líquido"};
+const duasLinhas = t => { if (t.length<=9 || !t.includes(" ")) return [t]; const i=t.indexOf(" "); return [t.slice(0,i), t.slice(i+1)]; };
+const DRE_NOME = {"Impostos s/ receita":"Impostos sobre a receita (RET)","Saldo":"Lucro líquido","Resultado financeiro":"Resultado financeiro (financiamento)","IR / CSLL":"IR / CSLL (RET)"};
+// grupos da DRE na ordem da cascata; o financiamento associativo vira um só degrau
+function passosDRE(dre){
+  const out=[], fin={nome:"Resultado financeiro", valor:0, linhas:[], t:"n"};
+  dre.grupos.forEach(g=>{
+    if (g.nome==="Resultado Operacional" || g.nome==="Resultado Financeiro") return;
+    if (/financiamento/i.test(g.nome) && g.nome!=="Despesas c/ Financiamento"){
+      fin.valor += g.valor; fin.linhas.push(...g.linhas); if (!out.includes(fin)) out.push(fin); return; }
+    out.push({nome:g.nome, valor:g.valor, linhas:g.linhas, t: g.nome==="Saldo" ? "f" : g.subtotal ? "t" : "n"});
+  });
+  return out.filter(p=>p.t!=="n" || Math.abs(p.valor)>=1);
+}
+const vgvDRE = dre => dre.grupos[0]?.valor || 1;
+function cascataDRE(dre, cor, box){
+  const P = passosDRE(dre), vgv = vgvDRE(dre), n = P.length;
+  const W=Math.max(640, box.clientWidth||900), H=282, mt=26, mb=72, ih=H-mt-mb, step=W/n, bw=Math.min(46, step*.6);
+  let nivel=0, max=0; P.forEach(p=>{ if (p.t==="n") nivel+=p.valor; else nivel=p.valor; max=Math.max(max, nivel, p.t!=="n"?p.valor:0); });
+  const Y = v => mt+ih-ih*Math.max(0,v)/(max||1);
+  let s=`<svg viewBox="0 0 ${W} ${H}"><line x1="0" x2="${W}" y1="${Y(0)}" y2="${Y(0)}" stroke="var(--grid)"/>`; nivel=0;
+  P.forEach((p,i)=>{ const x=i*step+(step-bw)/2; let y1,y2;
+    if (p.t!=="n"){ y1=Y(p.valor); y2=Y(0); nivel=p.valor; } else { y1=Y(nivel); y2=Y(nivel+p.valor); nivel+=p.valor; }
+    const top=Math.min(y1,y2), h=Math.max(2,Math.abs(y2-y1)), pos=p.valor>0;
+    const fill = p.t==="f" ? cor : p.t==="t" ? `color-mix(in srgb, ${cor} 32%, var(--fill-2))` : pos ? "var(--green-ink, #1E9E48)" : "var(--red-ink)";
+    const rot = DRE_CURTO[p.nome]||p.nome, sh = p.valor/vgv;
+    s+=`<rect x="${x}" y="${top}" width="${bw}" height="${h}" rx="6" fill="${fill}" ${p.t==="n"?'opacity=".6"':""}/>`;
+    s+=`<text class="val" x="${x+bw/2}" y="${top-6}" text-anchor="middle" style="font-size:10px${p.t==="f"?`;fill:${cor};font-weight:700`:""}">${p.t==="n"&&!pos?"−":p.t==="n"?"+":""}${mc(Math.abs(p.valor))}</text>`;
+    duasLinhas(rot).forEach((t,k)=>{ s+=`<text x="${x+bw/2}" y="${H-mb+17+k*12}" text-anchor="middle" style="font-size:10px;${p.t!=="n"?"fill:var(--label);font-weight:600":""}">${esc(t)}</text>`; });
+    s+=`<text x="${x+bw/2}" y="${H-mb+44}" text-anchor="middle" style="font-size:9.5px;${p.t==="f"?`fill:${cor};font-weight:700`:"fill:var(--label-3)"}">${nf(Math.abs(sh)*100, Math.abs(sh)<.1?1:1)}%</text>`;
+    if (i<n-1) s+=`<line x1="${x+bw}" x2="${x+step+(step-bw)/2}" y1="${Y(nivel)}" y2="${Y(nivel)}" stroke="var(--label-3)" stroke-dasharray="2 3"/>`;
+    s+=`<rect class="hit" data-i="${i}" x="${i*step}" y="0" width="${step}" height="${H}" fill="transparent"/>`;
+  });
+  box.innerHTML = s+`<text x="0" y="${H-6}" style="font-size:9.5px;fill:var(--label-3)">% sobre o VGV (receita bruta) · arquivo: ${esc(dre.arquivo||"")}</text></svg>`;
+  box.querySelectorAll(".hit").forEach(r=>{ const p=P[+r.dataset.i], ls=[...p.linhas].sort((a,b)=>Math.abs(b.valor)-Math.abs(a.valor));
+    bindTip(r, `<b>${esc(DRE_NOME[p.nome]||p.nome)}</b> · ${brl(p.valor)} · ${nf(Math.abs(p.valor/vgv)*100,2)}% do VGV${ls.length&&p.t!=="t"?`<table>${ls.map(l=>`<tr><td>${esc(l.nome)}</td><td class="n">${brl(l.valor)}</td><td class="n muted">${nf(Math.abs(l.valor/vgv)*100,2)}%</td></tr>`).join("")}</table>`:p.t==="t"?`<div class="muted">subtotal</div>`:""}`); });
+}
+// fluxo: saldo acumulado em cima, entradas e saídas do mês embaixo
+const EV_CURTO = t => t.replace(/^F\d+\s*-\s*/,"").replace("Compra do Terreno","Compra do terreno").replace("Início das Vendas","Vendas").replace("Início Repasse","Repasse").replace("Início das Obras","Início da obra").replace("Término das Obras","Fim da obra");
+function chartFluxo(fx, cor, box){
+  const n=fx.meses.length, W=Math.max(640, box.clientWidth||900), H=330, ml=58, mr=14, mt=34, h1=172, gap=26, h2=62, iw=W-ml-mr;
+  const X = i => ml + iw*(i+.5)/n, bwm = Math.max(1.5, iw/n*.62);
+  const S2 = fx.saldo, lo=Math.min(0,...S2), hi=Math.max(0,...S2), st=niceStep(hi-lo,4), top=Math.ceil(hi/st)*st, bot=Math.floor(lo/st)*st;
+  const Y1 = v => mt + h1*(top-v)/((top-bot)||1);
+  const sai = fx.saidas.map((v,i)=>v+(fx.juros[i]<0?fx.juros[i]:0)), ent = fx.entradas.map((v,i)=>v+(fx.juros[i]>0?fx.juros[i]:0));
+  // escala das barras pelo percentil 95: um mês excepcional (repasse, quitação) não achata os outros
+  const mags = [...ent, ...sai.map(Math.abs)].filter(v=>v>0).sort((a,b)=>a-b), mm = Math.max(1, (mags[Math.floor(mags.length*.95)]||1)*1.25), y2z = mt+h1+gap+h2/2, Y2 = v => y2z - (h2/2)*Math.max(-1.08, Math.min(1.08, v/mm));
+  const red = "var(--red-ink)", zero=Y1(0);
+  let s=`<svg viewBox="0 0 ${W} ${H}"><defs><clipPath id="fxA"><rect x="0" y="0" width="${W}" height="${zero}"/></clipPath><clipPath id="fxB"><rect x="0" y="${zero}" width="${W}" height="${H}"/></clipPath></defs>`;
+  for (let v=bot; v<=top+1; v+=st) s+=`<line x1="${ml}" x2="${W-mr}" y1="${Y1(v)}" y2="${Y1(v)}" stroke="var(--grid)" ${Math.abs(v)<1?'stroke-width="1.4" stroke="var(--label-3)"':""}/><text x="${ml-8}" y="${Y1(v)+3.5}" text-anchor="end">${v?mc(v):"0"}</text>`;
+  // anos
+  fx.meses.forEach((m,i)=>{ if (m.endsWith("-01") || (i===0 && !fx.meses.slice(1,4).some(x=>x.endsWith("-01")))) s+=`<line x1="${X(i)-iw/n/2}" x2="${X(i)-iw/n/2}" y1="${mt}" y2="${mt+h1+gap+h2}" stroke="var(--grid)" stroke-dasharray="1 3"/><text x="${X(i)-iw/n/2+3}" y="${H-4}" style="font-size:10px">${m.slice(0,4)}</text>`; });
+  // hoje
+  const ih = fx.meses.indexOf(HOJE().slice(0,7));
+  if (ih>=0) s+=`<line x1="${X(ih)}" x2="${X(ih)}" y1="${mt-4}" y2="${mt+h1+gap+h2}" stroke="var(--label-2)" stroke-width="1.2"/><text x="${X(ih)+4}" y="${mt+h1-4}" style="font-size:9.5px;fill:var(--label-2);font-weight:600">hoje</text>`;
+  // área do saldo
+  let d=`M${X(0)},${zero}`; S2.forEach((v,i)=>d+=`L${X(i)},${Y1(v)}`); d+=`L${X(n-1)},${zero}Z`;
+  let l=""; S2.forEach((v,i)=>l+=(i?"L":"M")+X(i)+","+Y1(v));
+  s+=`<path d="${d}" fill="${cor}" opacity=".16" clip-path="url(#fxA)"/><path d="${d}" fill="${red}" opacity=".13" clip-path="url(#fxB)"/><path d="${l}" fill="none" stroke="${cor}" stroke-width="2.4" stroke-linejoin="round"/>`;
+  // eventos (rótulos em duas alturas para não encavalar)
+  const evs={}; (fx.eventos||[]).forEach(ev=>{ const i=fx.meses.indexOf(ev.mes); if (i<0) return; (evs[i]=evs[i]||[]).push(EV_CURTO(ev.nome)); });
+  let ult=-1e9, alt=0; Object.keys(evs).map(Number).sort((a,b)=>a-b).forEach(i=>{ const x=X(i), txt=evs[i].join(" · "); alt = x-ult < 120 ? 1-alt : 0; ult=x;
+    s+=`<line x1="${x}" x2="${x}" y1="${mt-12+alt*12}" y2="${mt+h1}" stroke="var(--label-3)" stroke-dasharray="3 3"/><circle cx="${x}" cy="${mt-12+alt*12}" r="2.6" fill="var(--label-2)"/><text x="${x+5}" y="${mt-9+alt*12}" style="font-size:9.5px;fill:var(--label-2)">${esc(txt)}</text>`; });
+  // exposição máxima e virada do saldo
+  const iMin = fx.meses.indexOf(fx.exposicao?.mes), iPb = fx.payback ? fx.meses.indexOf(fx.payback) : -1;
+  if (iMin>=0){ const x=X(iMin), y=Y1(S2[iMin]), dir = x > W-170 ? "end" : "start", dx = dir==="end"?-8:8;
+    s+=`<circle cx="${x}" cy="${y}" r="5" fill="${red}" stroke="var(--card-solid)" stroke-width="2"/><text x="${x+dx}" y="${y+14}" text-anchor="${dir}" style="font-size:10.5px;font-weight:700;fill:${red}">exposição máx. ${mc(-S2[iMin])}</text><text x="${x+dx}" y="${y+27}" text-anchor="${dir}" style="font-size:9.5px;fill:var(--label-3)">${mesCurto(fx.meses[iMin])}</text>`; }
+  if (iPb>=0){ const x=X(iPb), dir = x > W-170 ? "end" : "start", dx = dir==="end"?-8:8;
+    s+=`<circle cx="${x}" cy="${zero}" r="5" fill="${cor}" stroke="var(--card-solid)" stroke-width="2"/><text x="${x+dx}" y="${zero-9}" text-anchor="${dir}" style="font-size:10.5px;font-weight:700;fill:${cor}">saldo positivo · ${mesCurto(fx.payback)}</text>`; }
+  { const x=X(n-1), y=Y1(S2[n-1]); s+=`<circle cx="${x}" cy="${y}" r="4" fill="${cor}"/><text x="${x-6}" y="${y-8}" text-anchor="end" style="font-size:10.5px;font-weight:700;fill:${cor}">${mc(S2[n-1])}</text>`; }
+  // barras do mês
+  s+=`<text x="${ml-8}" y="${y2z-h2/2+8}" text-anchor="end" style="font-size:9.5px">entradas</text><text x="${ml-8}" y="${y2z+h2/2}" text-anchor="end" style="font-size:9.5px">saídas</text><line x1="${ml}" x2="${W-mr}" y1="${y2z}" y2="${y2z}" stroke="var(--grid)"/>`;
+  fx.meses.forEach((m,i)=>{ const x=X(i)-bwm/2;
+    if (ent[i]>0) s+=`<rect x="${x}" y="${Y2(ent[i])}" width="${bwm}" height="${Math.max(.8,y2z-Y2(ent[i]))}" fill="${cor}" opacity=".75"/>`;
+    if (sai[i]<0) s+=`<rect x="${x}" y="${y2z}" width="${bwm}" height="${Math.max(.8,Y2(sai[i])-y2z)}" fill="${red}" opacity=".6"/>`; });
+  s+=`<line id="fxGuia" x1="0" x2="0" y1="${mt}" y2="${mt+h1+gap+h2}" stroke="var(--label)" stroke-width="1" opacity="0"/>`;
+  fx.meses.forEach((m,i)=>{ s+=`<rect class="hit" data-i="${i}" x="${X(i)-iw/n/2}" y="0" width="${iw/n}" height="${H}" fill="transparent"/>`; });
+  box.innerHTML = s+"</svg>";
+  const guia = box.querySelector("#fxGuia");
+  box.querySelectorAll(".hit").forEach(r=>{ const i=+r.dataset.i;
+    r.addEventListener("mouseenter", ()=>{ guia.setAttribute("x1",X(i)); guia.setAttribute("x2",X(i)); guia.setAttribute("opacity",".35"); });
+    r.addEventListener("mouseleave", ()=>guia.setAttribute("opacity","0"));
+    bindTip(r, ()=>`<b>${MESES[+fx.meses[i].slice(5,7)-1]}/${fx.meses[i].slice(0,4)}</b>${evs[i]?` · ${esc(evs[i].join(", "))}`:""}<table>
+      <tr><td>Entradas</td><td class="n">${brl(fx.entradas[i])}</td></tr><tr><td>Saídas</td><td class="n">${brl(fx.saidas[i])}</td></tr>${fx.juros[i]?`<tr><td>Juros</td><td class="n">${brl(fx.juros[i])}</td></tr>`:""}
+      <tr><td>Saldo do mês</td><td class="n">${brl(fx.entradas[i]+fx.saidas[i]+fx.juros[i])}</td></tr><tr><td><b>Saldo acumulado</b></td><td class="n"><b>${brl(S2[i])}</b></td></tr></table>`); });
+  $("flxLeg").innerHTML = `<span><i style="background:${cor}"></i>saldo acumulado / entradas</span><span><i style="background:var(--red-ink)"></i>exposição / saídas</span>`;
+}
+function statsFluxo(fx, d, cor){
+  const n=fx.meses.length, iPb = fx.payback ? fx.meses.indexOf(fx.payback) : -1, iMin=fx.meses.indexOf(fx.exposicao?.mes);
+  const cu = d.exposicao, difere = cu && Math.abs(Math.abs(fx.exposicao.valor)-cu)/cu > .03;
+  const it = (k,v,sub) => `<div><span>${k}</span><b>${v}</b><small>${sub}</small></div>`;
+  return it("Exposição máxima", brl(-fx.exposicao.valor), `${mesCurto(fx.exposicao.mes)}${difere?` · no ClickUp: ${brl(cu)}`:""}`)
+    + it("Saldo fica positivo", iPb>=0 ? mesCurto(fx.payback) : "—", iPb>=0 ? `${iPb-iMin} ${iPb-iMin===1?"mês":"meses"} após o pico de exposição` : "não fica positivo no fluxo")
+    + it("Resultado acumulado", brl(fx.saldo_final), `ao fim do fluxo · ${pct(d.vgv_bruto?fx.saldo_final/d.vgv_bruto:null,1)} do VGV`)
+    + it("Horizonte do fluxo", `${n} meses`, `${mesCurto(fx.meses[0])} a ${mesCurto(fx.meses[n-1])}`);
+}
+// DRE comparada grupo a grupo entre duas versões
+function compDRE(A, B, vA, vB, box){
+  const pa = passosDRE(A), pb = passosDRE(B), ga = vgvDRE(A), gb = vgvDRE(B), nomes=[];
+  [...pb, ...pa].forEach(p=>{ if (!nomes.includes(p.nome)) nomes.push(p.nome); });
+  const ordem = pb.map(p=>p.nome); nomes.sort((x,y)=>(ordem.indexOf(x)<0?999:ordem.indexOf(x))-(ordem.indexOf(y)<0?999:ordem.indexOf(y)));
+  const linha = nome => { const a=pa.find(p=>p.nome===nome), b=pb.find(p=>p.nome===nome), sa=a?a.valor/ga:0, sb=b?b.valor/gb:0, t=(b||a).t;
+    const dl = sb-sa, bom = dl>5e-4, ruim = dl<-5e-4, cls = nome==="Receita Bruta" ? "flat" : bom?"up":ruim?"down":"flat";
+    const w = Math.min(100, Math.abs(sb)*100*1.6), wa = Math.min(100, Math.abs(sa)*100*1.6);
+    return `<tr class="${t!=="n"?"sub":""}${t==="f"?" fim":""}"><td>${esc(DRE_CURTO[nome]||nome)}</td>
+      <td class="n muted">${a?nf(Math.abs(sa)*100,1)+"%":"—"}</td>
+      <td class="bar"><span class="ba" style="width:${wa}%"></span><span class="bb ${b&&b.valor<0&&t==="n"?"neg":""}" style="width:${w}%"></span></td>
+      <td class="n"><b>${b?nf(Math.abs(sb)*100,1)+"%":"—"}</b></td>
+      <td class="n">${nome==="Receita Bruta"?`<span class="muted">${a&&b?chipDelta((b.valor-a.valor)/Math.abs(a.valor)):""}</span>`:`<span class="dchip ${cls}">${Math.abs(dl)<5e-4?"–":(Math.abs(sb)>Math.abs(sa)?"▲":"▼")} ${nf(Math.abs(dl)*100,1)} p.p.</span>`}</td>
+      <td class="n muted">${b?mc(b.valor):"—"}</td></tr>`; };
+  box.innerHTML = `<div class="tbl-wrap"><table class="t dre-c"><thead><tr><th>Grupo</th><th class="n">${vA}</th><th></th><th class="n">${vB}</th><th class="n">Variação</th><th class="n">${vB} em R$</th></tr></thead><tbody>${nomes.map(linha).join("")}</tbody></table></div>
+    <p class="cap" style="margin-top:8px">% sobre o VGV de cada versão · verde = ajudou o resultado, vermelho = piorou · na receita bruta, a variação é do valor</p>`;
+}
+function preenchePlanilhas(e, d, sel, oks, cor){
+  const main=$("vbMain"), tok = e.sigla+":"+sel; main.dataset.tok = tok;
+  const vivo = () => main.dataset.tok===tok;
+  const comDre = oks.filter(x=>temPl(x.d,"dre"));
+  if (temPl(d,"dre") || temPl(d,"fluxo")) planilha(d.task_id).then(p=>{ if (!vivo()) return;
+    if (temPl(d,"dre")){ if (p&&p.dre) cascataDRE(p.dre, cor, $("vbCasc")); else { $("vbCascCap").textContent="não foi possível ler a DRE desta versão; valores resumidos"; cascata(d, cor, $("vbCasc")); } }
+    if (temPl(d,"fluxo")){ if (p&&p.fluxo){ $("flxSt").innerHTML = statsFluxo(p.fluxo, d, cor); chartFluxo(p.fluxo, cor, $("vbFlx")); } else $("vbFlx").innerHTML="<p class='muted'>Não foi possível ler o fluxo desta versão.</p>"; }
+  });
+  // comparação: por padrão, a versão anterior com DRE
+  if (!temPl(d,"dre")) return;
+  const outras = comDre.filter(x=>x.v!==sel), iS = oks.findIndex(x=>x.v===sel);
+  if (!outras.length){ $("vbCmp").innerHTML = "<p class='muted'>É a única versão com DRE anexada no ClickUp; a comparação aparece quando houver outra.</p>"; return; }
+  if (!S.vbBase || !outras.some(x=>x.v===S.vbBase)) S.vbBase = ([...outras].reverse().find(x=>oks.findIndex(y=>y.v===x.v)<iS) || outras[outras.length-1]).v;
+  const base = outras.find(x=>x.v===S.vbBase);
+  $("cmpSel").innerHTML = `<label class="cmp-sel">comparar com <select id="cmpBase">${outras.map(x=>`<option value="${x.v}" ${x.v===base.v?"selected":""}>${x.v} – ${VNOME_C[x.v]}</option>`).join("")}</select></label>`;
+  $("cmpBase").onchange = ev => { S.vbBase = ev.target.value; preenchePlanilhas(e, d, sel, oks, cor); };
+  $("cmpCap").textContent = `${base.v} → ${sel}, grupo a grupo, em % do VGV`;
+  Promise.all([planilha(base.d.task_id), planilha(d.task_id)]).then(([pa,pb])=>{ if (!vivo()) return;
+    if (pa?.dre && pb?.dre) compDRE(pa.dre, pb.dre, base.v, sel, $("vbCmp")); else $("vbCmp").innerHTML="<p class='muted'>Não foi possível ler as duas DREs.</p>"; });
+}
+
 function renderViabPagina(){
   const side=$("vbSide"), main=$("vbMain"); if (!side) return;
   const L = ordena(filtrados().filter(e=>vig(e)));
@@ -959,8 +1105,10 @@ function renderViabPagina(){
     </article>
     <article class="card vb-steps" id="sec-viab-cmp"><div class="ch"><div><h3>Versões da viabilidade</h3><p class="cap">clique numa versão para ver os números dela · os cartões abaixo comparam com a versão anterior</p></div></div><div class="stp">${steps}</div></article>
     <div class="grid vb-kpis">${kpis}</div>
-    <div class="grid vb-2" id="sec-viab-det">
-      <article class="card"><div class="ch"><div><h3>Do VGV ao lucro · ${sel}</h3><p class="cap">quanto do VGV vira lucro nesta versão</p></div></div><div class="chart" id="vbCasc"></div></article>
+    <article class="card" id="sec-viab-det"><div class="ch"><div><h3>Do VGV ao lucro · ${sel}</h3><p class="cap" id="vbCascCap">${temPl(d,"dre")?"DRE da viabilidade por grupo · % sobre o VGV · passe o mouse para ver cada linha":"quanto do VGV vira lucro nesta versão · sem DRE anexada no ClickUp, valores resumidos"}</p></div></div><div class="chart" id="vbCasc">${temPl(d,"dre")?"<p class='muted'>Carregando a DRE…</p>":""}</div></article>
+    <article class="card" id="sec-viab-flx"><div class="ch"><div><h3>Fluxo de caixa · ${sel}</h3><p class="cap">${temPl(d,"fluxo")?"saldo acumulado mês a mês e entradas e saídas de cada mês · valores do arquivo Fluxo anexado":"sem planilha de fluxo anexada nesta versão no ClickUp"}</p></div><div class="leg" id="flxLeg" style="margin:0"></div></div>${temPl(d,"fluxo")?`<div class="fx-st" id="flxSt"></div><div class="chart" id="vbFlx"><p class='muted'>Carregando o fluxo…</p></div>`:""}</article>
+    <div class="grid vb-2">
+      <article class="card" id="sec-viab-cmpdre"><div class="ch"><div><h3>DRE comparada</h3><p class="cap" id="cmpCap">grupo a grupo, em % do VGV</p></div><div id="cmpSel"></div></div><div id="vbCmp">${temPl(d,"dre")?"<p class='muted'>Carregando…</p>":"<p class='muted'>Sem DRE anexada nesta versão.</p>"}</div></article>
       <article class="card"><div class="ch"><div><h3>Produto · ${sel}</h3><p class="cap">eficiência, áreas e custo</p></div></div>
         <div class="vb-prod"><div class="vb-ef">${anel(ef, coE)}<div><b>${ef!=null?pct(ef,1):"—"}</b><span>eficiência</span></div></div>
           <div class="vb-pg">${[["Unidades",nf(d.unidades)+(d.permutas?` <small>(${nf(d.permutas)} permutadas)</small>`:"")],["Área construída",d.area_construida!=null?nf(d.area_construida)+" m²":"—"],["Área privativa",d.area_privativa!=null?nf(d.area_privativa)+" m²":"—"],["Área do terreno",d.area_terreno!=null?nf(d.area_terreno)+" m²":"—"],["Preço médio",d.preco_medio!=null?"R$ "+nf(d.preco_medio):"—"],["Custo / m²",d.custo_m2!=null?"R$ "+nf(d.custo_m2):"—"]].map(([k,x])=>`<div><span>${k}</span><b>${x}</b></div>`).join("")}</div></div></article>
@@ -972,8 +1120,9 @@ function renderViabPagina(){
   main.querySelectorAll(".vk[data-k] .exp").forEach(b=>b.onclick=()=>abreMetrica(e, b.closest(".vk").dataset.k));
   $("vbHow").onclick = abreHow; $("vbMapa").onclick = ()=>abreNoMapa(e); $("vbFicha").onclick = ()=>abreFicha(e);
   $("vbTudo").onclick = ()=>{ S.vbTudo=!S.vbTudo; renderViabPagina(); };
-  cascata(d, coE, $("vbCasc"));
+  if (!temPl(d,"dre")) cascata(d, coE, $("vbCasc"));
   chartEvo(e, $("evoChart"), pv);
+  preenchePlanilhas(e, d, sel, oks, coE);
 }
 function abreMetrica(e, k){
   const rot = {vgv:"VGV bruto", margem:"Margem líquida", lucro:"Lucro líquido"}[k], campo = {vgv:"vgv_bruto", margem:"margem", lucro:"lucro"}[k], f = k==="margem" ? x=>pct(x) : brl;

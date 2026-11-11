@@ -681,3 +681,24 @@ table.t tr.lk{cursor:pointer} table.t tr.lk:hover td{background:var(--fill)} tab
 .tl-i.hoje .p i{width:2px;height:30px;border-radius:1px;background:var(--red-ink);box-shadow:none}
 .tl-i.hoje .n{color:var(--red-ink);font-weight:800;text-transform:uppercase;font-size:.62rem;letter-spacing:.05em}
 .tl-i.atr .d{color:var(--red-ink)}
+
+/* ---------- v0.9 · DRE e fluxo de caixa ---------- */
+.fx-st{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:4px 0 10px}
+.fx-st>div{background:var(--fill);border-radius:14px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.fx-st span{font-size:.72rem;color:var(--label-2);font-weight:600}
+.fx-st b{font-size:1.12rem;font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.fx-st small{font-size:.72rem;color:var(--label-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#vbFlx svg text,#vbCasc svg text{font-size:10px;fill:var(--label-2)}
+.cmp-sel{font-size:.78rem;color:var(--label-2);display:flex;align-items:center;gap:6px;white-space:nowrap}
+.cmp-sel select{font:inherit;font-weight:600;color:var(--label);background:var(--fill);border:0;border-radius:9px;padding:5px 8px}
+table.dre-c{min-width:0;width:100%}
+table.dre-c td,table.dre-c th{padding:6px 8px}
+table.dre-c tr.sub td{font-weight:600;color:var(--label)}
+table.dre-c tr.sub td:first-child{color:var(--label)}
+table.dre-c tr.fim td{border-top:1px solid var(--sep)}
+table.dre-c td.bar{width:28%;position:relative}
+table.dre-c td.bar span{display:block;height:6px;border-radius:4px}
+table.dre-c .ba{background:var(--fill-2);margin-bottom:3px}
+table.dre-c .bb{background:var(--accent)}
+table.dre-c .bb.neg{background:var(--red-ink);opacity:.6}
+@media (max-width:1100px){ .fx-st{grid-template-columns:repeat(2,minmax(0,1fr))} }
