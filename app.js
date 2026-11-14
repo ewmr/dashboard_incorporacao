@@ -55,6 +55,7 @@ const MIN_AMOSTRA = 2;
 const INCS = [["all","Consolidado"],["Make It","Make It"],["Gadens","Gadens"]];
 
 const CHANGELOG = [
+  {v:"0.11", d:"2026-11-14", itens:["Cronograma: a Régua de lançamentos vem primeiro e só mostra empreendimentos com Due finalizada; barras coloridas por Colorir e agrupar por, cantos retos embaixo, grade até 300 MM, passado escurecido e meta separada por empresa no consolidado.","Simular régua: arraste lançamentos entre meses e anos, veja o VGV do ano contra a meta mudar na hora, mostre RI e Orçamento V4 e adicione terrenos em negociação.","Portfólio macro com o ícone da empresa e prazo para lançamento mesmo sem Fim da Due; Prontidão para lançamento no lugar do Prazo de financiamento; cronograma do empreendimento simplificado e tabela de datas dos marcos.","Novo agrupamento por Empresa (padrão no consolidado; por fase dentro de cada empresa).","Viabilidade: números da versão com valores exatos."]},
   {v:"0.10", d:"2026-11-11", itens:["Página Cronograma: Portfólio macro em Gantt (fases, Assinatura PJ e Entrega em contrato), Régua de lançamentos por ano com a meta de VGV, Agenda de marcos dos próximos 90 dias, Prazo de financiamento e o cronograma de cada empreendimento em escala de tempo.","Prazo de financiamento = meses entre o Lançamento Comercial e a Entrega em Contrato (inc003); as Pendências listam quem ainda não tem a Entrega em Contrato."]},
   {v:"0.9.2", d:"2026-11-10", itens:["O card de produto virou Números da versão: eficiência e ticket médio em destaque e, abaixo, todos os indicadores da viabilidade (substitui a lista recolhida).","Janelas rolam por inteiro: o resumo por ano do fluxo detalhado fica legível."]},
   {v:"0.9.1", d:"2026-11-10", itens:["Fluxo de caixa marca o mês em que o estudo foi elaborado (no lugar de hoje); o período anterior fica em cinza.","Card do fluxo mais limpo, com botão Fluxo detalhado: curva nominal e a valor presente, eventos, entradas e saídas do mês e resumo por ano.","Exposição máxima a valor presente, igual aos indicadores da DRE e ao ClickUp.","Botão que abre a tarefa da viabilidade no ClickUp, para acessar a DRE e o Fluxo."]},
@@ -120,6 +121,7 @@ const pp = v => v==null ? "—" : (v>0?"+":v<0?"−":"")+nf(Math.abs(v*100),2)+"
 const dmy = iso => iso ? iso.slice(8,10)+"/"+iso.slice(5,7)+"/"+iso.slice(0,4) : "—";
 const my = iso => iso ? iso.slice(5,7)+"/"+iso.slice(0,4) : "—";
 const MESES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+const brlX = v => v==null||isNaN(v) ? "—" : "R$ "+nf(v,2);
 const esc = s => String(s??"").replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const median = a => { const s=[...a].sort((x,y)=>x-y), n=s.length; return n ? (n%2 ? s[(n-1)/2] : (s[n/2-1]+s[n/2])/2) : null; };
 const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
@@ -133,11 +135,15 @@ const linhaCor = id => { const l=linhaInfo(id); return dark()?l.d:l.l; };
 const coCor = inc => css(inc==="Gadens" ? "--gd" : "--mk");
 const linhaDe = e => e.linha || "Aguardando Definição";
 const cidadeCor = id => { const c=CIDADES.find(x=>x.id===id); return c ? (dark()?c.d:c.l) : "#8E8E93"; };
-const grupoDe = e => S.group==="fase" ? faseDe(e) : S.group==="cidade" ? e.cidade : linhaDe(e);
-const grupoNome = id => S.group==="fase" ? (FASES.find(f=>f.id===id)?.nome||id) : S.group==="cidade" ? id : linhaInfo(id).curto;
-const grupoCor = id => S.group==="fase" ? faseCor(id) : S.group==="cidade" ? cidadeCor(id) : linhaCor(id);
-const grupoOrdem = () => S.group==="fase" ? FASES.map(f=>f.id) : S.group==="cidade" ? [...CIDADES.map(c=>c.id), ...new Set(D.empreendimentos.map(e=>e.cidade).filter(c=>!CIDADES.some(x=>x.id===c)))] : LINHAS.map(l=>l.id);
-const grupoRotulo = () => ({fase:"fase do projeto", linha:"linha de produto", cidade:"cidade"})[S.group];
+const grupoDe = e => S.group==="inc" ? e.incorporadora : S.group==="fase" ? faseDe(e) : S.group==="cidade" ? e.cidade : linhaDe(e);
+const grupoNome = id => S.group==="inc" ? id : S.group==="fase" ? (FASES.find(f=>f.id===id)?.nome||id) : S.group==="cidade" ? id : linhaInfo(id).curto;
+const grupoCor = id => S.group==="inc" ? coCor(id) : S.group==="fase" ? faseCor(id) : S.group==="cidade" ? cidadeCor(id) : linhaCor(id);
+const grupoOrdem = () => S.group==="inc" ? ["Make It","Gadens"] : S.group==="fase" ? FASES.map(f=>f.id) : S.group==="cidade" ? [...CIDADES.map(c=>c.id), ...new Set(D.empreendimentos.map(e=>e.cidade).filter(c=>!CIDADES.some(x=>x.id===c)))] : LINHAS.map(l=>l.id);
+const GRP_NOME = {fase:"fase", linha:"linha de produto", cidade:"cidade", inc:"empresa"};
+const grupoRotulo = () => ({fase:"fase do projeto", linha:"linha de produto", cidade:"cidade", inc:"empresa"})[S.group];
+// agrupamento padrão: por empresa no consolidado, por fase dentro de uma empresa
+const resolveGrupo = () => { const g = S.grpEscolha; S.group = !g || (g==="inc" && S.inc!=="all") ? (S.inc==="all" ? "inc" : "fase") : g; };
+const INC_SET = {size:0, has:()=>false, _inc:true};
 const corDe = e => grupoCor(grupoDe(e));
 
 /* ---------- dados derivados ---------- */
@@ -163,9 +169,9 @@ function filtrados(ignora){
     (ignora==="linha" || !S.linhas.size || S.linhas.has(linhaDe(e))));
 }
 const nFiltros = () => S.cidades.size+S.anos.size+S.fases.size+S.linhas.size;
-const toggle = (set,v) => { set.has(v) ? set.delete(v) : set.add(v); S.sel=null; renderAll(); };
-const grupoSet = () => S.group==="fase" ? S.fases : S.group==="cidade" ? S.cidades : S.linhas;
-const grupoDim = () => S.group==="fase" ? "fase" : S.group==="cidade" ? "cidade" : "linha";
+const toggle = (set,v) => { if (set._inc){ setInc(S.inc===v?"all":v); return; } set.has(v) ? set.delete(v) : set.add(v); S.sel=null; renderAll(); };
+const grupoSet = () => S.group==="inc" ? INC_SET : S.group==="fase" ? S.fases : S.group==="cidade" ? S.cidades : S.linhas;
+const grupoDim = () => S.group==="inc" ? "inc" : S.group==="fase" ? "fase" : S.group==="cidade" ? "cidade" : "linha";
 
 function prepara(){
   const ord = v => VERS.indexOf(v.versao);
@@ -322,7 +328,7 @@ function renderTraj(){
 /* ---------- Distribuição: rosca com raio variável ---------- */
 function renderDonut(){
   const L = filtrados(grupoDim());
-  $("distTitle").textContent = "Distribuição por "+({fase:"fase",linha:"linha de produto",cidade:"cidade"})[S.group];
+  $("distTitle").textContent = "Distribuição por "+GRP_NOME[S.group];
   const g = grupoOrdem().map(id=>{ const its=L.filter(e=>grupoDe(e)===id); return {id, its, n:its.length, vgv:its.reduce((a,e)=>a+(vig(e)?.vgv_bruto||0),0)}; }).filter(x=>x.n);
   const box = $("donut"), set = grupoSet();
   if (!g.length){ box.innerHTML="<p class='muted'>Nenhum empreendimento nos filtros atuais.</p>"; $("donutLeg").innerHTML=""; return; }
@@ -554,7 +560,7 @@ function renderSaude(){
     <div class="tile w2"><span class="k">Lucro líquido projetado</span><b>${brl(d.lucro)}</b><span class="s">soma das viabilidades vigentes · por ano de lançamento abaixo</span></div>
     <div class="tile w4"><div class="th"><h4>VGV e lucro líquido por ano de lançamento</h4><div class="leg" id="lucroLeg" style="margin:0"></div></div><p class="cap">barra clara = VGV bruto · barra cheia = lucro líquido da viabilidade vigente · traço = meta de VGV · clique num ano para filtrar</p><div class="chart" id="lucroAnos"></div></div>
     <div class="tile w2"><div class="th"><h4>Margem projetada dos lançamentos × meta</h4><button class="link" id="howBtn">Como é calculada</button></div><p class="cap">média ponderada pelo VGV líquido · clique num ano para filtrar</p><div class="chart" id="metaYears"></div></div>
-    <div class="tile w2"><div class="th"><h4>Margem média por ${({fase:"fase",linha:"linha de produto",cidade:"cidade"})[S.group]}</h4></div><p class="cap">vigente → projetada no lançamento</p><div class="chart" id="margGrp"></div></div>
+    <div class="tile w2"><div class="th"><h4>Margem média por ${GRP_NOME[S.group]}</h4></div><p class="cap">vigente → projetada no lançamento</p><div class="chart" id="margGrp"></div></div>
 `;
   $("howBtn").onclick = abreHow;
   chartLucro(); chartAnos(); chartGrupo(d.L);
@@ -730,7 +736,7 @@ function renderFilterPop(){
   const seg = (id, val, ops) => `<div class="seg full" id="${id}">${ops.map(([v,t])=>`<button data-v="${v}" aria-checked="${val===v}">${t}</button>`).join("")}</div>`;
   const n = nFiltros() + (S.ativos?1:0);
   $("filterPop").innerHTML = `<div class="fp">
-    <div><span class="lb">Colorir e agrupar por</span>${seg("grpSeg", S.group, [["fase","Fase do projeto"],["linha","Linha de produto"],["cidade","Cidade"]])}</div>
+    <div><span class="lb">Colorir e agrupar por</span>${seg("grpSeg", S.group, [...(S.inc==="all"?[["inc","Empresa"]]:[]),["fase","Fase do projeto"],["linha","Linha de produto"],["cidade","Cidade"]])}</div>
     <div><span class="lb">Ordenar por</span>${seg("ordSeg", S.ordem, [["alfa","Alfabético"],["lanc","Data Lançamento"]])}</div>
     <div><span class="lb">Fase</span><div class="ftiles${S.fases.size&&[...S.fases].some(f=>f!=="SEM")?" algum":""}">${fases.map(f=>`<button data-f="${f.id}" aria-pressed="${S.fases.has(f.id)}" style="--c:${faseCor(f.id)}" ${S.ativos&&f.id==="ETG"?'disabled title="Desligue “Somente empreendimentos ativos” para ver os entregues"':""}>${esc(f.curto)}</button>`).join("")}</div></div>
     ${temSem||S.fases.has("SEM")?`<button class="fsem" data-f="SEM" aria-pressed="${S.fases.has("SEM")}">Sem cronograma disponível</button>`:""}
@@ -744,7 +750,7 @@ function renderFilterPop(){
   P.querySelectorAll("[data-f]").forEach(b=>b.onclick=()=>toggle(S.fases, b.dataset.f));
   P.querySelectorAll(".ddl button").forEach(b=>b.onclick=()=>toggle(S[b.closest(".ddl").dataset.set], b.dataset.v));
   P.querySelectorAll(".dd").forEach(b=>b.onclick=()=>{ S.dd = S.dd===b.dataset.dd ? null : b.dataset.dd; renderFilterPop(); });
-  P.querySelectorAll("#grpSeg button").forEach(b=>b.onclick=()=>{ S.group=b.dataset.v; renderAll(); });
+  P.querySelectorAll("#grpSeg button").forEach(b=>b.onclick=()=>{ S.grpEscolha=b.dataset.v; renderAll(); });
   P.querySelectorAll("#ordSeg button").forEach(b=>b.onclick=()=>{ S.ordem=b.dataset.v; renderAll(); });
   $("swAtivos").onclick=()=>{ S.ativos=!S.ativos; if (S.ativos) S.fases.delete("ETG"); S.sel=null; renderAll(); };
   $("clearF").onclick=()=>{ S.cidades.clear(); S.anos.clear(); S.fases.clear(); S.linhas.clear(); S.ativos=false; S.dd=null; S.sel=null; renderAll(); };
@@ -1136,8 +1142,8 @@ function renderViabPagina(){
       <article class="card" id="sec-viab-cmpdre"><div class="ch"><div><h3>DRE comparada</h3><p class="cap" id="cmpCap">grupo a grupo, em % do VGV</p></div><div id="cmpSel"></div></div><div id="vbCmp">${temPl(d,"dre")?"<p class='muted'>Carregando…</p>":"<p class='muted'>Sem DRE anexada nesta versão.</p>"}</div></article>
       <article class="card vb-num"><div class="ch"><div><h3>Números da ${sel}</h3><p class="cap">${d.obs?esc(d.obs)+" · ":""}indicadores registrados na viabilidade</p></div></div>
         <div class="vb-dest"><div class="vb-ef">${anel(ef, coE)}<div><b>${ef!=null?pct(ef,1):"—"}</b><span>eficiência<br>privativa ÷ construída</span></div></div>
-          <div class="vb-tk"><span>Ticket médio</span><b>${d.preco_medio!=null?"R$ "+nf(d.preco_medio):"—"}</b><small>valor médio de venda por unidade</small></div></div>
-        <div class="ph-full um">${[["Nº de unidades (NUH)",nf(d.unidades)],["Unidades permutadas",nf(d.permutas)],["VGV bruto",brl(d.vgv_bruto)],["VGV líquido",brl(d.vgv_liquido)],["Lucro líquido",brl(d.lucro)],["Margem líquida",pct(d.margem)],["Exposição máxima",brl(d.exposicao)],["Área total construída",d.area_construida!=null?nf(d.area_construida)+" m²":"—"],["Área privativa total",d.area_privativa!=null?nf(d.area_privativa)+" m²":"—"],["Área do terreno",d.area_terreno!=null?nf(d.area_terreno)+" m²":"—"],["Custo por m² construído",d.custo_m2!=null?"R$ "+nf(d.custo_m2):"—"],["Custo de obra",brl(custoObra(d))]].map(([k,x])=>`<div><span>${k}</span><b>${x}</b></div>`).join("")}</div></article>
+          <div class="vb-tk"><span>Ticket médio</span><b>${brlX(d.preco_medio)}</b><small>valor médio de venda por unidade</small></div></div>
+        <div class="ph-full um">${[["Nº de unidades (NUH)",nf(d.unidades)],["Unidades permutadas",nf(d.permutas)],["VGV bruto",brlX(d.vgv_bruto)],["VGV líquido",brlX(d.vgv_liquido)],["Lucro líquido",brlX(d.lucro)],["Margem líquida",pct(d.margem,2)],["Exposição máxima",brlX(d.exposicao)],["Área total construída",d.area_construida!=null?nf(d.area_construida)+" m²":"—"],["Área privativa total",d.area_privativa!=null?nf(d.area_privativa)+" m²":"—"],["Área do terreno",d.area_terreno!=null?nf(d.area_terreno)+" m²":"—"],["Custo por m² construído",brlX(d.custo_m2)],["Custo de obra",brlX(custoObra(d))]].map(([k,x])=>`<div><span>${k}</span><b>${x}</b></div>`).join("")}</div></article>
     </div>
     <article class="card" id="sec-viab-evo"><div class="ch"><div><h3>Evolução por fase</h3><p class="cap">VGV bruto e margem líquida em cada versão · tracejado = tendência da margem nas versões que ainda não foram elaboradas</p></div><div class="leg" id="evoLeg" style="margin:0"></div></div><div class="chart" id="evoChart"></div></article>
 `;
@@ -1175,7 +1181,7 @@ function route(){
   document.querySelectorAll(".page").forEach(s=>s.hidden = s.dataset.page!==p);
   document.querySelectorAll("#nav .ni").forEach(a=>{ a.classList.toggle("on", a.dataset.p===p); a.toggleAttribute("aria-current", a.dataset.p===p); });
   document.documentElement.classList.toggle("no-scroll", p==="mapa");
-  if (p==="cronograma" && typeof renderCrono==="function") requestAnimationFrame(renderCrono);
+  if (p==="cronograma" && typeof renderCrono==="function"){ requestAnimationFrame(renderCrono); const b=$("simAbre"); if (b) b.onclick = abreSim; }
   if (p==="mapa"){ setTimeout(()=>{ iniciaMapaPagina(); const e=D.empreendimentos.find(x=>x.sigla===S.mapSel); renderMapaPagina(); if (e && full.loaded()) MP.voa3d(full, e.pos, {padding:PADF()}); marca3d(); }, 30); }
   if (p==="resumo" && mini) setTimeout(()=>mini.resize(),60);
 }
@@ -1188,6 +1194,7 @@ function irPara(p, sec){
   else if (p!=="mapa") window.scrollTo({top:0, behavior:"smooth"});
 }
 function renderAll(){
+  resolveGrupo();
   document.documentElement.dataset.inc = S.inc;
   renderFilterPop(); renderCoPop();
   renderKpis(); renderTraj(); renderDonut(); renderMap(); renderSaude(); renderMarcos(); renderData();

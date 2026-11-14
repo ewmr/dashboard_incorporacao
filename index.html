@@ -9,7 +9,7 @@
 <style>:where(svg){max-width:100%}:where(.top,.bot) :where(svg){width:22px;height:22px}</style>
 <link rel="stylesheet" href="vendor/maplibre/maplibre-gl.css?v=4.7.1">
 <link rel="preload" href="vendor/fonts/nunito-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="app.css?v=0.10">
+<link rel="stylesheet" href="app.css?v=0.11">
 </head>
 <body>
 <!-- fundo: degradê desfocado na cor da incorporadora -->
@@ -97,13 +97,14 @@
   <!-- CRONOGRAMA -->
   <section class="page" data-page="cronograma" hidden>
     <h1 class="pt">Cronograma</h1>
+    <article class="card" id="sec-regua"><div class="ch"><div><h3>Régua de lançamentos</h3><p class="cap">VGV bruto (R$ milhões) de cada lançamento no mês previsto · só entram empreendimentos com a Due Diligence finalizada; para ver terrenos em negociação ou projetados, use a simulação</p></div><button class="pillbtn pri" id="simAbre"><svg viewBox="0 0 24 24"><path d="M4 7h10M4 17h6M18 4v6M15 7h6M14 14l3 3 4-4"/></svg>Simular régua</button></div><div class="chart" id="regua"></div><div class="leg" id="reguaLeg" style="margin-top:8px"></div></article>
     <article class="card" id="sec-gantt"><div class="ch"><div><h3>Portfólio macro</h3><p class="cap">fases de cada empreendimento ativo, do cronograma no ClickUp · ordenados pelo início de obra · <span id="ganttN"></span></p></div></div><div class="leg" id="ganttLeg"></div><div class="chart" id="gantt"></div></article>
-    <article class="card" id="sec-regua"><div class="ch"><div><h3>Régua de lançamentos</h3><p class="cap">VGV bruto (R$ milhões) de cada lançamento no mês previsto · cor por cidade · meta de VGV do ano à esquerda</p></div></div><div class="chart" id="regua"></div><div class="leg" id="reguaLeg" style="margin-top:8px"></div></article>
     <div class="grid cr-2">
       <article class="card" id="sec-agenda"><div class="ch"><div><h3>Agenda de marcos</h3><p class="cap" id="agN"></p></div></div><div id="agenda" class="ag"></div></article>
-      <article class="card" id="sec-financ"><div class="ch"><div><h3>Prazo de financiamento</h3><p class="cap" id="finCap"></p></div></div><div id="financ"></div></article>
+      <article class="card" id="sec-pront"><div class="ch"><div><h3>Prontidão para lançamento</h3><p class="cap" id="prCap"></p></div></div><div id="pront" class="ag"></div></article>
     </div>
-    <article class="card" id="sec-indiv"><div class="ch"><div><h3>Cronograma do empreendimento</h3><p class="cap">marcos em escala de tempo · clique em qualquer empreendimento nos painéis acima para abrir aqui</p></div><div class="ind-sel" id="indSel"></div></div><div id="indiv"></div></article>
+    <article class="card" id="sec-indiv"><div class="ch"><div><h3>Cronograma do empreendimento</h3><p class="cap">marcos principais em escala de tempo · clique em qualquer empreendimento nos painéis para abrir aqui</p></div><div class="ind-sel" id="indSel"></div></div><div id="indiv"></div></article>
+    <article class="card" id="sec-tabela"><div class="ch"><div><h3>Datas dos marcos</h3><p class="cap">todos os empreendimentos lado a lado, para consulta rápida</p></div></div><div id="tabela"></div></article>
   </section>
 
   <!-- ANÁLISE -->
@@ -170,8 +171,8 @@
 <div class="tip" id="tip" hidden></div>
 <script src="vendor/maplibre/maplibre-gl.js?v=4.7.1"></script>
 <script src="vendor/maplibre/pmtiles.js?v=4.5.0"></script>
-<script src="mapa.js?v=0.10"></script>
-<script src="app.js?v=0.10"></script>
-<script src="crono.js?v=0.10"></script>
+<script src="mapa.js?v=0.11"></script>
+<script src="app.js?v=0.11"></script>
+<script src="crono.js?v=0.11"></script>
 </body>
 </html>
