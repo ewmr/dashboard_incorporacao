@@ -55,6 +55,7 @@ const MIN_AMOSTRA = 2;
 const INCS = [["all","Consolidado"],["Make It","Make It"],["Gadens","Gadens"]];
 
 const CHANGELOG = [
+  {v:"0.13", d:"2026-11-17", itens:["Primeira versão para toda a equipe.","Análise de Cronogramas em duas seções: Etapas dos cronogramas (números da semana, Etapas em andamento por empreendimento, setor e prazo, todas as Etapas e marcos alterados) e Registro de desvios (dias deslocados por semana, causas, setor, empreendimentos, origem, reincidentes e a lista de todos os registros).","Gráficos de registros mostram só o formato com causa e setor; um botão inclui os registros antigos.","Registro de Desvios com a identidade do dashboard e acesso restrito à equipe de Gestão de Projetos de Incorporação. Os demais usuários consultam os gráficos e a lista.","Cronograma: data do Contrato PJ na simulação da régua e na prontidão para lançamento; tabela de marcos com Reunião de Arrancada, Início do Projeto EP, 1º Protocolo PL Prefeitura, Projetos Executivos 100% e Registro de CVCO.","Mapa e ficha: botão para o cronograma do empreendimento; marco que não é mais usado sai da ficha.","Agrupamento padrão por empresa só no Cronograma consolidado, por cidade com uma empresa selecionada e por fase nas demais páginas; ícone da empresa nas listas que misturam as duas.","Divisões discretas entre a visão geral e a parte operacional das páginas; menu com as seções atualizadas."]},
   {v:"0.12", d:"2026-11-16", itens:["Análise de Cronogramas: todas as Etapas de todos os cronogramas (tarefas mãe do tipo Etapa), com Δ semana, Δ LB, filtros, busca e histórico de registros; números da semana e gráficos de deslocamento, causas e setor.","Registro de Desvios dentro do dashboard: mesmo app da reunião, com as Etapas lidas pela rotina automática. Os registros ficam guardados no navegador e são enviados ao ClickUp no fim da reunião pelo botão A enviar, sem gastar créditos do Claude.","Rotina diária passa a ler as Etapas e os registros do ClickUp, e roda também segunda à noite, depois da atualização dos cronogramas."]},
   {v:"0.11", d:"2026-11-14", itens:["Cronograma: a Régua de lançamentos vem primeiro e só mostra empreendimentos com Due finalizada; barras coloridas por Colorir e agrupar por, cantos retos embaixo, grade até 300 MM, passado escurecido e meta separada por empresa no consolidado.","Simular régua: arraste lançamentos entre meses e anos, veja o VGV do ano contra a meta mudar na hora, mostre RI e Orçamento V4 e adicione terrenos em negociação.","Portfólio macro com o ícone da empresa e prazo para lançamento mesmo sem Fim da Due; Prontidão para lançamento no lugar do Prazo de financiamento; cronograma do empreendimento simplificado e tabela de datas dos marcos.","Novo agrupamento por Empresa (padrão no consolidado; por fase dentro de cada empresa).","Viabilidade: números da versão com valores exatos."]},
   {v:"0.10", d:"2026-11-11", itens:["Página Cronograma: Portfólio macro em Gantt (fases, Assinatura PJ e Entrega em contrato), Régua de lançamentos por ano com a meta de VGV, Agenda de marcos dos próximos 90 dias, Prazo de financiamento e o cronograma de cada empreendimento em escala de tempo.","Prazo de financiamento = meses entre o Lançamento Comercial e a Entrega em Contrato (inc003); as Pendências listam quem ainda não tem a Entrega em Contrato."]},
@@ -122,6 +123,9 @@ const pp = v => v==null ? "—" : (v>0?"+":v<0?"−":"")+nf(Math.abs(v*100),2)+"
 const dmy = iso => iso ? iso.slice(8,10)+"/"+iso.slice(5,7)+"/"+iso.slice(0,4) : "—";
 const my = iso => iso ? iso.slice(5,7)+"/"+iso.slice(0,4) : "—";
 const MESES = ["jan","fev","mar","abr","mai","jun","jul","ago","set","out","nov","dez"];
+// ícone da empresa ao lado do nome, nas listas que misturam Make It e Gadens
+const icoMini = inc => ICO_CO[inc] ? `<span class="fd-i" style="background:${coCor(inc)}">${ICO_CO[inc]}</span>` : "";
+const icoSe = inc => S.inc==="all" && inc ? icoMini(inc) : "";
 const brlX = v => v==null||isNaN(v) ? "—" : "R$ "+nf(v,2);
 const esc = s => String(s??"").replace(/[&<>"]/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const median = a => { const s=[...a].sort((x,y)=>x-y), n=s.length; return n ? (n%2 ? s[(n-1)/2] : (s[n/2-1]+s[n/2])/2) : null; };
@@ -143,7 +147,9 @@ const grupoOrdem = () => S.group==="inc" ? ["Make It","Gadens"] : S.group==="fas
 const GRP_NOME = {fase:"fase", linha:"linha de produto", cidade:"cidade", inc:"empresa"};
 const grupoRotulo = () => ({fase:"fase do projeto", linha:"linha de produto", cidade:"cidade", inc:"empresa"})[S.group];
 // agrupamento padrão: por empresa no consolidado, por fase dentro de uma empresa
-const resolveGrupo = () => { const g = S.grpEscolha; S.group = !g || (g==="inc" && S.inc!=="all") ? (S.inc==="all" ? "inc" : "fase") : g; };
+// agrupamento padrão: fase do projeto; na página Cronograma, empresa no consolidado e cidade dentro de cada empresa
+const resolveGrupo = () => { const g = S.grpEscolha, pad = paginaAtual==="cronograma" ? (S.inc==="all" ? "inc" : "cidade") : "fase";
+  S.group = !g || (g==="inc" && S.inc!=="all") ? pad : g; };
 const INC_SET = {size:0, has:()=>false, _inc:true};
 const corDe = e => grupoCor(grupoDe(e));
 
@@ -394,15 +400,18 @@ function abreCartao(e){
   const v=vig(e), el=document.createElement("div");
   el.innerHTML = `<div class="mc-h">${MP.icone(e.incorporadora, corDe(e))}<div><b>${esc(e.nome)}</b><span><em style="color:${coCor(e.incorporadora)}">${esc(e.incorporadora)}</em> · ${local(e)}</span></div><button class="mc-x" aria-label="Fechar">×</button></div>
     <div class="mc-k"><div><span>VGV</span><b>${brl(v?.vgv_bruto)}</b></div><div><span>Margem</span><b>${pct(v?.margem,1)}</b></div><div><span>Fase</span><b>${esc(faseNome(e))}</b></div></div>
-    <div class="mc-a"><button data-a="ficha">Ver ficha</button><button data-a="viab">Viabilidade</button><button data-a="mapa" class="ic" aria-label="Abrir no mapa" data-tip="Abrir no mapa"><svg viewBox="0 0 24 24"><path d="M9 4.5 3.5 6.6v13l5.5-2.1 6 2.1 5.5-2.1v-13L15 6.6z"/></svg></button></div>`;
+    <div class="mc-a"><button data-a="ficha">Ver ficha</button><button data-a="viab">Viabilidade</button><button data-a="crono">Cronograma</button><button data-a="mapa" class="ic" aria-label="Abrir no mapa" data-tip="Abrir no mapa"><svg viewBox="0 0 24 24"><path d="M9 4.5 3.5 6.6v13l5.5-2.1 6 2.1 5.5-2.1v-13L15 6.6z"/></svg></button></div>`;
   el.querySelector(".mc-x").onclick = ev=>{ ev.stopPropagation(); fechaCartao(); };
   el.querySelector('[data-a="mapa"]').onclick = ()=>{ fechaCartao(); abreNoMapa(e); };
   el.querySelector('[data-a="ficha"]').onclick = ()=>{ fechaCartao(); abreFicha(e); };
+  el.querySelector('[data-a="crono"]').onclick = ()=>{ fechaCartao(); abreCrono(e); };
   el.querySelector('[data-a="viab"]').onclick = ()=>{ fechaCartao(); abreViab(e); };
   cartao = new maplibregl.Popup({closeButton:false, closeOnClick:false, offset:[0,-30], maxWidth:"290px", className:"mcard"}).setLngLat([e.pos[1],e.pos[0]]).setDOMContent(el).addTo(mini);
   mini.easeTo({center:[e.pos[1],e.pos[0]], offset:[0,60], duration:500});
 }
 function abreNoMapa(e){ S.mapSel = e ? e.sigla : null; S.fichaAberta=false; irPara("mapa"); }
+// leva ao cronograma do empreendimento na página Cronograma
+function abreCrono(e){ S.crSel = e.sigla; S.fichaAberta = false; irPara("cronograma", "sec-indiv"); }
 function abreFicha(e){ S.mapSel = e.sigla; S.fichaAberta = true; irPara("mapa"); }
 function marca3d(){ if (!full) return; $("b3d").setAttribute("aria-pressed", String(full._3d)); const b=$("fVista"); if (b){ b.classList.toggle("on", full._3d); b.lastChild.textContent = full._3d?"3D":"2D"; } }
 function voltaTodos(animar=true){
@@ -479,7 +488,7 @@ function renderMapaPagina(){
       <div class="f-tags"><span class="tagc" style="--c:${faseCor(faseDe(sel))}">${esc(faseNome(sel))}</span>${v?`<span class="tagc" style="--c:${verCor(v.versao)}">${v.versao} – ${VNOME_C[v.versao]}</span>`:""}</div>
       <div class="f-end"><svg viewBox="0 0 24 24"><path d="M12 21s-6.5-5.8-6.5-11a6.5 6.5 0 0 1 13 0c0 5.2-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg><span>${esc(sel.endereco||sel.cidade)}${sel.pos_fonte!=="clickup"?" · posição aproximada":""}</span></div>
       ${acoes}`;
-    const links = `<div class="f-links"><button class="pillbtn" id="fViab2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M14.8 9.2c-.5-1-1.6-1.6-2.8-1.6-1.6 0-2.8.9-2.8 2.2 0 3 5.6 1.6 5.6 4.5 0 1.3-1.2 2.2-2.8 2.2"/></svg>Página de viabilidade</button>${urlLista(sel)?`<a class="pillbtn" href="${urlLista(sel)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17"/></svg>Cronograma no ClickUp ↗</a>`:""}</div>`;
+    const links = `<div class="f-links"><button class="pillbtn" id="fViab2"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M14.8 9.2c-.5-1-1.6-1.6-2.8-1.6-1.6 0-2.8.9-2.8 2.2 0 3 5.6 1.6 5.6 4.5 0 1.3-1.2 2.2-2.8 2.2"/></svg>Página de viabilidade</button><button class="pillbtn" id="fCrono"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17M8 3v4M16 3v4"/></svg>Cronograma do empreendimento</button>${urlLista(sel)?`<a class="pillbtn" href="${urlLista(sel)}" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15" rx="3"/><path d="M3.5 10h17"/></svg>Cronograma no ClickUp ↗</a>`:""}</div>`;
     if (!larga){
       side.innerHTML = `<div class="ficha" style="--co:${coCor(sel.incorporadora)}">${topo}
       <div class="f-kpi"><div><span>VGV bruto</span><b>${brl(v?.vgv_bruto)}</b></div><div><span>Unidades</span><b>${nf(v?.unidades)}</b></div>
@@ -518,6 +527,7 @@ function renderMapaPagina(){
     if ($("fMais")) $("fMais").onclick = ()=>$("fExp").click();
     if ($("fViab")) $("fViab").onclick = ev=>{ ev.preventDefault(); abreViab(sel); };
     if ($("fViab2")) $("fViab2").onclick = ()=>abreViab(sel);
+    if ($("fCrono")) $("fCrono").onclick = ()=>abreCrono(sel);
     $("fVista").onclick = ()=>{ if (full._3d){ if (full._orb) MP.orbita(full,false); MP.aplica3d(full,false); } else MP.voa3d(full, sel.pos, {orbitar:false, padding:PADF()}); marca3d(); renderMapaPagina(); };
     $("fGira").onclick = ()=>{ if (full._orb) MP.orbita(full,false); else if (full._3d) MP.orbita(full,true); else MP.voa3d(full, sel.pos, {padding:PADF()}); marca3d(); };
     $("fCopia").onclick = ()=>{ try{ navigator.clipboard.writeText(sel.endereco||""); $("fCopia").lastChild.textContent="Copiado"; }catch(e){} };
@@ -669,7 +679,7 @@ function renderMarcos(){
   const vs = D.variacoes.filter(v=>ok.has(v.sigla)).sort((a,b)=>Math.abs(b.dias)-Math.abs(a.dias));
   $("attnNote").textContent = `variações de 20 dias ou mais · ${D.fontes.variacoes.split(" → ").map(dmy).join(" → ")}`;
   $("attn").innerHTML = vs.length ? vs.map(v=>{ const e=D.empreendimentos.find(x=>x.sigla===v.sigla);
-    return `<div class="ai"><span><span class="tagc" style="--c:${corDe(e)}">${esc(v.empreendimento)}</span> <b style="font-weight:600">${esc(v.marco)}</b></span><span class="d ${v.dias>0?"late":"early"}">${v.dias>0?"▲ +":"▼ "}${v.dias} dias</span><span class="x">${dmy(v.anterior)} → ${dmy(v.atual)}</span></div>`; }).join("") : "<p class='muted'>Nenhuma variação de 20 dias ou mais nos filtros atuais.</p>";
+    return `<div class="ai"><span>${icoSe(e?.incorporadora)}<span class="tagc" style="--c:${corDe(e)}">${esc(v.empreendimento)}</span> <b style="font-weight:600">${esc(v.marco)}</b></span><span class="d ${v.dias>0?"late":"early"}">${v.dias>0?"▲ +":"▼ "}${v.dias} dias</span><span class="x">${dmy(v.anterior)} → ${dmy(v.atual)}</span></div>`; }).join("") : "<p class='muted'>Nenhuma variação de 20 dias ou mais nos filtros atuais.</p>";
 }
 
 /* =========================================================
@@ -678,9 +688,9 @@ function renderMarcos(){
 const SECOES = {
   mapa:[["cid:Curitiba","Curitiba"],["cid:Pinhais","Pinhais"],["cid:São José dos Pinhais","São José dos Pinhais"],["cid:Araucária","Araucária"],["cid:Almirante Tamandaré","Almirante Tamandaré"]],
   resumo:[["sec-kpis","Indicadores"],["sec-traj","Trajetória de lançamentos"],["sec-dist","Distribuição"],["sec-map","Mapa da carteira"],["sec-saude","Saúde financeira"],["sec-marcos","Marcos alterados"]],
-  cronograma:[["sec-lanc","Próximos lançamentos"],[null,"Portfólio Macro (Gantt)"],[null,"Régua de lançamentos"],[null,"Agenda de 90 dias"]],
-  analise:[["sec-etapas","Todas as Etapas"],["sec-var","Marcos alterados"],["sec-reg","Registro de Desvios"]],
-  viabilidade:[["sec-viab-cmp","Comparativo entre fases"],["sec-viab-det","Detalhamento por fase"],["sec-viab-evo","Evolução por fase"],["sec-viab","Viabilidades vigentes"]],
+  cronograma:[["sec-regua","Régua de lançamentos"],["sec-gantt","Portfólio macro"],["sec-agenda","Agenda de marcos"],["sec-pront","Prontidão para lançamento"],["sec-indiv","Cronograma do empreendimento"],["sec-tabela","Datas dos marcos"]],
+  analise:[["sec-an-etapas","Etapas em andamento"],["sec-etapas","Todas as Etapas"],["sec-var","Marcos alterados"],["sec-an-reg","Desvios registrados"],["sec-reglist","Registros"]],
+  viabilidade:[["sec-viab-cmp","Versões"],["sec-viab-det","Do VGV ao lucro"],["sec-viab-flx","Fluxo de caixa"],["sec-viab-cmpdre","DRE comparada"],["sec-viab-evo","Evolução da margem"],["sec-viab","Viabilidades vigentes"]],
   metas:[[null,"Metas de Incorporação"]],
 };
 function miniPrev(p){
@@ -715,7 +725,7 @@ function miniPrev(p){
     const LA=filtrados().filter(e=>vig(e)&&vig(e).margem!=null&&lanc(e)), ks=[2027,2028,2029], step=W/3, bw=40, top=.3, Yv=v=>H-14-(H-28)*v/top;
     const m=k=>{ const its=LA.filter(e=>anoLanc(e)===k), w=its.reduce((a,e)=>a+(vig(e).vgv_liquido||0),0); return w?its.reduce((a,e)=>a+proj(e).m*(vig(e).vgv_liquido||0),0)/w:null; };
     svg = ks.map((k,i)=>{ const v=m(k)||0, x=i*step+(step-bw)/2; return `<rect x="${x}" y="${Yv(v)}" width="${bw}" height="${H-14-Yv(v)}" rx="5" fill="var(--accent)"/><rect x="${x-6}" y="${Yv(metaM(k)||0)-1}" width="${bw+12}" height="2.4" rx="1.2" fill="var(--label)"/><text x="${i*step+step/2}" y="${H-2}" text-anchor="middle">${k}</text>`; }).join("");
-    big=pct(m(2027),1); lab=`margem projetada 2027 (meta ${pct(metaM(2027),1)})`; foot=`<span>projetada × meta por ano</span><span>em construção</span>`;
+    big=pct(m(2027),1); lab=`margem projetada 2027 (meta ${pct(metaM(2027),1)})`; foot=`<span>projetada × meta por ano</span><span>em breve</span>`;
   }
   return `<div class="pv"><div class="pv-h"><b>${big}</b><span>${lab}</span></div><svg viewBox="0 0 ${W} ${H}">${svg}</svg></div><div class="foot">${foot}</div>`;
 }
@@ -737,7 +747,7 @@ function renderFilterPop(){
   const seg = (id, val, ops) => `<div class="seg full" id="${id}">${ops.map(([v,t])=>`<button data-v="${v}" aria-checked="${val===v}">${t}</button>`).join("")}</div>`;
   const n = nFiltros() + (S.ativos?1:0);
   $("filterPop").innerHTML = `<div class="fp">
-    <div><span class="lb">Colorir e agrupar por</span>${seg("grpSeg", S.group, [...(S.inc==="all"?[["inc","Empresa"]]:[]),["fase","Fase do projeto"],["linha","Linha de produto"],["cidade","Cidade"]])}</div>
+    <div><span class="lb">Colorir e agrupar por</span>${seg("grpSeg", S.group, [...(S.inc==="all"?[["inc","Empresa"]]:[]),["fase","Fase"],["linha","Linha"],["cidade","Cidade"]])}</div>
     <div><span class="lb">Ordenar por</span>${seg("ordSeg", S.ordem, [["alfa","Alfabético"],["lanc","Data Lançamento"]])}</div>
     <div><span class="lb">Fase</span><div class="ftiles${S.fases.size&&[...S.fases].some(f=>f!=="SEM")?" algum":""}">${fases.map(f=>`<button data-f="${f.id}" aria-pressed="${S.fases.has(f.id)}" style="--c:${faseCor(f.id)}" ${S.ativos&&f.id==="ETG"?'disabled title="Desligue “Somente empreendimentos ativos” para ver os entregues"':""}>${esc(f.curto)}</button>`).join("")}</div></div>
     ${temSem||S.fases.has("SEM")?`<button class="fsem" data-f="SEM" aria-pressed="${S.fases.has("SEM")}">Sem cronograma disponível</button>`:""}
@@ -822,7 +832,7 @@ function abreFolha(id){ ["setSheet","expSheet"].forEach(s=>$(s).hidden = s!==id)
 function renderVariacoes(){
   $("varNote").textContent = D.fontes.variacoes.split(" → ").map(dmy).join(" → ");
   const ok = new Set(filtrados().map(e=>e.sigla)), vs = D.variacoes.filter(v=>ok.has(v.sigla));
-  $("varTable").innerHTML = `<div class="tbl-wrap"><table class="t"><thead><tr><th>Empreendimento</th><th>Marco</th><th>Data anterior</th><th>Data atual</th><th class="n">Variação</th></tr></thead><tbody>${vs.map(v=>`<tr><td>${esc(v.empreendimento)}</td><td>${esc(v.marco)}</td><td>${dmy(v.anterior)}</td><td>${dmy(v.atual)}</td><td class="n d ${v.dias>0?"late":"early"}" style="font-weight:700">${v.dias>0?"▲ +":"▼ "}${v.dias} dias</td></tr>`).join("")}</tbody></table></div>`;
+  $("varTable").innerHTML = `<div class="tbl-wrap"><table class="t"><thead><tr><th>Empreendimento</th><th>Marco</th><th>Data anterior</th><th>Data atual</th><th class="n">Variação</th></tr></thead><tbody>${vs.map(v=>`<tr><td><span class="fd-n">${icoSe(D.empreendimentos.find(x=>x.sigla===v.sigla)?.incorporadora)}${esc(v.empreendimento)}</span></td><td>${esc(v.marco)}</td><td>${dmy(v.anterior)}</td><td>${dmy(v.atual)}</td><td class="n d ${v.dias>0?"late":"early"}" style="font-weight:700">${v.dias>0?"▲ +":"▼ "}${v.dias} dias</td></tr>`).join("")}</tbody></table></div>`;
 }
 /* =========================================================
    INDICADORES DE VIABILIDADE (estrutura validada em jul/2026)
@@ -1177,6 +1187,7 @@ function renderViab(){
 let paginaAtual = "resumo";
 function route(){
   const h = location.hash.slice(1), [pg, sig] = h.split(":"), p = PAGES.includes(pg) ? pg : "resumo"; paginaAtual = p;
+  { const g0 = S.group; resolveGrupo(); if (S.group!==g0 && typeof D!=="undefined" && D) renderAll(); }
   if (p==="mapa" && sig){ S.mapSel = decodeURIComponent(sig); if (h.endsWith(":ficha")) S.fichaAberta = true; }
   if (p==="viabilidade" && sig){ S.vbSel = decodeURIComponent(sig); renderViab(); }
   document.querySelectorAll(".page").forEach(s=>s.hidden = s.dataset.page!==p);

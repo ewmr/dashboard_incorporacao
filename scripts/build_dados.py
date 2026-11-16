@@ -87,7 +87,7 @@ for e in EMP:
         "cidade": r.get("cidade") or e["cidade"], "incorporadora": e["incorporadora"], "ex_nome": e.get("ex_nome") or "",
         "lista_id": lst[0] if lst else e.get("lista_id"), "lista": lst[1] if lst else None,
         "fase": f, "legado": s in LEGADO or f == "ENT", "fase_manual": s in FASE_MANUAL,
-        "marcos": marcos, "viabilidades": viab.get(nome, []), "foto": foto(e), "pos": pos, "pos_fonte": fonte, "endereco": end,
+        "marcos": {c: m for c, m in marcos.items() if c in CAD["marco_nome"]}, "viabilidades": viab.get(nome, []), "foto": foto(e), "pos": pos, "pos_fonte": fonte, "endereco": end,
     })
 
 variacoes = []

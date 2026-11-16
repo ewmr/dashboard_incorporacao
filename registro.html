@@ -1,5 +1,6 @@
 <!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <title>Registro de Desvios · Gestão de Projetos de Incorporação</title>
+<script src="auth.js"></script>
 <meta name="claude:viewport-fit-sides" content="cover">
 <style>
 /* Layout: app de análise no idioma visual da Apple — barra de ferramentas de vidro fixa no topo, controle segmentado com a pauta, título grande, quatro números e três cartões de vidro, lista agrupada (inset grouped) de Etapas, inspetor lateral de vidro para o registro e uma folha modal para a carteira. Cor de realce: laranja Make It. */
@@ -339,6 +340,27 @@ details.hist summary{cursor:pointer;font-size:.82rem;color:var(--label-2);font-w
 a.btn{text-decoration:none}
 .voltar{font-size:.84rem;color:var(--label-2);text-decoration:none;display:inline-flex;align-items:center;gap:4px;margin-right:4px}
 .voltar:hover{color:var(--label)}
+/* identidade do dashboard: fundo em degradê da empresa, cartões de vidro, números arredondados */
+:root{--g1:#FFF1E0;--g2:#FFE0BC;--g3:#FFC98A;--g4:#FFF8EF;--card:rgba(255,255,255,.78);--card-edge:rgba(255,255,255,.9);--font-r:ui-rounded,"SF Pro Rounded","Nunito",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+:root[data-co="gadens"]{--g1:#E8F1FB;--g2:#D3E4F6;--g3:#B5D0EE;--g4:#F3F8FD}
+:root[data-theme="dark"]{--g1:#1B1209;--g2:#26170A;--g3:#3A220B;--g4:#110B06;--card:rgba(30,30,33,.78);--card-edge:rgba(255,255,255,.06)}
+:root[data-theme="dark"][data-co="gadens"]{--g1:#0A121D;--g2:#0D1828;--g3:#11223B;--g4:#070C14}
+html{background:linear-gradient(170deg,var(--g4) 0%,var(--g1) 38%,var(--g2) 72%,var(--g3) 100%) fixed;min-height:100%}
+body{background:transparent!important}
+.toolbar{background:color-mix(in srgb,var(--glass-strong,rgba(255,255,255,.82)) 92%,transparent)!important;backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid var(--card-edge)}
+.card,.kpi,.statbar,.strip,.folga,.hub-card{background:var(--card)!important;border:1px solid var(--card-edge);box-shadow:0 1px 2px rgba(20,20,40,.04),0 8px 30px rgba(20,20,40,.06);border-radius:18px}
+.kpi b,.statbar b,.folga b,.hub h2{font-family:var(--font-r)}
+.sheet{background:color-mix(in srgb,var(--g4) 90%,transparent)!important;backdrop-filter:blur(30px);-webkit-backdrop-filter:blur(30px)}
+/* acesso */
+.login{max-width:380px;margin:9vh auto 0;display:flex;flex-direction:column;gap:14px;padding:26px 26px 22px;text-align:left}
+.login h2{margin:0;font-size:1.35rem}.login p{margin:0;color:var(--label-2);font-size:.86rem}
+.login label{display:flex;flex-direction:column;gap:5px;font-size:.76rem;font-weight:600;color:var(--label-2)}
+.login select,.login input{font:inherit;font-size:.95rem;padding:10px 12px;border-radius:11px;border:1px solid var(--sep);background:var(--win,#fff);color:var(--label)}
+.login .err{color:var(--red-ink,#d70015);font-size:.82rem;min-height:1em}
+.login .btn{justify-content:center;padding:10px}
+.quem{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;color:var(--label-2);white-space:nowrap}
+.quem b{color:var(--label);font-weight:600}
+.quem button{border:0;background:none;color:var(--accent);font:inherit;font-weight:600;cursor:pointer;padding:0 2px}
 </style>
 
 <header class="toolbar">
@@ -362,7 +384,7 @@ a.btn{text-decoration:none}
       <button class="co-switch" id="coSwitch" type="button" role="switch" aria-checked="false" aria-label="Incorporadora: Gadens"><span class="lbl mk">Make It</span><span class="co-track"><i class="co-knob"></i></span><span class="lbl gd">Gadens</span></button>
       <label class="datepill" for="semana">Reunião <input type="date" id="semana"></label>
       <span class="stamp" id="stamp" data-tip="Quando a rotina automática leu os cronogramas no ClickUp. Em amarelo quando é de outro dia."></span>
-      <button class="btn" id="reload" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="refreshPanel">Dados…</button><button class="btn" id="filaBtn" type="button" data-tip="Registros guardados neste navegador que ainda não foram enviados ao ClickUp">A enviar <span class="fcnt" id="filaCnt">0</span></button>
+      <button class="btn" id="reload" type="button" aria-haspopup="dialog" aria-expanded="false" aria-controls="refreshPanel">Dados…</button><span class="quem" id="quem" hidden></span><button class="btn" id="filaBtn" type="button" data-tip="Registros guardados neste navegador que ainda não foram enviados ao ClickUp">A enviar <span class="fcnt" id="filaCnt">0</span></button>
       <div class="zoom" role="group" aria-label="Zoom da página"><button type="button" id="zOut" aria-label="Diminuir zoom" data-tip="Diminuir zoom">−</button><button type="button" class="zv" id="zVal" data-tip="Voltar para 100%">100%</button><button type="button" id="zIn" aria-label="Aumentar zoom" data-tip="Aumentar zoom (para TV)">+</button></div>
     </div>
   </div>
@@ -392,7 +414,7 @@ const CO={
   makeit:{name:"Make It",space:"90131670080",folders:{"901316256175":"Due Diligence","901316256189":"Incorporação"},reg:"901312786569"},
   gadens:{name:"Gadens",space:"90135139088",folders:{"901318303880":"Incorporação"},reg:"1400450000011724"}};
 let co="makeit";try{const q=new URLSearchParams(location.search).get("co");const c=CO[q]?q:localStorage.getItem("rd-co");if(CO[c])co=c;}catch{}
-try{const tm=localStorage.getItem("dash-tema");if(tm==="dark"||tm==="light")document.documentElement.dataset.theme=tm;}catch{}
+try{const tm=localStorage.getItem("dash-tema");if(tm==="dark"||tm==="light")document.documentElement.dataset.theme=tm;else if(matchMedia("(prefers-color-scheme: dark)").matches)document.documentElement.dataset.theme="dark";}catch{}
 try{if(window.top===window)document.getElementById("voltar").hidden=false;}catch{}
 const REG=()=>CO[co].reg;
 const F={semanaPassada:"943f0c3a-a967-4bd5-8838-b9534e672bcc",lb:"aa589ee0-8706-4d52-8146-f69dd117c65f",code:"1a4d1964-1f3b-44c9-83ed-92a31741656e"};
@@ -493,7 +515,21 @@ function loadState(){const st=store[co]||{};metaAt=st.at||0;lists=st.lists||[];d
 function paintCompany(animate){const root=document.documentElement;root.dataset.co=co;const sw=$("#coSwitch");sw.setAttribute("aria-checked",co==="gadens");sw.setAttribute("aria-label","Incorporadora: "+CO[co].name);
   $("#shTitle").textContent="Carteira "+CO[co].name;
   if(animate){const m=$("#mark");m.classList.remove("swap");void m.getBoundingClientRect();m.classList.add("swap");}}
-async function boot(){mcp=null;db=null;updFila();await loadCompany();}
+async function boot(){mcp=null;db=null;updFila();
+  if(!gpiSessao()){telaLogin();return;}
+  mostraQuem();await loadCompany();}
+function mostraQuem(){const s=gpiSessao(),q=$("#quem");if(!s||!q)return;q.hidden=false;q.innerHTML=`<b>${esc(s.nome)}</b><button type="button" id="sair">Sair</button>`;$("#sair").addEventListener("click",()=>{if(lerFila().some(x=>!x.baixado)&&!confirm("Há registros na fila que ainda não foram baixados. Eles continuam guardados neste navegador. Sair mesmo assim?"))return;gpiSai();location.reload();});}
+function telaLogin(){banner(null);document.querySelectorAll(".toolbar .tools > *").forEach(x=>{x.style.visibility="hidden";});
+  $("#view").innerHTML=`<form class="card login" id="lgForm" autocomplete="on"><h2>Registro de Desvios</h2><p>Acesso exclusivo da equipe de Gestão de Projetos de Incorporação. Os registros já feitos podem ser consultados por todos na página Análise de Cronogramas.</p>
+    <label>Usuário<select id="lgU" autocomplete="username">${GPI_USERS.map(u=>`<option>${esc(u.nome)}</option>`).join("")}</select></label>
+    <label>Senha<input id="lgS" type="password" autocomplete="current-password" required></label><span class="err" id="lgE"></span>
+    <button class="btn primary" type="submit" id="lgOk">Entrar</button></form>`;
+  try{const ult=localStorage.getItem("gpi-ultimo");if(ult)$("#lgU").value=ult;}catch{}
+  $("#lgS").focus();
+  $("#lgForm").addEventListener("submit",async ev=>{ev.preventDefault();$("#lgOk").disabled=true;$("#lgE").textContent="";
+    const s=await gpiEntra($("#lgU").value,$("#lgS").value);
+    if(!s){$("#lgE").textContent="Senha incorreta.";$("#lgOk").disabled=false;$("#lgS").select();return;}
+    try{localStorage.setItem("gpi-ultimo",s.nome);}catch{}document.querySelectorAll(".toolbar .tools > *").forEach(x=>x.style.visibility="");mostraQuem();await loadCompany();});}
 const lastEmp=k=>{try{return localStorage.getItem("rd-emp-"+k)||(k==="makeit"?localStorage.getItem("rd-emp"):null);}catch{return null;}};
 async function loadCompany(){const k=co;$("#view").innerHTML="";currentEtapa=null;stamp(null);banner("Carregando os cronogramas de "+CO[k].name+"…");
   let f;try{f=await carrega(k);}catch(e){if(co!==k)return;banner("Não foi possível carregar os dados de "+CO[k].name+". Confira a conexão e recarregue a página.","err");return;}
@@ -850,7 +886,7 @@ async function enviar(){if(busy)return;const e=currentEtapa,l=lists.find(x=>x.id
   try{const rid="r"+Date.now().toString(36)+Math.random().toString(36).slice(2,6);
     const campos=Object.fromEntries(cf.map(x=>[x.id,x.value]));campos[R.tarefa]=[e.id];campos[R.reprog]=(data[currentList].records[e.id]||[]).length+1;if(!pred)campos[R.acao]=!!st.acao;
     const resumo={semana:ref(),tipo:tipo.name,causa:pred?null:opts.causa.find(c=>c.id===st.causa)?.name,setor:pred?null:opts.setor.find(s=>s.id===st.setor)?.name,origem:pred?null:opts.origem.find(o=>o.id===st.origem)?.name,pre,pos:e.pos,desc:pred?"":st.desc.trim(),proj:projName||null};
-    const item={v:1,rid,co,reg:REG(),lista:l.id,emp:l.short,etapa:e.id,nome:e.short,criado:new Date().toISOString(),descricao:descTask+"\n\n[rd:"+rid+"]",tags:[l.short.toLowerCase()],campos,resumo};
+    const autor=gpiSessao()?.nome||"";const item={v:1,rid,co,reg:REG(),autor,lista:l.id,emp:l.short,etapa:e.id,nome:e.short,criado:new Date().toISOString(),descricao:descTask+(autor?"\n\nRegistrado por "+autor+" no dashboard.":"")+"\n\n[rd:"+rid+"]",tags:[l.short.toLowerCase()],campos,resumo};
     const fila=lerFila();fila.push(item);gravaFila(fila);
     const rec={...resumo,id:"fila-"+rid,delta:days(pre,e.pos),fila:true};
     if(needProj&&!projMatch(projName))PROJ=[...PROJ,projName].sort((a,b)=>a.localeCompare(b,"pt"));

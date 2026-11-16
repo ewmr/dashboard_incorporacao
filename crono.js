@@ -50,14 +50,14 @@ const corta = (t, px, cw=7.3) => { const n = Math.max(3, Math.floor(px/cw)); ret
 const negociacao = e => faseDe(e)==="DUE";
 function itemRegua(e){
   const v = vig(e), l = lanc(e);
-  return {k:e.sigla, e, nome:e.nome, cidade:e.cidade, inc:e.incorporadora, data:l.data, vgv:v?.vgv_bruto||0, uh:v?.unidades||0, cor:corDe(e), neg:negociacao(e), feito:!!l.ok, ri:e.marcos.leg010||null, v4:e.marcos.orcV4||null};
+  return {k:e.sigla, e, nome:e.nome, cidade:e.cidade, inc:e.incorporadora, data:l.data, vgv:v?.vgv_bruto||0, uh:v?.unidades||0, cor:corDe(e), neg:negociacao(e), feito:!!l.ok, ri:e.marcos.leg010||null, v4:e.marcos.orcV4||null, pj:e.marcos.cef003||null};
 }
 function desenhaRegua(box, its, o={}){
   const A0 = ANO(), anosD = its.map(x=>+x.data.slice(0,4));
   const ultimo = Math.max(A0, ...anosD) + (o.sim ? 1 : 0);
   const anos = []; for (let y=A0; y<=ultimo; y++) if (o.sim || anosD.includes(y)) anos.push(y);
   if (!anos.length){ box.innerHTML="<p class='muted'>Nenhum lançamento previsto nesta seleção.</p>"; return null; }
-  const marc = o.ri || o.v4, W = Math.max(760, box.clientWidth||1000), lw = W<860?170:214, iw = W-lw, cw = iw/12;
+  const marc = o.ri || o.v4 || o.pj, W = Math.max(760, box.clientWidth||1000), lw = W<860?170:214, iw = W-lw, cw = iw/12;
   const ch = marc ? 272 : 246, band = marc ? 46 : 16, gap = 16, base0 = ch-band, alt = ch-band-112;
   const top = Math.max(200, Math.ceil(Math.max(0,...its.map(x=>x.vgv/1e6))/50)*50), H = 22 + anos.length*(ch+gap);
   const incs = S.inc==="all" ? ["Make It","Gadens"] : [S.inc];
@@ -104,7 +104,7 @@ function desenhaRegua(box, its, o={}){
         s+=`<rect class="rbh" x="${cx-slot/2}" y="${y0}" width="${slot}" height="${base0}" fill="transparent"/></g>`; }); }
     // marcos limitantes (RI e V4) na faixa de baixo
     if (marc){ const chips = [];
-      its.forEach(x=>{ [["ri","RI",o.ri],["v4","V4",o.v4]].forEach(([c,rot,on])=>{ const mm = on && x[c]; if (!mm || +mm.data.slice(0,4)!==Y) return;
+      its.forEach(x=>{ [["ri","RI",o.ri],["v4","V4",o.v4],["pj","PJ",o.pj]].forEach(([c,rot,on])=>{ const mm = on && x[c]; if (!mm || +mm.data.slice(0,4)!==Y) return;
         chips.push({m:+mm.data.slice(5,7)-1, rot, x, mm, depois: mm.data.slice(0,7) > x.data.slice(0,7) && !mm.ok}); }); });
       const porMes = {}; chips.forEach(c=>{ (porMes[c.m]=porMes[c.m]||[]).push(c); });
       Object.entries(porMes).forEach(([m,cs])=>{ cs.sort((a,b)=>a.rot.localeCompare(b.rot)||a.x.nome.localeCompare(b.x.nome)); const per = Math.max(1, Math.floor((cw-6)/58));
@@ -117,8 +117,8 @@ function desenhaRegua(box, its, o={}){
   box.innerHTML = s+"</svg>";
   geo.svg = box.querySelector("svg");
   box.querySelectorAll(".rb").forEach(g=>{ const x = its.find(i=>i.k===g.dataset.k); bindTip(g, ()=>tipRegua(x, o)); });
-  box.querySelectorAll(".rchip").forEach(g=>{ const x = its.find(i=>i.k===g.dataset.k), c = g.dataset.t==="RI" ? x.ri : x.v4;
-    bindTip(g, `<b>${g.dataset.t==="RI"?"Registro de Incorporação":"Orçamento V4"}</b> · ${esc(x.nome)}<div>${c.ok?"concluído em":"previsto para"} ${dmy(c.data)}</div><div>Lançamento ${o.sim?"na simulação":"previsto"}: ${mesAno(x.data)}</div>${c.data.slice(0,7)>x.data.slice(0,7)&&!c.ok?`<div style="color:var(--red-ink);font-weight:600">fica depois do lançamento</div>`:""}`); });
+  box.querySelectorAll(".rchip").forEach(g=>{ const t = g.dataset.t, x = its.find(i=>i.k===g.dataset.k), c = t==="RI" ? x.ri : t==="PJ" ? x.pj : x.v4;
+    bindTip(g, `<b>${t==="RI"?"Registro de Incorporação":t==="PJ"?"Assinatura do Contrato PJ":"Orçamento V4"}</b> · ${esc(x.nome)}<div>${c.ok?"concluído em":"previsto para"} ${dmy(c.data)}</div><div>Lançamento ${o.sim?"na simulação":"previsto"}: ${mesAno(x.data)}</div>${c.data.slice(0,7)>x.data.slice(0,7)&&!c.ok?`<div style="color:var(--red-ink);font-weight:600">fica depois do lançamento</div>`:""}`); });
   return geo;
 }
 // barra com cantos arredondados só em cima (sensação de crescimento)
@@ -128,7 +128,7 @@ function tipRegua(x, o){
   const lim = (c,rot) => x[c] ? `<tr><td>${rot}</td><td class="n">${x[c].ok?"✓ ":""}${dmy(x[c].data)}${!x[c].ok && x[c].data.slice(0,7)>x.data.slice(0,7)?` <span style="color:var(--red-ink)">· depois do lançamento</span>`:""}</td></tr>` : `<tr><td>${rot}</td><td class="n muted">—</td></tr>`;
   return `<b>${esc(x.nome)}</b> · ${esc(x.inc)} · ${esc(x.cidade)}${x.manual?" · adicionado na simulação":x.neg?" · em negociação":""}<table>
     <tr><td>Lançamento ${x.feito?"realizado":o.sim?"na simulação":"previsto"}</td><td class="n"><b>${x.feito?dmy(x.data):mesAno(x.data)}</b></td></tr>${x.orig?`<tr><td>Na régua atual</td><td class="n">${mesAno(x.orig)}</td></tr>`:""}
-    ${x.manual?"":lim("v4","Orçamento V4")+lim("ri","Registro de Incorporação")}
+    ${x.manual?"":lim("v4","Orçamento V4")+lim("ri","Registro de Incorporação")+lim("pj","Contrato PJ")}
     <tr><td>VGV bruto${v?" · "+v.versao:""}</td><td class="n">${brl(x.vgv)}</td></tr><tr><td>Unidades</td><td class="n">${nf(x.uh)}</td></tr>
     ${fi?`<tr><td>Prazo de financiamento</td><td class="n">${fmtMes(fi.meses)}</td></tr>`:""}</table><div class="muted">${o.sim?(x.manual?"arraste para mudar o mês · clique para editar":"arraste para mudar o mês de lançamento"):"clique para abrir o cronograma do empreendimento"}</div>`;
 }
@@ -144,7 +144,7 @@ function renderRegua(){
 }
 
 /* ---------- Simulação de régua ---------- */
-const SIM = (()=>{ try { const j = JSON.parse(localStorage.getItem("dash-sim")||"null"); if (j) return {datas:j.datas||{}, manuais:j.manuais||[], ri:!!j.ri, v4:!!j.v4}; } catch(e){} return {datas:{}, manuais:[], ri:false, v4:false}; })();
+const SIM = (()=>{ try { const j = JSON.parse(localStorage.getItem("dash-sim")||"null"); if (j) return {datas:j.datas||{}, manuais:j.manuais||[], ri:!!j.ri, v4:!!j.v4, pj:!!j.pj}; } catch(e){} return {datas:{}, manuais:[], ri:false, v4:false, pj:false}; })();
 const salvaSim = () => { try { localStorage.setItem("dash-sim", JSON.stringify(SIM)); } catch(e){} };
 const grpManual = m => S.group==="inc" ? m.inc : S.group==="cidade" ? m.cidade : S.group==="linha" ? "Aguardando Definição" : "DUE";
 function itensSim(){
@@ -160,6 +160,7 @@ function abreSim(){
   $("expBody").innerHTML = `<div class="sim-bar">
       <label class="sim-ck"><input type="checkbox" id="simRI" ${SIM.ri?"checked":""}><span></span>Registro de Incorporação (RI)</label>
       <label class="sim-ck"><input type="checkbox" id="simV4" ${SIM.v4?"checked":""}><span></span>Orçamento V4</label>
+      <label class="sim-ck"><input type="checkbox" id="simPJ" ${SIM.pj?"checked":""}><span></span>Contrato PJ</label>
       <span class="sim-sp"></span>
       <button class="pillbtn" id="simAdd"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>Adicionar empreendimento</button>
       <button class="pillbtn" id="simCopia"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2.5"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg><span>Copiar resumo</span></button>
@@ -173,6 +174,7 @@ function abreSim(){
   abreFolha("expSheet"); $("expSheet").classList.add("xl");
   $("simRI").onchange = ev=>{ SIM.ri = ev.target.checked; salvaSim(); renderSim(); };
   $("simV4").onchange = ev=>{ SIM.v4 = ev.target.checked; salvaSim(); renderSim(); };
+  $("simPJ").onchange = ev=>{ SIM.pj = ev.target.checked; salvaSim(); renderSim(); };
   $("simAdd").onclick = ()=>formManual(null);
   $("simZera").onclick = ()=>{ SIM.datas = {}; SIM.manuais = []; salvaSim(); $("simForm").hidden = true; renderSim(); };
   $("simCopia").onclick = copiaSim;
@@ -182,8 +184,8 @@ function renderSim(){
   const box = $("simRegua"); if (!box) return;
   const its = itensSim(), A0 = ANO();
   const baseTot = {}; filtrados("ano").filter(e=>!e.legado && lanc(e) && anoLanc(e)>=A0 && !negociacao(e)).forEach(e=>{ const y=anoLanc(e); baseTot[y]=(baseTot[y]||0)+(vig(e)?.vgv_bruto||0); });
-  const geo = desenhaRegua(box, its, {sim:true, ri:SIM.ri, v4:SIM.v4, baseTot});
-  $("simLeg").innerHTML = legRegua(its, `<span><i class="hz"></i>em negociação ou adicionado</span><span><svg width="16" height="10"><rect x="1" y="1" width="14" height="8" rx="2" fill="none" stroke="var(--label-3)" stroke-dasharray="3 2"/></svg>posição na régua atual</span>${SIM.ri||SIM.v4?`<span><i style="background:var(--red-ink)"></i>RI ou V4 previsto depois do lançamento</span>`:""}<span class="muted">comparação "vs régua atual": régua oficial, só com Due finalizada</span>`);
+  const geo = desenhaRegua(box, its, {sim:true, ri:SIM.ri, v4:SIM.v4, pj:SIM.pj, baseTot});
+  $("simLeg").innerHTML = legRegua(its, `<span><i class="hz"></i>em negociação ou adicionado</span><span><svg width="16" height="10"><rect x="1" y="1" width="14" height="8" rx="2" fill="none" stroke="var(--label-3)" stroke-dasharray="3 2"/></svg>posição na régua atual</span>${SIM.ri||SIM.v4||SIM.pj?`<span><i style="background:var(--red-ink)"></i>RI, V4 ou PJ previsto depois do lançamento</span>`:""}<span class="muted">comparação "vs régua atual": régua oficial, só com Due finalizada</span>`);
   if (geo) arrastavel(box, geo, its);
   listaSim(its);
 }
@@ -216,7 +218,7 @@ function arrastavel(box, geo, its){
 function listaSim(its){
   const box = $("simLista"), mov = its.filter(x=>x.orig), man = its.filter(x=>x.manual);
   if (!mov.length && !man.length){ box.innerHTML = "<p class='muted'>Nenhuma alteração ainda. Arraste uma barra para outro mês ou ano, ou adicione um empreendimento.</p>"; return; }
-  const alerta = x => [["ri","RI"],["v4","V4"]].filter(([c])=>x[c] && !x[c].ok && x[c].data.slice(0,7)>x.data.slice(0,7)).map(([,r])=>`<span class="dchip down">${r} depois do lançamento</span>`).join(" ");
+  const alerta = x => [["ri","RI"],["v4","V4"],["pj","PJ"]].filter(([c])=>x[c] && !x[c].ok && x[c].data.slice(0,7)>x.data.slice(0,7)).map(([,r])=>`<span class="dchip down">${r} depois do lançamento</span>`).join(" ");
   box.innerHTML = `<div class="sim-l">${mov.map(x=>`<div class="sim-i"><span class="sim-dot" style="background:${x.cor}"></span><b>${esc(x.nome)}</b><span class="muted">${mesAno(x.orig)} → <b style="color:var(--label)">${mesAno(x.data)}</b></span>${x.orig.slice(0,4)!==x.data.slice(0,4)?`<span class="dchip flat">${nf(x.vgv/1e6,2)} MM saem de ${x.orig.slice(0,4)} para ${x.data.slice(0,4)}</span>`:""}${alerta(x)}<span class="sim-sp"></span><button class="ib" data-rev="${esc(x.k)}" title="voltar para a data da régua atual">↺</button></div>`).join("")}
     ${man.map(x=>`<div class="sim-i"><span class="sim-dot hz" style="background:${x.cor}"></span><b>${esc(x.nome)}</b><span class="muted">${esc(x.inc)} · ${esc(cidCurta(x.cidade))} · ${mesAno(x.data)} · ${nf(x.vgv/1e6,2)} MM${x.uh?` · ${nf(x.uh)} UH`:""}</span><span class="dchip flat">adicionado</span><span class="sim-sp"></span><button class="ib" data-ed="${esc(x.k)}" title="editar">✎</button><button class="ib" data-del="${esc(x.k)}" title="remover">✕</button></div>`).join("")}</div>`;
   box.querySelectorAll("[data-rev]").forEach(b=>b.onclick=()=>{ delete SIM.datas[b.dataset.rev]; salvaSim(); renderSim(); });
@@ -311,7 +313,7 @@ function renderAgenda(){
   const atr = its.filter(x=>x.atras), prox = its.filter(x=>!x.atras);
   $("agN").textContent = `${prox.length} nos próximos 90 dias${atr.length?` · ${atr.length} vencidos sem conclusão`:""}`;
   const linha = x => { const d = difDias(hoje, x.data);
-    return `<div class="ag-i${x.atras?" atr":""}" data-s="${x.e.sigla}"><div class="ag-d"><b>${x.data.slice(8,10)}</b><span>${MESES[+x.data.slice(5,7)-1]}</span></div><span class="ag-dot" style="background:${faseCor(faseDe(x.e))}"></span><div class="ag-t"><b>${esc(x.n)}</b><span>${esc(x.e.nome)} · ${esc(cidCurta(x.e.cidade))}</span></div><div class="ag-r">${x.atras?`${-d} ${-d===1?"dia":"dias"} de atraso`:d===0?"hoje":`em ${d} ${d===1?"dia":"dias"}`}</div></div>`; };
+    return `<div class="ag-i${x.atras?" atr":""}" data-s="${x.e.sigla}"><div class="ag-d"><b>${x.data.slice(8,10)}</b><span>${MESES[+x.data.slice(5,7)-1]}</span></div><span class="ag-dot" style="background:${faseCor(faseDe(x.e))}"></span><div class="ag-t"><b>${esc(x.n)}</b><span class="ag-e">${icoSe(x.e.incorporadora)}${esc(x.e.nome)} · ${esc(cidCurta(x.e.cidade))}</span></div><div class="ag-r">${x.atras?`${-d} ${-d===1?"dia":"dias"} de atraso`:d===0?"hoje":`em ${d} ${d===1?"dia":"dias"}`}</div></div>`; };
   let h = "";
   if (atr.length) h += `<div class="ag-g"><h4 class="red">Vencidos e ainda não concluídos</h4>${atr.map(linha).join("")}</div>`;
   const grupos = {}; prox.forEach(x=>{ (grupos[x.data.slice(0,7)] = grupos[x.data.slice(0,7)]||[]).push(x); });
@@ -321,7 +323,7 @@ function renderAgenda(){
 }
 
 /* ---------- Prontidão para lançamento ---------- */
-const PRONT = [["leg009","Alvará"],["leg010","Registro de Incorp."],["orcV4","Orçamento V4"]];
+const PRONT = [["leg009","Alvará"],["leg010","Registro de Incorp."],["orcV4","Orçamento V4"],["cef003","Contrato PJ"]];
 function renderPront(){
   const box = $("pront"); if (!box) return;
   const L = filtrados().filter(e=>!e.legado && lanc(e) && !lanc(e).ok && !negociacao(e)).sort((a,b)=>lanc(a).data.localeCompare(lanc(b).data));
@@ -331,7 +333,7 @@ function renderPront(){
     if (m.ok) return `<span class="pr-c ok" title="concluído em ${dmy(m.data)}">✓ ${mesAno(m.data)}</span>`;
     const dep = m.data.slice(0,7) > l.slice(0,7); if (dep) risco++;
     return `<span class="pr-c ${dep?"bad":m.data<HOJE()?"late":"pend"}" title="${dep?"previsto para depois do lançamento":m.data<HOJE()?"vencido sem conclusão":"previsto"} · ${dmy(m.data)}">${mesAno(m.data)}</span>`; };
-  box.innerHTML = L.length ? `<div class="pr-h"><span>Lançamento previsto</span>${PRONT.map(([,n])=>`<span>${n}</span>`).join("")}</div>${L.map(e=>`<div class="pr-r" data-s="${e.sigla}"><span class="pr-n"><b>${esc(e.nome)}</b><small>${mesAno(lanc(e).data)} · ${esc(cidCurta(e.cidade))}</small></span>${PRONT.map(([c])=>cel(e,c)).join("")}</div>`).join("")}
+  box.innerHTML = L.length ? `<div class="pr-h"><span>Lançamento previsto</span>${PRONT.map(([,n])=>`<span>${n}</span>`).join("")}</div>${L.map(e=>`<div class="pr-r" data-s="${e.sigla}"><span class="pr-n"><b class="fd-n">${icoSe(e.incorporadora)}${esc(e.nome)}</b><small>${mesAno(lanc(e).data)} · ${esc(cidCurta(e.cidade))}</small></span>${PRONT.map(([c])=>cel(e,c)).join("")}</div>`).join("")}
     <p class="cap" style="margin-top:8px">✓ concluído · data em cinza: previsto antes do lançamento · vermelho: previsto para depois do lançamento ou vencido sem conclusão</p>` : "<p class='muted'>Nenhum lançamento previsto nesta seleção.</p>";
   $("prCap").textContent = L.length ? `os marcos que limitam cada lançamento previsto${risco?` · ${risco} ${risco===1?"previsto":"previstos"} para depois do lançamento`:""}` : "";
   box.querySelectorAll(".pr-r").forEach(el=>el.onclick=()=>irInd(el.dataset.s));
@@ -386,8 +388,7 @@ function renderIndiv(){
 }
 
 /* ---------- Tabela de marcos (estilo Finder) ---------- */
-const TB_COLS = [["inc001","Fim da Due"],["nov002","Escritura"],["leg009","Alvará"],["leg010","Registro de Incorp."],["orcV4","Orçamento V4"],["inc002","Lançamento"],["cef003","Contrato PJ"],["eng001","Início de Obra"],["eng002","Término de Obra"],["mar001","Entrega de Chaves"],["inc003","Entrega em Contrato"]];
-const icoMini = inc => ICO_CO[inc] ? `<span class="fd-i" style="background:${coCor(inc)}">${ICO_CO[inc]}</span>` : "";
+const TB_COLS = [["nov001","Reunião de Arrancada"],["inc001","Fim da Due"],["nov002","Escritura"],["arq003i","Início do Projeto EP"],["arq004","1º Protocolo PL Prefeitura"],["leg009","Alvará"],["leg010","Registro de Incorp."],["orcV4","Orçamento V4"],["inc002","Lançamento"],["cef003","Contrato PJ"],["arq006","Projetos Executivos 100%"],["eng001","Início de Obra"],["eng002","Término de Obra"],["leg011","Registro de CVCO"],["mar001","Entrega de Chaves"],["inc003","Entrega em Contrato"]];
 function renderTabela(){
   const box = $("tabela"); if (!box) return;
   const o = S.crOrd || (S.crOrd = {c:"inc002", d:1}), q = (S.crBusca||"").trim().toLowerCase(), hoje = HOJE();
@@ -399,7 +400,7 @@ function renderTabela(){
     return `<td class="d ${cls}" title="${D.marco_nome[c]||c} · ${m.ok?"concluído":m.data<hoje?"vencido sem conclusão":"previsto"}">${dmyc(m.data)}</td>`; };
   box.innerHTML = `<div class="fd-top"><label class="fd-q"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4 4"/></svg><input id="tbQ" placeholder="Buscar" value="${esc(S.crBusca||"")}"></label><span class="muted">${L.length} empreendimentos · <b style="color:var(--label)">concluído</b> · <span style="color:var(--label-2)">previsto</span> · <span style="color:var(--red-ink)">vencido sem conclusão</span> · clique no título da coluna para ordenar</span></div>
   <div class="fd"><table><thead><tr>${th("nome","Nome","fn")}${th("fase","Fase")}${TB_COLS.map(([c,n])=>th(c,n,"d")).join("")}${th("fin","Prazo financ.","d")}</tr></thead><tbody>${L.map(e=>{ const fi = financ(e);
-    return `<tr data-s="${e.sigla}" class="${e.sigla===S.crSel?"sel":""}"><td class="fn"><span class="fd-n">${icoMini(e.incorporadora)}${esc(e.nome)}</span></td><td><span class="fd-f"><i style="background:${faseCor(faseDe(e))}"></i>${esc(faseNome(e))}</span></td>${TB_COLS.map(([c])=>td(e,c)).join("")}<td class="d">${fi?nf(fi.meses,1)+" m":"—"}</td></tr>`; }).join("")}</tbody></table></div>`;
+    return `<tr data-s="${e.sigla}" class="${e.sigla===S.crSel?"sel":""}"><td class="fn"><span class="fd-n">${icoSe(e.incorporadora)}${esc(e.nome)}</span></td><td><span class="fd-f"><i style="background:${faseCor(faseDe(e))}"></i>${esc(faseNome(e))}</span></td>${TB_COLS.map(([c])=>td(e,c)).join("")}<td class="d">${fi?nf(fi.meses,1)+" m":"—"}</td></tr>`; }).join("")}</tbody></table></div>`;
   box.querySelectorAll("th").forEach(t=>t.onclick=()=>{ const c=t.dataset.c; S.crOrd = {c, d: o.c===c ? -o.d : 1}; renderTabela(); });
   box.querySelectorAll("tbody tr").forEach(r=>{ r.onclick=()=>{ S.crSel = r.dataset.s; renderIndiv(); box.querySelectorAll("tbody tr").forEach(x=>x.classList.toggle("sel", x===r)); }; r.ondblclick=()=>irInd(r.dataset.s); });
   const qi = $("tbQ"); qi.oninput = ()=>{ S.crBusca = qi.value; const p = qi.selectionStart; renderTabela(); const n=$("tbQ"); n.focus(); n.setSelectionRange(p,p); };

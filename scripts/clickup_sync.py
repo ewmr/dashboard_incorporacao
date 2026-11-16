@@ -21,7 +21,7 @@ PASTA_GADENS = "901318303880"
 F_CODIGO = "1a4d1964-1f3b-44c9-83ed-92a31741656e"
 TZ = dt.timezone(dt.timedelta(hours=-3))
 # marcos-chave usados pelo dashboard (orçamento V4: orç003/orç004 com "V4" no nome)
-CODIGOS = ["nov001","inc001","nov002","arq003","arq005","leg008","leg009","leg010","inc002","cef003","cef004","eng001","eng002","leg011","mar001","inc003","orç003","orç004"]
+CODIGOS = ["nov001","inc001","nov002","arq003","arq004","arq006","arq005","leg008","leg009","leg010","inc002","cef003","cef004","eng001","eng002","leg011","mar001","inc003","orç003","orç004"]
 F = {  # campos da lista Controle de Viabilidades
   "emp":"10612552-df74-4208-9c9f-f392bc192914", "end":"260ee6ef-9ae2-4a38-be18-f5c3b569e148", "margem":"2c80f097-e15e-4d06-9157-85be25960bf4",
   "area":"38eb77de-76ab-4553-89e2-d563c579478b", "permutas":"3ca392cc-9cd0-4ba0-8044-0d3d048b1d0b", "expo":"41157ca5-386e-49d8-87d9-4f4ae36950e9",
@@ -212,6 +212,11 @@ def marcos(cad):
             if c not in CODIGOS and c != "orcV4": continue
             ant = M.setdefault(c, {}).get(s)
             if not ant or d > ant[0]: M[c][s] = [d, ok]
+            if c == "arq003" and dia(t.get("start_date")):
+                # início do Estudo Preliminar = Início do Projeto EP ("concluído" quando a Etapa já começou)
+                ini, comecou = dia(t.get("start_date")), 1 if st.get("type") != "open" else 0
+                a2 = M.setdefault("arq003i", {}).get(s)
+                if not a2 or ini < a2[0]: M["arq003i"][s] = [ini, comecou]
     return M, listas, sorted(x for x in sem if x)
 
 def variacoes(hoje, M):

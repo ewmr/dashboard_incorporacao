@@ -805,7 +805,7 @@ table.dre-c .bb.neg{background:var(--red-ink);opacity:.6}
 .sim-i .ib:hover{background:var(--fill-2)}
 #simLeg i.hz,#reguaLeg i.hz{background:repeating-linear-gradient(45deg,var(--label-3) 0 2px,transparent 2px 5px)}
 .ag.pr{max-height:none}
-.pr-h,.pr-r{display:grid;grid-template-columns:minmax(120px,1.3fr) repeat(3,minmax(0,1fr));gap:8px;align-items:center}
+.pr-h,.pr-r{display:grid;grid-template-columns:minmax(110px,1.2fr) repeat(4,minmax(0,1fr));gap:8px;align-items:center}
 .pr-h{font-size:.68rem;color:var(--label-3);padding:0 6px 6px;border-bottom:1px solid var(--sep)}
 .pr-r{padding:7px 6px;border-bottom:1px solid var(--sep);cursor:pointer;border-radius:8px}
 .pr-r:hover{background:var(--fill)}
@@ -905,3 +905,50 @@ table.dre-c .bb.neg{background:var(--red-ink);opacity:.6}
 .reg-bar{display:flex;align-items:center;gap:12px;padding:8px 14px;border-bottom:1px solid var(--sep);background:var(--card-solid);font-size:.84rem}
 .reg-bar .muted{font-size:.76rem}
 .reg-ov iframe{flex:1;border:0;width:100%;background:#fff}
+
+/* ---------- v0.13 · quebra suave entre o estratégico e o operacional ---------- */
+.sec-div{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;column-gap:18px;margin:52px 4% 16px;text-align:center}
+.sec-div::before,.sec-div::after{content:"";height:1px;grid-row:1}
+.sec-div::before{grid-column:1;background:linear-gradient(90deg,transparent,color-mix(in srgb,var(--label) 20%,transparent))}
+.sec-div::after{grid-column:3;background:linear-gradient(90deg,color-mix(in srgb,var(--label) 20%,transparent),transparent)}
+.sec-div span{grid-column:2;grid-row:1;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--label-2)}
+.sec-div small{grid-column:2;grid-row:2;font-size:.76rem;color:var(--label-3);margin-top:2px}
+.ai .fd-i{display:inline-grid;vertical-align:-3px;margin-right:6px}
+.ag-e{display:flex;align-items:center;gap:6px}
+.ag-e .fd-i{width:14px;height:14px;border-radius:4px}.ag-e .fd-i svg{width:10px;height:10px}
+.pr-n .fd-n{gap:6px}
+
+/* v0.13 · Análise em duas seções */
+.sec-div.big{margin:56px 0 18px}
+.sec-div.big.first{margin-top:22px}
+.sec-div.big span{font-size:.9rem;letter-spacing:.12em;color:var(--label)}
+.an-k.warn b{color:#C75F00}
+.an-ks4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:1100px){ .an-ks4{grid-template-columns:repeat(2,minmax(0,1fr))} }
+.an-hr .tr .pl{position:absolute;left:0;top:0;bottom:0;display:flex;border-radius:999px;overflow:hidden;gap:1px}
+.an-hr .tr .pl b{display:block;height:100%}
+.an-hr .nm{display:flex;align-items:center;gap:6px}
+.an-hr .nm .fd-i{flex:none}
+.an-leg{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;font-size:.76rem;color:var(--label-2);margin:-4px 0 18px}
+.an-leg span{display:inline-flex;align-items:center;gap:6px}.an-leg i{width:9px;height:9px;border-radius:3px}
+.an-col{display:flex;align-items:stretch;gap:10px;height:190px;padding-top:6px}
+.an-col .c{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;min-width:0}
+.an-col .c b{font:700 1rem var(--font-r);font-variant-numeric:tabular-nums}
+.an-col .bx{flex:1;width:100%;display:flex;align-items:flex-end;justify-content:center}
+.an-col .bx i{display:block;width:min(46px,80%);border-radius:7px 7px 2px 2px}
+.an-col .lb{font-size:.72rem;color:var(--label-2);text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+.an-rbar{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin:0 0 14px}
+.an-rinfo{flex:1;min-width:240px;font-size:.84rem;color:var(--label-2)}
+.an-rinfo .red{color:var(--red-ink)}
+.an-wk{display:flex;align-items:stretch;gap:6px;height:200px}
+.an-wk .c{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;min-width:0}
+.an-wk .c b{font-size:.74rem;font-variant-numeric:tabular-nums;color:var(--label-2);min-height:1em}
+.an-wk .bx{flex:1;width:100%;display:flex;align-items:flex-end;justify-content:center}
+.an-wk .bar{display:flex;flex-direction:column-reverse;width:min(30px,80%);border-radius:6px 6px 2px 2px;overflow:hidden;min-height:0}
+.an-wk .bar i{display:block;width:100%}
+.an-wk small{font-size:.66rem;color:var(--label-3)}
+.an-wk .c.cur small{color:var(--accent);font-weight:700}
+.an-ds{max-width:340px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--label-2)}
+.an-pend{font-size:.7rem;font-weight:700;color:#C75F00;background:color-mix(in srgb,#FF9500 14%,transparent);padding:2px 7px;border-radius:999px;white-space:nowrap}
+tr.fila td{background:color-mix(in srgb,#FF9500 6%,transparent)}
+#sec-an-reg ~ .grid .an-hr{grid-template-columns:minmax(0,190px) minmax(0,1fr) 60px}

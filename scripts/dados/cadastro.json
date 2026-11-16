@@ -611,10 +611,13 @@
  "marco_nome": {
   "nov001": "Reunião de Arrancada",
   "inc001": "Fim da Due Diligence",
+  "arq003i": "Início do Projeto EP",
   "arq003": "Estudo Preliminar",
+  "arq004": "1º Protocolo PL Prefeitura",
   "arq005": "Anteprojeto",
   "leg009": "Emissão de Alvará",
   "leg010": "Registro de Incorporação",
+  "arq006": "Projetos Executivos 100%",
   "inc002": "Lançamento Comercial",
   "orcV4": "Orçamento V4",
   "eng001": "Início de Obra",
