@@ -37,12 +37,16 @@ def opcao(c, v):
     o = next((o for o in ops if o.get("id") == v or str(o.get("orderindex")) == str(v)), None)
     return (o.get("name") or o.get("label")) if o else None
 
+COD_NOMES = {}
 def etapas_da_lista(li):
     out = []
     for t in paginas(f"list/{li['id']}/task", {"subtasks": "false", "include_closed": "true"}):
         if t.get("parent") or t.get("custom_item_id") != TIPO_ETAPA: continue
         st = t.get("status") or {}
-        cods = json.dumps((cf(t, F_COD) or {}).get("value") or [])
+        cc = cf(t, F_COD) or {}
+        for o in cc.get("type_config", {}).get("options", []): COD_NOMES[o["id"]] = o.get("label")
+        cods = json.dumps(cc.get("value") or [])
+        rot = [COD_NOMES.get(x, x) for x in (cc.get("value") or [])]
         v = lambda fid: (cf(t, fid) or {}).get("value")
         out.append({
             "id": t["id"], "name": t.get("name", ""), "url": t.get("url"),
@@ -51,6 +55,7 @@ def etapas_da_lista(li):
             "status": st.get("status"), "stType": st.get("type"), "stColor": st.get("color"),
             "start": dia(t.get("start_date")), "pos": dia(t.get("due_date")),
             "pre": dia(v(F_SEM)) if v(F_SEM) else None, "lb": dia(v(F_LB)) if v(F_LB) else None,
+            "cods": rot,
             "marco": "lanc" if COD["lanc"] in cods else "reg" if COD["reg"] in cods else "due" if COD["due"] in cods else None,
         })
     return out
