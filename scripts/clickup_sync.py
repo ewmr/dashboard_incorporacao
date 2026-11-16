@@ -249,7 +249,12 @@ def main():
         "snap": hoje, "snap_ant": ant or velho.get("snap_ant"), "fonte": "rotina diária do GitHub (API do ClickUp)",
         "listas": listas, "M": M, "variacoes": var if ant else velho.get("variacoes", []), "listas_sem_cadastro": sem,
     }, ensure_ascii=False, indent=1), encoding="utf-8")
-    print(f"{len(rows)} viabilidades · {sum(len(v) for v in M.values())} marcos em {len(listas)} cronogramas · {len(var)} variações · {chamadas} chamadas")
+    try:
+        import etapas_sync; etapas_sync.rodar(cad)
+    except SystemExit as e: print("Etapas não atualizadas:", e)
+    except Exception as e: print("Etapas não atualizadas:", repr(e)[:300])
+    import clickup_sync as _cs
+    print(f"{len(rows)} viabilidades · {sum(len(v) for v in M.values())} marcos em {len(listas)} cronogramas · {len(var)} variações · {chamadas + _cs.chamadas} chamadas")
     if sem: print("Cronogramas sem empreendimento no cadastro:", ", ".join(sem))
     return 0
 
