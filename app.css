@@ -849,3 +849,59 @@ table.dre-c .bb.neg{background:var(--red-ink);opacity:.6}
 .fd th,.fd td{border-radius:0!important;text-align:left}
 .fd th.d,.fd td.d{text-align:right}
 .fd td.fn{font-weight:600}
+
+/* ---------- v0.12 · Análise de Cronogramas ---------- */
+.an-fonte{margin:-6px 0 2px}
+.an-ks{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.an-k{background:var(--card);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:3px;box-shadow:var(--shadow-sm,0 1px 3px rgba(0,0,0,.05));min-width:0}
+.an-k span{font-size:.76rem;color:var(--label-2);font-weight:600}
+.an-k b{font:700 1.7rem var(--font-r);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.an-k small{font-size:.72rem;color:var(--label-3)}
+.an-k.alert b{color:var(--red-ink)}
+@media (max-width:1100px){ .an-ks{grid-template-columns:repeat(2,minmax(0,1fr))} }
+.an-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:1100px){ .an-3{grid-template-columns:1fr} }
+.an-hb{display:flex;flex-direction:column;gap:8px}
+.an-hr{display:grid;grid-template-columns:minmax(0,130px) minmax(0,1fr) 56px;gap:10px;align-items:center;font-size:.8rem}
+.an-hr .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.an-hr .tr{height:8px;background:var(--fill);border-radius:999px;position:relative}
+.an-hr .tr i{position:absolute;left:0;top:0;bottom:0;border-radius:999px}
+.an-hr .v{text-align:right;font-weight:700;font-variant-numeric:tabular-nums}
+.an-hr .v small{font-weight:500;color:var(--label-3)}
+.an-f{display:flex;flex-direction:column;gap:10px;margin-bottom:10px}
+.an-chips{display:flex;gap:6px;flex-wrap:wrap}
+.an-chip{border:0;background:var(--fill);border-radius:999px;padding:6px 12px 6px 10px;font:inherit;font-size:.8rem;font-weight:600;color:var(--label-2);display:inline-flex;align-items:center;gap:7px;cursor:pointer}
+.an-chip i{width:8px;height:8px;border-radius:50%;background:var(--c);opacity:.45}
+.an-chip b{font-weight:600;color:var(--label-3);font-variant-numeric:tabular-nums}
+.an-chip.on{background:color-mix(in srgb,var(--c) 16%,transparent);color:var(--label);box-shadow:inset 0 0 0 1.5px color-mix(in srgb,var(--c) 70%,transparent)}
+.an-chip.on i{opacity:1}
+.an-chip.on b{color:var(--label-2)}
+.an-ctl{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.an-sel{font:inherit;font-size:.82rem;font-weight:600;color:var(--label);background:var(--fill);border:0;border-radius:9px;padding:6px 10px;max-width:240px}
+.an-tg{display:inline-flex;align-items:center;gap:8px;font-size:.82rem;font-weight:600;cursor:pointer;user-select:none}
+.an-tg input{position:absolute;opacity:0;pointer-events:none}
+.an-tg span{width:34px;height:20px;border-radius:999px;background:var(--fill-2);position:relative;transition:.2s}
+.an-tg span::after{content:"";position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:.2s}
+.an-tg input:checked+span{background:var(--accent)}
+.an-tg input:checked+span::after{transform:translateX(14px)}
+.an-fd{max-height:720px}
+.an-fd td.an-nm{max-width:320px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-weight:500}
+.an-fd td.an-tag{max-width:180px;overflow:hidden;text-overflow:ellipsis;color:var(--label-2);font-size:.76rem}
+.an-st{display:inline-flex;align-items:center;gap:6px;color:var(--label-2);font-size:.78rem;white-space:nowrap}
+.an-st i{width:8px;height:8px;border-radius:50%}
+.an-fd td.d.late{color:var(--red-ink);font-weight:600}
+.an-dl{font-weight:600;font-size:.78rem}
+.an-dl.late{color:var(--red-ink)}.an-dl.ok{color:var(--green-ink,#1E9E48)}.an-dl.mute{color:var(--label-3);font-weight:400}.an-dl.warn{color:#b07800}
+.an-flag{width:8px;height:8px;border-radius:50%;background:var(--red-ink);flex:none}
+.an-flag.ok{background:var(--green-ink,#1E9E48)}
+.an-flag.none{background:transparent}
+.an-lk{color:var(--label-3);text-decoration:none;font-weight:700}
+.an-lk:hover{color:var(--accent)}
+.an-rg{cursor:default}
+#anRegInfo{margin:6px 0 8px;line-height:1.5}
+#anRegInfo .red{color:var(--red-ink)}
+#sec-reg #regAbre{flex:none}
+.reg-ov{position:fixed;inset:0;z-index:200;background:var(--bg,#fff);display:flex;flex-direction:column}
+.reg-bar{display:flex;align-items:center;gap:12px;padding:8px 14px;border-bottom:1px solid var(--sep);background:var(--card-solid);font-size:.84rem}
+.reg-bar .muted{font-size:.76rem}
+.reg-ov iframe{flex:1;border:0;width:100%;background:#fff}

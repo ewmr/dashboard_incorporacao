@@ -55,6 +55,7 @@ const MIN_AMOSTRA = 2;
 const INCS = [["all","Consolidado"],["Make It","Make It"],["Gadens","Gadens"]];
 
 const CHANGELOG = [
+  {v:"0.12", d:"2026-11-16", itens:["Análise de Cronogramas: todas as Etapas de todos os cronogramas (tarefas mãe do tipo Etapa), com Δ semana, Δ LB, filtros, busca e histórico de registros; números da semana e gráficos de deslocamento, causas e setor.","Registro de Desvios dentro do dashboard: mesmo app da reunião, com as Etapas lidas pela rotina automática. Os registros ficam guardados no navegador e são enviados ao ClickUp no fim da reunião pelo botão A enviar, sem gastar créditos do Claude.","Rotina diária passa a ler as Etapas e os registros do ClickUp, e roda também segunda à noite, depois da atualização dos cronogramas."]},
   {v:"0.11", d:"2026-11-14", itens:["Cronograma: a Régua de lançamentos vem primeiro e só mostra empreendimentos com Due finalizada; barras coloridas por Colorir e agrupar por, cantos retos embaixo, grade até 300 MM, passado escurecido e meta separada por empresa no consolidado.","Simular régua: arraste lançamentos entre meses e anos, veja o VGV do ano contra a meta mudar na hora, mostre RI e Orçamento V4 e adicione terrenos em negociação.","Portfólio macro com o ícone da empresa e prazo para lançamento mesmo sem Fim da Due; Prontidão para lançamento no lugar do Prazo de financiamento; cronograma do empreendimento simplificado e tabela de datas dos marcos.","Novo agrupamento por Empresa (padrão no consolidado; por fase dentro de cada empresa).","Viabilidade: números da versão com valores exatos."]},
   {v:"0.10", d:"2026-11-11", itens:["Página Cronograma: Portfólio macro em Gantt (fases, Assinatura PJ e Entrega em contrato), Régua de lançamentos por ano com a meta de VGV, Agenda de marcos dos próximos 90 dias, Prazo de financiamento e o cronograma de cada empreendimento em escala de tempo.","Prazo de financiamento = meses entre o Lançamento Comercial e a Entrega em Contrato (inc003); as Pendências listam quem ainda não tem a Entrega em Contrato."]},
   {v:"0.9.2", d:"2026-11-10", itens:["O card de produto virou Números da versão: eficiência e ticket médio em destaque e, abaixo, todos os indicadores da viabilidade (substitui a lista recolhida).","Janelas rolam por inteiro: o resumo por ano do fluxo detalhado fica legível."]},
@@ -678,7 +679,7 @@ const SECOES = {
   mapa:[["cid:Curitiba","Curitiba"],["cid:Pinhais","Pinhais"],["cid:São José dos Pinhais","São José dos Pinhais"],["cid:Araucária","Araucária"],["cid:Almirante Tamandaré","Almirante Tamandaré"]],
   resumo:[["sec-kpis","Indicadores"],["sec-traj","Trajetória de lançamentos"],["sec-dist","Distribuição"],["sec-map","Mapa da carteira"],["sec-saude","Saúde financeira"],["sec-marcos","Marcos alterados"]],
   cronograma:[["sec-lanc","Próximos lançamentos"],[null,"Portfólio Macro (Gantt)"],[null,"Régua de lançamentos"],[null,"Agenda de 90 dias"]],
-  analise:[["sec-reg","Registro de Desvios"],["sec-var","Marcos alterados"],[null,"Motivos de atraso"]],
+  analise:[["sec-etapas","Todas as Etapas"],["sec-var","Marcos alterados"],["sec-reg","Registro de Desvios"]],
   viabilidade:[["sec-viab-cmp","Comparativo entre fases"],["sec-viab-det","Detalhamento por fase"],["sec-viab-evo","Evolução por fase"],["sec-viab","Viabilidades vigentes"]],
   metas:[[null,"Metas de Incorporação"]],
 };
@@ -1181,6 +1182,7 @@ function route(){
   document.querySelectorAll(".page").forEach(s=>s.hidden = s.dataset.page!==p);
   document.querySelectorAll("#nav .ni").forEach(a=>{ a.classList.toggle("on", a.dataset.p===p); a.toggleAttribute("aria-current", a.dataset.p===p); });
   document.documentElement.classList.toggle("no-scroll", p==="mapa");
+  if (p==="analise" && typeof renderAnalise==="function"){ requestAnimationFrame(renderAnalise); const b=$("regAbre"); if (b) b.onclick = abreRegistro; }
   if (p==="cronograma" && typeof renderCrono==="function"){ requestAnimationFrame(renderCrono); const b=$("simAbre"); if (b) b.onclick = abreSim; }
   if (p==="mapa"){ setTimeout(()=>{ iniciaMapaPagina(); const e=D.empreendimentos.find(x=>x.sigla===S.mapSel); renderMapaPagina(); if (e && full.loaded()) MP.voa3d(full, e.pos, {padding:PADF()}); marca3d(); }, 30); }
   if (p==="resumo" && mini) setTimeout(()=>mini.resize(),60);
@@ -1198,7 +1200,7 @@ function renderAll(){
   document.documentElement.dataset.inc = S.inc;
   renderFilterPop(); renderCoPop();
   renderKpis(); renderTraj(); renderDonut(); renderMap(); renderSaude(); renderMarcos(); renderData();
-  if (typeof renderCrono==="function") renderCrono(); renderVariacoes(); renderViab();
+  if (typeof renderCrono==="function") renderCrono(); if (typeof renderAnalise==="function" && paginaAtual==="analise") renderAnalise(); renderVariacoes(); renderViab();
   if (!$("setSheet").hidden) renderSettings();
 }
 function renderData(){
