@@ -852,7 +852,7 @@ table.dre-c .bb.neg{background:var(--red-ink);opacity:.6}
 
 /* ---------- v0.12 · Análise de Cronogramas ---------- */
 .an-fonte{margin:-6px 0 2px}
-.an-ks{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+.an-ks{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 .an-k{background:var(--card);border-radius:18px;padding:14px 16px;display:flex;flex-direction:column;gap:3px;box-shadow:var(--shadow-sm,0 1px 3px rgba(0,0,0,.05));min-width:0}
 .an-k span{font-size:.76rem;color:var(--label-2);font-weight:600}
 .an-k b{font:700 1.7rem var(--font-r);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
@@ -923,8 +923,8 @@ table.dre-c .bb.neg{background:var(--red-ink);opacity:.6}
 .sec-div.big.first{margin-top:22px}
 .sec-div.big span{font-size:.9rem;letter-spacing:.12em;color:var(--label)}
 .an-k.warn b{color:#C75F00}
-.an-ks4{grid-template-columns:repeat(4,minmax(0,1fr))}
-@media (max-width:1100px){ .an-ks4{grid-template-columns:repeat(2,minmax(0,1fr))} }
+.an-ks4{grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (max-width:1100px){ .an-ks4{grid-template-columns:repeat(3,minmax(0,1fr))} }
 .an-hr .tr .pl{position:absolute;left:0;top:0;bottom:0;display:flex;border-radius:999px;overflow:hidden;gap:1px}
 .an-hr .tr .pl b{display:block;height:100%}
 .an-hr .nm{display:flex;align-items:center;gap:6px}

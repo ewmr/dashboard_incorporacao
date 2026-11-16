@@ -87,8 +87,7 @@ const anK = (rot,v,sub,cls="") => `<div class="an-k ${cls}"><span>${rot}</span><
 function anKpis(d){
   const ab = d.etapas.filter(e=>e.g!=="done"), mov = d.etapas.filter(e=>e.moved && e.g!=="done"), nReg = d.etapas.filter(e=>e.needs).length;
   $("anKpis").innerHTML =
-      anK("A registrar", nf(nReg), "Etapas ativas cujo término avançou e ainda sem registro na semana", nReg?"alert":"")
-    + anK("Deslocadas na semana", nf(mov.length), `${nf(mov.reduce((a,e)=>a+e.dSem,0))} dias somados, frente à semana passada`)
+      anK("Deslocadas na semana", nf(mov.length), `${nf(mov.reduce((a,e)=>a+e.dSem,0))} dias somados, frente à semana passada`)
     + anK("Em andamento", nf(d.etapas.filter(e=>e.g==="run").length), `${nf(d.etapas.filter(e=>e.g==="run"&&e.sit!=="ok").length)} fora do prazo ou em atraso`)
     + anK("Em atraso", nf(ab.filter(e=>e.atras).length), "status em atraso ou término já vencido", ab.some(e=>e.atras)?"warn":"")
     + anK("Deveriam ter iniciado", nf(d.etapas.filter(e=>e.g==="warn").length), "início previsto já passou e a Etapa segue em aberto");
@@ -169,7 +168,8 @@ function anRegistros(d){
   const comOrig = R.filter(r=>r.origem), interna = comOrig.filter(r=>anNorm(r.origem).startsWith("interna")).length;
   const porEt = {}; R.forEach(r=>{ const k = (r.t&&r.t[0]) || (r.emp+"|"+r.etapa); (porEt[k]=porEt[k]||[]).push(r); });
   const reinc = Object.values(porEt).filter(x=>x.length>=3);
-  $("anRKpis").innerHTML = anK("Registros na semana", nf(semana.length), `${nf(dias(semana))} dias deslocados`)
+  $("anRKpis").innerHTML = anK("A registrar", nf(aReg.length), "Etapas ativas cujo término avançou e ainda sem registro na semana", aReg.length?"alert":"")
+    + anK("Registros na semana", nf(semana.length), `${nf(dias(semana))} dias deslocados`)
     + anK("Registros no período", nf(R.length), `${nf(dias(R))} dias deslocados`)
     + anK("Origem interna", comOrig.length ? nf(Math.round(interna/comOrig.length*100))+"%" : "—", `entre ${nf(comOrig.length)} registros com origem preenchida`)
     + anK("Etapas reincidentes", nf(reinc.length), "três registros ou mais no período", reinc.length?"warn":"");
@@ -205,8 +205,8 @@ function anLista(R){
       <select id="anREmp" class="an-sel"><option value="">Todos os empreendimentos</option>${opts(r=>r.emp).map(x=>`<option ${F.emp===x?"selected":""}>${esc(x)}</option>`).join("")}</select>
       <select id="anRCau" class="an-sel"><option value="">Todas as causas</option>${opts(cz).map(x=>`<option ${F.causa===x?"selected":""}>${esc(x)}</option>`).join("")}</select>
       <select id="anRSet" class="an-sel"><option value="">Todos os setores</option>${opts(r=>r.setor).map(x=>`<option ${F.setor===x?"selected":""}>${esc(x)}</option>`).join("")}</select></div>
-    <div class="fd an-fd"><table><thead><tr>${th("semana","Semana","d")}${th("emp","Empreendimento","fn")}${th("etapa","Etapa")}${th("delta","Δ","d")}${th("causa","Causa")}${th("setor","Setor")}${th("origem","Origem")}${th("proj","Projetista")}<th>Descrição</th><th></th></tr></thead><tbody>
-    ${vis.length ? vis.map(r=>`<tr${r.fila?' class="fila"':""}><td class="d">${anBr(r.semana)}</td><td class="fn"><span class="fd-n">${icoSe(r.inc)}${esc(r.emp)}</span></td><td class="an-nm" title="${esc(r.etapa)}">${esc(r.etapa)}</td>
+    <div class="fd an-fd"><table><thead><tr>${th("emp","Empreendimento","fn")}${th("semana","Semana","d")}${th("etapa","Etapa")}${th("delta","Δ","d")}${th("causa","Causa")}${th("setor","Setor")}${th("origem","Origem")}${th("proj","Projetista")}<th>Descrição</th><th></th></tr></thead><tbody>
+    ${vis.length ? vis.map(r=>`<tr${r.fila?' class="fila"':""}><td class="fn"><span class="fd-n">${icoSe(r.inc)}${esc(r.emp)}</span></td><td class="d">${anBr(r.semana)}</td><td class="an-nm" title="${esc(r.etapa)}">${esc(r.etapa)}</td>
       <td class="d"><span class="an-dl ${r.delta>0?"late":r.delta<0?"ok":"mute"}">${anSig(r.delta)}</span></td>
       <td>${r.causa?`<span class="an-st"><i style="background:${AN_COR_CAUSA[anNorm(r.causa)]||"#8E8E93"}"></i>${esc(r.causa)}</span>`:`<span class="muted">${esc(cz(r)||"—")}</span>`}</td>
       <td>${r.setor?`<span class="an-st"><i style="background:${AN_COR_SETOR[anNorm(r.setor)]||"#8E8E93"}"></i>${esc(anSetorCurto(r.setor))}</span>`:"—"}</td>
