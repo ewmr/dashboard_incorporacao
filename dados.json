@@ -1,9 +1,9 @@
 {
- "gerado_em": "2026-11-15T13:23-03:00",
+ "gerado_em": "2026-11-16T01:09-03:00",
  "fontes": {
-  "cronogramas": "Cronogramas do ClickUp em 2026-11-15",
+  "cronogramas": "Cronogramas do ClickUp em 2026-11-16",
   "viabilidades": "ClickUp · lista Controle de Viabilidades",
-  "variacoes": "2026-10-19 → 2026-11-15",
+  "variacoes": "2026-11-10 → 2026-11-16",
   "rotina": "rotina diária do GitHub (API do ClickUp)"
  },
  "marco_nome": {
@@ -531,7 +531,7 @@
      ]
     }
    ],
-   "foto": "img/emp/ARB.webp?v=1794759823",
+   "foto": "img/emp/ARB.webp?v=1794802135",
    "pos": [
     -25.4410477,
     -49.1746432
@@ -905,7 +905,7 @@
      ]
     }
    ],
-   "foto": "img/emp/BRA.webp?v=1794759823",
+   "foto": "img/emp/BRA.webp?v=1794802135",
    "pos": [
     -25.4354881,
     -49.1536968
@@ -1119,7 +1119,7 @@
      ]
     }
    ],
-   "foto": "img/emp/EDG.webp?v=1794759823",
+   "foto": "img/emp/EDG.webp?v=1794802135",
    "pos": [
     -25.5142276,
     -49.1998346
@@ -1279,7 +1279,7 @@
      ]
     }
    ],
-   "foto": "img/emp/ESS.webp?v=1794759823",
+   "foto": "img/emp/ESS.webp?v=1794802135",
    "pos": [
     -25.4953495,
     -49.3036737
@@ -1345,11 +1345,11 @@
      "ok": 1
     },
     "mar001": {
-     "data": "2029-11-13",
+     "data": "2029-10-11",
      "ok": 0
     },
     "leg011": {
-     "data": "2029-11-01",
+     "data": "2029-10-01",
      "ok": 0
     },
     "eng002": {
@@ -1435,7 +1435,7 @@
      ]
     }
    ],
-   "foto": "img/emp/FLO.webp?v=1794759823",
+   "foto": "img/emp/FLO.webp?v=1794802135",
    "pos": [
     -25.5489358,
     -49.40128
@@ -1759,7 +1759,7 @@
      ]
     }
    ],
-   "foto": "img/emp/HOR.webp?v=1794759823",
+   "foto": "img/emp/HOR.webp?v=1794802135",
    "pos": [
     -25.4329207,
     -49.1546814
@@ -1873,7 +1873,7 @@
      ]
     }
    ],
-   "foto": "img/emp/LUM.webp?v=1794759823",
+   "foto": "img/emp/LUM.webp?v=1794802135",
    "pos": [
     -25.3984744,
     -49.1925418
@@ -1895,7 +1895,7 @@
    "fase_manual": false,
    "marcos": {
     "eng001": {
-     "data": "2026-09-29",
+     "data": "2026-10-30",
      "ok": 1
     },
     "cef004": {
@@ -1943,15 +1943,15 @@
      "ok": 0
     },
     "mar001": {
-     "data": "2029-01-25",
+     "data": "2029-02-27",
      "ok": 0
     },
     "leg011": {
-     "data": "2028-11-30",
+     "data": "2029-01-02",
      "ok": 0
     },
     "eng002": {
-     "data": "2028-09-27",
+     "data": "2028-10-30",
      "ok": 0
     },
     "arq005": {
@@ -2033,7 +2033,7 @@
      ]
     }
    ],
-   "foto": "img/emp/NOW.webp?v=1794759823",
+   "foto": "img/emp/NOW.webp?v=1794802135",
    "pos": [
     -25.5489358,
     -49.40128
@@ -2376,7 +2376,7 @@
      ]
     }
    ],
-   "foto": "img/emp/UNI.webp?v=1794759823",
+   "foto": "img/emp/UNI.webp?v=1794802135",
    "pos": [
     -25.4323214,
     -49.1570482
@@ -2772,7 +2772,7 @@
      ]
     }
    ],
-   "foto": "img/emp/TUO.webp?v=1794759823",
+   "foto": "img/emp/TUO.webp?v=1794802135",
    "pos": [
     -25.4425723,
     -49.1753849
@@ -2858,7 +2858,7 @@
      ]
     }
    ],
-   "foto": "img/emp/LAV.webp?v=1794759823",
+   "foto": "img/emp/LAV.webp?v=1794802135",
    "pos": [
     -25.4497453,
     -49.1729818
@@ -3110,7 +3110,7 @@
      ]
     }
    ],
-   "foto": "img/emp/EVO.webp?v=1794759823",
+   "foto": "img/emp/EVO.webp?v=1794802135",
    "pos": [
     -25.4357511,
     -49.2643965
@@ -3308,7 +3308,7 @@
      ]
     }
    ],
-   "foto": "img/emp/LAG.webp?v=1794759823",
+   "foto": "img/emp/LAG.webp?v=1794802135",
    "pos": [
     -25.4290514,
     -49.2604248
@@ -3399,7 +3399,7 @@
      ]
     }
    ],
-   "foto": "img/emp/LBA.webp?v=1794759823",
+   "foto": "img/emp/LBA.webp?v=1794802135",
    "pos": [
     -25.4323799,
     -49.3009102
@@ -3445,7 +3445,7 @@
      ]
     }
    ],
-   "foto": "img/emp/ARS.webp?v=1794759823",
+   "foto": "img/emp/ARS.webp?v=1794802135",
    "pos": [
     -25.4177013,
     -49.2538417
@@ -3491,7 +3491,7 @@
      ]
     }
    ],
-   "foto": "img/emp/MOR.webp?v=1794759823",
+   "foto": "img/emp/MOR.webp?v=1794802135",
    "pos": [
     -25.4342993,
     -49.2677559
@@ -3537,7 +3537,7 @@
      ]
     }
    ],
-   "foto": "img/emp/CFV.webp?v=1794759823",
+   "foto": "img/emp/CFV.webp?v=1794802135",
    "pos": [
     -25.4326781,
     -49.2595769
@@ -3583,7 +3583,7 @@
      ]
     }
    ],
-   "foto": "img/emp/CPL.webp?v=1794759823",
+   "foto": "img/emp/CPL.webp?v=1794802135",
    "pos": [
     -25.4343232,
     -49.2682051
@@ -3629,7 +3629,7 @@
      ]
     }
    ],
-   "foto": "img/emp/CSJ.webp?v=1794759823",
+   "foto": "img/emp/CSJ.webp?v=1794802135",
    "pos": [
     -25.4407366,
     -49.2713291
@@ -3640,121 +3640,175 @@
  ],
  "variacoes": [
   {
-   "empreendimento": "Guadalupe",
-   "sigla": "GUA",
-   "codigo": "inc002",
-   "marco": "Lançamento Comercial",
-   "anterior": "2028-05-30",
-   "atual": "2027-10-15",
-   "dias": -228
-  },
-  {
-   "empreendimento": "Guadalupe",
-   "sigla": "GUA",
-   "codigo": "leg010",
-   "marco": "Registro de Incorporação",
-   "anterior": "2028-05-29",
-   "atual": "2027-09-13",
-   "dias": -259
-  },
-  {
-   "empreendimento": "Guadalupe",
-   "sigla": "GUA",
-   "codigo": "leg009",
-   "marco": "Emissão de Alvará",
-   "anterior": "2028-03-31",
-   "atual": "2027-07-16",
-   "dias": -259
-  },
-  {
-   "empreendimento": "Guadalupe",
-   "sigla": "GUA",
+   "empreendimento": "Now",
+   "sigla": "NOW",
    "codigo": "eng001",
    "marco": "Início de Obra",
-   "anterior": "2028-02-25",
-   "atual": "2028-04-12",
-   "dias": 47
-  },
-  {
-   "empreendimento": "Guadalupe",
-   "sigla": "GUA",
-   "codigo": "eng002",
-   "marco": "Término de Obra",
-   "anterior": "2030-11-27",
-   "atual": "2030-04-15",
-   "dias": -226
+   "anterior": "2026-09-29",
+   "atual": "2026-10-30",
+   "dias": 31
   },
   {
    "empreendimento": "Martim Afonso",
    "sigla": "MAR",
-   "codigo": "leg009",
-   "marco": "Emissão de Alvará",
-   "anterior": "2027-04-08",
-   "atual": "2027-06-17",
-   "dias": 70
+   "codigo": "eng001",
+   "marco": "Início de Obra",
+   "anterior": "2028-01-11",
+   "atual": "2028-03-13",
+   "dias": 62
+  },
+  {
+   "empreendimento": "Lens Alto da Glória",
+   "sigla": "LAG",
+   "codigo": "cef004",
+   "marco": "Demanda Mínima",
+   "anterior": "2028-03-09",
+   "atual": "2029-05-18",
+   "dias": 435
+  },
+  {
+   "empreendimento": "Lens Alto da Glória",
+   "sigla": "LAG",
+   "codigo": "cef003",
+   "marco": "Contrato PJ",
+   "anterior": "2027-12-28",
+   "atual": "2029-03-07",
+   "dias": 435
+  },
+  {
+   "empreendimento": "Lens Alto da Glória",
+   "sigla": "LAG",
+   "codigo": "inc002",
+   "marco": "Lançamento Comercial",
+   "anterior": "2027-08-31",
+   "atual": "2028-11-08",
+   "dias": 435
   },
   {
    "empreendimento": "Martim Afonso",
    "sigla": "MAR",
+   "codigo": "inc002",
+   "marco": "Lançamento Comercial",
+   "anterior": "2027-07-15",
+   "atual": "2027-09-15",
+   "dias": 62
+  },
+  {
+   "empreendimento": "Lens Alto da Glória",
+   "sigla": "LAG",
    "codigo": "leg010",
    "marco": "Registro de Incorporação",
-   "anterior": "2027-06-04",
-   "atual": "2027-08-13",
-   "dias": 70
+   "anterior": "2027-08-30",
+   "atual": "2028-11-07",
+   "dias": 435
+  },
+  {
+   "empreendimento": "Lens Alto da Glória",
+   "sigla": "LAG",
+   "codigo": "leg009",
+   "marco": "Emissão de Alvará",
+   "anterior": "2027-07-02",
+   "atual": "2028-09-09",
+   "dias": 435
+  },
+  {
+   "empreendimento": "Lens Alto da Glória",
+   "sigla": "LAG",
+   "codigo": "leg008",
+   "marco": "Protocolo de Alvará",
+   "anterior": "2027-03-02",
+   "atual": "2028-05-10",
+   "dias": 435
+  },
+  {
+   "empreendimento": "Flow",
+   "sigla": "FLO",
+   "codigo": "mar001",
+   "marco": "Entrega de Chaves",
+   "anterior": "2029-11-13",
+   "atual": "2029-10-11",
+   "dias": -33
+  },
+  {
+   "empreendimento": "Now",
+   "sigla": "NOW",
+   "codigo": "mar001",
+   "marco": "Entrega de Chaves",
+   "anterior": "2029-01-25",
+   "atual": "2029-02-27",
+   "dias": 33
+  },
+  {
+   "empreendimento": "Flow",
+   "sigla": "FLO",
+   "codigo": "leg011",
+   "marco": "Registro de CVCO",
+   "anterior": "2029-11-01",
+   "atual": "2029-10-01",
+   "dias": -31
+  },
+  {
+   "empreendimento": "Now",
+   "sigla": "NOW",
+   "codigo": "leg011",
+   "marco": "Registro de CVCO",
+   "anterior": "2028-11-30",
+   "atual": "2029-01-02",
+   "dias": 33
+  },
+  {
+   "empreendimento": "Lens Alto da Glória",
+   "sigla": "LAG",
+   "codigo": "leg011",
+   "marco": "Registro de CVCO",
+   "anterior": "2030-03-28",
+   "atual": "2031-06-06",
+   "dias": 435
   },
   {
    "empreendimento": "Martim Afonso",
    "sigla": "MAR",
-   "codigo": "arq003",
-   "marco": "Estudo Preliminar",
-   "anterior": "2026-11-06",
-   "atual": "2027-01-15",
-   "dias": 70
+   "codigo": "leg011",
+   "marco": "Registro de CVCO",
+   "anterior": "2030-02-11",
+   "atual": "2030-04-12",
+   "dias": 60
   },
   {
-   "empreendimento": "Lume",
-   "sigla": "LUM",
+   "empreendimento": "Now",
+   "sigla": "NOW",
    "codigo": "eng002",
    "marco": "Término de Obra",
-   "anterior": "2027-08-04",
-   "atual": "2027-10-05",
+   "anterior": "2028-09-27",
+   "atual": "2028-10-30",
+   "dias": 33
+  },
+  {
+   "empreendimento": "Lens Alto da Glória",
+   "sigla": "LAG",
+   "codigo": "eng002",
+   "marco": "Término de Obra",
+   "anterior": "2030-02-27",
+   "atual": "2031-05-08",
+   "dias": 435
+  },
+  {
+   "empreendimento": "Martim Afonso",
+   "sigla": "MAR",
+   "codigo": "eng002",
+   "marco": "Término de Obra",
+   "anterior": "2030-01-11",
+   "atual": "2030-03-14",
    "dias": 62
   },
   {
-   "empreendimento": "Lume",
-   "sigla": "LUM",
-   "codigo": "leg011",
-   "marco": "Registro de CVCO",
-   "anterior": "2027-08-27",
-   "atual": "2027-10-28",
-   "dias": 62
-  },
-  {
-   "empreendimento": "Fundação",
-   "sigla": "FUN",
-   "codigo": "arq003",
-   "marco": "Estudo Preliminar",
-   "anterior": "2026-12-07",
-   "atual": "2027-01-05",
-   "dias": 29
-  },
-  {
-   "empreendimento": "Rafitec",
-   "sigla": "RAF",
-   "codigo": "leg011",
-   "marco": "Registro de CVCO",
-   "anterior": "2030-07-02",
-   "atual": "2030-06-03",
-   "dias": -29
-  },
-  {
-   "empreendimento": "Rafitec",
-   "sigla": "RAF",
-   "codigo": "mar001",
-   "marco": "Entrega de Chaves",
-   "anterior": "2030-07-15",
-   "atual": "2030-06-14",
-   "dias": -31
+   "empreendimento": "Lens Alto da Glória",
+   "sigla": "LAG",
+   "codigo": "orcV4",
+   "marco": "Orçamento V4",
+   "anterior": "2027-10-15",
+   "atual": "2027-04-23",
+   "dias": -175
   }
  ],
  "listas_sem_cadastro": [],
