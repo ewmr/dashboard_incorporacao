@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-17T07:38-03:00",
+ "gerado_em": "2026-11-17T15:37-03:00",
  "fontes": {
   "cronogramas": "Cronogramas do ClickUp em 2026-11-17",
   "viabilidades": "ClickUp · lista Controle de Viabilidades",
@@ -71,7 +71,7 @@
      "ok": 0
     },
     "nov002": {
-     "data": "2027-07-02",
+     "data": "2027-04-16",
      "ok": 0
     },
     "nov001": {
@@ -554,7 +554,7 @@
      ]
     }
    ],
-   "foto": "img/emp/ARB.webp?v=1794911828",
+   "foto": "img/emp/ARB.webp?v=1794940589",
    "pos": [
     -25.4410477,
     -49.1746432
@@ -604,7 +604,7 @@
      "ok": 0
     },
     "nov002": {
-     "data": "2027-05-19",
+     "data": "2027-04-05",
      "ok": 0
     },
     "nov001": {
@@ -944,7 +944,7 @@
      ]
     }
    ],
-   "foto": "img/emp/BRA.webp?v=1794911828",
+   "foto": "img/emp/BRA.webp?v=1794940589",
    "pos": [
     -25.4354881,
     -49.1536968
@@ -1166,7 +1166,7 @@
      ]
     }
    ],
-   "foto": "img/emp/EDG.webp?v=1794911828",
+   "foto": "img/emp/EDG.webp?v=1794940589",
    "pos": [
     -25.5142276,
     -49.1998346
@@ -1334,7 +1334,7 @@
      ]
     }
    ],
-   "foto": "img/emp/ESS.webp?v=1794911828",
+   "foto": "img/emp/ESS.webp?v=1794940589",
    "pos": [
     -25.4953495,
     -49.3036737
@@ -1498,7 +1498,7 @@
      ]
     }
    ],
-   "foto": "img/emp/FLO.webp?v=1794911828",
+   "foto": "img/emp/FLO.webp?v=1794940589",
    "pos": [
     -25.5489358,
     -49.40128
@@ -1548,7 +1548,7 @@
      "ok": 0
     },
     "nov002": {
-     "data": "2027-07-28",
+     "data": "2027-05-11",
      "ok": 0
     },
     "nov001": {
@@ -1838,7 +1838,7 @@
      ]
     }
    ],
-   "foto": "img/emp/HOR.webp?v=1794911828",
+   "foto": "img/emp/HOR.webp?v=1794940589",
    "pos": [
     -25.4329207,
     -49.1546814
@@ -1956,7 +1956,7 @@
      ]
     }
    ],
-   "foto": "img/emp/LUM.webp?v=1794911828",
+   "foto": "img/emp/LUM.webp?v=1794940589",
    "pos": [
     -25.3984744,
     -49.1925418
@@ -2124,7 +2124,7 @@
      ]
     }
    ],
-   "foto": "img/emp/NOW.webp?v=1794911828",
+   "foto": "img/emp/NOW.webp?v=1794940589",
    "pos": [
     -25.5489358,
     -49.40128
@@ -2285,7 +2285,7 @@
      "ok": 0
     },
     "nov002": {
-     "data": "2027-08-27",
+     "data": "2027-07-13",
      "ok": 0
     },
     "nov001": {
@@ -2483,7 +2483,7 @@
      ]
     }
    ],
-   "foto": "img/emp/UNI.webp?v=1794911828",
+   "foto": "img/emp/UNI.webp?v=1794940589",
    "pos": [
     -25.4323214,
     -49.1570482
@@ -2533,7 +2533,7 @@
      "ok": 1
     },
     "nov002": {
-     "data": "2027-06-10",
+     "data": "2027-03-26",
      "ok": 0
     },
     "nov001": {
@@ -2895,7 +2895,7 @@
      ]
     }
    ],
-   "foto": "img/emp/TUO.webp?v=1794911828",
+   "foto": "img/emp/TUO.webp?v=1794940589",
    "pos": [
     -25.4425723,
     -49.1753849
@@ -2981,7 +2981,7 @@
      ]
     }
    ],
-   "foto": "img/emp/LAV.webp?v=1794911828",
+   "foto": "img/emp/LAV.webp?v=1794940589",
    "pos": [
     -25.4497453,
     -49.1729818
@@ -3241,7 +3241,7 @@
      ]
     }
    ],
-   "foto": "img/emp/EVO.webp?v=1794911828",
+   "foto": "img/emp/EVO.webp?v=1794940589",
    "pos": [
     -25.4357511,
     -49.2643965
@@ -3451,7 +3451,7 @@
      ]
     }
    ],
-   "foto": "img/emp/LAG.webp?v=1794911828",
+   "foto": "img/emp/LAG.webp?v=1794940589",
    "pos": [
     -25.4290514,
     -49.2604248
@@ -3468,7 +3468,7 @@
    "ex_nome": "",
    "lista_id": "1400450000014662",
    "lista": "EP | Lens Barigui (Padre Agostinho)",
-   "fase": null,
+   "fase": "LAN",
    "legado": false,
    "fase_manual": false,
    "marcos": {
@@ -3477,47 +3477,51 @@
      "ok": 0
     },
     "cef004": {
-     "data": "2028-01-17",
+     "data": "2027-09-22",
      "ok": 0
     },
     "cef003": {
-     "data": "2027-11-04",
+     "data": "2027-07-12",
      "ok": 0
     },
     "inc002": {
-     "data": "2027-07-08",
+     "data": "2027-03-15",
      "ok": 0
     },
     "leg010": {
-     "data": "2027-07-07",
+     "data": "2027-03-12",
      "ok": 0
     },
     "leg009": {
-     "data": "2027-05-11",
-     "ok": 0
-    },
-    "leg008": {
-     "data": "2027-01-07",
-     "ok": 0
+     "data": "2026-11-03",
+     "ok": 1
     },
     "arq006": {
-     "data": "2028-02-28",
+     "data": "2028-02-21",
      "ok": 0
     },
     "leg011": {
-     "data": "2030-02-04",
+     "data": "2029-10-10",
      "ok": 0
     },
     "eng002": {
-     "data": "2030-01-04",
+     "data": "2029-09-11",
      "ok": 0
     },
     "arq005": {
      "data": "2027-01-20",
      "ok": 0
     },
+    "arq003": {
+     "data": "2026-01-12",
+     "ok": 1
+    },
+    "arq003i": {
+     "data": "2025-05-07",
+     "ok": 1
+    },
     "orcV4": {
-     "data": "2027-08-24",
+     "data": "2027-08-17",
      "ok": 0
     }
    },
@@ -3546,7 +3550,7 @@
      ]
     }
    ],
-   "foto": "img/emp/LBA.webp?v=1794911828",
+   "foto": "img/emp/LBA.webp?v=1794940589",
    "pos": [
     -25.4323799,
     -49.3009102
@@ -3592,7 +3596,7 @@
      ]
     }
    ],
-   "foto": "img/emp/ARS.webp?v=1794911828",
+   "foto": "img/emp/ARS.webp?v=1794940589",
    "pos": [
     -25.4177013,
     -49.2538417
@@ -3638,7 +3642,7 @@
      ]
     }
    ],
-   "foto": "img/emp/MOR.webp?v=1794911828",
+   "foto": "img/emp/MOR.webp?v=1794940589",
    "pos": [
     -25.4342993,
     -49.2677559
@@ -3684,7 +3688,7 @@
      ]
     }
    ],
-   "foto": "img/emp/CFV.webp?v=1794911828",
+   "foto": "img/emp/CFV.webp?v=1794940589",
    "pos": [
     -25.4326781,
     -49.2595769
@@ -3730,7 +3734,7 @@
      ]
     }
    ],
-   "foto": "img/emp/CPL.webp?v=1794911828",
+   "foto": "img/emp/CPL.webp?v=1794940589",
    "pos": [
     -25.4343232,
     -49.2682051
@@ -3776,7 +3780,7 @@
      ]
     }
    ],
-   "foto": "img/emp/CSJ.webp?v=1794911828",
+   "foto": "img/emp/CSJ.webp?v=1794940589",
    "pos": [
     -25.4407366,
     -49.2713291
@@ -3823,6 +3827,15 @@
    "dias": 435
   },
   {
+   "empreendimento": "Lens Barigui",
+   "sigla": "LBA",
+   "codigo": "cef004",
+   "marco": "Demanda Mínima",
+   "anterior": "2028-01-17",
+   "atual": "2027-09-22",
+   "dias": -117
+  },
+  {
    "empreendimento": "Now",
    "sigla": "NOW",
    "codigo": "cef003",
@@ -3841,6 +3854,15 @@
    "dias": 435
   },
   {
+   "empreendimento": "Lens Barigui",
+   "sigla": "LBA",
+   "codigo": "cef003",
+   "marco": "Contrato PJ",
+   "anterior": "2027-11-04",
+   "atual": "2027-07-12",
+   "dias": -115
+  },
+  {
    "empreendimento": "Lens Alto da Glória",
    "sigla": "LAG",
    "codigo": "inc002",
@@ -3848,6 +3870,15 @@
    "anterior": "2027-08-31",
    "atual": "2028-11-08",
    "dias": 435
+  },
+  {
+   "empreendimento": "Lens Barigui",
+   "sigla": "LBA",
+   "codigo": "inc002",
+   "marco": "Lançamento Comercial",
+   "anterior": "2027-07-08",
+   "atual": "2027-03-15",
+   "dias": -115
   },
   {
    "empreendimento": "Martim Afonso",
@@ -3868,6 +3899,15 @@
    "dias": 435
   },
   {
+   "empreendimento": "Lens Barigui",
+   "sigla": "LBA",
+   "codigo": "leg010",
+   "marco": "Registro de Incorporação",
+   "anterior": "2027-07-07",
+   "atual": "2027-03-12",
+   "dias": -117
+  },
+  {
    "empreendimento": "Lens Alto da Glória",
    "sigla": "LAG",
    "codigo": "leg009",
@@ -3875,6 +3915,15 @@
    "anterior": "2027-07-02",
    "atual": "2028-09-09",
    "dias": 435
+  },
+  {
+   "empreendimento": "Lens Barigui",
+   "sigla": "LBA",
+   "codigo": "leg009",
+   "marco": "Emissão de Alvará",
+   "anterior": "2027-05-11",
+   "atual": "2026-11-03",
+   "dias": -189
   },
   {
    "empreendimento": "Lens Alto da Glória",
@@ -3886,6 +3935,33 @@
    "dias": 435
   },
   {
+   "empreendimento": "Rafitec",
+   "sigla": "RAF",
+   "codigo": "nov002",
+   "marco": "Escritura Assinada",
+   "anterior": "2027-08-27",
+   "atual": "2027-07-13",
+   "dias": -45
+  },
+  {
+   "empreendimento": "Arena",
+   "sigla": "ARE",
+   "codigo": "nov002",
+   "marco": "Escritura Assinada",
+   "anterior": "2027-05-19",
+   "atual": "2027-04-05",
+   "dias": -44
+  },
+  {
+   "empreendimento": "Fundação",
+   "sigla": "FUN",
+   "codigo": "nov002",
+   "marco": "Escritura Assinada",
+   "anterior": "2027-07-28",
+   "atual": "2027-05-11",
+   "dias": -78
+  },
+  {
    "empreendimento": "Al Nasser 2",
    "sigla": "AN2",
    "codigo": "nov002",
@@ -3893,6 +3969,24 @@
    "anterior": "2027-07-21",
    "atual": "2027-05-04",
    "dias": -78
+  },
+  {
+   "empreendimento": "Al Nasser 1",
+   "sigla": "AN1",
+   "codigo": "nov002",
+   "marco": "Escritura Assinada",
+   "anterior": "2027-07-02",
+   "atual": "2027-04-16",
+   "dias": -77
+  },
+  {
+   "empreendimento": "Vert",
+   "sigla": "VER",
+   "codigo": "nov002",
+   "marco": "Escritura Assinada",
+   "anterior": "2027-06-03",
+   "atual": "2027-03-26",
+   "dias": -69
   },
   {
    "empreendimento": "Flow",
@@ -3940,6 +4034,15 @@
    "dias": 435
   },
   {
+   "empreendimento": "Lens Barigui",
+   "sigla": "LBA",
+   "codigo": "leg011",
+   "marco": "Registro de CVCO",
+   "anterior": "2030-02-04",
+   "atual": "2029-10-10",
+   "dias": -117
+  },
+  {
    "empreendimento": "Martim Afonso",
    "sigla": "MAR",
    "codigo": "leg011",
@@ -3965,6 +4068,15 @@
    "anterior": "2030-02-27",
    "atual": "2031-05-08",
    "dias": 435
+  },
+  {
+   "empreendimento": "Lens Barigui",
+   "sigla": "LBA",
+   "codigo": "eng002",
+   "marco": "Término de Obra",
+   "anterior": "2030-01-04",
+   "atual": "2029-09-11",
+   "dias": -115
   },
   {
    "empreendimento": "Martim Afonso",
