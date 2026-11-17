@@ -157,39 +157,95 @@ function anTabela(d){
     bindTip(td, `<b>${esc(e.short)}</b> · ${esc(e.emp)}<table>${e.regs.slice(0,8).map(r=>`<tr><td>${anBr(r.semana)}${r.fila?" · a enviar":""}</td><td class="n">${anSig(r.delta)}</td><td>${esc(r.causa||r.tipo||r.motivo||"—")}${r.setor?` · <span class="muted">${esc(anSetorCurto(r.setor))}</span>`:""}</td></tr>`).join("")}</table>${e.regs.length>8?`<div class="muted">+${e.regs.length-8} registros anteriores</div>`:""}`); });
 }
 
-/* ---------- Registro de desvios ---------- */
+/* ---------- Registro de desvios (no padrão do relatório mensal do comitê) ---------- */
+const AN_ORIG = [
+  {k:"int",  t:"Interna controlável",              c:"#FF9100"},
+  {k:"ter",  t:"Externa – terceiro contratado",     c:"#2B4380"},
+  {k:"org",  t:"Externa – órgão/agente público",    c:"#1F95D3"},
+  {k:"sem",  t:"Sem classificação",                c:"#C7C7CC"}];
+const AN_OC = Object.fromEntries(AN_ORIG.map(o=>[o.k,o]));
+const anOK = r => { const o = anNorm(r.origem); return o.startsWith("interna") ? "int" : o.includes("terceiro") ? "ter" : (o.includes("orgao")||o.includes("publico")) ? "org" : "sem"; };
+const anCausa = r => r.causa || (r.tipo && anNorm(r.tipo)!=="atraso" ? r.tipo+" (sem causa)" : r.motivo) || "Sem causa";
+const anPct = (n,t) => t ? Math.round(n/t*100) : 0;
+// barra empilhada por origem (contagem), com rótulos dentro quando cabem
+function anOBar(cont, max, rot=false){
+  const tot = AN_ORIG.reduce((a,o)=>a+(cont[o.k]||0),0);
+  return `<span class="an-ob" style="width:${max?tot/max*100:100}%">${AN_ORIG.filter(o=>cont[o.k]).map(o=>`<b style="flex:${cont[o.k]};background:${o.c}" data-tip="${esc(`${o.t}: ${cont[o.k]} registro(s) · ${anPct(cont[o.k],tot)}%`)}">${rot&&cont[o.k]/tot>=.06?`<em>${cont[o.k]} · ${anPct(cont[o.k],tot)}%</em>`:""}</b>`).join("")}</span>`;
+}
+const anConta = rs => { const c = {int:0,ter:0,org:0,sem:0}; rs.forEach(r=>c[anOK(r)]++); return c; };
+
 function anRegistros(d){
-  const antigos = !!S.anAntigos, ini = d.regs.filter(r=>r.novo).map(r=>r.semana).filter(Boolean).sort()[0];
-  const R = d.regs.filter(r=>antigos || r.novo), semana = R.filter(r=>r.semana>=d.seg && r.semana<=d.fim), fila = anFila();
+  const antigos = !!S.anAntigos, ini = d.regs.filter(r=>r.causa).map(r=>r.semana).filter(Boolean).sort()[0];
+  const R = d.regs.filter(r=>antigos || r.causa || (ini && r.semana>=ini)), semana = R.filter(r=>r.semana>=d.seg && r.semana<=d.fim), fila = anFila();
   const aReg = d.etapas.filter(e=>e.needs), dias = rs => rs.reduce((a,r)=>a+Math.max(0,r.delta||0),0);
+  const reunioes = [...new Set(R.map(r=>r.semana).filter(Boolean))].sort();
   $("anAntigos").checked = antigos;
   $("anAntigos").onchange = ev=>{ S.anAntigos = ev.target.checked; anRegistros(anDados()); };
-  $("anRegInfo").innerHTML = `${antigos?`Todos os registros, incluindo os anteriores ao formato com causa`:`Registros no formato com causa e setor${ini?`, desde ${anBr(ini)}`:""}`}${aReg.length?` · <b class="red">${aReg.length} ${aReg.length===1?"Etapa precisa":"Etapas precisam"} de registro nesta semana</b>`:""}${fila.length?` · <span class="red">${fila.length} guardado${fila.length>1?"s":""} neste navegador aguardando envio</span>`:""}`;
-  const comOrig = R.filter(r=>r.origem), interna = comOrig.filter(r=>anNorm(r.origem).startsWith("interna")).length;
+  $("anRegInfo").innerHTML = `${antigos?`Todos os registros, incluindo os anteriores ao formulário com causa`:`Registros do formulário com causa e origem${ini?`, desde a reunião de ${anBr(ini)}`:""}`}${fila.length?` · <span class="red">${fila.length} guardado${fila.length>1?"s":""} neste navegador aguardando envio</span>`:""}`;
+  document.querySelectorAll(".an-oleg").forEach(l=>l.innerHTML = AN_ORIG.map(o=>`<span><i style="background:${o.c}"></i>${o.t.replace("Externa – ","")}</span>`).join(""));
+  // números
+  const cR = anConta(R);
   const porEt = {}; R.forEach(r=>{ const k = (r.t&&r.t[0]) || (r.emp+"|"+r.etapa); (porEt[k]=porEt[k]||[]).push(r); });
-  const reinc = Object.values(porEt).filter(x=>x.length>=3);
-  $("anRKpis").innerHTML = anK("A registrar", nf(aReg.length), "Etapas ativas cujo término avançou e ainda sem registro na semana", aReg.length?"alert":"")
-    + anK("Registros na semana", nf(semana.length), `${nf(dias(semana))} dias deslocados`)
-    + anK("Registros no período", nf(R.length), `${nf(dias(R))} dias deslocados`)
-    + anK("Origem interna", comOrig.length ? nf(Math.round(interna/comOrig.length*100))+"%" : "—", `entre ${nf(comOrig.length)} registros com origem preenchida`)
-    + anK("Etapas reincidentes", nf(reinc.length), "três registros ou mais no período", reinc.length?"warn":"");
-  // semanas
-  const nSem = antigos || !ini ? 16 : Math.min(16, Math.max(8, Math.round(anDias(anSeg(ini), d.seg)/7)+3)), semanas = []; for (let k=nSem-1;k>=0;k--) semanas.push(anAdd(d.seg,-7*k));
-  const ag = semanas.map(w=>{ const rs = R.filter(r=>r.semana && anSeg(r.semana)===w); return {w, n:rs.length, d:dias(rs), int:dias(rs.filter(r=>r.origem&&anNorm(r.origem).startsWith("interna"))), ext:dias(rs.filter(r=>r.origem&&anNorm(r.origem).startsWith("externa")))}; });
-  const mw = Math.max(...ag.map(x=>x.d),1);
-  $("anWkC").textContent = `últimas ${nSem} semanas · origem interna em laranja, externa em azul, demais em cinza`;
-  $("anWk").innerHTML = `<div class="an-wk">${ag.map(x=>{ const out = x.d-x.int-x.ext; return `<div class="c${x.w===d.seg?" cur":""}" data-tip="${esc(`Semana de ${anBr(x.w)}: ${x.n} registro(s), ${x.d} dias${x.int?` · interna ${x.int}`:""}${x.ext?` · externa ${x.ext}`:""}`)}"><b>${x.d||""}</b><span class="bx"><span class="bar" style="height:${x.d/mw*100}%">${x.ext?`<i style="flex:${x.ext};background:#32ADE6"></i>`:""}${x.int?`<i style="flex:${x.int};background:#FF9500"></i>`:""}${out>0?`<i style="flex:${out};background:#AEAEB2"></i>`:""}</span></span><small>${x.w.slice(8,10)}/${x.w.slice(5,7)}</small></div>`; }).join("")}</div>`;
-  // composições
-  const agg = (rs, fn) => { const m = {}; rs.forEach(r=>{ const k = fn(r); if (!k) return; const x = m[k] = m[k]||{k, rot:k, v:0, n:0, inc:r.inc}; x.v += Math.max(0, r.delta||0); x.n++; }); return Object.values(m).sort((a,b)=>b.v-a.v||b.n-a.n); };
-  const tipN = r => `${r.k}: ${r.n} registro(s), ${r.v} dias`;
-  $("anR1").innerHTML = R.some(r=>r.causa) ? anBarras(agg(R, r=>r.causa).map(r=>({...r, tip:tipN(r)})), k=>AN_COR_CAUSA[anNorm(k)]||"#8E8E93", "d") : "<p class='muted'>Sem registros com causa no período.</p>";
-  $("anR2").innerHTML = anBarras(agg(R, r=>r.setor).map(r=>({...r, rot:anSetorCurto(r.k), tip:tipN(r)})), k=>AN_COR_SETOR[anNorm(k)]||"#8E8E93", "d");
-  $("anR3").innerHTML = anBarras(agg(R, r=>r.emp).slice(0,12).map(r=>({...r, ico:icoSe(r.inc), tip:tipN(r)})), "var(--accent)", "d");
-  $("anR4").innerHTML = R.some(r=>r.origem||r.tipo) ? anBarras([...agg(R, r=>r.origem), ...agg(R.filter(r=>r.tipo && anNorm(r.tipo)!=="atraso"), r=>r.tipo)].map(r=>({...r, tip:tipN(r)})), k=>AN_COR_ORIG[anNorm(k)]||"#AF52DE", "d") : "<p class='muted'>Sem registros no formato novo no período.</p>";
-  const pj = agg(R, r=>r.proj).slice(0,10); $("anR5c").hidden = !pj.length;
-  $("anR5").innerHTML = anBarras(pj.map(r=>({...r, tip:tipN(r)})), "#32ADE6", "d");
-  $("anR6").innerHTML = reinc.length ? anBarras(reinc.map(x=>({k:x[0].etapa, rot:`${x[0].emp} · ${x[0].etapa}`, v:x.length, ico:icoSe(x[0].inc), tip:`${x[0].etapa} (${x[0].emp}): ${x.length} registros, ${dias(x)} dias`})).sort((a,b)=>b.v-a.v).slice(0,10), "#FF3B30", "reg.") : "<p class='muted'>Nenhuma Etapa com três registros ou mais no período.</p>";
+  const reinc = Object.values(porEt).map(x=>({x, sem:new Set(x.map(r=>r.semana)).size, d:dias(x)})).filter(y=>y.sem>=2).sort((a,b)=>b.sem-a.sem||b.d-a.d);
+  $("anRKpis").innerHTML = anK("A registrar", nf(aReg.length), "Etapas ativas cujo término avançou e ainda sem registro nesta semana", aReg.length?"alert":"")
+    + anK("Registros", nf(R.length), `em ${reunioes.length} ${reunioes.length===1?"reunião semanal":"reuniões semanais"} · ${nf(semana.length)} nesta semana`)
+    + anK("Dias por registro", R.length ? (dias(R)/R.length).toLocaleString("pt-BR",{minimumFractionDigits:1,maximumFractionDigits:1}) : "—", "deslocamento médio de cada registro")
+    + anK("Causa interna", R.length ? anPct(cR.int, R.length)+"%" : "—", "dos registros com causa interna controlável", "acc")
+    + anK("Etapas reincidentes", nf(reinc.length), "registradas em mais de uma semana", reinc.length?"warn":"");
+  // origem por reunião
+  const ult = reunioes.slice(-8), linhas = ult.map(w=>({rot:`Reunião ${w.slice(8,10)}/${w.slice(5,7)}`, rs:R.filter(r=>r.semana===w)}));
+  if (reunioes.length>1) linhas.push({rot:reunioes.length>ult.length?`Total (${reunioes.length} reuniões)`:"Total", rs:R, tot:true});
+  $("anOrig").innerHTML = R.length ? `<div class="an-or">${linhas.map(l=>`<div class="r${l.tot?" tot":""}"><span class="nm">${l.rot}</span>${anOBar(anConta(l.rs), 0, true)}<span class="v">${l.rs.length} reg.<small>${nf(dias(l.rs))} d</small></span></div>`).join("")}</div>` : "<p class='muted'>Sem registros nesta seleção.</p>";
+  anAbc(R);
+  // por empreendimento
+  const porEmp = {}; R.forEach(r=>{ const x = porEmp[r.emp] = porEmp[r.emp]||{rot:r.emp, inc:r.inc, rs:[]}; x.rs.push(r); });
+  const emps = Object.values(porEmp).sort((a,b)=>b.rs.length-a.rs.length||dias(b.rs)-dias(a.rs)), mE = Math.max(1,...emps.map(e=>e.rs.length)), dTop = emps.map(e=>dias(e.rs)).sort((a,b)=>b-a)[2]||0;
+  $("anPEmp").innerHTML = emps.length ? `<div class="an-pe"><div class="h"><span></span><span></span><span>Dias</span></div>${emps.map(e=>{ const dd = dias(e.rs); return `<div class="r"><span class="nm">${icoSe(e.inc)}${esc(e.rot)}</span><span class="tr">${anOBar(anConta(e.rs), mE)}<i>${e.rs.length}</i></span><span class="dz${dd>=dTop&&dd>0?" hi":""}">${nf(dd)} d</span></div>`; }).join("")}</div>` : "<p class='muted'>Sem registros nesta seleção.</p>";
+  // por setor
+  const porSet = {}; R.forEach(r=>{ const k = r.setor || "Sem setor"; (porSet[k]=porSet[k]||[]).push(r); });
+  const sets = Object.entries(porSet).sort((a,b)=>b[1].length-a[1].length), mS = Math.max(1,...sets.map(x=>x[1].length));
+  $("anPSet").innerHTML = sets.length ? `<div class="an-ps">${sets.map(([k,rs])=>`<div class="r"><span class="nm" title="${esc(k)}">${esc(k.replace(/\s+-\s+/," – "))}</span><span class="tr">${anOBar(anConta(rs), mS)}<i>${rs.length}</i></span></div>`).join("")}</div>` : "<p class='muted'>Sem registros nesta seleção.</p>";
+  // terceiros citados
+  const ter = R.filter(r=>anOK(r)==="ter"), porPj = {}; R.filter(r=>r.proj).forEach(r=>(porPj[r.proj]=porPj[r.proj]||[]).push(r));
+  const pjs = Object.entries(porPj).sort((a,b)=>b[1].length-a[1].length||dias(b[1])-dias(a[1])), mP = Math.max(1,...pjs.map(x=>x[1].length));
+  $("anPPrjC").hidden = !pjs.length;
+  $("anPPrjCap").textContent = `projetistas e consultores${ter.length?` nos ${ter.length} registros de origem terceiro`:""}`;
+  $("anPPrj").innerHTML = `<div class="an-ps">${pjs.slice(0,12).map(([k,rs])=>`<div class="r" data-tip="${esc(`${k}: ${rs.length} registro(s), ${dias(rs)} dias`)}"><span class="nm">${esc(k)}</span><span class="tr"><span class="an-ob" style="width:${rs.length/mP*100}%"><b style="flex:1;background:${AN_OC.ter.c}"></b></span><i>${rs.length}</i></span></div>`).join("")}</div>`;
+  // etapas reincidentes
+  const maxSem = Math.max(3, ...reinc.map(y=>y.sem)), MOS = 10;
+  const resumoCausas = x => { const m = {}; x.forEach(r=>{ let c = anCausa(r).replace(/\/.*$/,"").replace(/^Aguardando\s+/,"").replace(/\s*\(sem causa\)$/,""); c = c[0].toUpperCase()+c.slice(1); m[c]=(m[c]||0)+1; }); return Object.entries(m).map(([c,n])=>n>1?`${c} (${n}x)`:c).join("; "); };
+  $("anReinc").innerHTML = reinc.length ? `<div class="fd an-fd an-re"><table><thead><tr><th class="fn">Empreendimento</th><th>Etapa</th><th>Semanas</th><th class="d">Dias</th><th>Causas registradas</th></tr></thead><tbody>${reinc.slice(0,MOS).map(y=>{ const r0 = y.x[0]; return `<tr><td class="fn"><span class="fd-n">${icoSe(r0.inc)}${esc(r0.emp)}</span></td><td class="an-nm" title="${esc(r0.etapa)}">${esc(r0.etapa)}</td><td><span class="an-dots">${Array.from({length:Math.min(maxSem,8)},(_,i)=>`<i class="${i<y.sem?"on":""}"></i>`).join("")}</span></td><td class="d">${nf(y.d)} d</td><td class="an-ds" title="${esc(resumoCausas(y.x))}">${esc(resumoCausas(y.x))}</td></tr>`; }).join("")}</tbody></table></div>${reinc.length>MOS?`<p class="cap" style="margin-top:8px">Outras ${reinc.length-MOS} Etapas registradas em mais de uma semana, com menor deslocamento somado.</p>`:""}` : "<p class='muted'>Nenhuma Etapa registrada em mais de uma semana neste período.</p>";
   anLista(R);
+}
+// curva ABC: barras por causa (cor = origem predominante), linha = % acumulado, faixas A (até 80%), B (até 95%) e C
+function anAbc(R){
+  if (!R.length){ $("anAbc").innerHTML = "<p class='muted'>Sem registros nesta seleção.</p>"; return; }
+  const m = {}; R.forEach(r=>{ const k = anCausa(r); const x = m[k] = m[k]||{k, n:0, d:0, o:{}}; x.n++; x.d += Math.max(0,r.delta||0); const o = anOK(r); x.o[o]=(x.o[o]||0)+1; });
+  let cs = Object.values(m).sort((a,b)=>b.n-a.n||b.d-a.d);
+  if (cs.length>14){ const resto = cs.slice(13); cs = cs.slice(0,13).concat([{k:`Outras ${resto.length} causas`, n:resto.reduce((a,x)=>a+x.n,0), d:resto.reduce((a,x)=>a+x.d,0), o:{sem:1}}]); }
+  const tot = R.length; let ac = 0;
+  cs.forEach(c=>{ ac += c.n; c.ac = ac/tot*100; c.or = Object.entries(c.o).sort((a,b)=>b[1]-a[1])[0][0]; });
+  let fA = cs.findIndex(c=>c.ac>=80); if (fA<0) fA = cs.length-1;
+  let fB = cs.findIndex((c,i)=>i>fA && c.ac>=95); if (fB<0) fB = cs.length-1;
+  const W = 1200, H = 430, L = 44, Rr = 56, T = 80, B = 82, n = cs.length, sw = (W-L-Rr)/n, ph = H-T-B;
+  const mx = Math.max(...cs.map(c=>c.n)), passo = mx<=10?2:mx<=25?5:mx<=60?10:20, top = Math.ceil(mx/passo)*passo;
+  const y = v => T+ph-(v/top)*ph, yp = p => T+ph-(p/100)*ph, xc = i => L+sw*i+sw/2;
+  const faixa = (i0,i1,cor,let_) => { if (i0>i1) return ""; const sel = cs.slice(i0,i1+1), nn = sel.reduce((a,c)=>a+c.n,0);
+    return `<rect x="${L+sw*i0}" y="${T-74}" width="${sw*(i1-i0+1)}" height="${ph+74}" fill="${cor}"/><text x="${L+sw*(i0+i1+1)/2}" y="${T-52}" text-anchor="middle" class="zl">${let_}</text><text x="${L+sw*(i0+i1+1)/2}" y="${T-37}" text-anchor="middle" class="zs">${sel.length} ${sel.length===1?"causa":"causas"} · ${nn} reg. (${anPct(nn,tot)}%)</text>`; };
+  const quebra = (t, max=16) => { const ps = t.split(/(?<=\/)|\s+/).filter(Boolean), ls = [""]; ps.forEach(p=>{ const cur = ls[ls.length-1], sep = cur && !cur.endsWith("/") ? " " : ""; if ((cur+sep+p).length>max && cur) ls.push(p); else ls[ls.length-1] = cur+sep+p; }); return ls.slice(0,3); };
+  const grade = []; for (let v=0; v<=top; v+=passo) grade.push(v);
+  const pts = cs.map((c,i)=>`${xc(i)},${yp(c.ac)}`).join(" ");
+  $("anAbc").innerHTML = `<svg class="an-abc" viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">
+    ${faixa(0,fA,"color-mix(in srgb,#FF9100 9%,transparent)","A")}${faixa(fA+1,fB,"color-mix(in srgb,var(--label) 5%,transparent)","B")}${faixa(fB+1,n-1,"transparent","C")}
+    ${grade.map(v=>`<line x1="${L}" x2="${W-Rr}" y1="${y(v)}" y2="${y(v)}" class="gl"/><text x="${L-8}" y="${y(v)+4}" text-anchor="end" class="ax">${v}</text>`).join("")}
+    ${[0,25,50,75,100].map(p=>`<text x="${W-Rr+8}" y="${yp(p)+4}" class="ax">${p}%</text>`).join("")}
+    <line x1="${L}" x2="${W-Rr}" y1="${yp(80)}" y2="${yp(80)}" class="l80"/><text x="${W-Rr-4}" y="${yp(80)-5}" text-anchor="end" class="t80">80%</text>
+    ${cs.map((c,i)=>{ const bw = Math.min(56, sw*.62), h = Math.max(2, ph*c.n/top);
+      return `<g data-tip="${esc(`${c.k}: ${c.n} registro(s) · ${c.d} dias · ${Math.round(c.ac)}% acumulado`)}"><rect x="${xc(i)-sw/2}" y="${T}" width="${sw}" height="${ph}" fill="transparent"/><rect x="${xc(i)-bw/2}" y="${y(c.n)}" width="${bw}" height="${h}" rx="4" fill="${AN_OC[c.or].c}"/><text x="${xc(i)}" y="${y(c.n)-7}" text-anchor="middle" class="bv">${c.n}</text>
+        ${quebra(c.k).map((t,j)=>`<text x="${xc(i)}" y="${H-B+18+j*14}" text-anchor="middle" class="cl">${esc(t)}</text>`).join("")}</g>`; }).join("")}
+    <polyline points="${pts}" class="ln"/>
+    ${cs.map((c,i)=>`<circle cx="${xc(i)}" cy="${yp(c.ac)}" r="4.5" class="pt"/><g class="pl"><rect x="${xc(i)-19}" y="${yp(c.ac)-25}" width="38" height="16" rx="5"/><text x="${xc(i)}" y="${yp(c.ac)-13}" text-anchor="middle">${Math.round(c.ac)}%</text></g>`).join("")}
+  </svg>`;
 }
 function anLista(R){
   const F = S.anR || (S.anR = {q:"", emp:"", causa:"", setor:"", ord:{c:"semana", d:-1}});
