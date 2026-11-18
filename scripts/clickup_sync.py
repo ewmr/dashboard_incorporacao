@@ -235,6 +235,40 @@ def variacoes(hoje, M):
                 out.append([s, c, a[0], data])
     return alvo.stem[7:], out
 
+LISTA_TERRENOS = "901320170197"  # NN | Controle Geral · Cadastro Terrenos - MAKE.IT
+def terrenos():
+    """Terrenos com status "em contrato" no Novos Negócios (Make It), para a lista abaixo da régua.
+    Não guarda endereço, coordenadas, pedida, corretor nem as anotações da negociação."""
+    pega = {"cidade": "cidade", "bairro": "bairro", "vgv": "vgv atingido", "unid": "Nº de unidades", "area": "metragem",
+            "negociacao": "tipo de negociacao", "zona": "zoneamento", "tipologia": "tipologia do estudo", "estudo": "estudo de massa",
+            "comite": "data do comite", "ultima_proposta": "data da ultima proposta", "fechamento": "fechamento comercial",
+            "assinatura": "data de assinatura", "v0": "v0", "contrato": "contrato assinado"}
+    out = []
+    for t in paginas(f"list/{LISTA_TERRENOS}/task", {"statuses[]": "em contrato", "include_closed": "false", "subtasks": "false"}):
+        if norm((t.get("status") or {}).get("status")) != "em contrato": continue
+        cf = {norm(c.get("name")): c for c in t.get("custom_fields", [])}
+        r = {"id": t["id"], "nome": (t.get("name") or "").strip(), "url": t.get("url"),
+             "resp": [a.get("username") for a in t.get("assignees", []) if a.get("username")],
+             "atualizado": dia(t.get("date_updated"))}
+        for k, nome in pega.items():
+            c = cf.get(norm(nome))
+            if not c or c.get("value") in (None, "", []): continue
+            v, tp = c["value"], c.get("type")
+            if tp == "date": v = dia(v)
+            elif tp in ("number", "currency"):
+                try: v = float(v)
+                except Exception: continue
+            elif tp == "drop_down":
+                ops = c.get("type_config", {}).get("options", [])
+                o = next((o for o in ops if o.get("id") == v or str(o.get("orderindex")) == str(v)), None); v = o.get("name") if o else None
+            elif tp == "labels":
+                ops = {o["id"]: o.get("label") or o.get("name") for o in c.get("type_config", {}).get("options", [])}
+                v = ", ".join(ops.get(x if isinstance(x, str) else x.get("id"), "") for x in v if x) or None
+            if v not in (None, ""): r[k] = v
+        out.append(r)
+    out.sort(key=lambda r: -(r.get("vgv") or 0))
+    return out
+
 def main():
     if not TOKEN:
         print("Sem CLICKUP_TOKEN: nada a fazer (o dashboard segue com os últimos dados)."); return 0
@@ -254,6 +288,11 @@ def main():
         "snap": hoje, "snap_ant": ant or velho.get("snap_ant"), "fonte": "rotina diária do GitHub (API do ClickUp)",
         "listas": listas, "M": M, "variacoes": var if ant else velho.get("variacoes", []), "listas_sem_cadastro": sem,
     }, ensure_ascii=False, indent=1), encoding="utf-8")
+    try:
+        tr = terrenos()
+        (DADOS / "terrenos.json").write_text(json.dumps({"lido": hoje, "itens": tr}, ensure_ascii=False, indent=1), encoding="utf-8")
+        print(len(tr), "terrenos em contrato")
+    except Exception as e: print("Terrenos não atualizados:", repr(e)[:300])
     try:
         import etapas_sync; etapas_sync.rodar(cad)
     except SystemExit as e: print("Etapas não atualizadas:", e)

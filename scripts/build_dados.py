@@ -103,6 +103,8 @@ dados = {
              "variacoes": f"{MAR['snap_ant']} → {MAR['snap']}", "rotina": MAR.get("fonte", "")},
   "marco_nome": CAD["marco_nome"], "empreendimentos": out, "variacoes": variacoes,
   "listas_sem_cadastro": MAR.get("listas_sem_cadastro", []),
+  "terrenos": (json.loads((RAIZ / "scripts" / "dados" / "terrenos.json").read_text(encoding="utf-8"))
+               if (RAIZ / "scripts" / "dados" / "terrenos.json").exists() else {"itens": []}),
   "planilhas_erros": (json.loads((RAIZ / "scripts" / "dados" / "planilhas_erros.json").read_text(encoding="utf-8"))
                       if (RAIZ / "scripts" / "dados" / "planilhas_erros.json").exists() else []),
 }

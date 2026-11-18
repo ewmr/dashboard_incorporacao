@@ -8,7 +8,8 @@ Lê pela API do ClickUp (token do GitHub, sem usar o Claude):
   • os campos e as tarefas das listas "Registro de Alteração de Prazos" de cada empresa
 Escreve registro/dados-makeit.json e registro/dados-gadens.json e guarda um retrato
 diário dos términos em historico/etapas-AAAA-MM-DD.json (referência da semana passada
-quando o campo Data Semana Passada estiver vazio). ≈ 40 a 60 chamadas por dia.
+quando o campo Data Semana Passada estiver vazio). Inclui as subtarefas de cada Etapa (término e término da semana passada).
+≈ 60 a 120 chamadas por dia.
 """
 import json, re, datetime as dt
 from clickup_sync import api, paginas, dia, norm, RAIZ, HIST, TZ
@@ -24,7 +25,7 @@ R = {"tarefa": "ba153e8c-da16-4f58-91ff-2b249582ecd2", "emp": "887c28de-dff3-4d3
      "semana": "ae46a9ce-2356-4e88-a573-3b8525d1886d", "lb": "b0bb6827-f602-44ce-89fa-1a4e489249a9", "pre": "0b65f8ad-16d4-4e53-b576-54c55e2cd501",
      "pos": "1bc8dcb0-c235-4430-b827-e23fe59c406b", "reprog": "76e39619-ef60-4155-b030-0418e5877768", "tipoAlt": "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d",
      "causa": "572a8894-0827-4dcd-8c99-169e4bac1654", "origem": "cfc9bb8f-e2aa-45ba-a749-1df226743131", "setor": "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5",
-     "acao": "0921287f-03f0-41dd-8304-cdca66174a53", "desc": "7549e404-2e2e-40c7-9fdf-0c2784eb4194", "motivos": "4db3ba48-6e5d-4e29-a8a7-f7a9b1c2900f"}
+     "acao": "0921287f-03f0-41dd-8304-cdca66174a53", "subs": "f19b4c69-97ae-404c-8204-53f5e87868a1", "desc": "7549e404-2e2e-40c7-9fdf-0c2784eb4194", "motivos": "4db3ba48-6e5d-4e29-a8a7-f7a9b1c2900f"}
 EXCLUI = re.compile(r"\(c[oó]pia\)|c[oó]pia|teste|tempor[aá]rio", re.I)
 RID = re.compile(r"\[rd:([a-z0-9-]+)\]")
 
@@ -39,9 +40,10 @@ def opcao(c, v):
 
 COD_NOMES = {}
 def etapas_da_lista(li):
-    out = []
-    for t in paginas(f"list/{li['id']}/task", {"subtasks": "false", "include_closed": "true"}):
-        if t.get("parent") or t.get("custom_item_id") != TIPO_ETAPA: continue
+    out, subs = [], []
+    for t in paginas(f"list/{li['id']}/task", {"subtasks": "true", "include_closed": "true"}):
+        if t.get("parent"): subs.append(t); continue
+        if t.get("custom_item_id") != TIPO_ETAPA: continue
         st = t.get("status") or {}
         cc = cf(t, F_COD) or {}
         for o in cc.get("type_config", {}).get("options", []): COD_NOMES[o["id"]] = o.get("label")
@@ -58,6 +60,18 @@ def etapas_da_lista(li):
             "cods": rot,
             "marco": "lanc" if COD["lanc"] in cods else "reg" if COD["reg"] in cods else "due" if COD["due"] in cods else None,
         })
+    # subtarefas de cada Etapa (em qualquer nível), para o registro apontar a tarefa operacional que atrasou
+    pai = {t["id"]: t.get("parent") for t in subs}
+    por_id = {e["id"]: e for e in out}
+    def etapa_de(tid, n=0):
+        p = pai.get(tid)
+        return p if p in por_id else (etapa_de(p, n + 1) if p and n < 6 else None)
+    for t in subs:
+        e = por_id.get(etapa_de(t["id"]))
+        if not e: continue
+        v = (cf(t, F_SEM) or {}).get("value")
+        e.setdefault("subs", []).append({"id": t["id"], "n": t.get("name", ""), "pos": dia(t.get("due_date")),
+            "pre": dia(v) if v else None, "st": (t.get("status") or {}).get("type"), "nv": 1 if t.get("parent") == e["id"] else 2})
     return out
 
 def opcoes_registro(campos):
@@ -94,6 +108,7 @@ def registros(reg):
             "emp": opcao(cf(t, R["emp"]), val("emp")) if val("emp") is not None else ((t.get("tags") or [{}])[0].get("name") if t.get("tags") else None),
             "motivo": opcao(cf(t, R["motivos"]), mot[0]) if isinstance(mot, list) and mot else None,
             "desc": desc, "proj": proj, "rid": rid.group(1) if rid else None,
+            "subs": [x.get("id") if isinstance(x, dict) else x for x in (val("subs") or [])] if isinstance(val("subs"), list) else [],
         })
     return out
 
@@ -120,6 +135,9 @@ def rodar(cad):
                     retrato[e["id"]] = e["pos"]
                     if not e["pre"] and snap.get(e["id"]) and snap_data:
                         e["pre"], e["preSrc"] = snap[e["id"]], "retrato de " + snap_data[8:10] + "/" + snap_data[5:7]
+                    for x in e.get("subs", []):
+                        retrato[x["id"]] = x["pos"]
+                        if not x["pre"] and snap.get(x["id"]): x["pre"], x["src"] = snap[x["id"]], 1
                 short = re.sub(r"\(.*?\)", "", li["name"].split("|")[-1]).strip()
                 lanc = next((e["pos"] for e in es if e["marco"] == "lanc"), None)
                 listas.append({"id": li["id"], "name": li["name"], "short": short, "tipo": tipo, "sigla": por_lista.get(li["id"]), "lanc": lanc, "etapas": es})
