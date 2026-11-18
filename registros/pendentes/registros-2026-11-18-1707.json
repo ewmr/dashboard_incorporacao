@@ -1,0 +1,1186 @@
+{
+ "v": 1,
+ "gerado": "2026-11-18T20:07:27.408Z",
+ "itens": [
+  {
+   "v": 1,
+   "rid": "rmwkx8gtq958z",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901322097447",
+   "emp": "Vert",
+   "etapa": "86ad27033",
+   "nome": "Ambiental LP",
+   "criado": "2026-11-17T16:43:10.766Z",
+   "descricao": "No cronograma constava apenas uma analise, foi adicionado mais um protocolo e mais uma analise, as atividades foram reprogramadas também considerando as férias coletivas de final de ano.\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwkx8gtq958z]",
+   "tags": [
+    "vert"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86ad27033"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2026-11-12",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2027-01-13",
+    "76e39619-ef60-4155-b030-0418e5877768": 1,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "b45d0ad8-3a1b-41f5-ad33-de6c8ea36c0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "9d0ba2a3-3ff4-4173-92fd-c5c2102e1b0d",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "7da40375-1626-4451-a39f-a843f6a9312c",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "No cronograma constava apenas uma analise, foi adicionado mais um protocolo e mais uma analise, as atividades foram reprogramadas também considerando as férias coletivas de final de ano.",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2027-03-06",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "603e634d-01e6-4fe3-8c3a-0420dc48fd7a",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Prazo subestimado no planejamento",
+    "setor": "INC - Legalização",
+    "origem": "Interna controlável",
+    "pre": "2026-11-12",
+    "pos": "2027-01-13",
+    "desc": "No cronograma constava apenas uma analise, foi adicionado mais um protocolo e mais uma analise, as atividades foram reprogramadas também considerando as férias coletivas de final de ano.",
+    "proj": null
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwkxalfwkwhi",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901322097447",
+   "emp": "Vert",
+   "etapa": "86ad2712e",
+   "nome": "Emissão de Alvará",
+   "criado": "2026-11-17T16:44:50.060Z",
+   "descricao": "Houve um atraso na emissão da exigência por parte da prefeitura, porém ja recebemos e seguimos com o processo.\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwkxalfwkwhi]",
+   "tags": [
+    "vert"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86ad2712e"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2027-05-04",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2027-05-11",
+    "76e39619-ef60-4155-b030-0418e5877768": 2,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "d541a7c6-4400-4eea-9d5b-1737967f9b0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "751d5b00-b449-4c5c-bd14-0a159c871d45",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "eb711304-0962-4530-8449-44aa2149b6bf",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "Houve um atraso na emissão da exigência por parte da prefeitura, porém ja recebemos e seguimos com o processo.",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2027-08-30",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "603e634d-01e6-4fe3-8c3a-0420dc48fd7a",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Aguardando órgão público/concessionária",
+    "setor": "Externo",
+    "origem": "Externa - órgão/agente público",
+    "pre": "2027-05-04",
+    "pos": "2027-05-11",
+    "desc": "Houve um atraso na emissão da exigência por parte da prefeitura, porém ja recebemos e seguimos com o processo.",
+    "proj": null
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwkxmi3m8g6i",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901328072536",
+   "emp": "Zago",
+   "etapa": "86ajvadny",
+   "nome": "Licenciamento Ambiental LAS",
+   "criado": "2026-11-17T16:54:05.602Z",
+   "descricao": "Foram adicionados mais dois protocolos e duas analises, além de considerar o período de recesso de final de ano.\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwkxmi3m8g6i]",
+   "tags": [
+    "zago"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86ajvadny"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2026-11-12",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2027-03-03",
+    "76e39619-ef60-4155-b030-0418e5877768": 1,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "b45d0ad8-3a1b-41f5-ad33-de6c8ea36c0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "9d0ba2a3-3ff4-4173-92fd-c5c2102e1b0d",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "7da40375-1626-4451-a39f-a843f6a9312c",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "Foram adicionados mais dois protocolos e duas analises, além de considerar o período de recesso de final de ano.",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2027-02-26",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "d5d2eba7-13f5-4fa0-9d52-a0550f98185f",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Prazo subestimado no planejamento",
+    "setor": "INC - Legalização",
+    "origem": "Interna controlável",
+    "pre": "2026-11-12",
+    "pos": "2027-03-03",
+    "desc": "Foram adicionados mais dois protocolos e duas analises, além de considerar o período de recesso de final de ano.",
+    "proj": null
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwkxnqa2v4a7",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901328072536",
+   "emp": "Zago",
+   "etapa": "86ajw1zde",
+   "nome": "EIV",
+   "criado": "2026-11-17T16:55:02.858Z",
+   "descricao": "Analista responsável pelo empreendimento está de férias e portanto o processo se encontra paralisado\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwkxnqa2v4a7]",
+   "tags": [
+    "zago"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86ajw1zde"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2027-04-28",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2027-05-05",
+    "76e39619-ef60-4155-b030-0418e5877768": 2,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "d541a7c6-4400-4eea-9d5b-1737967f9b0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "751d5b00-b449-4c5c-bd14-0a159c871d45",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "eb711304-0962-4530-8449-44aa2149b6bf",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "Analista responsável pelo empreendimento está de férias e portanto o processo se encontra paralisado",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2027-03-23",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "d5d2eba7-13f5-4fa0-9d52-a0550f98185f",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Aguardando órgão público/concessionária",
+    "setor": "Externo",
+    "origem": "Externa - órgão/agente público",
+    "pre": "2027-04-28",
+    "pos": "2027-05-05",
+    "desc": "Analista responsável pelo empreendimento está de férias e portanto o processo se encontra paralisado",
+    "proj": null
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwky0760z4vi",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901327965854",
+   "emp": "Fundação",
+   "etapa": "86ajp43ma",
+   "nome": "Estudo Preliminar",
+   "criado": "2026-11-17T17:04:44.617Z",
+   "descricao": "Priorizadas tarefas de executivo do Alba\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwky0760z4vi]",
+   "tags": [
+    "fundação"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86ajp43ma"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2026-12-09",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2026-12-10",
+    "76e39619-ef60-4155-b030-0418e5877768": 2,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "b45d0ad8-3a1b-41f5-ad33-de6c8ea36c0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "80666f2a-7612-49ca-bebb-129b3eeaa04a",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "b040cdc5-1fbc-4520-b03f-901cfec0b14c",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "Priorizadas tarefas de executivo do Alba",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2026-09-11",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "0ac3858b-2672-48c0-8e29-5724f73176da",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Priorização de outras atividades",
+    "setor": "INC - Produto",
+    "origem": "Interna controlável",
+    "pre": "2026-12-09",
+    "pos": "2026-12-10",
+    "desc": "Priorizadas tarefas de executivo do Alba",
+    "proj": null
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwky2x32mdvh",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901327965854",
+   "emp": "Fundação",
+   "etapa": "86ajwzemp",
+   "nome": "Licenciamento Ambiental",
+   "criado": "2026-11-17T17:06:51.519Z",
+   "descricao": "A emissão de PGRCC ficou em atraso devido a dependência do setor de obras, que levou um mês e meio para emissão do documento.\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwky2x32mdvh]",
+   "tags": [
+    "fundação"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86ajwzemp"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2026-12-08",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2026-12-16",
+    "76e39619-ef60-4155-b030-0418e5877768": 3,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "b45d0ad8-3a1b-41f5-ad33-de6c8ea36c0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "9e7b221c-537c-46e8-9b14-e687923f196d",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "f93c3339-ac94-47e7-b0ed-5325bf77ae60",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "A emissão de PGRCC ficou em atraso devido a dependência do setor de obras, que levou um mês e meio para emissão do documento.",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2026-10-02",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "0ac3858b-2672-48c0-8e29-5724f73176da",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Dependência de outra área",
+    "setor": "ENG - Outros",
+    "origem": "Interna controlável",
+    "pre": "2026-12-08",
+    "pos": "2026-12-16",
+    "desc": "A emissão de PGRCC ficou em atraso devido a dependência do setor de obras, que levou um mês e meio para emissão do documento.",
+    "proj": null
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwky7dg1bhh7",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901327965854",
+   "emp": "Fundação",
+   "etapa": "86ajp440e",
+   "nome": "Unificação/Doação do Terreno",
+   "criado": "2026-11-17T17:10:19.346Z",
+   "descricao": "Postergado em uma semana o protocolo devido a procuração que estava pendente.\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwky7dg1bhh7]",
+   "tags": [
+    "fundação"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86ajp440e"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2027-03-19",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2027-03-30",
+    "76e39619-ef60-4155-b030-0418e5877768": 3,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "b45d0ad8-3a1b-41f5-ad33-de6c8ea36c0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "94374068-737b-4f77-a6c7-ad87c319729e",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "7da40375-1626-4451-a39f-a843f6a9312c",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "Postergado em uma semana o protocolo devido a procuração que estava pendente.",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2027-05-04",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "0ac3858b-2672-48c0-8e29-5724f73176da",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Insumo/documentação incompleta",
+    "setor": "INC - Legalização",
+    "origem": "Interna controlável",
+    "pre": "2027-03-19",
+    "pos": "2027-03-30",
+    "desc": "Postergado em uma semana o protocolo devido a procuração que estava pendente.",
+    "proj": null
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwkya9eekanp",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901327999906",
+   "emp": "Arena",
+   "etapa": "86ajqkfpv",
+   "nome": "Licença Ambiental",
+   "criado": "2026-11-17T17:12:34.070Z",
+   "descricao": "Aguardando recebimento do projeto arquitetônico por produto\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwkya9eekanp]",
+   "tags": [
+    "arena"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86ajqkfpv"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2026-12-01",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2026-12-24",
+    "76e39619-ef60-4155-b030-0418e5877768": 3,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "b45d0ad8-3a1b-41f5-ad33-de6c8ea36c0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "9e7b221c-537c-46e8-9b14-e687923f196d",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "b040cdc5-1fbc-4520-b03f-901cfec0b14c",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "Aguardando recebimento do projeto arquitetônico por produto",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2026-11-18",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "499baf1d-eaef-4d48-890a-59254164d9a6",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Dependência de outra área",
+    "setor": "INC - Produto",
+    "origem": "Interna controlável",
+    "pre": "2026-12-01",
+    "pos": "2026-12-24",
+    "desc": "Aguardando recebimento do projeto arquitetônico por produto",
+    "proj": null
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwkyf110qwo0",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901327999906",
+   "emp": "Arena",
+   "etapa": "86ajqkf7d",
+   "nome": "Definição de Conceito do Produto",
+   "criado": "2026-11-17T17:16:16.501Z",
+   "descricao": "Aguardando decisão final da diretoria a respeito do nome para dar prosseguimento a paleta e conceito\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwkyf110qwo0]",
+   "tags": [
+    "arena"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86ajqkf7d"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2026-12-01",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2026-12-07",
+    "76e39619-ef60-4155-b030-0418e5877768": 1,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "b45d0ad8-3a1b-41f5-ad33-de6c8ea36c0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "1e45f206-65c9-4d13-97ab-5c95f277ccac",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "de29f6ac-202a-47e1-89c9-7621df1af198",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "Aguardando decisão final da diretoria a respeito do nome para dar prosseguimento a paleta e conceito",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "499baf1d-eaef-4d48-890a-59254164d9a6",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Pendência de decisão interna",
+    "setor": "MKT - Marketing",
+    "origem": "Interna controlável",
+    "pre": "2026-12-01",
+    "pos": "2026-12-07",
+    "desc": "Aguardando decisão final da diretoria a respeito do nome para dar prosseguimento a paleta e conceito",
+    "proj": null
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwkym3sdkwxw",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901305538823",
+   "emp": "Alba",
+   "etapa": "86a52bn5g",
+   "nome": "Aprovações Legais",
+   "criado": "2026-11-17T17:21:46.670Z",
+   "descricao": "Atividade estava sendo considerada em progresso, porém não foi iniciada e foi reprogramada\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwkym3sdkwxw]",
+   "tags": [
+    "alba"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86a52bn5g"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2027-06-30",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2027-07-12",
+    "76e39619-ef60-4155-b030-0418e5877768": 1,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "b45d0ad8-3a1b-41f5-ad33-de6c8ea36c0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "9d0ba2a3-3ff4-4173-92fd-c5c2102e1b0d",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "c2e04593-4107-4063-a89e-8cbaeb0ae1b9",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "Atividade estava sendo considerada em progresso, porém não foi iniciada e foi reprogramada",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2025-12-25",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "00ff136a-de55-49af-aad6-7544a63b4ed6",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Prazo subestimado no planejamento",
+    "setor": "ENG - Projetos Complementares",
+    "origem": "Interna controlável",
+    "pre": "2027-06-30",
+    "pos": "2027-07-12",
+    "desc": "Atividade estava sendo considerada em progresso, porém não foi iniciada e foi reprogramada",
+    "proj": null
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwkyt4hclxcu",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901325334354",
+   "emp": "Aura",
+   "etapa": "86af97p0j",
+   "nome": "Análise Definitiva",
+   "criado": "2026-11-17T17:27:14.160Z",
+   "descricao": "Validar informações com a Danielle\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwkyt4hclxcu]",
+   "tags": [
+    "aura"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86af97p0j"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2027-01-11",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2027-01-12",
+    "76e39619-ef60-4155-b030-0418e5877768": 3,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "b45d0ad8-3a1b-41f5-ad33-de6c8ea36c0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "a26efdf9-d802-4760-90c5-b78e5dbe0a38",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "9842e321-49e4-46e1-b52d-789825ed2e65",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "Validar informações com a Danielle",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2026-09-09",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "6a325769-679f-446d-a8d2-7a0433379541",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Ausência de reporte",
+    "setor": "INC - Crédito Imobiliário",
+    "origem": "Interna controlável",
+    "pre": "2027-01-11",
+    "pos": "2027-01-12",
+    "desc": "Validar informações com a Danielle",
+    "proj": null
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwkyw5beew0b",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901325334354",
+   "emp": "Aura",
+   "etapa": "86af97p1w",
+   "nome": "Anteprojeto",
+   "criado": "2026-11-17T17:29:35.210Z",
+   "descricao": "Aguardando a entrega do projetista, estava prevista a entrega no dia 10 e seguimos aguardando.\n\nProjetista/consultor: Trento\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwkyw5beew0b]",
+   "tags": [
+    "aura"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86af97p1w"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2026-11-13",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2026-11-19",
+    "76e39619-ef60-4155-b030-0418e5877768": 2,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "391b3ef3-eba9-4f76-9a21-1ae85d43e092",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "68b85fc7-0dec-4f66-b403-f51abcb143e5",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "eb711304-0962-4530-8449-44aa2149b6bf",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "Aguardando a entrega do projetista, estava prevista a entrega no dia 10 e seguimos aguardando.\n\nProjetista/consultor: Trento",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2026-09-20",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "6a325769-679f-446d-a8d2-7a0433379541",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Aguardando projetista/consultor",
+    "setor": "Externo",
+    "origem": "Externa - terceiro contratado",
+    "pre": "2026-11-13",
+    "pos": "2026-11-19",
+    "desc": "Aguardando a entrega do projetista, estava prevista a entrega no dia 10 e seguimos aguardando.",
+    "proj": "Trento"
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwkyypeizbuk",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901325334354",
+   "emp": "Aura",
+   "etapa": "86af97pe0",
+   "nome": "Anteprojeto",
+   "criado": "2026-11-17T17:31:34.554Z",
+   "descricao": "Projetista solicitou uma campanha de ensaios complementares, ja foi entregue e a entrega do projetista está prevista para hoje com validação amanhã.\n\nProjetista/consultor: SCCAP Engenharia\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwkyypeizbuk]",
+   "tags": [
+    "aura"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86af97pe0"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2026-11-10",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2026-11-18",
+    "76e39619-ef60-4155-b030-0418e5877768": 2,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "391b3ef3-eba9-4f76-9a21-1ae85d43e092",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "68b85fc7-0dec-4f66-b403-f51abcb143e5",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "eb711304-0962-4530-8449-44aa2149b6bf",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "Projetista solicitou uma campanha de ensaios complementares, ja foi entregue e a entrega do projetista está prevista para hoje com validação amanhã.\n\nProjetista/consultor: SCCAP Engenharia",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2026-08-31",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "6a325769-679f-446d-a8d2-7a0433379541",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Aguardando projetista/consultor",
+    "setor": "Externo",
+    "origem": "Externa - terceiro contratado",
+    "pre": "2026-11-10",
+    "pos": "2026-11-18",
+    "desc": "Projetista solicitou uma campanha de ensaios complementares, ja foi entregue e a entrega do projetista está prevista para hoje com validação amanhã.",
+    "proj": "SCCAP Engenharia"
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwkzalx8l24s",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901327828147",
+   "emp": "Quadratto",
+   "etapa": "86ajgky7y",
+   "nome": "Emissão de Alvará",
+   "criado": "2026-11-17T17:40:49.916Z",
+   "descricao": "Aguardando alteração da legislação.\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwkzalx8l24s]",
+   "tags": [
+    "quadratto"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86ajgky7y"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2026-12-17",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2026-12-23",
+    "76e39619-ef60-4155-b030-0418e5877768": 2,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "d541a7c6-4400-4eea-9d5b-1737967f9b0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "751d5b00-b449-4c5c-bd14-0a159c871d45",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "eb711304-0962-4530-8449-44aa2149b6bf",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "Aguardando alteração da legislação.",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2026-11-05",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "73a5a78f-3f6a-4c47-9504-ac3ef214a769",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Aguardando órgão público/concessionária",
+    "setor": "Externo",
+    "origem": "Externa - órgão/agente público",
+    "pre": "2026-12-17",
+    "pos": "2026-12-23",
+    "desc": "Aguardando alteração da legislação.",
+    "proj": null
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwkzcvemn7es",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901327828147",
+   "emp": "Quadratto",
+   "etapa": "86ajgky21",
+   "nome": "Anteprojeto",
+   "criado": "2026-11-17T17:42:35.519Z",
+   "descricao": "A analista responsável subestimou o prazo que levaria para conclusão de suas atividades.\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwkzcvemn7es]",
+   "tags": [
+    "quadratto"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86ajgky21"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2026-11-18",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2026-11-20",
+    "76e39619-ef60-4155-b030-0418e5877768": 2,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "b45d0ad8-3a1b-41f5-ad33-de6c8ea36c0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "9d0ba2a3-3ff4-4173-92fd-c5c2102e1b0d",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "c2e04593-4107-4063-a89e-8cbaeb0ae1b9",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "A analista responsável subestimou o prazo que levaria para conclusão de suas atividades.",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2026-10-16",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "73a5a78f-3f6a-4c47-9504-ac3ef214a769",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Prazo subestimado no planejamento",
+    "setor": "ENG - Projetos Complementares",
+    "origem": "Interna controlável",
+    "pre": "2026-11-18",
+    "pos": "2026-11-20",
+    "desc": "A analista responsável subestimou o prazo que levaria para conclusão de suas atividades.",
+    "proj": null
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwkzfi6xqnmu",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901327828147",
+   "emp": "Quadratto",
+   "etapa": "17tpepcr444",
+   "nome": "Subdivisão",
+   "criado": "2026-11-17T17:44:38.361Z",
+   "descricao": "Prefeitura solicitou demolição, processo do qual nunca foi solicitado antes nesta etapa.\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwkzfi6xqnmu]",
+   "tags": [
+    "quadratto"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "17tpepcr444"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2026-11-18",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2026-12-03",
+    "76e39619-ef60-4155-b030-0418e5877768": 3,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "d541a7c6-4400-4eea-9d5b-1737967f9b0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "751d5b00-b449-4c5c-bd14-0a159c871d45",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "eb711304-0962-4530-8449-44aa2149b6bf",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "Prefeitura solicitou demolição, processo do qual nunca foi solicitado antes nesta etapa.",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2026-11-10",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "73a5a78f-3f6a-4c47-9504-ac3ef214a769",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Aguardando órgão público/concessionária",
+    "setor": "Externo",
+    "origem": "Externa - órgão/agente público",
+    "pre": "2026-11-18",
+    "pos": "2026-12-03",
+    "desc": "Prefeitura solicitou demolição, processo do qual nunca foi solicitado antes nesta etapa.",
+    "proj": null
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwkzq66iuob1",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901305589843",
+   "emp": "Edge",
+   "etapa": "86a54y79z",
+   "nome": "COHAPAR",
+   "criado": "2026-11-17T17:52:56.011Z",
+   "descricao": "Aguardando análise da COHAPAR, a data prevista era 30/10.\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwkzq66iuob1]",
+   "tags": [
+    "edge"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86a54y79z"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2026-12-14",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2026-12-21",
+    "76e39619-ef60-4155-b030-0418e5877768": 4,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "d541a7c6-4400-4eea-9d5b-1737967f9b0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "751d5b00-b449-4c5c-bd14-0a159c871d45",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "eb711304-0962-4530-8449-44aa2149b6bf",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "Aguardando análise da COHAPAR, a data prevista era 30/10.",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2026-10-29",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "ced5e087-4ca7-453f-8a35-7718cb7df14d",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Aguardando órgão público/concessionária",
+    "setor": "Externo",
+    "origem": "Externa - órgão/agente público",
+    "pre": "2026-12-14",
+    "pos": "2026-12-21",
+    "desc": "Aguardando análise da COHAPAR, a data prevista era 30/10.",
+    "proj": null
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwkzz5544mhp",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901308225891",
+   "emp": "Horizon",
+   "etapa": "86a762q36",
+   "nome": "Projeto Executivo",
+   "criado": "2026-11-17T17:59:54.569Z",
+   "descricao": "Reprogramado devido as ferias do analista responsável\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwkzz5544mhp]",
+   "tags": [
+    "horizon"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86a762q36"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2026-11-25",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2026-12-02",
+    "76e39619-ef60-4155-b030-0418e5877768": 1,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "b45d0ad8-3a1b-41f5-ad33-de6c8ea36c0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "5cc6ffb8-b55a-403b-b4b4-e6486c5cfc29",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "c2e04593-4107-4063-a89e-8cbaeb0ae1b9",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "Reprogramado devido as ferias do analista responsável",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2026-11-30",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "0e21cafd-e1c2-482a-b21a-047df4567d13",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Falha de comunicação/alinhamento",
+    "setor": "ENG - Projetos Complementares",
+    "origem": "Interna controlável",
+    "pre": "2026-11-25",
+    "pos": "2026-12-02",
+    "desc": "Reprogramado devido as ferias do analista responsável",
+    "proj": null
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwl00mqipfh2",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901305589843",
+   "emp": "Edge",
+   "etapa": "86a54y7ep",
+   "nome": "Projeto Executivo",
+   "criado": "2026-11-17T18:01:04.026Z",
+   "descricao": "O projetista solicitou informações novas e acabou atrasando a entrega.\n\nProjetista/consultor: SCCAP Engenharia\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwl00mqipfh2]",
+   "tags": [
+    "edge"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86a54y7ep"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2026-11-13",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2026-11-19",
+    "76e39619-ef60-4155-b030-0418e5877768": 1,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "391b3ef3-eba9-4f76-9a21-1ae85d43e092",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "68b85fc7-0dec-4f66-b403-f51abcb143e5",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "eb711304-0962-4530-8449-44aa2149b6bf",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "O projetista solicitou informações novas e acabou atrasando a entrega.\n\nProjetista/consultor: SCCAP Engenharia",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2026-08-28",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "ced5e087-4ca7-453f-8a35-7718cb7df14d",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Aguardando projetista/consultor",
+    "setor": "Externo",
+    "origem": "Externa - terceiro contratado",
+    "pre": "2026-11-13",
+    "pos": "2026-11-19",
+    "desc": "O projetista solicitou informações novas e acabou atrasando a entrega.",
+    "proj": "SCCAP Engenharia"
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwl02dn6ceea",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901308225891",
+   "emp": "Horizon",
+   "etapa": "17tpepcxcf0",
+   "nome": "Transplante de Árvores",
+   "criado": "2026-11-17T18:02:25.555Z",
+   "descricao": "Em processo de novos orçamentos visto a desistência do prestador anterior.\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwl02dn6ceea]",
+   "tags": [
+    "horizon"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "17tpepcxcf0"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2026-12-10",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2026-12-22",
+    "76e39619-ef60-4155-b030-0418e5877768": 1,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "b45d0ad8-3a1b-41f5-ad33-de6c8ea36c0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "1e45f206-65c9-4d13-97ab-5c95f277ccac",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "7da40375-1626-4451-a39f-a843f6a9312c",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "Em processo de novos orçamentos visto a desistência do prestador anterior.",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2026-12-10",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "0e21cafd-e1c2-482a-b21a-047df4567d13",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Pendência de decisão interna",
+    "setor": "INC - Legalização",
+    "origem": "Interna controlável",
+    "pre": "2026-12-10",
+    "pos": "2026-12-22",
+    "desc": "Em processo de novos orçamentos visto a desistência do prestador anterior.",
+    "proj": null
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwl04jbianc6",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901305540246",
+   "emp": "Now",
+   "etapa": "86aj3hzm2",
+   "nome": "Projetos específicos",
+   "criado": "2026-11-17T18:04:06.222Z",
+   "descricao": "Dificuldade de agenda com o setor de obras\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwl04jbianc6]",
+   "tags": [
+    "now"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86aj3hzm2"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2026-11-10",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2026-11-20",
+    "76e39619-ef60-4155-b030-0418e5877768": 4,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "b45d0ad8-3a1b-41f5-ad33-de6c8ea36c0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "9e7b221c-537c-46e8-9b14-e687923f196d",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "f93c3339-ac94-47e7-b0ed-5325bf77ae60",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "Dificuldade de agenda com o setor de obras",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "1a730041-9037-4dbe-b8c1-46061f2f56ff",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Dependência de outra área",
+    "setor": "ENG - Outros",
+    "origem": "Interna controlável",
+    "pre": "2026-11-10",
+    "pos": "2026-11-20",
+    "desc": "Dificuldade de agenda com o setor de obras",
+    "proj": null
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwl07hulaz5x",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Lidia Lhose",
+   "lista": "901305541456",
+   "emp": "Lume",
+   "etapa": "17tpepcdd7p",
+   "nome": "Projetos de Revisão de obra",
+   "criado": "2026-11-17T18:06:24.285Z",
+   "descricao": "O setor de obras não repassou as informações sobre canteiro para revisão.\n\nRegistrado por Lidia Lhose no dashboard.\n\n[rd:rmwl07hulaz5x]",
+   "tags": [
+    "lume"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "17tpepcdd7p"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-17",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2026-11-10",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2026-11-20",
+    "76e39619-ef60-4155-b030-0418e5877768": 3,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "b45d0ad8-3a1b-41f5-ad33-de6c8ea36c0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "9e7b221c-537c-46e8-9b14-e687923f196d",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "f93c3339-ac94-47e7-b0ed-5325bf77ae60",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "O setor de obras não repassou as informações sobre canteiro para revisão.",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2026-10-09",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "001030aa-db50-4a9f-81f3-def882d030a7",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-17",
+    "tipo": "Atraso",
+    "causa": "Dependência de outra área",
+    "setor": "ENG - Outros",
+    "origem": "Interna controlável",
+    "pre": "2026-11-10",
+    "pos": "2026-11-20",
+    "desc": "O setor de obras não repassou as informações sobre canteiro para revisão.",
+    "proj": null
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwmjosunmud3",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Eduardo Rosa",
+   "lista": "901305540246",
+   "emp": "Now",
+   "etapa": "86a4ztpep",
+   "nome": "Início de Obra",
+   "criado": "2026-11-18T19:59:30.576Z",
+   "descricao": "Erro de atualização de cronograma puxou a data para mais cedo do que o real. Já ajustado.\n\nRegistrado por Eduardo Rosa no dashboard.\n\n[rd:rmwmjosunmud3]",
+   "tags": [
+    "now"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86a4ztpep"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-18",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2026-09-29",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2026-10-30",
+    "76e39619-ef60-4155-b030-0418e5877768": 1,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "7dad0385-0784-4d24-8838-e615283bd1e8",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "b45d0ad8-3a1b-41f5-ad33-de6c8ea36c0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "5cc6ffb8-b55a-403b-b4b4-e6486c5cfc29",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "f93c3339-ac94-47e7-b0ed-5325bf77ae60",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "Erro de atualização de cronograma puxou a data para mais cedo do que o real. Já ajustado.",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "1a730041-9037-4dbe-b8c1-46061f2f56ff",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-18",
+    "tipo": "Replanejamento por Decisão",
+    "causa": "Falha de comunicação/alinhamento",
+    "setor": "ENG - Outros",
+    "origem": "Interna controlável",
+    "pre": "2026-09-29",
+    "pos": "2026-10-30",
+    "desc": "Erro de atualização de cronograma puxou a data para mais cedo do que o real. Já ajustado.",
+    "proj": null,
+    "subs": []
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwmjvazej5vg",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Eduardo Rosa",
+   "lista": "901308225891",
+   "emp": "Horizon",
+   "etapa": "86a8y0uwm",
+   "nome": "Outros",
+   "criado": "2026-11-18T20:04:34.012Z",
+   "descricao": "A validação dos seguros só é feita pós contratação do empreendimento, estávamos considerando uma predecessora errada.\n\nSubtarefas que causaram o atraso: HOR-CEF-DEM-Validação dos seguros\n\nRegistrado por Eduardo Rosa no dashboard.\n\n[rd:rmwmjvazej5vg]",
+   "tags": [
+    "horizon"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86a8y0uwm"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-18",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2026-12-13",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2027-01-05",
+    "76e39619-ef60-4155-b030-0418e5877768": 2,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "b45d0ad8-3a1b-41f5-ad33-de6c8ea36c0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "9d0ba2a3-3ff4-4173-92fd-c5c2102e1b0d",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "9842e321-49e4-46e1-b52d-789825ed2e65",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "A validação dos seguros só é feita pós contratação do empreendimento, estávamos considerando uma predecessora errada.",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2026-11-27",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "0e21cafd-e1c2-482a-b21a-047df4567d13",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13",
+    "f19b4c69-97ae-404c-8204-53f5e87868a1": [
+     "86a8y0nx6"
+    ]
+   },
+   "resumo": {
+    "semana": "2026-11-18",
+    "tipo": "Atraso",
+    "causa": "Prazo subestimado no planejamento",
+    "setor": "INC - Crédito Imobiliário",
+    "origem": "Interna controlável",
+    "pre": "2026-12-13",
+    "pos": "2027-01-05",
+    "desc": "A validação dos seguros só é feita pós contratação do empreendimento, estávamos considerando uma predecessora errada.",
+    "proj": null,
+    "subs": [
+     {
+      "id": "86a8y0nx6",
+      "n": "HOR-CEF-DEM-Validação dos seguros",
+      "d": null
+     }
+    ]
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwmjwlu0ng61",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Eduardo Rosa",
+   "lista": "901308225891",
+   "emp": "Horizon",
+   "etapa": "86a762qbt",
+   "nome": "Processos de Assinatura PJ",
+   "criado": "2026-11-18T20:05:34.728Z",
+   "descricao": "Estávamos aguardando emissão da minuta PJ pela CEF.\n\nRegistrado por Eduardo Rosa no dashboard.\n\n[rd:rmwmjwlu0ng61]",
+   "tags": [
+    "horizon"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86a762qbt"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-18",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2026-11-17",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2026-11-30",
+    "76e39619-ef60-4155-b030-0418e5877768": 1,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "d541a7c6-4400-4eea-9d5b-1737967f9b0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "e966f082-b045-45d1-8525-eb2ba11da1d9",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "eb711304-0962-4530-8449-44aa2149b6bf",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "Estávamos aguardando emissão da minuta PJ pela CEF.",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2026-12-16",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "0e21cafd-e1c2-482a-b21a-047df4567d13",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-18",
+    "tipo": "Atraso",
+    "causa": "Aguardando CEF/agente financeiro",
+    "setor": "Externo",
+    "origem": "Externa - órgão/agente público",
+    "pre": "2026-11-17",
+    "pos": "2026-11-30",
+    "desc": "Estávamos aguardando emissão da minuta PJ pela CEF.",
+    "proj": null,
+    "subs": []
+   }
+  },
+  {
+   "v": 1,
+   "rid": "rmwmjxe054gq6",
+   "co": "makeit",
+   "reg": "901312786569",
+   "autor": "Eduardo Rosa",
+   "lista": "901305540246",
+   "emp": "Now",
+   "etapa": "86a4ztpdv",
+   "nome": "Processos de Assinatura PJ",
+   "criado": "2026-11-18T20:06:11.237Z",
+   "descricao": "Estávamos aguardando minuta PJ da CEF.\n\nRegistrado por Eduardo Rosa no dashboard.\n\n[rd:rmwmjxe054gq6]",
+   "tags": [
+    "now"
+   ],
+   "campos": {
+    "ba153e8c-da16-4f58-91ff-2b249582ecd2": [
+     "86a4ztpdv"
+    ],
+    "ae46a9ce-2356-4e88-a573-3b8525d1886d": "2026-11-18",
+    "0b65f8ad-16d4-4e53-b576-54c55e2cd501": "2026-11-16",
+    "1bc8dcb0-c235-4430-b827-e23fe59c406b": "2026-12-07",
+    "76e39619-ef60-4155-b030-0418e5877768": 1,
+    "2b9c98c5-7b05-461f-bd6c-f7ebcb9e505d": "03e015d4-527e-4b4d-94eb-b418bf506afa",
+    "cfc9bb8f-e2aa-45ba-a749-1df226743131": "d541a7c6-4400-4eea-9d5b-1737967f9b0d",
+    "572a8894-0827-4dcd-8c99-169e4bac1654": "e966f082-b045-45d1-8525-eb2ba11da1d9",
+    "8c7a4aa8-78f3-48bd-9cf3-af55f2b86af5": "eb711304-0962-4530-8449-44aa2149b6bf",
+    "0921287f-03f0-41dd-8304-cdca66174a53": false,
+    "7549e404-2e2e-40c7-9fdf-0c2784eb4194": "Estávamos aguardando minuta PJ da CEF.",
+    "b0bb6827-f602-44ce-89fa-1a4e489249a9": "2026-11-13",
+    "887c28de-dff3-4d37-a940-c7b61c68dd8c": "1a730041-9037-4dbe-b8c1-46061f2f56ff",
+    "5ae8ebdf-6584-4fb0-b2ed-77766f69caba": "38d32b2e-2ec4-44bc-ab55-1905d6831f13"
+   },
+   "resumo": {
+    "semana": "2026-11-18",
+    "tipo": "Atraso",
+    "causa": "Aguardando CEF/agente financeiro",
+    "setor": "Externo",
+    "origem": "Externa - órgão/agente público",
+    "pre": "2026-11-16",
+    "pos": "2026-12-07",
+    "desc": "Estávamos aguardando minuta PJ da CEF.",
+    "proj": null,
+    "subs": []
+   }
+  }
+ ]
+}
