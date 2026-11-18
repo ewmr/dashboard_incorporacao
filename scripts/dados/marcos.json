@@ -130,14 +130,14 @@
   ]
  },
  "em_elaboracao": {
-  "LBA": [
-   "1400450000014662",
-   "EP | Lens Barigui (Padre Agostinho)",
-   "Gadens"
-  ],
   "LAG": [
    "1400450000017244",
    "PE | Lens Alto da Glória (General Carneiro)",
+   "Gadens"
+  ],
+  "LBA": [
+   "1400450000014662",
+   "EP | Lens Barigui (Padre Agostinho)",
    "Gadens"
   ]
  },
