@@ -44,10 +44,10 @@ function anDados(){
   const etapas = [], regs = [];
   cos.forEach(k=>{ const f = AN.arq[k]; if (!f) return;
     const inc = k==="gadens" ? "Gadens" : "Make It";
-    const ondeEt = {}; (f.listas||[]).forEach(l=>l.etapas.forEach(e=>ondeEt[e.id]={l, e}));
+    const ondeEt = {}, subN = {}; (f.listas||[]).forEach(l=>l.etapas.forEach(e=>{ ondeEt[e.id]={l, e}; (e.subs||[]).forEach(x=>subN[x.id]=x.n); }));
     const ajusta = r => { const x = ondeEt[(r.t||[])[0]];
       return {...r, co:k, inc, sigla:x?.l.sigla, emp: x ? x.l.short : anEmpBase(r.emp), etapa: x ? (x.e.name||"").split("|").pop().trim() : (r.nome||""),
-        delta:anDias(r.pre,r.pos), novo:!!r.causa, url:r.fila?null:"https://app.clickup.com/t/"+r.id}; };
+        delta:anDias(r.pre,r.pos), novo:!!r.causa, subsN:(r.subs||[]).map(x=>typeof x==="string"?(subN[x]||null):x.n).filter(Boolean), url:r.fila?null:"https://app.clickup.com/t/"+r.id}; };
     const doArq = (f.registros||[]).map(ajusta);
     const pend = fila.filter(x=>x.co===k).map(x=>ajusta({id:"fila-"+x.rid, t:[x.etapa], nome:x.nome, emp:x.emp, ...x.resumo, fila:true, autor:x.autor}));
     const todos = doArq.concat(pend).filter(r=>r.sigla ? ok.has(r.sigla) : !filtroAtivo);
@@ -261,14 +261,15 @@ function anLista(R){
       <select id="anREmp" class="an-sel"><option value="">Todos os empreendimentos</option>${opts(r=>r.emp).map(x=>`<option ${F.emp===x?"selected":""}>${esc(x)}</option>`).join("")}</select>
       <select id="anRCau" class="an-sel"><option value="">Todas as causas</option>${opts(cz).map(x=>`<option ${F.causa===x?"selected":""}>${esc(x)}</option>`).join("")}</select>
       <select id="anRSet" class="an-sel"><option value="">Todos os setores</option>${opts(r=>r.setor).map(x=>`<option ${F.setor===x?"selected":""}>${esc(x)}</option>`).join("")}</select></div>
-    <div class="fd an-fd"><table><thead><tr>${th("emp","Empreendimento","fn")}${th("semana","Semana","d")}${th("etapa","Etapa")}${th("delta","Δ","d")}${th("causa","Causa")}${th("setor","Setor")}${th("origem","Origem")}${th("proj","Projetista")}<th>Descrição</th><th></th></tr></thead><tbody>
+    <div class="fd an-fd"><table><thead><tr>${th("emp","Empreendimento","fn")}${th("semana","Semana","d")}${th("etapa","Etapa")}${th("delta","Δ","d")}${th("causa","Causa")}${th("setor","Setor")}${th("origem","Origem")}${th("proj","Projetista")}<th>Subtarefas</th><th>Descrição</th><th></th></tr></thead><tbody>
     ${vis.length ? vis.map(r=>`<tr${r.fila?' class="fila"':""}><td class="fn"><span class="fd-n">${icoSe(r.inc)}${esc(r.emp)}</span></td><td class="d">${anBr(r.semana)}</td><td class="an-nm" title="${esc(r.etapa)}">${esc(r.etapa)}</td>
       <td class="d"><span class="an-dl ${r.delta>0?"late":r.delta<0?"ok":"mute"}">${anSig(r.delta)}</span></td>
       <td>${r.causa?`<span class="an-st"><i style="background:${AN_COR_CAUSA[anNorm(r.causa)]||"#8E8E93"}"></i>${esc(r.causa)}</span>`:`<span class="muted">${esc(cz(r)||"—")}</span>`}</td>
       <td>${r.setor?`<span class="an-st"><i style="background:${AN_COR_SETOR[anNorm(r.setor)]||"#8E8E93"}"></i>${esc(anSetorCurto(r.setor))}</span>`:"—"}</td>
       <td class="an-tag">${esc(r.origem||"—")}</td><td class="an-tag">${esc(r.proj||"—")}</td>
+      <td class="an-ds" title="${esc((r.subsN||[]).join("\n"))}">${r.subsN?.length?esc(r.subsN[0])+(r.subsN.length>1?` <span class="muted">+${r.subsN.length-1}</span>`:""):"—"}</td>
       <td class="an-ds" title="${esc(r.desc||"")}">${esc(r.desc||"")}</td>
-      <td class="d">${r.fila?`<span class="an-pend" title="guardado neste navegador, ainda não enviado ao ClickUp">a enviar</span>`:`<a class="an-lk" href="${esc(r.url)}" target="_blank" rel="noopener" title="Abrir o registro no ClickUp">↗</a>`}</td></tr>`).join("") : `<tr><td colspan="10" class="muted" style="text-align:center;padding:18px">Nenhum registro nesta seleção.</td></tr>`}
+      <td class="d">${r.fila?`<span class="an-pend" title="guardado neste navegador, ainda não enviado ao ClickUp">a enviar</span>`:`<a class="an-lk" href="${esc(r.url)}" target="_blank" rel="noopener" title="Abrir o registro no ClickUp">↗</a>`}</td></tr>`).join("") : `<tr><td colspan="11" class="muted" style="text-align:center;padding:18px">Nenhum registro nesta seleção.</td></tr>`}
     </tbody></table></div>`;
   const RR = () => anLista(R);
   $("anRl").querySelectorAll("th[data-c]").forEach(t=>t.onclick=()=>{ const c=t.dataset.c; F.ord = {c, d: F.ord.c===c ? -F.ord.d : (c==="semana"||c==="delta"?-1:1)}; RR(); });

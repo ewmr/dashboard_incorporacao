@@ -69,9 +69,9 @@ def etapas_da_lista(li):
     for t in subs:
         e = por_id.get(etapa_de(t["id"]))
         if not e: continue
-        v = (cf(t, F_SEM) or {}).get("value")
+        # nas subtarefas o campo Data Semana Passada não é mantido; a referência vem só do retrato diário
         e.setdefault("subs", []).append({"id": t["id"], "n": t.get("name", ""), "pos": dia(t.get("due_date")),
-            "pre": dia(v) if v else None, "st": (t.get("status") or {}).get("type"), "nv": 1 if t.get("parent") == e["id"] else 2})
+            "pre": None, "st": (t.get("status") or {}).get("type"), "nv": 1 if t.get("parent") == e["id"] else 2})
     return out
 
 def opcoes_registro(campos):
@@ -137,7 +137,7 @@ def rodar(cad):
                         e["pre"], e["preSrc"] = snap[e["id"]], "retrato de " + snap_data[8:10] + "/" + snap_data[5:7]
                     for x in e.get("subs", []):
                         retrato[x["id"]] = x["pos"]
-                        if not x["pre"] and snap.get(x["id"]): x["pre"], x["src"] = snap[x["id"]], 1
+                        if snap.get(x["id"]): x["pre"] = snap[x["id"]]
                 short = re.sub(r"\(.*?\)", "", li["name"].split("|")[-1]).strip()
                 lanc = next((e["pos"] for e in es if e["marco"] == "lanc"), None)
                 listas.append({"id": li["id"], "name": li["name"], "short": short, "tipo": tipo, "sigla": por_lista.get(li["id"]), "lanc": lanc, "etapas": es})

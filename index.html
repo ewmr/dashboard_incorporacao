@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Dashboard Incorporação · Make It e Gadens</title>
+<title>Painel de Controle · Incorporação Grupo Gadens</title>
 <script>/* zoom da interface */try{var zz=+localStorage.getItem("dash-zoom");if(zz)document.documentElement.style.setProperty("--ui",zz)}catch(e){}</script>
 <script>/* tema antes de pintar, para não piscar */try{var t=localStorage.getItem("dash-tema");document.documentElement.dataset.theme=t||(matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")}catch(e){document.documentElement.dataset.theme="light"}</script>
 <style>:where(svg){max-width:100%}:where(.top,.bot) :where(svg){width:22px;height:22px}</style>
 <link rel="stylesheet" href="vendor/maplibre/maplibre-gl.css?v=4.7.1">
 <link rel="preload" href="vendor/fonts/nunito-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="app.css?v=0.14">
+<link rel="stylesheet" href="app.css?v=1.0">
 </head>
 <body>
 <!-- fundo: degradê desfocado na cor da incorporadora -->
@@ -98,7 +98,7 @@
   <!-- CRONOGRAMA -->
   <section class="page" data-page="cronograma" hidden>
     <h1 class="pt">Cronograma</h1>
-    <article class="card" id="sec-regua"><div class="ch"><div><h3>Régua de lançamentos</h3><p class="cap">VGV bruto (R$ milhões) de cada lançamento no mês previsto · só entram empreendimentos com a Due Diligence finalizada; para ver terrenos em negociação ou projetados, use a simulação</p></div><button class="pillbtn pri" id="simAbre"><svg viewBox="0 0 24 24"><path d="M4 7h10M4 17h6M18 4v6M15 7h6M14 14l3 3 4-4"/></svg>Simular régua</button></div><div class="chart" id="regua"></div><div class="leg" id="reguaLeg" style="margin-top:8px"></div></article>
+    <article class="card" id="sec-regua"><div class="ch"><div><h3>Régua de lançamentos</h3><p class="cap">VGV bruto (R$ milhões) de cada lançamento no mês previsto · só entram empreendimentos com a Due Diligence finalizada; para ver terrenos em negociação ou projetados, use a simulação</p></div><button class="pillbtn pri" id="simAbre"><svg viewBox="0 0 24 24"><path d="M4 7h10M4 17h6M18 4v6M15 7h6M14 14l3 3 4-4"/></svg>Simular régua</button></div><div class="chart" id="regua"></div><div class="leg" id="reguaLeg" style="margin-top:8px"></div><div id="terrenos" class="tr-box"></div></article>
     <article class="card" id="sec-gantt"><div class="ch"><div><h3>Portfólio macro</h3><p class="cap">fases de cada empreendimento ativo, do cronograma no ClickUp · ordenados pelo início de obra · <span id="ganttN"></span></p></div></div><div class="leg" id="ganttLeg"></div><div class="chart" id="gantt"></div></article>
     <div class="grid cr-2">
       <article class="card" id="sec-agenda"><div class="ch"><div><h3>Agenda de marcos</h3><p class="cap" id="agN"></p></div></div><div id="agenda" class="ag"></div></article>
@@ -161,6 +161,7 @@
     <span>Gestão de Projetos de Incorporação</span>
   </div>
   <div class="bot-r">
+    <button class="sugbtn" id="sugBtn" type="button" aria-haspopup="dialog" data-tip="Anote sugestões enquanto navega pelo painel"><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9a2.8 2.8 0 0 0-4-4L4 16z"/><path d="M13.5 6.5l4 4"/></svg>Sugestões</button>
     <div class="zctl"><button class="ib" id="uiMenos" aria-label="Diminuir a interface" data-tip="Diminuir a interface"><svg viewBox="0 0 24 24"><path d="M6 12h12"/></svg></button><span id="uiPct">100%</span><button class="ib" id="uiMais" aria-label="Aumentar a interface" data-tip="Aumentar a interface"><svg viewBox="0 0 24 24"><path d="M6 12h12M12 6v12"/></svg></button></div>
     <button class="ib" id="linkBtn" aria-label="Links úteis" data-tip="Links úteis" aria-haspopup="true"><svg viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/></svg></button>
     <button class="ib" id="setBtn" data-tip="Dados, pendências e histórico de versões" aria-label="Configurações"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 14.5a1.6 1.6 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.6 1.6 0 0 0-1.8-.3 1.6 1.6 0 0 0-1 1.5v.2a2 2 0 1 1-4 0v-.1a1.6 1.6 0 0 0-1-1.5 1.6 1.6 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.6 1.6 0 0 0 .3-1.8 1.6 1.6 0 0 0-1.5-1h-.2a2 2 0 1 1 0-4h.1a1.6 1.6 0 0 0 1.5-1 1.6 1.6 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.6 1.6 0 0 0 1.8.3h0a1.6 1.6 0 0 0 1-1.5v-.2a2 2 0 1 1 4 0v.1a1.6 1.6 0 0 0 1 1.5 1.6 1.6 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.6 1.6 0 0 0-.3 1.8v0a1.6 1.6 0 0 0 1.5 1h.2a2 2 0 1 1 0 4h-.1a1.6 1.6 0 0 0-1.5 1z"/></svg><span class="pdot" id="pendDot" hidden></span></button>
@@ -171,6 +172,11 @@
 
 <!-- folhas -->
 <div class="scrim" id="scrim" hidden></div>
+<section class="glass sug" id="sug" hidden role="dialog" aria-labelledby="sugT">
+  <div class="sug-h" id="sugH"><svg class="grip" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="6" r="1.4"/><circle cx="15" cy="6" r="1.4"/><circle cx="9" cy="12" r="1.4"/><circle cx="15" cy="12" r="1.4"/><circle cx="9" cy="18" r="1.4"/><circle cx="15" cy="18" r="1.4"/></svg><div><b id="sugT">Sugestões</b><small>Navegue pelo painel e anote ao mesmo tempo</small></div>
+    <button class="ib" id="sugMin" aria-label="Recolher" data-tip="Recolher (o texto fica guardado)"><svg viewBox="0 0 24 24"><path d="M6 12h12"/></svg></button><button class="ib" id="sugX" aria-label="Fechar" data-tip="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="sug-b"><iframe id="sugIf" title="Formulário de sugestões" loading="lazy"></iframe></div>
+</section>
 <section class="glass sheet" id="setSheet" hidden role="dialog" aria-label="Configurações">
   <div class="sh-h"><div class="seg" id="setTabs" role="tablist"><button role="tab" data-t="dados" aria-selected="true">Origem dos dados</button><button role="tab" data-t="pend" aria-selected="false">Pendências</button><button role="tab" data-t="log" aria-selected="false">Histórico de versões</button></div><button class="ib" data-close aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
   <div class="sh-b" id="setBody"></div>
@@ -191,10 +197,11 @@
 <div class="tip" id="tip" hidden></div>
 <script src="vendor/maplibre/maplibre-gl.js?v=4.7.1"></script>
 <script src="vendor/maplibre/pmtiles.js?v=4.5.0"></script>
-<script src="mapa.js?v=0.13"></script>
-<script src="app.js?v=0.14"></script>
-<script src="auth.js?v=0.13"></script>
-<script src="crono.js?v=0.13"></script>
-<script src="analise.js?v=0.14"></script>
+<script src="mapa.js?v=1.0"></script>
+<script src="app.js?v=1.0"></script>
+<script src="auth.js?v=1.0"></script>
+<script src="crono.js?v=1.0"></script>
+<script src="sug.js?v=1.0"></script>
+<script src="analise.js?v=1.0"></script>
 </body>
 </html>
