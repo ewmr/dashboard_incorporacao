@@ -1,0 +1,98 @@
+{
+ "lido": "2026-11-18",
+ "itens": [
+  {
+   "id": "86af8f4vu",
+   "nome": "Revolução (Cassol)",
+   "url": "https://app.clickup.com/t/86af8f4vu",
+   "resp": [
+    "Thiago Mello",
+    "Felipe Pedro Brotto de Moura"
+   ],
+   "atualizado": "2026-11-13",
+   "cidade": "Curitiba",
+   "bairro": "Hauer",
+   "vgv": 172800000.0,
+   "unid": 320.0,
+   "area": 13200.0,
+   "negociacao": "Permuta",
+   "zona": "ZT-LV",
+   "tipologia": "BACOCCINI",
+   "estudo": "Concluído",
+   "comite": "2026-03-17",
+   "ultima_proposta": "2026-07-21",
+   "fechamento": "2026-07-31",
+   "v0": "SIM",
+   "contrato": "NÃO"
+  },
+  {
+   "id": "86aj9dv99",
+   "nome": "Galinha Pintadinha",
+   "url": "https://app.clickup.com/t/86aj9dv99",
+   "resp": [
+    "Thiago Mello",
+    "Felipe Pedro Brotto de Moura"
+   ],
+   "atualizado": "2026-11-13",
+   "cidade": "Curitiba",
+   "bairro": "Alto Boqueirão",
+   "vgv": 108960000.0,
+   "unid": 336.0,
+   "area": 9900.0,
+   "negociacao": "Permuta Financeira ",
+   "zona": "ECS.1",
+   "estudo": "Concluído",
+   "comite": "2026-07-07",
+   "ultima_proposta": "2026-10-23",
+   "v0": "SIM",
+   "contrato": "NÃO"
+  },
+  {
+   "id": "86aj26fzq",
+   "nome": "Yokohama",
+   "url": "https://app.clickup.com/t/86aj26fzq",
+   "resp": [
+    "Thiago Mello",
+    "Felipe Pedro Brotto de Moura"
+   ],
+   "atualizado": "2026-11-13",
+   "cidade": "Curitiba",
+   "bairro": "Cidade Industrial de Curitiba",
+   "vgv": 101201000.0,
+   "unid": 224.0,
+   "area": 8591.0,
+   "negociacao": "Permuta Financeira ",
+   "zona": "ECO.1",
+   "tipologia": "SMART",
+   "estudo": "Concluído",
+   "comite": "2026-06-30",
+   "ultima_proposta": "2026-09-29",
+   "v0": "SIM",
+   "contrato": "NÃO"
+  },
+  {
+   "id": "86ajjtdxv",
+   "nome": "Atubão",
+   "url": "https://app.clickup.com/t/86ajjtdxv",
+   "resp": [
+    "Thiago Mello",
+    "Felipe Pedro Brotto de Moura"
+   ],
+   "atualizado": "2026-11-13",
+   "cidade": "Curitiba",
+   "bairro": "Atuba",
+   "vgv": 59200000.0,
+   "unid": 160.0,
+   "area": 7349.0,
+   "negociacao": "Permuta",
+   "zona": "ZT-LV",
+   "tipologia": "LEILÃO",
+   "estudo": "Concluído",
+   "comite": "2026-07-28",
+   "ultima_proposta": "2026-08-14",
+   "fechamento": "2026-08-27",
+   "v0": "SIM",
+   "contrato": "NÃO"
+  }
+ ]
+}
