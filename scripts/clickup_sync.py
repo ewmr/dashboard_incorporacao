@@ -238,18 +238,13 @@ def variacoes(hoje, M):
 LISTA_TERRENOS = "901320170197"  # NN | Controle Geral · Cadastro Terrenos - MAKE.IT
 def terrenos():
     """Terrenos com status "em contrato" no Novos Negócios (Make It), para a lista abaixo da régua.
-    Não guarda endereço, coordenadas, pedida, corretor nem as anotações da negociação."""
-    pega = {"cidade": "cidade", "bairro": "bairro", "vgv": "vgv atingido", "unid": "Nº de unidades", "area": "metragem",
-            "negociacao": "tipo de negociacao", "zona": "zoneamento", "tipologia": "tipologia do estudo", "estudo": "estudo de massa",
-            "comite": "data do comite", "ultima_proposta": "data da ultima proposta", "fechamento": "fechamento comercial",
-            "assinatura": "data de assinatura", "v0": "v0", "contrato": "contrato assinado"}
+    Só nome, cidade, bairro, VGV, unidades e área do terreno: o restante da negociação não sai do ClickUp."""
+    pega = {"cidade": "cidade", "bairro": "bairro", "vgv": "vgv atingido", "unid": "Nº de unidades", "area": "metragem"}
     out = []
     for t in paginas(f"list/{LISTA_TERRENOS}/task", {"statuses[]": "em contrato", "include_closed": "false", "subtasks": "false"}):
         if norm((t.get("status") or {}).get("status")) != "em contrato": continue
         cf = {norm(c.get("name")): c for c in t.get("custom_fields", [])}
-        r = {"id": t["id"], "nome": (t.get("name") or "").strip(), "url": t.get("url"),
-             "resp": [a.get("username") for a in t.get("assignees", []) if a.get("username")],
-             "atualizado": dia(t.get("date_updated"))}
+        r = {"nome": (t.get("name") or "").strip()}
         for k, nome in pega.items():
             c = cf.get(norm(nome))
             if not c or c.get("value") in (None, "", []): continue

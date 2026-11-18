@@ -413,13 +413,10 @@ function renderTerrenos(){
   if (S.inc==="Gadens" || !T.length){ el.innerHTML = ""; el.hidden = true; return; }
   el.hidden = false;
   const vgv = T.reduce((a,t)=>a+(t.vgv||0),0), un = T.reduce((a,t)=>a+(t.unid||0),0);
-  const lin = (r,v) => v ? `<div><span>${r}</span><b>${v}</b></div>` : "";
   el.innerHTML = `<div class="tr-h"><div><h4>Terrenos em contrato</h4><p class="cap">Novos Negócios · status "em contrato" no Cadastro de Terrenos Make It · ${T.length} terreno${T.length>1?"s":""} · VGV ${brl(vgv)} · ${nf(un)} unidades · lido em ${dmy(D.terrenos.lido)}</p></div></div>
-    <div class="tr-g">${T.map(t=>`<a class="tr-c" href="${esc(t.url)}" target="_blank" rel="noopener" data-tip="Abrir no ClickUp">
+    <div class="tr-g">${T.map(t=>`<div class="tr-c">
       <div class="tr-t"><b>${esc(t.nome)}</b><span>${esc([t.bairro, cidCurta(t.cidade)].filter(Boolean).join(" · "))}</span></div>
-      <div class="tr-n"><div><small>VGV</small><b>${t.vgv?brl(t.vgv):"—"}</b></div><div><small>Unidades</small><b>${t.unid?nf(t.unid):"—"}</b></div><div><small>Terreno</small><b>${t.area?nf(t.area)+" m²":"—"}</b></div></div>
-      <div class="tr-l">${lin("Negociação", esc((t.negociacao||"").trim()))}${lin("Zoneamento", esc(t.zona||""))}${lin("Tipologia do estudo", esc(t.tipologia||""))}${lin("Estudo de massa", esc(t.estudo||""))}${lin("Comitê", t.comite?dmyc(t.comite):"")}${lin("Última proposta", t.ultima_proposta?dmyc(t.ultima_proposta):"")}${lin("Fechamento comercial", t.fechamento?dmyc(t.fechamento):"")}${lin("Assinatura", t.assinatura?dmyc(t.assinatura):"")}</div>
-      ${t.resp?.length?`<div class="tr-r">${esc(t.resp.join(", "))}</div>`:""}</a>`).join("")}</div>`;
+      <div class="tr-n"><div><small>VGV</small><b>${t.vgv?brl(t.vgv):"—"}</b></div><div><small>Unidades</small><b>${t.unid?nf(t.unid):"—"}</b></div><div><small>Terreno</small><b>${t.area?nf(t.area)+" m²":"—"}</b></div></div></div>`).join("")}</div>`;
 }
 function renderCrono(){
   if (!$("gantt")) return;

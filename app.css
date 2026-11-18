@@ -1021,9 +1021,9 @@ tr.fila td{background:color-mix(in srgb,#FF9500 6%,transparent)}
 .tr-h h4{margin:0;font-size:.98rem}.tr-h .cap{margin:2px 0 12px}
 .tr-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
 .tr-c{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:14px;background:color-mix(in srgb,var(--label) 3.5%,transparent);border:1px dashed color-mix(in srgb,#FF9100 45%,transparent);color:inherit;text-decoration:none;transition:background .15s}
-.tr-c:hover{background:color-mix(in srgb,#FF9100 7%,transparent)}
 .tr-t{display:flex;flex-direction:column}.tr-t b{font-size:.95rem}.tr-t span{font-size:.76rem;color:var(--label-2)}
 .tr-n{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
 .tr-n div{display:flex;flex-direction:column}.tr-n small{font-size:.66rem;color:var(--label-3);text-transform:uppercase;letter-spacing:.04em}.tr-n b{font-size:.92rem;font-variant-numeric:tabular-nums}
 .tr-l{display:grid;gap:3px;font-size:.76rem}.tr-l div{display:flex;justify-content:space-between;gap:8px}.tr-l span{color:var(--label-2)}.tr-l b{font-weight:600;text-align:right}
 .tr-r{font-size:.72rem;color:var(--label-3);border-top:1px solid var(--sep);padding-top:8px}
+.ddl.longa{max-height:220px;overflow:auto;align-content:flex-start}
