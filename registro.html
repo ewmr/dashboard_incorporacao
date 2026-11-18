@@ -345,7 +345,11 @@ a.btn{text-decoration:none}
 :root[data-co="gadens"]{--g1:#E8F1FB;--g2:#D3E4F6;--g3:#B5D0EE;--g4:#F3F8FD}
 :root[data-theme="dark"]{--g1:#1B1209;--g2:#26170A;--g3:#3A220B;--g4:#110B06;--card:rgba(30,30,33,.78);--card-edge:rgba(255,255,255,.06)}
 :root[data-theme="dark"][data-co="gadens"]{--g1:#0A121D;--g2:#0D1828;--g3:#11223B;--g4:#070C14}
-html{background:linear-gradient(170deg,var(--g4) 0%,var(--g1) 38%,var(--g2) 72%,var(--g3) 100%) fixed;min-height:100%}
+html{background:var(--bg-page,#F5F5F7);min-height:100%}
+:root[data-theme="dark"]{--bg-page:#161618}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg-page:#161618}}
+.emp-atual{display:inline-flex;align-items:baseline;gap:8px;margin-left:14px;padding:4px 12px;border-radius:999px;background:color-mix(in srgb,var(--accent) 14%,transparent);font-size:15px}
+.emp-atual b{font-weight:700;color:var(--label)}.emp-atual span{font-size:12px;color:var(--label-2)}
 body{background:transparent!important}
 .toolbar{background:color-mix(in srgb,var(--glass-strong,rgba(255,255,255,.82)) 92%,transparent)!important;backdrop-filter:blur(24px) saturate(180%);-webkit-backdrop-filter:blur(24px) saturate(180%);border-bottom:1px solid var(--card-edge)}
 .card,.kpi,.statbar,.strip,.folga,.hub-card{background:var(--card)!important;border:1px solid var(--card-edge);box-shadow:0 1px 2px rgba(20,20,40,.04),0 8px 30px rgba(20,20,40,.06);border-radius:18px}
@@ -395,7 +399,7 @@ details.subs[open] summary{border-color:var(--accent)}
         <use href="#pmL" fill="url(#pmGloss)"/>
         <g clip-path="url(#pmClip)"><use href="#pmL" fill="none" stroke="url(#pmRim)" stroke-width="16"/></g>
       </svg>
-      <a class="voltar" id="voltar" href="index.html#analise" hidden>‹ Dashboard</a><h1>Registro de Desvios</h1>
+      <a class="voltar" id="voltar" href="index.html#analise" hidden>‹ Dashboard</a><h1>Registro de Desvios</h1><span class="emp-atual" id="empAtual" hidden></span>
     </div>
     <div class="tools">
       <button class="co-switch" id="coSwitch" type="button" role="switch" aria-checked="false" aria-label="Incorporadora: Gadens"><span class="lbl mk">Make It</span><span class="co-track"><i class="co-knob"></i></span><span class="lbl gd">Gadens</span></button>
@@ -647,7 +651,8 @@ function renderStrip(){const el=$("#strip");if(!el)return;let html="",lastTipo=n
     const badge=!d?(refreshing?'<i class="ld" aria-hidden="true"></i>':'<span class="cap" aria-label="não lido">·</span>'):d.error?'<span class="cap">!</span>':s.needs?`<span class="cnt">${s.needs}</span>`:(s.moved?'<span class="ok">✓</span>':"");
     const t=!d?tip(l.name,refreshing?"Carregando…":"Ainda não lido. Use Atualizar."):d.error?tip(l.name,"Falha ao ler este cronograma"):tip(l.name,lanc[l.id]?"Lançamento comercial: "+br(lanc[l.id]):"","Em andamento: "+s.run,"Deveriam ter iniciado: "+s.warn,"Início até a próxima reunião: "+s.next,"Atrasos a registrar: "+s.needs);
     html+=`<button type="button" class="emp" data-id="${l.id}" aria-current="${l.id===currentList}" data-tip="${t}">${esc(l.short)}${badge}</button>`;}
-  el.innerHTML=html;el.querySelectorAll(".emp").forEach(b=>b.addEventListener("click",()=>selectList(b.dataset.id)));}
+  el.innerHTML=html;el.querySelectorAll(".emp").forEach(b=>b.addEventListener("click",()=>selectList(b.dataset.id)));
+  const at=$("#empAtual"),cl=lists.find(l=>l.id===currentList);if(at){at.hidden=!cl;if(cl)at.innerHTML=`<b>${esc(cl.short)}</b><span>${esc(cl.tipo||"")}</span>`;}}
 
 /* empreendimento */
 function hubShell(){$("#view").innerHTML=`<nav class="seg" id="strip" aria-label="Pauta da reunião"></nav><section id="main" style="display:flex;flex-direction:column;gap:14px"></section><div class="foot"><button class="btn" type="button" id="openCart">Visão da carteira</button></div>`;

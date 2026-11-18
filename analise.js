@@ -28,7 +28,7 @@ const anSig = n => n==null ? "—" : (n>0?"+":n<0?"−":"")+Math.abs(n)+" d";
 const anSetorCurto = n => (n||"").replace(/^(INC|ENG|MKT|CSC)\s*-\s*/i,"");
 const anFila = () => { try { const j = JSON.parse(localStorage.getItem("rd-fila")||"[]"); return Array.isArray(j)?j:[]; } catch(e){ return []; } };
 const anEmpBase = s => (s||"").replace(/\s*\(.*?\)\s*/g," ").replace(/\s+/g," ").trim();
-const filtrosAtivos = () => !!(S.cidades?.size || S.fases?.size || S.linhas?.size || S.anos?.size || S.ativos);
+const filtrosAtivos = () => !!(S.emps?.size || S.cidades?.size || S.fases?.size || S.linhas?.size || S.anos?.size || S.ativos);
 
 function anCarrega(){
   if (AN.carregando) return AN.carregando;

@@ -12,7 +12,7 @@ quando o campo Data Semana Passada estiver vazio). Inclui as subtarefas de cada 
 ≈ 60 a 120 chamadas por dia.
 """
 import json, os, re, datetime as dt
-from clickup_sync import api, paginas, dia, norm, RAIZ, HIST, TZ
+from clickup_sync import api, paginas, dia, norm, privada, RAIZ, HIST, TZ
 
 TIPO_ETAPA = 1004
 F_SEM, F_LB, F_COD = "943f0c3a-a967-4bd5-8838-b9534e672bcc", "aa589ee0-8706-4d52-8146-f69dd117c65f", "1a4d1964-1f3b-44c9-83ed-92a31741656e"
@@ -129,12 +129,7 @@ def rodar(cad):
         listas = []
         for fid, tipo in E["pastas"].items():
             for li in api(f"folder/{fid}/list", {"archived": "false"}).get("lists", []):
-                if True:
-                    try:
-                        mem = api(f"list/{li['id']}/member").get("members", [])
-                        print("DIAGMEM", li["name"][:40], len(mem), sorted(m.get("username", "")[:14] for m in mem)[:6])
-                    except Exception as e: print("DIAGMEM", li["name"][:40], "erro", repr(e)[:80])
-                if EXCLUI.search(li["name"]): continue
+                if EXCLUI.search(li["name"]) or privada(li["id"]): continue
                 es = etapas_da_lista(li)
                 for e in es:
                     retrato[e["id"]] = e["pos"]

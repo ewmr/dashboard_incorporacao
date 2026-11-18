@@ -13,6 +13,7 @@ const FASES = [
   {id:"OBR", nome:"Desenvolvimento de Obra", curto:"Obra", v:"--f-obr"},
   {id:"ENT", nome:"Entrega", curto:"Entrega", v:"--f-ent"},
   {id:"ETG", nome:"Entregue", curto:"Entregue", v:"--f-etg"},
+  {id:"ELB", nome:"Cronograma em elaboração", curto:"Em elaboração", v:"--f-none"},
   {id:"SEM", nome:"Sem cronograma", curto:"Sem cronograma", v:"--f-none"},
 ];
 const CIDADES = [
@@ -55,6 +56,7 @@ const MIN_AMOSTRA = 2;
 const INCS = [["all","Consolidado"],["Make It","Make It"],["Gadens","Gadens"]];
 
 const CHANGELOG = [
+  {v:"1.0.1", d:"2026-11-18", itens:["Filtro por empreendimento, com mais de uma escolha, que vale para todas as páginas, inclusive a tabela de datas dos marcos.","Cronogramas privados no ClickUp aparecem como “cronograma em elaboração”, sem marcos, até a lista ser aberta.","Terrenos em contrato mostram só nome, bairro, cidade, VGV, unidades e área.","Registro de Desvios com fundo neutro e o empreendimento em análise sempre visível no topo."]},
   {v:"1.0", d:"2026-11-18", itens:["Primeira versão pública: Painel de Controle · Incorporação Grupo Gadens.","Botão Sugestões na barra inferior abre um bloco flutuante e arrastável para anotar melhorias enquanto se navega; cada envio chega à equipe de Gestão de Projetos de Incorporação como tarefa no ClickUp.","Registro de Desvios: escolha das subtarefas que causaram o atraso da Etapa, com o término e o deslocamento na semana de cada uma; a lista de registros da Análise mostra essas subtarefas.","Cronograma: terrenos em contrato no Novos Negócios abaixo da régua de lançamentos, com VGV, unidades, área, cidade e bairro, negociação e datas.","Pendências: marcos sem data ou fora de ordem que deixam o portfólio macro incompleto."]},
   {v:"0.14", d:"2026-11-17", itens:["Registro de desvios no padrão do relatório mensal do comitê: origem dos registros por reunião, curva ABC das causas, por empreendimento e por setor na cor da origem, terceiros citados e Etapas registradas em mais de uma semana.","Card A registrar passa para a seção Registro de desvios.","Lista de registros com o empreendimento como coluna fixa."]},
   {v:"0.13", d:"2026-11-17", itens:["Primeira versão para toda a equipe.","Análise de Cronogramas em duas seções: Etapas dos cronogramas (números da semana, Etapas em andamento por empreendimento, setor e prazo, todas as Etapas e marcos alterados) e Registro de desvios (dias deslocados por semana, causas, setor, empreendimentos, origem, reincidentes e a lista de todos os registros).","Gráficos de registros mostram só o formato com causa e setor; um botão inclui os registros antigos.","Registro de Desvios com a identidade do dashboard e acesso restrito à equipe de Gestão de Projetos de Incorporação. Os demais usuários consultam os gráficos e a lista.","Cronograma: data do Contrato PJ na simulação da régua e na prontidão para lançamento; tabela de marcos com Reunião de Arrancada, Início do Projeto EP, 1º Protocolo PL Prefeitura, Projetos Executivos 100% e Registro de CVCO.","Mapa e ficha: botão para o cronograma do empreendimento; marco que não é mais usado sai da ficha.","Agrupamento padrão por empresa só no Cronograma consolidado, por cidade com uma empresa selecionada e por fase nas demais páginas; ícone da empresa nas listas que misturam as duas.","Divisões discretas entre a visão geral e a parte operacional das páginas; menu com as seções atualizadas."]},
@@ -112,7 +114,7 @@ const CHANGELOG = [
   {v:"0.1", d:"2026-10-26", itens:["Primeira versão publicada no GitHub Pages e embutida no ClickUp, substituindo o Power BI."]},
 ];
 
-const S = {mapSel:null, inc:"all", cidades:new Set(), anos:new Set(), fases:new Set(), linhas:new Set(), group:"fase", ordem:"alfa", ativos:false, dd:null, mgFech:new Set(), sel:null, saudeOpen:false, setTab:"dados"};
+const S = {mapSel:null, inc:"all", cidades:new Set(), emps:new Set(), anos:new Set(), fases:new Set(), linhas:new Set(), group:"fase", ordem:"alfa", ativos:false, dd:null, mgFech:new Set(), sel:null, saudeOpen:false, setTab:"dados"};
 let D = null, AJ = null;
 
 /* ---------- formatação ---------- */
@@ -163,7 +165,7 @@ const anoKey = e => String(anoLanc(e) ?? "Sem data");
 const HOJE = () => (D.gerado_em||"").slice(0,10) || new Date().toISOString().slice(0,10);
 // Entregue: fase de entrega com a Entrega de Chaves concluída ou com a data já passada
 const entregue = e => { const m=e.marcos.mar001; return e.legado && (!m || m.ok || m.data<=HOJE()) || (estrategica(e.fase)==="ENT" && !!m && (m.ok || m.data<=HOJE())); };
-const faseDe = e => entregue(e) ? "ETG" : estrategica(e.fase);
+const faseDe = e => e.elaboracao ? "ELB" : entregue(e) ? "ETG" : estrategica(e.fase);
 const faseNome = e => faseDe(e)==="ETG" ? "Entregue" : TATICA[e.fase] || "Sem cronograma";
 const ativa = e => faseDe(e)!=="ETG";
 const ordena = L => L.slice().sort(S.ordem==="lanc" ? (a,b)=>(lanc(a)?.data||"9999").localeCompare(lanc(b)?.data||"9999")||a.nome.localeCompare(b.nome,"pt-BR") : (a,b)=>a.nome.localeCompare(b.nome,"pt-BR"));
@@ -171,13 +173,14 @@ const porInc = e => S.inc==="all" || e.incorporadora===S.inc;
 const ANO = () => +(D.gerado_em||"").slice(0,4) || new Date().getFullYear();
 function filtrados(ignora){
   return D.empreendimentos.filter(e => porInc(e) &&
+    (ignora==="emp" || !S.emps.size || S.emps.has(e.sigla)) &&
     (ignora==="cidade" || !S.cidades.size || S.cidades.has(e.cidade)) &&
     (ignora==="ano" || !S.anos.size || S.anos.has(anoKey(e))) &&
     (ignora==="ativos" || !S.ativos || ativa(e)) &&
     (ignora==="fase" || !S.fases.size || S.fases.has(faseDe(e))) &&
     (ignora==="linha" || !S.linhas.size || S.linhas.has(linhaDe(e))));
 }
-const nFiltros = () => S.cidades.size+S.anos.size+S.fases.size+S.linhas.size;
+const nFiltros = () => S.emps.size+S.cidades.size+S.anos.size+S.fases.size+S.linhas.size;
 const toggle = (set,v) => { if (set._inc){ setInc(S.inc===v?"all":v); return; } set.has(v) ? set.delete(v) : set.add(v); S.sel=null; renderAll(); };
 const grupoSet = () => S.group==="inc" ? INC_SET : S.group==="fase" ? S.fases : S.group==="cidade" ? S.cidades : S.linhas;
 const grupoDim = () => S.group==="inc" ? "inc" : S.group==="fase" ? "fase" : S.group==="cidade" ? "cidade" : "linha";
@@ -737,22 +740,24 @@ function renderNavPop(p){
 }
 function renderFilterPop(){
   const base = D.empreendimentos.filter(porInc).filter(e=>!S.ativos || ativa(e));
-  const fases = FASES.filter(f=>f.id!=="SEM");
-  const temSem = base.some(e=>faseDe(e)==="SEM");
+  const fases = FASES.filter(f=>f.id!=="SEM"&&f.id!=="ELB");
+  const temSem = base.some(e=>faseDe(e)==="SEM"), temElb = base.some(e=>faseDe(e)==="ELB");
   const lista = (k, vals, set, cor, nome=v=>v) => {
     const sel = [...set], aberto = S.dd===k;
     const txt = sel.length ? `<b>${esc(sel.map(nome).join(", "))}</b>` : "Selecionar...";
-    return `<div class="frow"><span>${({linhas:"Linha de produto",cidades:"Cidade",anos:"Ano de Lançamento"})[k]}</span>
+    return `<div class="frow"><span>${({emps:"Empreendimento",linhas:"Linha de produto",cidades:"Cidade",anos:"Ano de Lançamento"})[k]}</span>
       <button class="dd" data-dd="${k}" aria-expanded="${aberto}"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>${txt}</button>
-      ${aberto?`<div class="ddl" data-set="${k}">${vals.map(v=>`<button aria-pressed="${set.has(v)}" data-v="${esc(v)}" style="${cor?`--c:${cor(v)}`:""}">${cor?"<i></i>":""}${esc(nome(v))}</button>`).join("")}</div>`:""}</div>`;
+      ${aberto?`<div class="ddl${vals.length>12?" longa":""}" data-set="${k}">${vals.map(v=>`<button aria-pressed="${set.has(v)}" data-v="${esc(v)}" style="${cor?`--c:${cor(v)}`:""}">${cor?"<i></i>":""}${esc(nome(v))}</button>`).join("")}</div>`:""}</div>`;
   };
   const seg = (id, val, ops) => `<div class="seg full" id="${id}">${ops.map(([v,t])=>`<button data-v="${v}" aria-checked="${val===v}">${t}</button>`).join("")}</div>`;
   const n = nFiltros() + (S.ativos?1:0);
   $("filterPop").innerHTML = `<div class="fp">
     <div><span class="lb">Colorir e agrupar por</span>${seg("grpSeg", S.group, [...(S.inc==="all"?[["inc","Empresa"]]:[]),["fase","Fase"],["linha","Linha"],["cidade","Cidade"]])}</div>
     <div><span class="lb">Ordenar por</span>${seg("ordSeg", S.ordem, [["alfa","Alfabético"],["lanc","Data Lançamento"]])}</div>
-    <div><span class="lb">Fase</span><div class="ftiles${S.fases.size&&[...S.fases].some(f=>f!=="SEM")?" algum":""}">${fases.map(f=>`<button data-f="${f.id}" aria-pressed="${S.fases.has(f.id)}" style="--c:${faseCor(f.id)}" ${S.ativos&&f.id==="ETG"?'disabled title="Desligue “Somente empreendimentos ativos” para ver os entregues"':""}>${esc(f.curto)}</button>`).join("")}</div></div>
+    <div><span class="lb">Fase</span><div class="ftiles${S.fases.size&&[...S.fases].some(f=>f!=="SEM"&&f!=="ELB")?" algum":""}">${fases.map(f=>`<button data-f="${f.id}" aria-pressed="${S.fases.has(f.id)}" style="--c:${faseCor(f.id)}" ${S.ativos&&f.id==="ETG"?'disabled title="Desligue “Somente empreendimentos ativos” para ver os entregues"':""}>${esc(f.curto)}</button>`).join("")}</div></div>
+    ${temElb||S.fases.has("ELB")?`<button class="fsem" data-f="ELB" aria-pressed="${S.fases.has("ELB")}">Cronograma em elaboração</button>`:""}
     ${temSem||S.fases.has("SEM")?`<button class="fsem" data-f="SEM" aria-pressed="${S.fases.has("SEM")}">Sem cronograma disponível</button>`:""}
+    ${lista("emps", base.slice().sort((a,b)=>a.nome.localeCompare(b.nome,"pt-BR")).map(e=>e.sigla), S.emps, sg=>D.empreendimentos.find(e=>e.sigla===sg)?.incorporadora==="Gadens"?"#0060AF":"#FF9100", sg=>D.empreendimentos.find(e=>e.sigla===sg)?.nome||sg)}
     ${lista("linhas", LINHAS.map(l=>l.id).filter(id=>base.some(e=>linhaDe(e)===id)), S.linhas, linhaCor, id=>linhaInfo(id).curto)}
     ${lista("cidades", grupoOrdemCid(base), S.cidades, cidadeCor)}
     ${lista("anos", [...new Set(base.map(anoKey))].sort(), S.anos)}
@@ -766,7 +771,7 @@ function renderFilterPop(){
   P.querySelectorAll("#grpSeg button").forEach(b=>b.onclick=()=>{ S.grpEscolha=b.dataset.v; renderAll(); });
   P.querySelectorAll("#ordSeg button").forEach(b=>b.onclick=()=>{ S.ordem=b.dataset.v; renderAll(); });
   $("swAtivos").onclick=()=>{ S.ativos=!S.ativos; if (S.ativos) S.fases.delete("ETG"); S.sel=null; renderAll(); };
-  $("clearF").onclick=()=>{ S.cidades.clear(); S.anos.clear(); S.fases.clear(); S.linhas.clear(); S.ativos=false; S.dd=null; S.sel=null; renderAll(); };
+  $("clearF").onclick=()=>{ S.emps.clear(); S.cidades.clear(); S.anos.clear(); S.fases.clear(); S.linhas.clear(); S.ativos=false; S.dd=null; S.sel=null; renderAll(); };
   const fc=$("filterCount"); fc.hidden=!n; fc.textContent=n;
 }
 const grupoOrdemCid = base => { const cs=[...new Set(base.map(e=>e.cidade))]; return [...CIDADES.map(c=>c.id).filter(c=>cs.includes(c)), ...cs.filter(c=>!CIDADES.some(x=>x.id===c)).sort()]; };
@@ -780,7 +785,7 @@ function renderCoPop(){
   $("coPop").querySelectorAll(".co-opt").forEach(b=>b.onclick=()=>setInc(b.dataset.inc));
 }
 function setInc(inc){
-  S.inc=inc; S.cidades.clear(); S.anos.clear(); S.fases.clear(); S.linhas.clear(); S.sel=null;
+  S.inc=inc; S.emps.clear(); S.cidades.clear(); S.anos.clear(); S.fases.clear(); S.linhas.clear(); S.sel=null;
   const pos = INCS.findIndex(x=>x[0]===inc), sw=$("coSwitch");
   sw.dataset.pos=pos; sw.setAttribute("aria-label","Incorporadora: "+INCS[pos][1]);
   renderAll();
@@ -802,7 +807,8 @@ function hoverPop(gatilhos, popId, aoAbrir){
 function pendencias(){
   const B = D.empreendimentos.filter(porInc), out = [];
   const add = (t, xs) => xs.length && out.push({t, xs});
-  add("Sem cronograma com códigos no ClickUp", B.filter(e=>!e.legado&&!e.fase).map(e=>e.nome));
+  add("Sem cronograma com códigos no ClickUp", B.filter(e=>!e.legado&&!e.fase&&!e.elaboracao).map(e=>e.nome));
+  add("Cronograma em elaboração (lista privada no ClickUp; marcos ocultos até a lista ser aberta)", B.filter(e=>e.elaboracao).map(e=>e.nome));
   add("Sem marco de Lançamento Comercial no cronograma", B.filter(e=>!e.legado&&e.fase&&!lanc(e)).map(e=>e.nome));
   add("Viabilidades aguardando valores", B.flatMap(e=>e.viabilidades.filter(v=>v.vgv_bruto==null).map(v=>`${e.nome} ${v.versao}`)));
   add("Sem viabilidade na lista", B.filter(e=>!e.legado&&!vig(e)).map(e=>e.nome));
@@ -811,7 +817,7 @@ function pendencias(){
   add("Cronogramas do ClickUp sem empreendimento no cadastro do dashboard", D.listas_sem_cadastro||[]);
   add("Viabilidade vigente sem DRE ou Fluxo anexados no ClickUp", B.filter(e=>vig(e)&&!((vig(e).planilhas||[]).length===2)).map(e=>`${e.nome} ${vig(e).versao}${temPl(vig(e),"dre")?" (falta o Fluxo)":temPl(vig(e),"fluxo")?" (falta a DRE)":""}`));
   const GM = ["nov001","inc001","inc002","eng001","eng002","mar001"];
-  add("Portfólio macro: marcos sem data (as barras dessas fases não aparecem)", B.filter(e=>!e.legado&&ativa(e)).map(e=>{ const f = GM.filter(c=>!e.marcos[c]); return f.length ? `${e.nome} (${f.map(c=>D.marco_nome[c]||c).join(", ")})` : null; }).filter(Boolean));
+  add("Portfólio macro: marcos sem data (as barras dessas fases não aparecem)", B.filter(e=>!e.legado&&!e.elaboracao&&ativa(e)).map(e=>{ const f = GM.filter(c=>!e.marcos[c]); return f.length ? `${e.nome} (${f.map(c=>D.marco_nome[c]||c).join(", ")})` : null; }).filter(Boolean));
   add("Portfólio macro: marcos fora de ordem", B.filter(e=>!e.legado&&ativa(e)).map(e=>{ const r = GM.slice(1).map((c,i)=>[GM[i],c]).filter(([a,b])=>e.marcos[a]&&e.marcos[b]&&e.marcos[b].data<=e.marcos[a].data); return r.length ? `${e.nome} (${r.map(([a,b])=>`${D.marco_nome[b]} em ${dmy(e.marcos[b].data)} antes de ${D.marco_nome[a]} em ${dmy(e.marcos[a].data)}`).join("; ")})` : null; }).filter(Boolean));
   add("Lançamento previsto sem Entrega em Contrato (inc003) no cronograma", B.filter(e=>!e.legado&&ativa(e)&&e.marcos.inc002&&!e.marcos.inc003).map(e=>e.nome));
   add("Planilhas anexadas que não puderam ser lidas", (D.planilhas_erros||[]).map(x=>`${x.emp} ${x.ver} · ${x.tipo} (${x.erro})`));
@@ -824,7 +830,7 @@ function renderSettings(){
   if (S.setTab==="dados") $("setBody").innerHTML = `
     <div class="box"><h4><span class="mac" style="--c:#FF5F57"></span>Atualização</h4><p>Dados gerados em ${g.toLocaleDateString("pt-BR")} às ${g.toLocaleTimeString("pt-BR",{hour:"2-digit",minute:"2-digit"})}. Cronogramas: ${esc(D.fontes.cronogramas.replace(/(\d{4})-(\d{2})-(\d{2})/,"$3/$2/$1"))}.</p></div>
     <div class="box"><h4><span class="mac" style="--c:#5E9EFF"></span>Alcance da base</h4><p>${(()=>{ const L=D.empreendimentos.filter(e=>lanc(e)).sort((a,b)=>lanc(a).data.localeCompare(lanc(b).data)); const o=L[0]; return o ? `A base só tem informações de lançamento a partir de <b>${o.marcos.inc002.data.slice(0,4)}</b> (o mais antigo é o ${esc(o.nome)}, lançado em ${my(o.marcos.inc002.data)}). Empreendimentos lançados antes disso, como La Vita e Tuo, não têm a data de lançamento no ClickUp e não aparecem na trajetória.` : "A base ainda não tem datas de lançamento."; })()}</p></div>
-    <div class="box"><h4><span class="mac" style="--c:#FEBC2E"></span>Cronogramas e fases</h4><ul><li>Marcos lidos dos cronogramas do ClickUp pelo campo “Código tarefa” (listas privadas e “(cópia)” ficam de fora).</li><li>A fase de cada empreendimento sai do marco mais avançado concluído, não do nome da lista. “Entregue” é quem já passou da data de Entrega de Chaves.</li><li>Por padrão só aparecem os empreendimentos ativos; nos filtros dá para ver todos, inclusive os entregues.</li><li>A comparação semanal usa o histórico salvo toda segunda-feira.</li></ul></div>
+    <div class="box"><h4><span class="mac" style="--c:#FEBC2E"></span>Cronogramas e fases</h4><ul><li>Marcos lidos dos cronogramas do ClickUp pelo campo “Código tarefa” (listas “(cópia)” e de teste ficam de fora; listas privadas, que a equipe usa enquanto monta o cronograma, aparecem como “cronograma em elaboração”, sem marcos).</li><li>A fase de cada empreendimento sai do marco mais avançado concluído, não do nome da lista. “Entregue” é quem já passou da data de Entrega de Chaves.</li><li>Por padrão só aparecem os empreendimentos ativos; nos filtros dá para ver todos, inclusive os entregues.</li><li>A comparação semanal usa o histórico salvo toda segunda-feira.</li></ul></div>
     <div class="box"><h4><span class="mac" style="--c:#28C840"></span>Viabilidades, linha de produto e endereço</h4><ul><li>Lista Controle de Viabilidades do ClickUp, com os valores das DREs.</li><li>A vigente é a versão mais avançada cadastrada na lista, mesmo pendente de aprovação.</li><li>Linha de produto e endereço vêm dos campos “Linha Produto” e “📍 Endereço do empreendimento”.</li><li>Mapa: recorte próprio do OpenStreetMap de Curitiba e região, gerado por uma rotina do GitHub e guardado no site.</li><li>Margem projetada: veja “Como é calculada” na Saúde financeira.</li></ul></div>`;
   else if (S.setTab==="pend") $("setBody").innerHTML = p.length ? p.map((x,i)=>`<div class="box"><h4><span class="mac" style="--c:${["#FF5F57","#FEBC2E","#28C840","#5E9EFF","#BF5AF2","#8E8E93"][i%6]}"></span>${esc(x.t)}<span class="muted" style="margin-left:auto;font-weight:500">${x.xs.length}</span></h4><p class="muted">${esc(x.xs.join(", "))}</p></div>`).join("") : "<p class='muted'>Nenhuma pendência.</p>";
   else $("setBody").innerHTML = `<div class="log">${CHANGELOG.map(c=>`<div><div class="v">Versão ${c.v}<span>${dmy(c.d)}</span></div><ul>${c.itens.map(i=>`<li>${esc(i)}</li>`).join("")}</ul></div>`).join("")}</div>`;

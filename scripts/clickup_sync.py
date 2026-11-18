@@ -170,6 +170,17 @@ def viabilidades(cad):
         })
     return rows
 
+_PRIV = {}
+def privada(list_id):
+    """Cronograma em elaboração: lista compartilhada só com poucas pessoas (a equipe de Gestão de Projetos
+    de Incorporação deixa privados os cronogramas que ainda está montando). A API não informa a privacidade,
+    então a regra é o número de membros com acesso: listas abertas têm dezenas; privadas, poucas."""
+    if list_id not in _PRIV:
+        try: _PRIV[list_id] = len(api(f"list/{list_id}/member").get("members") or []) <= LIMITE_PRIVADA
+        except SystemExit: _PRIV[list_id] = False
+    return _PRIV[list_id]
+LIMITE_PRIVADA = 8
+
 def marcos(cad):
     # dicionário de códigos (id da opção → código)
     campos = api(f"space/{ESPACO_MAKEIT}/field").get("fields", [])
@@ -192,12 +203,13 @@ def marcos(cad):
             if e["incorporadora"] == inc and (norm(e["nome"]) == base or (e.get("ex_nome") and norm(e["ex_nome"]) in norm(lst["name"])) or base.startswith(norm(e["nome"]))):
                 por_lista[lst["id"]] = e["sigla"]; return e["sigla"]
         return None
-    M, listas, sem = {}, {}, set()
+    M, listas, sem, elab = {}, {}, set(), {}
     for t, inc in tarefas:
         lst = t.get("list") or {}
         if re.search(r"c[oó]pia|teste", lst.get("name", ""), re.I): continue
         s = sigla(lst, inc)
         if not s: sem.add(lst.get("name")); continue
+        if privada(lst["id"]): elab[s] = [lst["id"], lst["name"], inc]; continue
         listas[s] = [lst["id"], lst["name"], inc]
         st = t.get("status") or {}
         ok = 1 if st.get("type") in ("done", "closed") and norm(st.get("status")) != "cancelado" else 0
@@ -217,7 +229,9 @@ def marcos(cad):
                 ini, comecou = dia(t.get("start_date")), 1 if st.get("type") != "open" else 0
                 a2 = M.setdefault("arq003i", {}).get(s)
                 if not a2 or ini < a2[0]: M["arq003i"][s] = [ini, comecou]
-    return M, listas, sorted(x for x in sem if x)
+    # empreendimento só "em elaboração" quando nenhum cronograma aberto dele trouxe marcos
+    elab = {s: v for s, v in elab.items() if s not in listas}
+    return M, listas, sorted(x for x in sem if x), elab
 
 def variacoes(hoje, M):
     """Compara com o retrato de uma semana atrás (o mais próximo entre 6 e 10 dias antes)."""
@@ -271,7 +285,7 @@ def main():
     rows = viabilidades(cad)
     if not rows: raise SystemExit("A lista Controle de Viabilidades voltou vazia; nada foi alterado.")
     planilhas(rows)
-    M, listas, sem = marcos(cad)
+    M, listas, sem, elab = marcos(cad)
     if sum(len(v) for v in M.values()) < 50: raise SystemExit("Poucos marcos lidos do ClickUp; nada foi alterado.")
     hoje = dt.datetime.now(TZ).date().isoformat()
     HIST.mkdir(exist_ok=True)
@@ -281,7 +295,7 @@ def main():
     (DADOS / "viabilidades.json").write_text(json.dumps(rows, ensure_ascii=False, indent=1), encoding="utf-8")
     (DADOS / "marcos.json").write_text(json.dumps({
         "snap": hoje, "snap_ant": ant or velho.get("snap_ant"), "fonte": "rotina diária do GitHub (API do ClickUp)",
-        "listas": listas, "M": M, "variacoes": var if ant else velho.get("variacoes", []), "listas_sem_cadastro": sem,
+        "listas": listas, "em_elaboracao": elab, "M": M, "variacoes": var if ant else velho.get("variacoes", []), "listas_sem_cadastro": sem,
     }, ensure_ascii=False, indent=1), encoding="utf-8")
     try:
         tr = terrenos()
@@ -295,6 +309,7 @@ def main():
     import clickup_sync as _cs
     print(f"{len(rows)} viabilidades · {sum(len(v) for v in M.values())} marcos em {len(listas)} cronogramas · {len(var)} variações · {chamadas + _cs.chamadas} chamadas")
     if sem: print("Cronogramas sem empreendimento no cadastro:", ", ".join(sem))
+    if elab: print("Cronogramas em elaboração (privados):", ", ".join(v[1] for v in elab.values()))
     return 0
 
 if __name__ == "__main__": sys.exit(main())
