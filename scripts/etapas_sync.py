@@ -11,7 +11,7 @@ diário dos términos em historico/etapas-AAAA-MM-DD.json (referência da semana
 quando o campo Data Semana Passada estiver vazio). Inclui as subtarefas de cada Etapa (término e término da semana passada).
 ≈ 60 a 120 chamadas por dia.
 """
-import json, re, datetime as dt
+import json, os, re, datetime as dt
 from clickup_sync import api, paginas, dia, norm, RAIZ, HIST, TZ
 
 TIPO_ETAPA = 1004
@@ -129,6 +129,8 @@ def rodar(cad):
         listas = []
         for fid, tipo in E["pastas"].items():
             for li in api(f"folder/{fid}/list", {"archived": "false"}).get("lists", []):
+                if True:
+                    print("DIAGLIST", li["name"][:40], {k: v for k, v in li.items() if k not in ("statuses", "content", "folder", "space", "assignee")})
                 if EXCLUI.search(li["name"]): continue
                 es = etapas_da_lista(li)
                 for e in es:
