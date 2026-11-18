@@ -1,6 +1,163 @@
 {
- "v": 1,
- "gerado": "2026-11-18T20:07:27.408Z",
+ "enviado_em": "2026-11-18T17:10-03:00",
+ "resultado": [
+  {
+   "rid": "rmwkx8gtq958z",
+   "task": "17tpepd27tv",
+   "emp": "Vert",
+   "etapa": "Ambiental LP"
+  },
+  {
+   "rid": "rmwkxalfwkwhi",
+   "task": "17tpepd27tw",
+   "emp": "Vert",
+   "etapa": "Emissão de Alvará"
+  },
+  {
+   "rid": "rmwkxmi3m8g6i",
+   "task": "17tpepd27tx",
+   "emp": "Zago",
+   "etapa": "Licenciamento Ambiental LAS"
+  },
+  {
+   "rid": "rmwkxnqa2v4a7",
+   "task": "17tpepd27ty",
+   "emp": "Zago",
+   "etapa": "EIV"
+  },
+  {
+   "rid": "rmwky0760z4vi",
+   "task": "17tpepd27u0",
+   "emp": "Fundação",
+   "etapa": "Estudo Preliminar"
+  },
+  {
+   "rid": "rmwky2x32mdvh",
+   "task": "17tpepd27u3",
+   "emp": "Fundação",
+   "etapa": "Licenciamento Ambiental"
+  },
+  {
+   "rid": "rmwky7dg1bhh7",
+   "task": "17tpepd27u6",
+   "emp": "Fundação",
+   "etapa": "Unificação/Doação do Terreno"
+  },
+  {
+   "rid": "rmwkya9eekanp",
+   "task": "17tpepd27u7",
+   "emp": "Arena",
+   "etapa": "Licença Ambiental"
+  },
+  {
+   "rid": "rmwkyf110qwo0",
+   "task": "17tpepd27ua",
+   "emp": "Arena",
+   "etapa": "Definição de Conceito do Produto"
+  },
+  {
+   "rid": "rmwkym3sdkwxw",
+   "task": "17tpepd27ud",
+   "emp": "Alba",
+   "etapa": "Aprovações Legais"
+  },
+  {
+   "rid": "rmwkyt4hclxcu",
+   "task": "17tpepd27uk",
+   "emp": "Aura",
+   "etapa": "Análise Definitiva"
+  },
+  {
+   "rid": "rmwkyw5beew0b",
+   "task": "17tpepd27ur",
+   "emp": "Aura",
+   "etapa": "Anteprojeto"
+  },
+  {
+   "rid": "rmwkyypeizbuk",
+   "task": "17tpepd27ut",
+   "emp": "Aura",
+   "etapa": "Anteprojeto"
+  },
+  {
+   "rid": "rmwkzalx8l24s",
+   "task": "17tpepd27uu",
+   "emp": "Quadratto",
+   "etapa": "Emissão de Alvará"
+  },
+  {
+   "rid": "rmwkzcvemn7es",
+   "task": "17tpepd27uv",
+   "emp": "Quadratto",
+   "etapa": "Anteprojeto"
+  },
+  {
+   "rid": "rmwkzfi6xqnmu",
+   "task": "17tpepd27uy",
+   "emp": "Quadratto",
+   "etapa": "Subdivisão"
+  },
+  {
+   "rid": "rmwkzq66iuob1",
+   "task": "17tpepd27uz",
+   "emp": "Edge",
+   "etapa": "COHAPAR"
+  },
+  {
+   "rid": "rmwkzz5544mhp",
+   "task": "17tpepd27v0",
+   "emp": "Horizon",
+   "etapa": "Projeto Executivo"
+  },
+  {
+   "rid": "rmwl00mqipfh2",
+   "task": "17tpepd27v1",
+   "emp": "Edge",
+   "etapa": "Projeto Executivo"
+  },
+  {
+   "rid": "rmwl02dn6ceea",
+   "task": "17tpepd27v2",
+   "emp": "Horizon",
+   "etapa": "Transplante de Árvores"
+  },
+  {
+   "rid": "rmwl04jbianc6",
+   "task": "17tpepd27v3",
+   "emp": "Now",
+   "etapa": "Projetos específicos"
+  },
+  {
+   "rid": "rmwl07hulaz5x",
+   "task": "17tpepd27v4",
+   "emp": "Lume",
+   "etapa": "Projetos de Revisão de obra"
+  },
+  {
+   "rid": "rmwmjosunmud3",
+   "task": "17tpepd27v5",
+   "emp": "Now",
+   "etapa": "Início de Obra"
+  },
+  {
+   "rid": "rmwmjvazej5vg",
+   "task": "17tpepd27v6",
+   "emp": "Horizon",
+   "etapa": "Outros"
+  },
+  {
+   "rid": "rmwmjwlu0ng61",
+   "task": "17tpepd27v8",
+   "emp": "Horizon",
+   "etapa": "Processos de Assinatura PJ"
+  },
+  {
+   "rid": "rmwmjxe054gq6",
+   "task": "17tpepd27va",
+   "emp": "Now",
+   "etapa": "Processos de Assinatura PJ"
+  }
+ ],
  "itens": [
   {
    "v": 1,
