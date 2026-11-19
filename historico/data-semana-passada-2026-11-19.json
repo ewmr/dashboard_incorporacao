@@ -1,0 +1,1022 @@
+{
+ "data": "2026-11-19",
+ "simulacao": true,
+ "etapas_lidas": 689,
+ "ja_certas": 545,
+ "gravadas": 0,
+ "a_gravar": 144,
+ "fora_do_teto": 0,
+ "falhas": [],
+ "listas_ignoradas_tarefas": 7,
+ "chamadas": 8,
+ "alteracoes": [
+  {
+   "id": "17tpepcdwke",
+   "lista": "OBR | Uniq",
+   "nome": "📌 UNI | PRO | Montagem de Áreas Comuns",
+   "de": "2026-11-13",
+   "para": "2026-11-19"
+  },
+  {
+   "id": "86af97p1w",
+   "lista": "ALV | Aura (Alta Tensão)",
+   "nome": "📌 AUR | ARQ | Anteprojeto",
+   "de": "2026-11-13",
+   "para": "2026-11-19"
+  },
+  {
+   "id": "86a54y7ep",
+   "lista": "LIB | Edge (Porto Rico)",
+   "nome": "📌 EDG | ARQ | Projeto Executivo",
+   "de": "2026-11-13",
+   "para": "2026-11-19"
+  },
+  {
+   "id": "17tpepcdwkq",
+   "lista": "OBR | Uniq",
+   "nome": "📌 UNI | MKT | Vistoria Obra Cliente",
+   "de": "2026-11-13",
+   "para": "2026-11-20"
+  },
+  {
+   "id": "17tpepcdwkj",
+   "lista": "OBR | Uniq",
+   "nome": "📌 UNI | COM | As Built",
+   "de": "2026-11-30",
+   "para": "2026-11-20"
+  },
+  {
+   "id": "17tpepcdd7p",
+   "lista": "OBR | Lume",
+   "nome": "📌 LUM | COM | Projetos de Revisão de obra",
+   "de": "2026-11-10",
+   "para": "2026-11-20"
+  },
+  {
+   "id": "86ajgky21",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | COM | Anteprojeto",
+   "de": "2026-11-18",
+   "para": "2026-11-20"
+  },
+  {
+   "id": "86aj3hzm2",
+   "lista": "LIB | Now (Matsu I)",
+   "nome": " 📌 NOW | COM | Projetos específicos",
+   "de": "2026-11-10",
+   "para": "2026-11-20"
+  },
+  {
+   "id": "86af97pe0",
+   "lista": "ALV | Aura (Alta Tensão)",
+   "nome": "📌 AUR | COM | Anteprojeto",
+   "de": "2026-11-10",
+   "para": "2026-11-18"
+  },
+  {
+   "id": "17tpepcdwk8",
+   "lista": "OBR | Uniq",
+   "nome": "📌 UNI | ENG | Término de Obra",
+   "de": "2026-11-11",
+   "para": "2026-11-17"
+  },
+  {
+   "id": "17tpepcuncq",
+   "lista": "OBR | Essence",
+   "nome": "📌 ESS | COM | Revisão Executivo",
+   "de": null,
+   "para": "2026-11-23"
+  },
+  {
+   "id": "17tpepcyan8",
+   "lista": "LAN | Flow (Matsu II)",
+   "nome": "📌 FLO | ARQ | Revisão de Projeto Executivo Pós Entrega",
+   "de": "2026-11-20",
+   "para": "2026-11-25"
+  },
+  {
+   "id": "17tpepcdwkk",
+   "lista": "OBR | Uniq",
+   "nome": "📌 UNI | MKT | Identidade visual externa",
+   "de": "2026-11-17",
+   "para": "2026-11-25"
+  },
+  {
+   "id": "86ajgky13",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | ARQ | Anteprojeto",
+   "de": "2026-12-13",
+   "para": "2026-11-26"
+  },
+  {
+   "id": "86ajgu4f0",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | ARQ | Comitê de Anteprojeto",
+   "de": "2026-12-16",
+   "para": "2026-11-30"
+  },
+  {
+   "id": "86a762qbt",
+   "lista": "LIB | Horizon (Patrulha)",
+   "nome": "📌 HOR | CEF | Processos de Assinatura PJ",
+   "de": "2026-11-17",
+   "para": "2026-11-30"
+  },
+  {
+   "id": "86a762q36",
+   "lista": "LIB | Horizon (Patrulha)",
+   "nome": "📌 HOR | ARQ | Projeto Executivo",
+   "de": "2026-11-25",
+   "para": "2026-12-02"
+  },
+  {
+   "id": "17tpepcr444",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | LEG | Subdivisão",
+   "de": "2026-11-18",
+   "para": "2026-12-03"
+  },
+  {
+   "id": "17tpepcdwm2",
+   "lista": "OBR | Uniq",
+   "nome": "📌 UNI | MKT | Revistoria Obra Cliente",
+   "de": "2026-11-28",
+   "para": "2026-12-04"
+  },
+  {
+   "id": "86af97phz",
+   "lista": "ALV | Aura (Alta Tensão)",
+   "nome": "📌 AUR | PRO | Imagens de Venda",
+   "de": "2026-12-28",
+   "para": "2026-12-04"
+  },
+  {
+   "id": "86ajqkf7d",
+   "lista": "EP | Arena",
+   "nome": "📌 ARE | MKT | Definição de Conceito do Produto",
+   "de": "2026-12-01",
+   "para": "2026-12-07"
+  },
+  {
+   "id": "86a57d3dx",
+   "lista": "LAN | Flow (Matsu II)",
+   "nome": "📌 FLO | CEF | Processos de Assinatura PJ",
+   "de": "2026-12-09",
+   "para": "2026-12-07"
+  },
+  {
+   "id": "86a4ztpdv",
+   "lista": "LIB | Now (Matsu I)",
+   "nome": "📌 NOW | CEF | Processos de Assinatura PJ",
+   "de": "2026-11-16",
+   "para": "2026-12-07"
+  },
+  {
+   "id": "17tpepcvueg",
+   "lista": "LIB | Horizon (Patrulha)",
+   "nome": "📌 HOR | COM | Comitê de Executivo",
+   "de": "2026-12-02",
+   "para": "2026-12-09"
+  },
+  {
+   "id": "86a4ztpep",
+   "lista": "LIB | Now (Matsu I)",
+   "nome": "📌 NOW | ENG | Início de Obra",
+   "de": "2026-09-29",
+   "para": "2026-10-30"
+  },
+  {
+   "id": "86ajp43ma",
+   "lista": "EP | Fundação",
+   "nome": "📌 FUN | ARQ | Estudo Preliminar",
+   "de": "2026-12-09",
+   "para": "2026-12-10"
+  },
+  {
+   "id": "17tpepcdwma",
+   "lista": "OBR | Uniq",
+   "nome": "📌 UNI | MKT | Evento de entrega",
+   "de": "2026-12-15",
+   "para": "2026-12-12"
+  },
+  {
+   "id": "86a57d40a",
+   "lista": "LAN | Flow (Matsu II)",
+   "nome": "📌 FLO | INC | Lançamento Comercial",
+   "de": "2027-02-15",
+   "para": "2026-12-15"
+  },
+  {
+   "id": "86ajwzemp",
+   "lista": "EP | Fundação",
+   "nome": "📌 FUN | LEG | Licenciamento Ambiental",
+   "de": "2026-12-08",
+   "para": "2026-12-16"
+  },
+  {
+   "id": "86a52bmd4",
+   "lista": "ALV | Alba (Tanguá)",
+   "nome": "📌 ALB | ARQ | Projeto Executivo",
+   "de": "2026-12-24",
+   "para": "2026-12-16"
+  },
+  {
+   "id": "17tpepcdwm5",
+   "lista": "OBR | Uniq",
+   "nome": "📌 UNI | LEG | Registro de CVCO",
+   "de": "2026-12-15",
+   "para": "2026-12-21"
+  },
+  {
+   "id": "86a54y79z",
+   "lista": "LIB | Edge (Porto Rico)",
+   "nome": "📌 EDG | LEG | COHAPAR",
+   "de": "2026-12-14",
+   "para": "2026-12-21"
+  },
+  {
+   "id": "17tpepcxcf0",
+   "lista": "LIB | Horizon (Patrulha)",
+   "nome": "📌 HOR | LEG | Transplante de Árvores",
+   "de": "2026-12-10",
+   "para": "2026-12-22"
+  },
+  {
+   "id": "86ajgky7y",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | LEG | Emissão de Alvará",
+   "de": "2026-12-17",
+   "para": "2026-12-23"
+  },
+  {
+   "id": "86ajqkfpv",
+   "lista": "EP | Arena",
+   "nome": "📌 ARE | LEG | Licença Ambiental",
+   "de": "2026-12-01",
+   "para": "2026-12-24"
+  },
+  {
+   "id": "86ajp43p2",
+   "lista": "EP | Fundação",
+   "nome": "📌 FUN | CEF | Criação da proposta SIOPI",
+   "de": "2026-12-23",
+   "para": "2026-12-24"
+  },
+  {
+   "id": "17tpepcdwmm",
+   "lista": "OBR | Uniq",
+   "nome": "📌 UNI | CEF | Liberação obra CEF",
+   "de": "2026-12-22",
+   "para": "2026-12-28"
+  },
+  {
+   "id": "86a762qeg",
+   "lista": "LIB | Horizon (Patrulha)",
+   "nome": "📌 HOR | JUR | Registro do Contrato PJ",
+   "de": "2026-12-18",
+   "para": "2026-12-31"
+  },
+  {
+   "id": "86a762qer",
+   "lista": "LIB | Horizon (Patrulha)",
+   "nome": "📌 HOR | CEF | Demanda Mínima",
+   "de": "2026-12-22",
+   "para": "2027-01-04"
+  },
+  {
+   "id": "86a8y0uwm",
+   "lista": "LIB | Horizon (Patrulha)",
+   "nome": "📌 HOR | CEF | Outros",
+   "de": "2026-12-13",
+   "para": "2027-01-05"
+  },
+  {
+   "id": "17tpepcy2c5",
+   "lista": "DUE | Container",
+   "nome": "📌 CON | LEG | Retificação Administrativa",
+   "de": "2027-01-15",
+   "para": "2027-01-06"
+  },
+  {
+   "id": "86a57d3fy",
+   "lista": "LAN | Flow (Matsu II)",
+   "nome": "📌 FLO | JUR | Registro do Contrato PJ",
+   "de": "2027-01-08",
+   "para": "2027-01-06"
+  },
+  {
+   "id": "86a4ztpe0",
+   "lista": "LIB | Now (Matsu I)",
+   "nome": "📌 NOW | JUR | Registro do Contrato PJ",
+   "de": "2026-12-16",
+   "para": "2027-01-06"
+  },
+  {
+   "id": "86ajgky4e",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | COM | Projeto Pré-executivo",
+   "de": "2027-01-25",
+   "para": "2027-01-07"
+  },
+  {
+   "id": "86ajp440h",
+   "lista": "EP | Fundação",
+   "nome": "📌 FUN | LEG | Relatório Ambiental",
+   "de": "2027-01-11",
+   "para": "2027-01-12"
+  },
+  {
+   "id": "86ajgu77v",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | ARQ | Comitê de Pré-Executivo",
+   "de": "2027-01-28",
+   "para": "2027-01-12"
+  },
+  {
+   "id": "86af97p0j",
+   "lista": "ALV | Aura (Alta Tensão)",
+   "nome": "📌 AUR | CEF | Análise Definitiva",
+   "de": "2027-01-11",
+   "para": "2027-01-12"
+  },
+  {
+   "id": "86ad27033",
+   "lista": "ALV | Vert (Follador)",
+   "nome": "📌 VER | LEG | Ambiental LP",
+   "de": "2026-11-12",
+   "para": "2027-01-13"
+  },
+  {
+   "id": "86ajgkyan",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | LEG | Registro de Incorporação",
+   "de": "2027-01-11",
+   "para": "2027-01-15"
+  },
+  {
+   "id": "86a539vrj",
+   "lista": "ALV | Alba (Tanguá)",
+   "nome": "📌 ALB | JUR | Escritura registrada",
+   "de": "2027-01-29",
+   "para": "2027-01-15"
+  },
+  {
+   "id": "86a5h1mmg",
+   "lista": "ALV | Alba (Tanguá)",
+   "nome": "📌 ALB | ARQ | Documentação para Lançamento",
+   "de": "2027-01-26",
+   "para": "2027-01-18"
+  },
+  {
+   "id": "86ajgky2d",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | PCP | Orçamento V4",
+   "de": "2027-01-15",
+   "para": "2027-01-19"
+  },
+  {
+   "id": "86a52bkqg",
+   "lista": "ALV | Alba (Tanguá)",
+   "nome": "📌 ALB | LEG | Emissão de Alvará",
+   "de": "2027-01-24",
+   "para": "2027-01-20"
+  },
+  {
+   "id": "86akjbqw5",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | COM | Projetos Específicos",
+   "de": "2027-01-22",
+   "para": "2027-01-26"
+  },
+  {
+   "id": "86ajgky98",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | ARQ | Documentação para Lançamento",
+   "de": "2027-01-20",
+   "para": "2027-01-26"
+  },
+  {
+   "id": "86ajgky6q",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | LEG | Licenciamento Ambiental Municipal",
+   "de": "2027-01-28",
+   "para": "2027-01-27"
+  },
+  {
+   "id": "86ajgky8z",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | INC | Viabilidade de Lançamento V4",
+   "de": "2027-01-26",
+   "para": "2027-01-28"
+  },
+  {
+   "id": "86ajgkyb7",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | LEG | COHAPAR",
+   "de": "2027-01-27",
+   "para": "2027-02-02"
+  },
+  {
+   "id": "86af97q0g",
+   "lista": "ALV | Aura (Alta Tensão)",
+   "nome": "📌 AUR | COM | Projeto Pré-executivo",
+   "de": "2027-01-29",
+   "para": "2027-02-04"
+  },
+  {
+   "id": "86a57d3g7",
+   "lista": "LAN | Flow (Matsu II)",
+   "nome": "📌 FLO | CEF | Demanda Mínima",
+   "de": "2027-02-10",
+   "para": "2027-02-08"
+  },
+  {
+   "id": "86a52bmpg",
+   "lista": "ALV | Alba (Tanguá)",
+   "nome": "📌 ALB | PCP | Orçamento de Lançamento V4",
+   "de": "2027-02-23",
+   "para": "2027-02-11"
+  },
+  {
+   "id": "86ajgkya5",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | MKT | Estratégia de marketing/comercial",
+   "de": "2026-12-14",
+   "para": "2027-02-12"
+  },
+  {
+   "id": "86ajgkyau",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | INC | Lançamento Comercial",
+   "de": "2026-12-15",
+   "para": "2027-02-15"
+  },
+  {
+   "id": "86a4ztpe9",
+   "lista": "LIB | Now (Matsu I)",
+   "nome": "📌 NOW | CEF | Demanda Mínima",
+   "de": "2027-01-25",
+   "para": "2027-02-15"
+  },
+  {
+   "id": "86ajyvp41",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | CEF | Análises para Contratação CEF",
+   "de": "2027-02-11",
+   "para": "2027-02-17"
+  },
+  {
+   "id": "86ajgky77",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | JUR | Análise Jurídica CEF",
+   "de": "2027-02-19",
+   "para": "2027-02-25"
+  },
+  {
+   "id": "86a52bkzw",
+   "lista": "ALV | Alba (Tanguá)",
+   "nome": "📌 ALB | INC | Viabilidade de Lançamento V4",
+   "de": "2027-03-09",
+   "para": "2027-02-25"
+  },
+  {
+   "id": "86ajvadny",
+   "lista": "EP | Zago",
+   "nome": "📌 ZAG | LEG | Licenciamento Ambiental LAS",
+   "de": "2026-11-12",
+   "para": "2027-03-03"
+  },
+  {
+   "id": "86ajqncbk",
+   "lista": "EP | Arena",
+   "nome": "📌 ARE | ARQ | Comitê de Anteprojeto",
+   "de": "2027-04-29",
+   "para": "2027-03-11"
+  },
+  {
+   "id": "86ajywj5h",
+   "lista": "ALV | Aura (Alta Tensão)",
+   "nome": "📌 AUR | CEF | Análises para Contratação CEF",
+   "de": "2027-03-19",
+   "para": "2027-03-23"
+  },
+  {
+   "id": "86af97r18",
+   "lista": "ALV | Aura (Alta Tensão)",
+   "nome": "📌 AUR | PCP | Orçamento de Lançamento V4",
+   "de": "2027-03-17",
+   "para": "2027-03-23"
+  },
+  {
+   "id": "86af97qh2",
+   "lista": "ALV | Aura (Alta Tensão)",
+   "nome": "📌 AUR | JUR | Análise Jurídica CEF",
+   "de": "2027-03-24",
+   "para": "2027-03-26"
+  },
+  {
+   "id": "86ad270j7",
+   "lista": "ALV | Vert (Follador)",
+   "nome": "📌 VER | JUR | Escritura Assinada",
+   "de": "2027-06-03",
+   "para": "2027-03-26"
+  },
+  {
+   "id": "86a52bm16",
+   "lista": "ALV | Alba (Tanguá)",
+   "nome": "📌 ALB | LEG | Registro de Incorporação",
+   "de": "2027-03-31",
+   "para": "2027-03-26"
+  },
+  {
+   "id": "86ajp440e",
+   "lista": "EP | Fundação",
+   "nome": "📌 FUN | LEG | Unificação/Doação do Terreno",
+   "de": "2027-03-19",
+   "para": "2027-03-30"
+  },
+  {
+   "id": "86af97r1m",
+   "lista": "ALV | Aura (Alta Tensão)",
+   "nome": "📌 AUR | INC | Viabilidade de Lançamento",
+   "de": "2027-03-29",
+   "para": "2027-04-02"
+  },
+  {
+   "id": "86ajqkf7b",
+   "lista": "EP | Arena",
+   "nome": "📌 ARE | JUR | Escritura Assinada",
+   "de": "2027-05-19",
+   "para": "2027-04-05"
+  },
+  {
+   "id": "86a52bkpg",
+   "lista": "ALV | Alba (Tanguá)",
+   "nome": "📌 ALB | LEG | COHAPAR",
+   "de": "2027-04-15",
+   "para": "2027-04-12"
+  },
+  {
+   "id": "86a57d3gy",
+   "lista": "LAN | Flow (Matsu II)",
+   "nome": "📌 FLO | ARQ | Reunião start de obra",
+   "de": "2027-06-14",
+   "para": "2027-04-13"
+  },
+  {
+   "id": "86a57d3h5",
+   "lista": "LAN | Flow (Matsu II)",
+   "nome": "📌 FLO | ENG | Início de Obra",
+   "de": "2027-06-15",
+   "para": "2027-04-14"
+  },
+  {
+   "id": "86a57d3g4",
+   "lista": "LAN | Flow (Matsu II)",
+   "nome": "📌 FLO | ENG | Planejamento de Início de Obra",
+   "de": "2027-06-15",
+   "para": "2027-04-14"
+  },
+  {
+   "id": "86ajgkybd",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | CEF | Contrato PJ",
+   "de": "2027-04-09",
+   "para": "2027-04-15"
+  },
+  {
+   "id": "86agx7c5k",
+   "lista": "EP | Al Nasser 1",
+   "nome": "📌 AN1 | JUR | Escritura Assinada",
+   "de": "2027-07-02",
+   "para": "2027-04-16"
+  },
+  {
+   "id": "86akhyjvw",
+   "lista": "ALV | Aura (Alta Tensão)",
+   "nome": "📌 AUR | COM | Projetos Específicos",
+   "de": "2027-04-14",
+   "para": "2027-04-20"
+  },
+  {
+   "id": "86ajqnmmg",
+   "lista": "EP | Arena",
+   "nome": "📌 ARE | ARQ | Comitê de Pré-Executivo",
+   "de": "2027-06-22",
+   "para": "2027-04-21"
+  },
+  {
+   "id": "86ajpa32h",
+   "lista": "EP | Fundação",
+   "nome": " 📌 FUN | ARQ | Comitê de Anteprojeto ",
+   "de": "2027-06-09",
+   "para": "2027-04-21"
+  },
+  {
+   "id": "86ajgkyb6",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | ARQ | Projeto Executivo",
+   "de": "2027-05-07",
+   "para": "2027-04-21"
+  },
+  {
+   "id": "86ajywtzw",
+   "lista": "ALV | Alba (Tanguá)",
+   "nome": "📌 ALB | CEF | Análises para Contratação CEF",
+   "de": "2027-04-30",
+   "para": "2027-04-27"
+  },
+  {
+   "id": "86af97rbt",
+   "lista": "ALV | Aura (Alta Tensão)",
+   "nome": "📌 AUR | ARQ | Projeto Executivo",
+   "de": "2027-04-26",
+   "para": "2027-04-30"
+  },
+  {
+   "id": "86aha29tg",
+   "lista": "EP | Al Nasser 2",
+   "nome": "📌 AN2 | JUR | Escritura Assinada",
+   "de": "2027-07-21",
+   "para": "2027-05-04"
+  },
+  {
+   "id": "86ajw1zde",
+   "lista": "EP | Zago",
+   "nome": "📌 ZAG | LEG | EIV",
+   "de": "2027-04-28",
+   "para": "2027-05-05"
+  },
+  {
+   "id": "86ajp43m6",
+   "lista": "EP | Fundação",
+   "nome": "📌 FUN | JUR | Escritura Assinada",
+   "de": "2027-07-28",
+   "para": "2027-05-11"
+  },
+  {
+   "id": "86ad2712e",
+   "lista": "ALV | Vert (Follador)",
+   "nome": "📌 VER | LEG | Emissão de Alvará",
+   "de": "2027-05-04",
+   "para": "2027-05-11"
+  },
+  {
+   "id": "86ajgkybx",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | JUR | Registro do Contrato PJ",
+   "de": "2027-05-10",
+   "para": "2027-05-14"
+  },
+  {
+   "id": "86af97rqd",
+   "lista": "ALV | Aura (Alta Tensão)",
+   "nome": "📌 AUR | CEF | Processos de Assinatura PJ",
+   "de": "2027-05-12",
+   "para": "2027-05-14"
+  },
+  {
+   "id": "86a57d3h2",
+   "lista": "LAN | Flow (Matsu II)",
+   "nome": "📌 FLO | JUR | Comissão de Representantes",
+   "de": "2027-07-15",
+   "para": "2027-05-14"
+  },
+  {
+   "id": "86a52bkq7",
+   "lista": "ALV | Alba (Tanguá)",
+   "nome": "📌 ALB | JUR | Análise Jurídica CEF",
+   "de": "2027-05-21",
+   "para": "2027-05-18"
+  },
+  {
+   "id": "86ajqnjmm",
+   "lista": "EP | Fundação",
+   "nome": "📌 FUN | ARQ | Comitê de Pré-Executivo",
+   "de": "2027-08-02",
+   "para": "2027-05-31"
+  },
+  {
+   "id": "86ad271e6",
+   "lista": "ALV | Vert (Follador)",
+   "nome": "📌 VER | ARQ | Documentação para Lançamento",
+   "de": "2027-06-04",
+   "para": "2027-06-11"
+  },
+  {
+   "id": "86af97rvh",
+   "lista": "ALV | Aura (Alta Tensão)",
+   "nome": "📌 AUR | JUR | Registro do Contrato PJ",
+   "de": "2027-06-10",
+   "para": "2027-06-14"
+  },
+  {
+   "id": "86ajgkyc0",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | ARQ | Reunião Start de Obra",
+   "de": "2027-06-09",
+   "para": "2027-06-15"
+  },
+  {
+   "id": "86ajgkycp",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | ENG | Início de Obra",
+   "de": "2027-06-10",
+   "para": "2027-06-16"
+  },
+  {
+   "id": "86ajgkycd",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | CEF | Demanda Mínima",
+   "de": "2027-06-10",
+   "para": "2027-06-16"
+  },
+  {
+   "id": "86a52bmpw",
+   "lista": "ALV | Alba (Tanguá)",
+   "nome": "📌 ALB | CEF | Contrato PJ",
+   "de": "2027-07-09",
+   "para": "2027-07-06"
+  },
+  {
+   "id": "86af97rwy",
+   "lista": "ALV | Aura (Alta Tensão)",
+   "nome": "📌 AUR | CEF | Demanda Mínima",
+   "de": "2027-07-07",
+   "para": "2027-07-09"
+  },
+  {
+   "id": "86a52bn5g",
+   "lista": "ALV | Alba (Tanguá)",
+   "nome": "📌 ALB | COM | Aprovações Legais",
+   "de": "2027-06-30",
+   "para": "2027-07-12"
+  },
+  {
+   "id": "17tpepcewxb",
+   "lista": "EP | Rafitec ",
+   "nome": "📌 RAF | JUR | Escritura Assinada",
+   "de": "2027-08-27",
+   "para": "2027-07-13"
+  },
+  {
+   "id": "86ajgkyct",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | JUR | Comissão de Representantes",
+   "de": "2027-07-08",
+   "para": "2027-07-14"
+  },
+  {
+   "id": "86ajqkfyf",
+   "lista": "EP | Arena",
+   "nome": "📌 ARE | ARQ | Projeto Executivo",
+   "de": "2027-09-15",
+   "para": "2027-07-15"
+  },
+  {
+   "id": "86ad36jzt",
+   "lista": "ALV | Vert (Follador)",
+   "nome": "📌 VER | LEG | Ambiental LI",
+   "de": "2027-05-17",
+   "para": "2027-07-16"
+  },
+  {
+   "id": "86ad271gu",
+   "lista": "ALV | Vert (Follador)",
+   "nome": "📌 VER | LEG | Registro de Incorporação",
+   "de": "2027-07-12",
+   "para": "2027-07-19"
+  },
+  {
+   "id": "86ajvad3d",
+   "lista": "EP | Zago",
+   "nome": "📌 ZAG | JUR | Escritura Assinada",
+   "de": "2027-07-09",
+   "para": "2027-07-20"
+  },
+  {
+   "id": "86ajgkycb",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | ENG | Planejamento de Início de Obra",
+   "de": "2027-05-27",
+   "para": "2027-07-28"
+  },
+  {
+   "id": "86ad271n3",
+   "lista": "ALV | Vert (Follador)",
+   "nome": "📌 VER | LEG | COHAPAR",
+   "de": "2027-07-26",
+   "para": "2027-08-02"
+  },
+  {
+   "id": "86ad270k8",
+   "lista": "ALV | Vert (Follador)",
+   "nome": "📌 VER | PRO | Imagens de Venda",
+   "de": "2027-07-27",
+   "para": "2027-08-03"
+  },
+  {
+   "id": "86a52bmub",
+   "lista": "ALV | Alba (Tanguá)",
+   "nome": "📌 ALB | JUR | Registro do Contrato PJ",
+   "de": "2027-08-09",
+   "para": "2027-08-04"
+  },
+  {
+   "id": "86ajxqg89",
+   "lista": "ALV | Vert (Follador)",
+   "nome": "📌 VER | CEF | Análises para contratação CEF",
+   "de": "2027-08-16",
+   "para": "2027-08-23"
+  },
+  {
+   "id": "86ad2711t",
+   "lista": "ALV | Vert (Follador)",
+   "nome": "📌 VER | JUR | Análise Jurídica CEF",
+   "de": "2027-08-16",
+   "para": "2027-08-23"
+  },
+  {
+   "id": "86ajp4468",
+   "lista": "EP | Fundação",
+   "nome": "📌 FUN | ARQ | Projeto Executivo",
+   "de": "2027-10-26",
+   "para": "2027-08-24"
+  },
+  {
+   "id": "86a52bmuu",
+   "lista": "ALV | Alba (Tanguá)",
+   "nome": "📌 ALB | CEF | Demanda Mínima",
+   "de": "2027-09-17",
+   "para": "2027-09-14"
+  },
+  {
+   "id": "86ad2720u",
+   "lista": "ALV | Vert (Follador)",
+   "nome": "📌 VER | CEF | Contrato PJ",
+   "de": "2027-10-04",
+   "para": "2027-10-11"
+  },
+  {
+   "id": "86ad2725d",
+   "lista": "ALV | Vert (Follador)",
+   "nome": "📌 VER | JUR | Registro do Contrato PJ",
+   "de": "2027-11-03",
+   "para": "2027-11-10"
+  },
+  {
+   "id": "86ad2726u",
+   "lista": "ALV | Vert (Follador)",
+   "nome": "📌 VER | CEF | Demanda Mínima",
+   "de": "2027-12-03",
+   "para": "2027-12-10"
+  },
+  {
+   "id": "86ad2724b",
+   "lista": "ALV | Vert (Follador)",
+   "nome": "📌 VER | LEG | Ambiental LO",
+   "de": "2027-11-29",
+   "para": "2028-01-28"
+  },
+  {
+   "id": "86a4ztpeu",
+   "lista": "LIB | Now (Matsu I)",
+   "nome": "📌 NOW | ENG | Término de Obra",
+   "de": "2028-09-27",
+   "para": "2028-10-30"
+  },
+  {
+   "id": "86a4ztpfc",
+   "lista": "LIB | Now (Matsu I)",
+   "nome": "📌 NOW | CEF | Liberação obra CEF 98%",
+   "de": "2028-10-27",
+   "para": "2028-11-29"
+  },
+  {
+   "id": "86a4ztpey",
+   "lista": "LIB | Now (Matsu I)",
+   "nome": "📌 NOW | PRO | Montagem de Áreas Comuns",
+   "de": "2028-10-27",
+   "para": "2028-11-29"
+  },
+  {
+   "id": "86a4ztpf8",
+   "lista": "LIB | Now (Matsu I)",
+   "nome": "📌 NOW | LEG | Registro de CVCO",
+   "de": "2028-11-30",
+   "para": "2029-01-02"
+  },
+  {
+   "id": "86a59mkaj",
+   "lista": "LIB | Now (Matsu I)",
+   "nome": "📌 NOW | CEF | Liberação obra CEF 100%",
+   "de": "2028-12-22",
+   "para": "2029-01-24"
+  },
+  {
+   "id": "86a4ztpfh",
+   "lista": "LIB | Now (Matsu I)",
+   "nome": "📌 NOW | MKT | Evento de entrega",
+   "de": "2029-01-25",
+   "para": "2029-02-27"
+  },
+  {
+   "id": "86a57d3hj",
+   "lista": "LAN | Flow (Matsu II)",
+   "nome": "📌 FLO | ENG | Emissão de CVCO",
+   "de": "2029-09-13",
+   "para": "2029-06-12"
+  },
+  {
+   "id": "86a57d3h8",
+   "lista": "LAN | Flow (Matsu II)",
+   "nome": "📌 FLO | ENG | Término de Obra",
+   "de": "2029-08-13",
+   "para": "2029-06-12"
+  },
+  {
+   "id": "86ajgkyd6",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | ENG | Emissão de CVCO",
+   "de": "2029-06-12",
+   "para": "2029-06-18"
+  },
+  {
+   "id": "86ajgkycz",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | ENG | Término de Obra",
+   "de": "2029-06-12",
+   "para": "2029-06-18"
+  },
+  {
+   "id": "86a57d3jd",
+   "lista": "LAN | Flow (Matsu II)",
+   "nome": "📌 FLO | CEF | Liberação obra CEF 98%",
+   "de": "2029-10-05",
+   "para": "2029-07-04"
+  },
+  {
+   "id": "86ajgkyda",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | CEF | Liberação Obra CEF 98%",
+   "de": "2029-07-04",
+   "para": "2029-07-10"
+  },
+  {
+   "id": "86a57d3hd",
+   "lista": "LAN | Flow (Matsu II)",
+   "nome": "📌 FLO | PRO | Montagem de Áreas Comuns",
+   "de": "2029-09-10",
+   "para": "2029-07-10"
+  },
+  {
+   "id": "86ajgkyd5",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | PRO | Montagem de Áreas Comuns",
+   "de": "2029-07-11",
+   "para": "2029-07-17"
+  },
+  {
+   "id": "86a57d3hr",
+   "lista": "LAN | Flow (Matsu II)",
+   "nome": "📌 FLO | LEG | Registro de CVCO",
+   "de": "2029-11-01",
+   "para": "2029-07-31"
+  },
+  {
+   "id": "86ajgkydb",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | LEG | Registro de CVCO",
+   "de": "2029-07-31",
+   "para": "2029-08-06"
+  },
+  {
+   "id": "86a57d3jj",
+   "lista": "LAN | Flow (Matsu II)",
+   "nome": "📌 FLO | MKT | Evento de entrega",
+   "de": "2029-11-13",
+   "para": "2029-08-10"
+  },
+  {
+   "id": "86ajgkydj",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | MKT | Evento de Entrega",
+   "de": "2029-08-13",
+   "para": "2029-08-17"
+  },
+  {
+   "id": "86a59nhhw",
+   "lista": "LAN | Flow (Matsu II)",
+   "nome": "📌 FLO | CEF | Liberação obra CEF 100%",
+   "de": "2029-11-23",
+   "para": "2029-08-22"
+  },
+  {
+   "id": "86ajgkydk",
+   "lista": "ALV | Quadratto (Leilão)",
+   "nome": "📌 QUA | CEF | Liberação Obra CEF 100%",
+   "de": "2029-08-22",
+   "para": "2029-08-28"
+  }
+ ]
+}
