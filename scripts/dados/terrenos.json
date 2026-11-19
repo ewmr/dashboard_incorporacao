@@ -1,12 +1,12 @@
 {
- "lido": "2026-11-18",
+ "lido": "2026-11-19",
  "itens": [
   {
    "nome": "Revolução (Cassol)",
    "cidade": "Curitiba",
    "bairro": "Hauer",
    "vgv": 172800000.0,
-   "unid": 320.0,
+   "unid": 512.0,
    "area": 13200.0
   },
   {
@@ -14,7 +14,7 @@
    "cidade": "Curitiba",
    "bairro": "Alto Boqueirão",
    "vgv": 108960000.0,
-   "unid": 336.0,
+   "unid": 324.0,
    "area": 9900.0
   },
   {
@@ -22,7 +22,7 @@
    "cidade": "Curitiba",
    "bairro": "Cidade Industrial de Curitiba",
    "vgv": 101201000.0,
-   "unid": 224.0,
+   "unid": 288.0,
    "area": 8591.0
   },
   {
