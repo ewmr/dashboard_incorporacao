@@ -1,9 +1,9 @@
 {
- "gerado_em": "2026-11-22T14:14-03:00",
+ "gerado_em": "2026-11-23T18:33-03:00",
  "fontes": {
-  "cronogramas": "Cronogramas do ClickUp em 2026-11-22",
+  "cronogramas": "Cronogramas do ClickUp em 2026-11-23",
   "viabilidades": "ClickUp · lista Controle de Viabilidades",
-  "variacoes": "2026-11-16 → 2026-11-22",
+  "variacoes": "2026-11-17 → 2026-11-23",
   "rotina": "rotina diária do GitHub (API do ClickUp)"
  },
  "marco_nome": {
@@ -336,11 +336,11 @@
      "ok": 0
     },
     "cef004": {
-     "data": "2027-09-14",
+     "data": "2027-09-15",
      "ok": 0
     },
     "cef003": {
-     "data": "2027-07-06",
+     "data": "2027-07-07",
      "ok": 0
     },
     "inc002": {
@@ -348,11 +348,11 @@
      "ok": 0
     },
     "leg010": {
-     "data": "2027-03-26",
+     "data": "2027-03-29",
      "ok": 0
     },
     "leg009": {
-     "data": "2027-01-20",
+     "data": "2027-01-21",
      "ok": 0
     },
     "leg008": {
@@ -400,7 +400,7 @@
      "ok": 1
     },
     "orcV4": {
-     "data": "2027-02-11",
+     "data": "2027-02-10",
      "ok": 0
     }
    },
@@ -558,7 +558,7 @@
      ]
     }
    ],
-   "foto": "img/emp/ARB.webp?v=1795367470",
+   "foto": "img/emp/ARB.webp?v=1795469287",
    "pos": [
     -25.4410477,
     -49.1746432
@@ -585,11 +585,11 @@
      "ok": 0
     },
     "cef004": {
-     "data": "2027-12-28",
+     "data": "2027-12-30",
      "ok": 0
     },
     "cef003": {
-     "data": "2027-10-22",
+     "data": "2027-10-26",
      "ok": 0
     },
     "inc002": {
@@ -597,11 +597,11 @@
      "ok": 0
     },
     "leg010": {
-     "data": "2027-07-30",
+     "data": "2027-08-03",
      "ok": 0
     },
     "leg009": {
-     "data": "2027-05-19",
+     "data": "2027-05-21",
      "ok": 0
     },
     "leg008": {
@@ -609,7 +609,7 @@
      "ok": 0
     },
     "nov002": {
-     "data": "2027-04-05",
+     "data": "2027-04-07",
      "ok": 0
     },
     "nov001": {
@@ -637,15 +637,15 @@
      "ok": 0
     },
     "arq005": {
-     "data": "2027-02-23",
+     "data": "2027-02-25",
      "ok": 0
     },
     "arq004": {
-     "data": "2026-12-29",
+     "data": "2026-12-31",
      "ok": 0
     },
     "arq003": {
-     "data": "2026-11-30",
+     "data": "2026-12-02",
      "ok": 0
     },
     "arq003i": {
@@ -951,7 +951,7 @@
      ]
     }
    ],
-   "foto": "img/emp/BRA.webp?v=1795367470",
+   "foto": "img/emp/BRA.webp?v=1795469287",
    "pos": [
     -25.4354881,
     -49.1536968
@@ -1062,7 +1062,7 @@
      "ok": 1
     },
     "arq006": {
-     "data": "2026-11-19",
+     "data": "2026-11-25",
      "ok": 0
     },
     "inc001": {
@@ -1175,7 +1175,7 @@
      ]
     }
    ],
-   "foto": "img/emp/EDG.webp?v=1795367470",
+   "foto": "img/emp/EDG.webp?v=1795469287",
    "pos": [
     -25.5142276,
     -49.1998346
@@ -1344,7 +1344,7 @@
      ]
     }
    ],
-   "foto": "img/emp/ESS.webp?v=1795367470",
+   "foto": "img/emp/ESS.webp?v=1795469287",
    "pos": [
     -25.4953495,
     -49.3036737
@@ -1367,19 +1367,19 @@
    "elaboracao": false,
    "marcos": {
     "eng001": {
-     "data": "2027-04-14",
+     "data": "2027-03-15",
      "ok": 0
     },
     "cef004": {
-     "data": "2027-02-08",
+     "data": "2027-03-02",
      "ok": 0
     },
     "cef003": {
-     "data": "2026-12-07",
+     "data": "2026-12-29",
      "ok": 0
     },
     "inc002": {
-     "data": "2026-12-15",
+     "data": "2026-12-08",
      "ok": 0
     },
     "leg010": {
@@ -1411,15 +1411,15 @@
      "ok": 1
     },
     "mar001": {
-     "data": "2029-08-10",
+     "data": "2029-07-11",
      "ok": 0
     },
     "leg011": {
-     "data": "2029-07-31",
+     "data": "2029-06-29",
      "ok": 0
     },
     "eng002": {
-     "data": "2029-06-12",
+     "data": "2029-05-11",
      "ok": 0
     },
     "arq005": {
@@ -1509,7 +1509,7 @@
      ]
     }
    ],
-   "foto": "img/emp/FLO.webp?v=1795367470",
+   "foto": "img/emp/FLO.webp?v=1795469287",
    "pos": [
     -25.5489358,
     -49.40128
@@ -1596,7 +1596,7 @@
      "ok": 0
     },
     "arq003": {
-     "data": "2026-12-10",
+     "data": "2026-12-16",
      "ok": 0
     },
     "arq003i": {
@@ -1705,11 +1705,11 @@
      "ok": 0
     },
     "cef004": {
-     "data": "2027-01-04",
+     "data": "2027-01-18",
      "ok": 0
     },
     "cef003": {
-     "data": "2026-11-30",
+     "data": "2026-12-14",
      "ok": 0
     },
     "inc002": {
@@ -1851,7 +1851,7 @@
      ]
     }
    ],
-   "foto": "img/emp/HOR.webp?v=1795367470",
+   "foto": "img/emp/HOR.webp?v=1795469287",
    "pos": [
     -25.4329207,
     -49.1546814
@@ -1970,7 +1970,7 @@
      ]
     }
    ],
-   "foto": "img/emp/LUM.webp?v=1795367470",
+   "foto": "img/emp/LUM.webp?v=1795469287",
    "pos": [
     -25.3984744,
     -49.1925418
@@ -1997,11 +1997,11 @@
      "ok": 1
     },
     "cef004": {
-     "data": "2027-02-15",
+     "data": "2027-02-03",
      "ok": 0
     },
     "cef003": {
-     "data": "2026-12-07",
+     "data": "2026-11-25",
      "ok": 0
     },
     "inc002": {
@@ -2139,7 +2139,7 @@
      ]
     }
    ],
-   "foto": "img/emp/NOW.webp?v=1795367470",
+   "foto": "img/emp/NOW.webp?v=1795469287",
    "pos": [
     -25.5489358,
     -49.40128
@@ -2162,15 +2162,15 @@
    "elaboracao": false,
    "marcos": {
     "eng001": {
-     "data": "2027-06-16",
+     "data": "2027-06-18",
      "ok": 0
     },
     "cef004": {
-     "data": "2027-06-16",
+     "data": "2027-06-18",
      "ok": 0
     },
     "cef003": {
-     "data": "2027-04-15",
+     "data": "2027-04-19",
      "ok": 0
     },
     "inc002": {
@@ -2178,11 +2178,11 @@
      "ok": 0
     },
     "leg010": {
-     "data": "2027-01-15",
+     "data": "2027-01-19",
      "ok": 0
     },
     "leg009": {
-     "data": "2026-12-23",
+     "data": "2026-12-25",
      "ok": 0
     },
     "leg008": {
@@ -2194,15 +2194,15 @@
      "ok": 0
     },
     "mar001": {
-     "data": "2029-08-17",
+     "data": "2029-08-21",
      "ok": 0
     },
     "leg011": {
-     "data": "2029-08-06",
+     "data": "2029-08-08",
      "ok": 0
     },
     "eng002": {
-     "data": "2029-06-18",
+     "data": "2029-06-20",
      "ok": 0
     },
     "arq005": {
@@ -2501,7 +2501,7 @@
      ]
     }
    ],
-   "foto": "img/emp/UNI.webp?v=1795367470",
+   "foto": "img/emp/UNI.webp?v=1795469287",
    "pos": [
     -25.4323214,
     -49.1570482
@@ -2528,11 +2528,11 @@
      "ok": 0
     },
     "cef004": {
-     "data": "2027-12-10",
+     "data": "2027-12-08",
      "ok": 0
     },
     "cef003": {
-     "data": "2027-10-11",
+     "data": "2027-10-07",
      "ok": 0
     },
     "inc002": {
@@ -2540,11 +2540,11 @@
      "ok": 0
     },
     "leg010": {
-     "data": "2027-07-19",
+     "data": "2027-07-15",
      "ok": 0
     },
     "leg009": {
-     "data": "2027-05-11",
+     "data": "2027-05-07",
      "ok": 0
     },
     "leg008": {
@@ -2552,7 +2552,7 @@
      "ok": 1
     },
     "nov002": {
-     "data": "2027-03-26",
+     "data": "2027-03-24",
      "ok": 0
     },
     "nov001": {
@@ -2580,7 +2580,7 @@
      "ok": 0
     },
     "arq005": {
-     "data": "2026-12-22",
+     "data": "2026-12-23",
      "ok": 0
     },
     "arq004": {
@@ -2697,11 +2697,11 @@
      "ok": 0
     },
     "cef004": {
-     "data": "2028-02-14",
+     "data": "2028-01-26",
      "ok": 0
     },
     "cef003": {
-     "data": "2027-12-13",
+     "data": "2027-11-24",
      "ok": 0
     },
     "inc002": {
@@ -2709,19 +2709,19 @@
      "ok": 0
     },
     "leg010": {
-     "data": "2027-09-21",
+     "data": "2027-09-02",
      "ok": 0
     },
     "leg009": {
-     "data": "2027-07-09",
+     "data": "2027-06-22",
      "ok": 0
     },
     "leg008": {
-     "data": "2027-03-09",
+     "data": "2027-02-18",
      "ok": 0
     },
     "nov002": {
-     "data": "2027-07-20",
+     "data": "2027-07-01",
      "ok": 0
     },
     "nov001": {
@@ -2729,7 +2729,7 @@
      "ok": 1
     },
     "arq006": {
-     "data": "2027-10-12",
+     "data": "2027-10-13",
      "ok": 0
     },
     "inc001": {
@@ -2753,11 +2753,11 @@
      "ok": 0
     },
     "arq004": {
-     "data": "2026-12-31",
+     "data": "2027-01-04",
      "ok": 0
     },
     "arq003": {
-     "data": "2026-12-02",
+     "data": "2026-12-04",
      "ok": 0
     },
     "arq003i": {
@@ -2765,7 +2765,7 @@
      "ok": 1
     },
     "orcV4": {
-     "data": "2027-08-30",
+     "data": "2027-08-31",
      "ok": 0
     }
    },
@@ -2916,7 +2916,7 @@
      ]
     }
    ],
-   "foto": "img/emp/TUO.webp?v=1795367470",
+   "foto": "img/emp/TUO.webp?v=1795469287",
    "pos": [
     -25.4425723,
     -49.1753849
@@ -3004,7 +3004,7 @@
      ]
     }
    ],
-   "foto": "img/emp/LAV.webp?v=1795367470",
+   "foto": "img/emp/LAV.webp?v=1795469287",
    "pos": [
     -25.4497453,
     -49.1729818
@@ -3162,15 +3162,15 @@
      "ok": 0
     },
     "cef004": {
-     "data": "2027-09-03",
+     "data": "2027-10-12",
      "ok": 0
     },
     "cef003": {
-     "data": "2027-06-23",
+     "data": "2027-07-30",
      "ok": 0
     },
     "inc002": {
-     "data": "2027-03-31",
+     "data": "2027-05-15",
      "ok": 0
     },
     "leg010": {
@@ -3194,11 +3194,11 @@
      "ok": 0
     },
     "leg011": {
-     "data": "2029-10-26",
+     "data": "2029-12-12",
      "ok": 0
     },
     "eng002": {
-     "data": "2029-09-27",
+     "data": "2029-11-13",
      "ok": 0
     },
     "arq005": {
@@ -3266,7 +3266,7 @@
      ]
     }
    ],
-   "foto": "img/emp/EVO.webp?v=1795367470",
+   "foto": "img/emp/EVO.webp?v=1795469287",
    "pos": [
     -25.4357511,
     -49.2643965
@@ -3289,7 +3289,7 @@
    "elaboracao": false,
    "marcos": {
     "eng001": {
-     "data": "2028-03-13",
+     "data": "2028-02-10",
      "ok": 0
     },
     "cef004": {
@@ -3301,7 +3301,7 @@
      "ok": 0
     },
     "inc002": {
-     "data": "2027-09-15",
+     "data": "2027-08-15",
      "ok": 0
     },
     "leg010": {
@@ -3325,11 +3325,11 @@
      "ok": 1
     },
     "leg011": {
-     "data": "2030-04-12",
+     "data": "2030-03-13",
      "ok": 0
     },
     "eng002": {
-     "data": "2030-03-14",
+     "data": "2030-02-12",
      "ok": 0
     },
     "arq005": {
@@ -3425,7 +3425,7 @@
      ]
     }
    ],
-   "foto": "img/emp/LAG.webp?v=1795367470",
+   "foto": "img/emp/LAG.webp?v=1795469287",
    "pos": [
     -25.4290514,
     -49.2604248
@@ -3472,7 +3472,7 @@
      ]
     }
    ],
-   "foto": "img/emp/LBA.webp?v=1795367470",
+   "foto": "img/emp/LBA.webp?v=1795469287",
    "pos": [
     -25.4323799,
     -49.3009102
@@ -3519,7 +3519,7 @@
      ]
     }
    ],
-   "foto": "img/emp/ARS.webp?v=1795367470",
+   "foto": "img/emp/ARS.webp?v=1795469287",
    "pos": [
     -25.4177013,
     -49.2538417
@@ -3566,7 +3566,7 @@
      ]
     }
    ],
-   "foto": "img/emp/MOR.webp?v=1795367470",
+   "foto": "img/emp/MOR.webp?v=1795469287",
    "pos": [
     -25.4342993,
     -49.2677559
@@ -3613,7 +3613,7 @@
      ]
     }
    ],
-   "foto": "img/emp/CFV.webp?v=1795367470",
+   "foto": "img/emp/CFV.webp?v=1795469287",
    "pos": [
     -25.4326781,
     -49.2595769
@@ -3660,7 +3660,7 @@
      ]
     }
    ],
-   "foto": "img/emp/CPL.webp?v=1795367470",
+   "foto": "img/emp/CPL.webp?v=1795469287",
    "pos": [
     -25.4343232,
     -49.2682051
@@ -3707,7 +3707,7 @@
      ]
     }
    ],
-   "foto": "img/emp/CSJ.webp?v=1795367470",
+   "foto": "img/emp/CSJ.webp?v=1795469287",
    "pos": [
     -25.4407366,
     -49.2713291
@@ -3723,8 +3723,53 @@
    "codigo": "eng001",
    "marco": "Início de Obra",
    "anterior": "2027-06-15",
-   "atual": "2027-04-14",
-   "dias": -62
+   "atual": "2027-03-15",
+   "dias": -92
+  },
+  {
+   "empreendimento": "Martim Afonso",
+   "sigla": "MAR",
+   "codigo": "eng001",
+   "marco": "Início de Obra",
+   "anterior": "2028-03-13",
+   "atual": "2028-02-10",
+   "dias": -32
+  },
+  {
+   "empreendimento": "Flow",
+   "sigla": "FLO",
+   "codigo": "cef004",
+   "marco": "Demanda Mínima",
+   "anterior": "2027-02-08",
+   "atual": "2027-03-02",
+   "dias": 22
+  },
+  {
+   "empreendimento": "CORE Evo",
+   "sigla": "EVO",
+   "codigo": "cef004",
+   "marco": "Demanda Mínima",
+   "anterior": "2027-09-03",
+   "atual": "2027-10-12",
+   "dias": 39
+  },
+  {
+   "empreendimento": "Flow",
+   "sigla": "FLO",
+   "codigo": "cef003",
+   "marco": "Contrato PJ",
+   "anterior": "2026-12-07",
+   "atual": "2026-12-29",
+   "dias": 22
+  },
+  {
+   "empreendimento": "CORE Evo",
+   "sigla": "EVO",
+   "codigo": "cef003",
+   "marco": "Contrato PJ",
+   "anterior": "2027-06-23",
+   "atual": "2027-07-30",
+   "dias": 37
   },
   {
    "empreendimento": "Quadratto",
@@ -3741,62 +3786,26 @@
    "codigo": "inc002",
    "marco": "Lançamento Comercial",
    "anterior": "2027-02-15",
-   "atual": "2026-12-15",
-   "dias": -62
+   "atual": "2026-12-08",
+   "dias": -69
   },
   {
-   "empreendimento": "Rafitec",
-   "sigla": "RAF",
-   "codigo": "nov002",
-   "marco": "Escritura Assinada",
-   "anterior": "2027-08-27",
-   "atual": "2027-07-13",
-   "dias": -45
+   "empreendimento": "CORE Evo",
+   "sigla": "EVO",
+   "codigo": "inc002",
+   "marco": "Lançamento Comercial",
+   "anterior": "2027-03-31",
+   "atual": "2027-05-15",
+   "dias": 45
   },
   {
-   "empreendimento": "Arena",
-   "sigla": "ARE",
-   "codigo": "nov002",
-   "marco": "Escritura Assinada",
-   "anterior": "2027-05-19",
-   "atual": "2027-04-05",
-   "dias": -44
-  },
-  {
-   "empreendimento": "Fundação",
-   "sigla": "FUN",
-   "codigo": "nov002",
-   "marco": "Escritura Assinada",
-   "anterior": "2027-07-28",
-   "atual": "2027-05-11",
-   "dias": -78
-  },
-  {
-   "empreendimento": "Al Nasser 2",
-   "sigla": "AN2",
-   "codigo": "nov002",
-   "marco": "Escritura Assinada",
-   "anterior": "2027-07-21",
-   "atual": "2027-05-04",
-   "dias": -78
-  },
-  {
-   "empreendimento": "Al Nasser 1",
-   "sigla": "AN1",
-   "codigo": "nov002",
-   "marco": "Escritura Assinada",
-   "anterior": "2027-07-02",
-   "atual": "2027-04-16",
-   "dias": -77
-  },
-  {
-   "empreendimento": "Vert",
-   "sigla": "VER",
-   "codigo": "nov002",
-   "marco": "Escritura Assinada",
-   "anterior": "2027-06-10",
-   "atual": "2027-03-26",
-   "dias": -76
+   "empreendimento": "Martim Afonso",
+   "sigla": "MAR",
+   "codigo": "inc002",
+   "marco": "Lançamento Comercial",
+   "anterior": "2027-09-15",
+   "atual": "2027-08-15",
+   "dias": -31
   },
   {
    "empreendimento": "Flow",
@@ -3804,8 +3813,8 @@
    "codigo": "mar001",
    "marco": "Entrega de Chaves",
    "anterior": "2029-10-11",
-   "atual": "2029-08-10",
-   "dias": -62
+   "atual": "2029-07-11",
+   "dias": -92
   },
   {
    "empreendimento": "Flow",
@@ -3813,8 +3822,26 @@
    "codigo": "leg011",
    "marco": "Registro de CVCO",
    "anterior": "2029-10-01",
-   "atual": "2029-07-31",
-   "dias": -62
+   "atual": "2029-06-29",
+   "dias": -94
+  },
+  {
+   "empreendimento": "CORE Evo",
+   "sigla": "EVO",
+   "codigo": "leg011",
+   "marco": "Registro de CVCO",
+   "anterior": "2029-10-26",
+   "atual": "2029-12-12",
+   "dias": 47
+  },
+  {
+   "empreendimento": "Martim Afonso",
+   "sigla": "MAR",
+   "codigo": "leg011",
+   "marco": "Registro de CVCO",
+   "anterior": "2030-04-12",
+   "atual": "2030-03-13",
+   "dias": -30
   },
   {
    "empreendimento": "Flow",
@@ -3822,8 +3849,26 @@
    "codigo": "eng002",
    "marco": "Término de Obra",
    "anterior": "2029-08-13",
-   "atual": "2029-06-12",
-   "dias": -62
+   "atual": "2029-05-11",
+   "dias": -94
+  },
+  {
+   "empreendimento": "CORE Evo",
+   "sigla": "EVO",
+   "codigo": "eng002",
+   "marco": "Término de Obra",
+   "anterior": "2029-09-27",
+   "atual": "2029-11-13",
+   "dias": 47
+  },
+  {
+   "empreendimento": "Martim Afonso",
+   "sigla": "MAR",
+   "codigo": "eng002",
+   "marco": "Término de Obra",
+   "anterior": "2030-03-14",
+   "atual": "2030-02-12",
+   "dias": -30
   },
   {
    "empreendimento": "Martim Afonso",
@@ -3837,7 +3882,7 @@
  ],
  "listas_sem_cadastro": [],
  "terrenos": {
-  "lido": "2026-11-22",
+  "lido": "2026-11-23",
   "itens": [
    {
     "nome": "Revolução (Cassol)",
