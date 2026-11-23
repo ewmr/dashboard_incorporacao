@@ -6,3 +6,5 @@ Painel de gestão de projetos de incorporação, publicado no GitHub Pages e emb
 - `dados.json`: base única lida pelo app. É substituída pela atualização diária a partir do ClickUp (cronogramas e lista Controle de Viabilidades).
 - `vendor/leaflet`: biblioteca do mapa, incluída no repositório para não depender de CDN.
 - `scripts/`: rotina que monta o `dados.json`.
+
+<!-- Teste do conector do GitHub pelo Claude Code em 23/11/2026. Pode fechar este PR sem mesclar. -->
