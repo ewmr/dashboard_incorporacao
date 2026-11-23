@@ -4,7 +4,7 @@ name: Preencher Data Semana Passada
 # Lê e grava pela API do ClickUp (segredo CLICKUP_TOKEN). Não usa o Claude.
 on:
   schedule:
-    - cron: "47 23 * * 0"     # domingo 20:47 em Brasília
+    - cron: "17 21 * * 0"     # domingo 18:17 em Brasília (o GitHub pode atrasar algumas horas)
   workflow_dispatch:
     inputs:
       simular:
