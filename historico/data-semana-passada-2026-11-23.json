@@ -1,0 +1,13 @@
+{
+ "data": "2026-11-23",
+ "simulacao": false,
+ "etapas_lidas": 689,
+ "ja_certas": 689,
+ "gravadas": 0,
+ "a_gravar": 0,
+ "fora_do_teto": 0,
+ "falhas": [],
+ "listas_ignoradas_tarefas": 7,
+ "chamadas": 8,
+ "alteracoes": []
+}
