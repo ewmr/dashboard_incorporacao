@@ -1,6 +1,6 @@
 {
- "snap": "2026-11-23",
- "snap_ant": "2026-11-17",
+ "snap": "2026-11-24",
+ "snap_ant": "2026-11-18",
  "fonte": "rotina diária do GitHub (API do ClickUp)",
  "listas": {
   "BRA": [
@@ -1933,12 +1933,6 @@
    "eng002",
    "2030-03-14",
    "2030-02-12"
-  ],
-  [
-   "MAR",
-   "arq004",
-   "2026-11-23",
-   "2026-12-14"
   ]
  ],
  "listas_sem_cadastro": []
